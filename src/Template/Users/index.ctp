@@ -35,12 +35,12 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->numbers(['first' => 'Primero']) ?>
+            <!--<?= $this->Paginator->numbers(['first' => 'Primero']) ?>-->
             <?= $this->Paginator->prev('< ' . __('anterior')) ?>
-            <?= $this->Paginator->numbers() ?>
+            <!--<?= $this->Paginator->numbers() ?>-->
             <?= $this->Paginator->next(__('próximo') . ' >') ?>
-            <?= $this->Paginator->last(__('último') . ' >>') ?>
+            <!--<?= $this->Paginator->last(__('último') . ' >>') ?>-->
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, viendo {{current}} resultado(s) de {{count}} totales')]) ?></p>
+        <!--<p><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, viendo {{current}} resultado(s) de {{count}} totales')]) ?></p>-->
     </div>
 </div>
