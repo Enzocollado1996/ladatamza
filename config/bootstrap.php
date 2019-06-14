@@ -197,6 +197,25 @@ Type::build('timestamp')
  * table, model, controller names or whatever other string is passed to the
  * inflection functions.
  */
+Inflector::rules('plural', [
+    '/(.*)r$/i' => '\1res',    // error => errores
+    '/(.*)n$/i' => '\1nes',    // camion => camiones
+    '/(.*)d$/i' => '\1des',    // ciudad => ciudades
+    '/(.*)s$/i' => '\1ses',    // pais => paises
+    '/(.*)l$/i' => '\1les',    // local => locales
+    '/(.*)o$/i' => '\1os',    // carro => carros
+    '/(.*)e$/i' => '\1es',    // carne => carnes
+]);
+
+Inflector::rules('singular', [
+    '/(.*)res$/i' => '\1r',
+    '/(.*)nes$/i' => '\1n',
+    '/(.*)des$/i' => '\1d',
+    '/(.*)ses$/i' => '\1s',
+    '/(.*)les$/i' => '\1l',
+    '/(.*)os$/i' => '\1o',
+    '/(.*)es$/i' => '\1e',
+]);
 //Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
