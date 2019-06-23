@@ -98,7 +98,7 @@ if (Configure::read('debug')) {
  * Set the default server timezone. Using UTC makes time calculations / conversions easier.
  * Check http://php.net/manual/en/timezones.php for list of valid timezone strings.
  */
-date_default_timezone_set(Configure::read('App.defaultTimezone'));
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 /*
  * Configure the mbstring extension to use the correct encoding.
@@ -110,7 +110,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * formatted and sets the default language to use for translations.
  */
 ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
-
+ini_set('intl.default_locale', 'es');
 /*
  * Register application error and exception handlers.
  */
@@ -192,11 +192,13 @@ Type::build('datetime')
 Type::build('timestamp')
     ->useImmutable();
 
+Configure::write('nombre_portal', 'Ladatamza');
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
  * inflection functions.
  */
+Inflector::rules('irregular', ['imagen'=>'imagenes']);
 Inflector::rules('plural', [
     '/(.*)r$/i' => '\1res',    // error => errores
     '/(.*)n$/i' => '\1nes',    // camion => camiones

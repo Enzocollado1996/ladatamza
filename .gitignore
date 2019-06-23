@@ -38,3 +38,8 @@ nbproject/*
 .vscode
 # Sass preprocessor
 .sass-cache/
+
+# Archivos imagenes de portal #
+###############################
+
+ webroot/files/*

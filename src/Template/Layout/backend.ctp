@@ -20,12 +20,10 @@
         <?= $this->Html->css('backend/metisMenu.min.css') ?>
         <!-- Custom CSS -->
         <?= $this->Html->css('backend/sb-admin-2.min.css') ?>
-
-        <!-- Morris Charts CSS -->
-        <?= $this->Html->css('backend/morris.css') ?>
         
         <!-- Custom Fonts -->
         <?= $this->Html->css('backend/font-awesome.min.css') ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
         <?= $this->Html->css('backend/backend.css') ?>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -91,17 +89,16 @@
 
         <!-- Metis Menu Plugin JavaScript -->
         <?= $this->Html->script('backend/metisMenu.min'); ?>
-
-        <!-- Morris Charts JavaScript -->
-        <?= $this->Html->script('backend/raphael.min'); ?>
-        <!--<?= $this->Html->script('backend/morris.min'); ?>
-        <?= $this->Html->script('backend/morris-data'); ?>-->       
+   
         <!-- Custom Theme JavaScript -->
         <?= $this->Html->script('backend/sb-admin-2.min'); ?>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/es.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript">
             $(function(){
+                moment.locale('es');
                 $(".btn-delete").click(function(e){
                     e.preventDefault();
                     var link = $(this).attr('href');
@@ -127,6 +124,7 @@
                 });                
             });
         </script>
+        
         <?= $this->fetch('script') ?>
     </body>
 </html>

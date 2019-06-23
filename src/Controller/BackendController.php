@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use Cake\Core\Configure;
+
 /**
  * Backend Controller
  *
@@ -21,7 +23,7 @@ class BackendController extends AppController
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
         $this->set('Auth', $this->Auth);
-        $this->set('title_for_layout', "CMS - MDZ Federal");
+        $this->set('title_for_layout', "CMS-".Configure::read('nombre_portal'));
         $this->viewBuilder()->setLayout('backend');
     }
     
@@ -32,13 +34,14 @@ class BackendController extends AppController
      */
     public function index()
     {
-//        $faqs_count = TableRegistry::get('Faqs')->find()->count();
+        $articulos_count = TableRegistry::get('Articulos')->find()->count();
+        $imagenes_count = TableRegistry::get('Imagenes')->find()->count();
 //        $banners_count = TableRegistry::get('Banners')->find()->count();
         if($this->Auth->user('role') == 'admin'){
             $users_count = TableRegistry::get('Users')->find()->count();
             $this->set('users_count', $users_count);
         }
-//        $this->set(compact('faqs_count', 'banners_count'));
+        $this->set(compact('articulos_count', 'imagenes_count'));
     }
     
     public function forbidden()

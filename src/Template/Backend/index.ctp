@@ -14,12 +14,12 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?=('88')?></div>
-                        <div>FAQs</div>
+                        <div class="huge"><?=$articulos_count?></div>
+                        <div>Artículos</div>
                     </div>
                 </div>
             </div>
-            <a href="<?=$this->Url->build(['controller' => 'faqs', 'action' => 'index'], true)?>">
+            <a href="<?=$this->Url->build(['controller' => 'articulos', 'action' => 'index'], true)?>">
                 <div class="panel-footer">
                     <span class="pull-left">Ver</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -33,15 +33,15 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-th-large fa-5x"></i>
+                        <i class="fa fa-picture-o fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?=('77')?></div>
-                        <div>Banners</div>
+                        <div class="huge"><?=$imagenes_count?></div>
+                        <div>Imágenes</div>
                     </div>
                 </div>
             </div>
-            <a href="<?=$this->Url->build(['controller' => 'banners', 'action' => 'index'], true)?>">
+            <a href="<?=$this->Url->build(['controller' => 'imagenes', 'action' => 'index'], true)?>">
                 <div class="panel-footer">
                     <span class="pull-left">Ver</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
