@@ -42,4 +42,4 @@ nbproject/*
 # Archivos imagenes de portal #
 ###############################
 
- webroot/files/*
+ /webroot/files/*

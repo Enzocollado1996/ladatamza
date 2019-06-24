@@ -14,6 +14,12 @@ use Cake\Core\Configure;
  */
 class ArticulosController extends AppController
 {
+    public function initialize(){
+        parent::initialize();
+        $this->Imagenes = TableRegistry::get('Imagenes');
+        $this->loadComponent('String');
+    }
+    
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -59,8 +65,9 @@ class ArticulosController extends AppController
         $articulo = $this->Articulos->get($id, [
             'contain' => ['Imagenes']
         ]);
-
+        $zonas = $this->getZonas();
         $this->set('articulo', $articulo);
+        $this->set('zonas', $zonas);
     }
 
     /**
@@ -79,28 +86,55 @@ class ArticulosController extends AppController
             
             if ($this->Articulos->save($articulo)) {
                 $array_imagenes = [];
-                if(!empty($this->request->data['filename'])){
+                // Proceso imagen de nota si fue cagada
+                if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){
                     foreach($this->request->data['filename'] as $imagen_a_guardar){
                         $imagen = TableRegistry::get('Imagenes')->newEntity();
-                        $imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
                         $filename = [
                             'error' => $imagen_a_guardar['error'],
-                            'name' => $imagen_a_guardar['name'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
                             'size' => $imagen_a_guardar['size'],
                             'tmp_name' => $imagen_a_guardar['tmp_name'],
                             'type' => $imagen_a_guardar['type']
-                        ];                          
+                        ];
+                        $imagen->descripcion = '';
                         $imagen->filename = $filename;                        
-                        $imagen->creado = date("Y-m-d H:i:s");                        
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'NOTICIA';
                         array_push($array_imagenes, $imagen);
                     }
                 }
-                $this->Articulos->afterDelete(new Event('Model.Articulos'),$articulo, new \ArrayObject());
-                $articulo->imagenes = $array_imagenes;
-                if ($this->Articulos->save($articulo)) {  
+                // Proceso imagen de publicidad si la cargaron
+                if(!empty($this->request->data['filename2']) && !empty($this->request->data['filename2'][0]["tmp_name"])){
+                    foreach($this->request->data['filename2'] as $imagen_a_guardar){
+                        $imagen = TableRegistry::get('Imagenes')->newEntity();
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        $filename = [
+                            'error' => $imagen_a_guardar['error'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                            'size' => $imagen_a_guardar['size'],
+                            'tmp_name' => $imagen_a_guardar['tmp_name'],
+                            'type' => $imagen_a_guardar['type']
+                        ];
+                        echo '<pre>';
+                        var_dump($filename);
+                        echo '</pre>';
+                        $imagen->descripcion = '';
+                        $imagen->filename = $filename;
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'PUBLICIDAD';
+                        array_push($array_imagenes, $imagen);
+                    }
                 }
-                else{
-                    $this->Flash->error(__('La imágen no pudo ser guardada.'));
+                //echo '<pre>';
+                //var_dump($array_imagenes);
+                //exit;
+                if(count($array_imagenes) > 0){
+                    $articulo->imagenes = $array_imagenes;
+                    if (!$this->Articulos->save($articulo)) {
+                        $this->Flash->error(__('La imágen no pudo ser guardada.')); 
+                    }
                 }
                 /*if(!empty($this->request->data['palabras_claves'])){
                     $array_palabras_claves = [];
@@ -128,8 +162,7 @@ class ArticulosController extends AppController
             }
             else{
                 $this->Flash->error(__('El no fue guardado. Intente nuevamente.'));   
-            }
-            
+            }            
         }
         $zonas = $this->getZonas();
         $this->set(compact('articulo','zonas'));
@@ -144,15 +177,24 @@ class ArticulosController extends AppController
      */
     public function edit($id = null)
     {
+        $this->recursive = 0;
         $articulo = $this->Articulos->get($id, [
             'contain' => ['Imagenes']
         ]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $articulo = $this->Articulos->patchEntity($articulo, $this->request->data);
             $articulo->modificado = date("Y-m-d H:i:s");
-            if ($this->Articulos->save($articulo)) {                                
+            $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
+            $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
+            
+            //echo '<pre>';
+            //var_dump($articulo);
+            //echo '</pre>';
+            //exit;
+            if ($this->Articulos->save($articulo)) {
                 $array_imagenes = [];
-                if(!empty($this->request->data['filename'])){
+                if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){
                     foreach($this->request->data['filename'] as $imagen_a_guardar){
                         $imagen = TableRegistry::get('Imagenes')->newEntity();
                         $imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
@@ -162,16 +204,59 @@ class ArticulosController extends AppController
                             'size' => $imagen_a_guardar['size'],
                             'tmp_name' => $imagen_a_guardar['tmp_name'],
                             'type' => $imagen_a_guardar['type']
-                        ];                          
+                        ];
+                        $imagen->descripcion = '';
                         $imagen->filename = $filename;                        
-                        $imagen->creado = date("Y-m-d H:i:s");                        
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'NOTICIA';
                         array_push($array_imagenes, $imagen);
+                    }
+                    // Borro la imagen del tipo NOTICIA
+                    foreach($articulo->imagenes as $imagen){
+                        if($imagen->tipo == 'NOTICIA'){
+                            $this->Imagenes->delete($imagen);
+                        }
+                    }                    
+                }
+                
+                // Proceso imagen de publicidad si la cargaron
+                if(!empty($this->request->data['filename2']) && !empty($this->request->data['filename2'][0]["tmp_name"])){
+                    foreach($this->request->data['filename2'] as $imagen_a_guardar){
+                        $imagen = TableRegistry::get('Imagenes')->newEntity();
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        $filename = [
+                            'error' => $imagen_a_guardar['error'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                            'size' => $imagen_a_guardar['size'],
+                            'tmp_name' => $imagen_a_guardar['tmp_name'],
+                            'type' => $imagen_a_guardar['type']
+                        ];
+                        //echo '<pre>';
+                        //var_dump($filename);
+                        //echo '</pre>';
+                        $imagen->descripcion = '';
+                        $imagen->filename = $filename;
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'PUBLICIDAD';
+                        array_push($array_imagenes, $imagen);
+                    }
+                    // Borro la imagen del tipo NOTICIA
+                    foreach($articulo->imagenes as $imagen){
+                        if($imagen->tipo == 'PUBLICIDAD'){
+                            $this->Imagenes->delete($imagen);
+                        }
                     } 
                 }
-                $this->Articulos->afterDelete(new Event('Model.Articulos'),$articulo, new \ArrayObject());
-                $articulo->imagenes = $array_imagenes;
-                $this->Articulos->save($articulo);
                 
+                if(count($array_imagenes) > 0){
+                    $articulo = $this->Articulos->get($id, [
+                        'contain' => ['Imagenes']
+                    ]);
+                    $articulo->imagenes = array_merge($articulo->imagenes, $array_imagenes);
+                    if (!$this->Articulos->save($articulo)) {
+                        $this->Flash->error(__('La imágen no pudo ser guardada.')); 
+                    }
+                }
                 /*$array_palabras_claves = [];
                 if(!empty($this->request->data['palabras_claves_'])){                    
                     $tags = explode(',',$this->request->data['palabras_claves_']);
@@ -201,10 +286,10 @@ class ArticulosController extends AppController
         }
         //$categorias = $this->Articulos->Categorias->find('list', ['limit' => 200]);
         //$portales = $this->Articulos->Portales->find('list', ['limit' => 200]);
-        $imagenes = $this->Articulos->Imagenes->find('list', ['limit' => 200]);
+        //$imagenes = $this->Articulos->Imagenes->find('list', ['limit' => 200]);
         $zonas = $this->getZonas();
         $this->set(compact('articulo','zonas'));
-        $this->set('_serialize', ['articulo']);
+        //$this->set('_serialize', ['articulo']);
     }
 
 

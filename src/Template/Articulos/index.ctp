@@ -6,9 +6,9 @@
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Artículos 
+        <h2 class="page-header">Artículos 
             <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Nuevo artículo</a>
-        </h1>
+        </h2>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -42,8 +42,11 @@
                 <td><?= h($articulo->palabras_claves) ?></td>
                 <td><?= h($articulo->creado) ?></td>
                 <td class="actions">
+                    <!--<?= $this->Html->link('<span class="fa fa-eye"></span>', ['action' => 'view', $articulo->id], ['escape' => false, 'title' => __('Ver'), 'class' => 'btn btn-info btn-xs']) ?>-->
                     <?= $this->Html->link('<span class="fa fa-pencil"></span>', ['action' => 'edit', $articulo->id], ['escape' => false, 'title' => __('Editar'), 'class' => 'btn btn-primary btn-xs']) ?>
-                    <?= $this->Html->link('<span class="fa fa-trash"></span>', ['action' => '#'], ['data-toggle' => 'modal', 'data-target' => '#basicModal' . $articulo->id, 'escape' => false, 'title' => __('Eliminar'), 'class' => 'btn btn-danger btn-xs']) ?>
+                    <?= $this->Html->link('<span class="fa fa-trash"></span>', 
+                        ['action' => '#'], 
+                        ['data-toggle' => 'modal', 'data-target' => '#basicModal' . $articulo->id, 'escape' => false, 'title' => __('Eliminar'), 'class' => 'btn btn-danger btn-xs']) ?>
                     <div class="modal fade" id="basicModal<?= $articulo->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">

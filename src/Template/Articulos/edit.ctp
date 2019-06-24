@@ -6,15 +6,32 @@
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Editar artículo
-            <a href="<?=$this->Url->build(['action' => 'index'], true)?>" class="btn btn-default pull-right"><span class="fa fa-th-list"></span>&nbsp;Listado</a>
-        </h1>
+        <h2 class="page-header">Editar artículo
+            <?= $this->Html->link('<span class="fa fa-trash"></span>&nbsp;Eliminar', 
+                        ['action' => '#'], 
+                        ['data-toggle' => 'modal', 'data-target' => '#basicModal' . $articulo->id, 'escape' => false, 'title' => 'Eliminar', 'class' => 'btn btn-danger pull-right']) ?>
+            <a href="<?=$this->Url->build(['action' => 'index'], true)?>" class="btn btn-default pull-right" style="margin-right:5px;"><span class="fa fa-th-list"></span>&nbsp;Listado</a>            
+            <div class="modal fade" id="basicModal<?= $articulo->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Está seguro de borrar el registro #<?= $articulo->id ?>?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <?= $this->Form->postLink('Borrar', ['action' => 'delete', $articulo->id], ['class' => 'btn btn-danger']) ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h2>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">
-    <div class="col-lg-6">
     <?= $this->Form->create($articulo,['type' => 'file', 'class' => '', 'id'=>'bootstrapTagsInputForm', 'onkeypress'=>'return event.keyCode != 13;']) ?>
+    <div class="col-lg-6">    
         <div class="form-group">
             <?=$this->Form->control('titulo',['label' => 'Título', 'class'=>'form-control', 'required' => 'required']);?>
         </div>        
@@ -29,7 +46,7 @@
         <div class="form-group">
             <div class="input text required">
                 <label for="datetimepicker1">Fecha de publicación</label>
-                <div class='input-group date' id='datetimepicker1'>
+                <div class='input-group date' id='datetimepicker1' required>
                     <input type='text' class="form-control" name="datetimepicker1"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -42,11 +59,8 @@
             <?=$this->Form->input('zona',['type' => 'select','options' =>$zonas,'label' => 'Categoría', 'class'=>'form-control', 'required' => 'required']);?>
         </div>
         <div class="form-group">
-            <?=$this->Form->control('palabras_claves',['label' => 'Palabras claves', 'class'=>'form-control', 'required' => 'required']);?>
+            <?=$this->Form->control('palabras_claves',['label' => 'Palabra clave', 'class'=>'form-control', 'required' => 'required']);?>
         </div>
-<!--        <div class="form-group">
-            <?=$this->Form->control('visitas',['label' => 'Visitas', 'class'=>'form-control', 'step' => 1, 'required' => 'required']);?>
-        </div>        -->
         <div class="form-group">
             <div class="checkbox">
                 <label>
@@ -54,21 +68,57 @@
                 </label>
             </div>
         </div>
-        <?php echo $this->Form->input('filename[]', ['type' => 'file', 'label'=>'Imagen/es', 'multiple', 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
-        <div id ="imagen-articulo"></div>
-        <?php
-            //echo $this->Form->control('publicado', ['empty' => true]);
-            //echo $this->Form->control('tiene_imagen');
-            //echo $this->Form->control('tiene_video');
-        ?>
-        <?= $this->Form->button('Guardar',['class'=>'btn btn-success pull-right','type' => 'submit']) ?>
-        <?= $this->Form->end() ?>
+        <?= $this->Form->button('Guardar',['class'=>'btn btn-success btn-block','type' => 'submit']) ?>
     </div>
+    <?php
+    //echo '<pre>';
+    //var_dump($articulo);
+    //echo '</pre>';
+    ?>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <?php echo $this->Form->input('filename[]', ['type' => 'file', 'label'=>'Imágen principal'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
+            <div class="form-group" id ="imagen-articulo">
+                <?php
+                if($articulo->has('imagenes')){
+                    foreach($articulo->imagenes as $imagen){
+                        if($imagen->tipo == 'NOTICIA'){
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url.'/'.$imagen->filename, 
+                                ['style'=> 'position: relative; width: 100%; margin: 10px 0;']);
+                        }
+                    }
+                }
+                ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <?php echo $this->Form->input('filename2[]', ['type' => 'file', 'label'=>'Imágen publicidad'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
+            <div class="form-group" id ="imagen-articulo2">
+                <?php
+                if($articulo->has('imagenes')){
+                    foreach($articulo->imagenes as $imagen){
+                        
+                        if($imagen->tipo == 'PUBLICIDAD'){
+                            //echo '<pre>';
+                            //var_dump($imagen->tipo);
+                            //echo '</pre>';
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url.'/'.urlencode($imagen->filename), 
+                                ['style'=> 'position: relative; width: 100%; margin: 10px 0;']);
+                        }
+                    }
+                }
+                ?>
+            </div>
+        </div>
+    </div>    
+    <?= $this->Form->end() ?>
 </div>
 <?= $this->Html->script(['//cdn.ckeditor.com/4.11.4/standard/ckeditor.js']) ?>
 <?php $this->Html->scriptStart(['block' => true]); ?>
     $(document).ready(function() {
-        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker1').datetimepicker({
+            "defaultDate":new Date("<?=$articulo["publicado"]->i18nFormat('YYY-MM-dd HH:mm')?>")
+        });
         
         CKEDITOR.replace('texto');
         
@@ -94,7 +144,7 @@
             reader.onload = (function(theFile) {
                 return function(e) {
                     // Insertamos la/s imagen/es
-                    $("#imagen-articulo").append('<img src="'+e.target.result+'" class="form-group"/>');
+                    $("#imagen-articulo").append('<img src="'+e.target.result+'" class="form-group" style="width: 100%;"/>');
                     
                 };
           })(f);
@@ -102,6 +152,28 @@
           reader.readAsDataURL(f);
         }        
     }
-    
+    function archivo2(evt) {
+        $('#imagen-articulo2').empty();
+        var files = evt.target.files; // FileList object
+
+        // Obtenemos la imagen del campo "file".
+        for (var i = 0, f; f = files[i]; i++) {           
+            //Solo admitimos imágenes.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    // Insertamos la/s imagen/es
+                    $("#imagen-articulo2").append('<img src="'+e.target.result+'" class="form-group" style="width: 100%;"/>');                    
+                };
+          })(f);
+          reader.readAsDataURL(f);
+        }        
+    } 
     document.getElementById('filename').addEventListener('change', archivo, false);
+    document.getElementById('filename2').addEventListener('change', archivo2, false);
 <?php $this->Html->scriptEnd(); ?>

@@ -8,6 +8,9 @@
             <li>
                 <a href="<?=$this->Url->build(['controller' => 'Articulos', 'action' => 'index'], true)?>"><i class="fa fa-file-text"></i>&nbsp;&nbsp;Artículos</a>
             </li>
+            <li>
+                <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;Imágenes</a>
+            </li>
 <!--            <li>
                 <a href="<?=$this->Url->build(['controller' => 'Banners', 'action' => 'index'], true)?>"><i class="fa fa-th-large fa-fw"></i> Banners</a>
             </li>-->

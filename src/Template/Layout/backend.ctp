@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">MDZ Federal</a>
+                    <a class="navbar-brand" href="index.html"><?=\Cake\Core\Configure::read('nombre_portal')?></a>
                 </div>
                 <!-- /.navbar-header -->
 

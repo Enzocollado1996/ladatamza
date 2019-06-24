@@ -52,7 +52,7 @@ class ArticulosTable extends Table
         ]);
     }
 
-    public function afterDelete(Event $event, EntityInterface $entity, ArrayObject $options){
+    public function afterDelete(Event $event, EntityInterface $entity, ArrayObject $options/*, String $tipo = null*/){
         if(!empty($entity->imagenes)){
             foreach($entity->imagenes as $imagen){
                 $this->Imagenes->delete($imagen);

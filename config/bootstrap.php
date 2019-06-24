@@ -193,6 +193,7 @@ Type::build('timestamp')
     ->useImmutable();
 
 Configure::write('nombre_portal', 'Ladatamza');
+Configure::write('path_imagen_subida', '../files/imagenes/filename/');
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the

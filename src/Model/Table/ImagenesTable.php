@@ -84,9 +84,13 @@ class ImagenesTable extends Table
             ->allowEmptyString('comentario');
 
         $validator
+            ->scalar('tipo')
+            ->allowEmptyString('tipo');
+
+        $validator
             ->scalar('url')
             ->allowEmptyString('url');
-
+        
         $validator
             ->dateTime('creado')
             ->requirePresence('creado', 'create')
