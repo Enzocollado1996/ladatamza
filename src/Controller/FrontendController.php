@@ -24,7 +24,7 @@ class FrontendController extends AppController
         //$this->Auth->allow(['add', 'logout']);
         $this->Auth->allow(['index']);
         $this->set('title_for_layout', "Frontend");
-        $this->viewBuilder()->setLayout('default');
+        $this->viewBuilder()->setLayout('frontend');
     }
     
     /**
@@ -34,7 +34,6 @@ class FrontendController extends AppController
      */
     public function index()
     {
-        $this->render('/Pages/home');
     }
     
     /**
