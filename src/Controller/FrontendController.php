@@ -14,6 +14,10 @@ use Cake\Core\Configure;
  */
 class FrontendController extends AppController
 {
+    public function initialize(){
+        parent::initialize();
+        $this->Articulos = TableRegistry::get('Articulos');
+    }
     
     public function beforeFilter(Event $event)
     {
@@ -34,6 +38,12 @@ class FrontendController extends AppController
      */
     public function index()
     {
+        $articulos_centro = [];
+        $articulos_norte = [];
+        $articulos_sur = [];
+        $articulos_general = [];
+        
+        $this->set(compact('articulos_centro','articulos_sur', 'articulos_norte','articulos_general'));
     }
     
     /**

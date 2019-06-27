@@ -35,8 +35,7 @@
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
-            </div>
-            
+            </div>            
         </div>
         <div class="form-group">
             <?=$this->Form->input('zona',['type' => 'select','options' =>$zonas,'label' => 'Categoría', 'class'=>'form-control', 'required' => 'required']);?>

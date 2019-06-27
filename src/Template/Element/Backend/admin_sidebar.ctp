@@ -11,9 +11,9 @@
             <li>
                 <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;Imágenes</a>
             </li>
-<!--            <li>
-                <a href="<?=$this->Url->build(['controller' => 'Banners', 'action' => 'index'], true)?>"><i class="fa fa-th-large fa-fw"></i> Banners</a>
-            </li>-->
+            <li>
+                <a href="<?=$this->Url->build(['controller' => 'Backend', 'action' => 'index'], true)?>"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;Publicidades</a>
+            </li>
             <?php
             if($Auth->user('role') == 'admin'):
             ?>

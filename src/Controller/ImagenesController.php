@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+use Cake\Core\Configure;
 
 /**
  * Imagenes Controller
@@ -12,6 +15,31 @@ use App\Controller\AppController;
  */
 class ImagenesController extends AppController
 {
+    public function initialize(){
+        parent::initialize();
+        $this->loadComponent('String');
+    }
+        
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->set('Auth', $this->Auth);
+        // Allow users to register and logout.
+        // You should not add the "login" action to allow list. Doing so would
+        // cause problems with normal functioning of AuthComponent.
+        //$this->Auth->allow(['add', 'logout']);
+        $this->set('title_for_layout', "Imágenes-".Configure::read('nombre_portal'));
+        $this->viewBuilder()->setLayout('backend');
+    }
+    
+    private function getTipos(){        
+        $options = [
+            'NOTICIA' => 'NOTICIA',
+            'PUBLICIDAD' => 'PUBLICIDAD'
+        ];
+        return $options;
+    }
+    
     /**
      * Index method
      *
@@ -50,14 +78,30 @@ class ImagenesController extends AppController
         $imagen = $this->Imagenes->newEntity();
         if ($this->request->is('post')) {
             $imagen = $this->Imagenes->patchEntity($imagen, $this->request->getData());
-            if ($this->Imagenes->save($imagen)) {
-                $this->Flash->success(__('The imagen has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            
+            if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){
+                foreach($this->request->data['filename'] as $imagen_a_guardar){
+                    $filename = [
+                        'error' => $imagen_a_guardar['error'],
+                        'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                        'size' => $imagen_a_guardar['size'],
+                        'tmp_name' => $imagen_a_guardar['tmp_name'],
+                        'type' => $imagen_a_guardar['type']
+                    ];
+                    $imagen->filename = $filename;                        
+                    $imagen->creado = date("Y-m-d H:i:s");
+                    
+                    $this->Imagenes->save($imagen);
+                    $this->Flash->success(__('La imágen ha sido guardada.'));
+                    return $this->redirect(['action' => 'index']);
+                }
             }
-            $this->Flash->error(__('The imagen could not be saved. Please, try again.'));
+            else{
+                $this->Flash->error(__('La imagen no fue guardado. Intente nuevamente.'));
+            }            
         }
-        $this->set(compact('imagen'));
+        $tipos = $this->getTipos();
+        $this->set(compact('imagen', 'tipos'));
     }
 
     /**
@@ -74,14 +118,31 @@ class ImagenesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $imagen = $this->Imagenes->patchEntity($imagen, $this->request->getData());
-            if ($this->Imagenes->save($imagen)) {
-                $this->Flash->success(__('The imagen has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $imagen->modificado = date("Y-m-d H:i:s");
+            
+            if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){
+                foreach($this->request->data['filename'] as $imagen_a_guardar){
+                    $filename = [
+                        'error' => $imagen_a_guardar['error'],
+                        'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                        'size' => $imagen_a_guardar['size'],
+                        'tmp_name' => $imagen_a_guardar['tmp_name'],
+                        'type' => $imagen_a_guardar['type']
+                    ];
+                    $imagen->filename = $filename; 
+                    
+                    $this->Imagenes->save($imagen);
+                    
+                    $this->Flash->success(__('La imágen ha sido guardada.'));
+                    return $this->redirect(['action' => 'index']);
+                }
             }
-            $this->Flash->error(__('The imagen could not be saved. Please, try again.'));
+            else{
+                $this->Flash->error(__('La imagen no fue guardado. Intente nuevamente.'));
+            }  
         }
-        $this->set(compact('imagen'));
+        $tipos = $this->getTipos();
+        $this->set(compact('imagen', 'tipos'));
     }
 
     /**
@@ -96,9 +157,9 @@ class ImagenesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $imagen = $this->Imagenes->get($id);
         if ($this->Imagenes->delete($imagen)) {
-            $this->Flash->success(__('The imagen has been deleted.'));
+            $this->Flash->success(__('La imágen fue eliminada.'));
         } else {
-            $this->Flash->error(__('The imagen could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La imagen no pudo ser eliminada. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

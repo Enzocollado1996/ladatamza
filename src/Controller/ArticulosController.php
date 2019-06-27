@@ -117,9 +117,9 @@ class ArticulosController extends AppController
                             'tmp_name' => $imagen_a_guardar['tmp_name'],
                             'type' => $imagen_a_guardar['type']
                         ];
-                        echo '<pre>';
-                        var_dump($filename);
-                        echo '</pre>';
+                        //echo '<pre>';
+                        //var_dump($filename);
+                        //echo '</pre>';
                         $imagen->descripcion = '';
                         $imagen->filename = $filename;
                         $imagen->creado = date("Y-m-d H:i:s");

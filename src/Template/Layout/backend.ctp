@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><?=\Cake\Core\Configure::read('nombre_portal')?></a>
+                    <a class="navbar-brand" href="<?=$this->Url->build(['controller' => 'Backend', 'action' => 'index'], true)?>"><?=\Cake\Core\Configure::read('nombre_portal')?></a>
                 </div>
                 <!-- /.navbar-header -->
 
