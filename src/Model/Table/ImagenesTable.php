@@ -73,7 +73,7 @@ class ImagenesTable extends Table
             ->scalar('filename')
             ->maxLength('filename', 255)
             ->requirePresence('filename', 'create')
-            ->allowEmptyFile('filename', false);
+            ->allowEmptyFile('filename', true);
 
         $validator
             ->scalar('descripcion')

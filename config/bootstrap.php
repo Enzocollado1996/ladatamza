@@ -109,7 +109,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * Set the default locale. This controls how dates, number and currency is
  * formatted and sets the default language to use for translations.
  */
-ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
+//ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
 ini_set('intl.default_locale', 'es');
 /*
  * Register application error and exception handlers.
@@ -194,6 +194,7 @@ Type::build('timestamp')
 
 Configure::write('nombre_portal', 'Ladatamza');
 Configure::write('path_imagen_subida', '../files/imagenes/filename/');
+Configure::write('path_video_subida', 'files/videos/');
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the

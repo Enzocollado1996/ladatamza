@@ -117,10 +117,10 @@ class ImagenesController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $imagen = $this->Imagenes->patchEntity($imagen, $this->request->getData());
-            $imagen->modificado = date("Y-m-d H:i:s");
             
             if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){
+                $imagen = $this->Imagenes->patchEntity($imagen, $this->request->getData());
+                $imagen->modificado = date("Y-m-d H:i:s");
                 foreach($this->request->data['filename'] as $imagen_a_guardar){
                     $filename = [
                         'error' => $imagen_a_guardar['error'],
@@ -138,7 +138,18 @@ class ImagenesController extends AppController
                 }
             }
             else{
-                $this->Flash->error(__('La imagen no fue guardado. Intente nuevamente.'));
+                /*$imagen = $this->Imagenes->get($id, [
+                    'contain' => []
+                ]);*/
+                unset($this->request->data['filename']);
+                $imagen = $this->Imagenes->patchEntity($imagen, $this->request->getData());
+                if($this->Imagenes->save($imagen)){
+                    $this->Flash->success(__('La imágen ha sido guardada.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+                else{
+                    $this->Flash->error(__('La imagen no pudo ser eliminada. Intente nuevamente.'));
+                }
             }  
         }
         $tipos = $this->getTipos();

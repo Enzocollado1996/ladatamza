@@ -9,10 +9,13 @@
                 <a href="<?=$this->Url->build(['controller' => 'Articulos', 'action' => 'index'], true)?>"><i class="fa fa-file-text"></i>&nbsp;&nbsp;Artículos</a>
             </li>
             <li>
-                <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;Imágenes</a>
+                <a href="<?=$this->Url->build(['controller' => 'Videos', 'action' => 'index'], true)?>"><i class="fa fa-film fa-fw"></i>&nbsp;Videos</a>
             </li>
             <li>
                 <a href="<?=$this->Url->build(['controller' => 'Backend', 'action' => 'index'], true)?>"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;Publicidades</a>
+            </li>
+            <li>
+                <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;Imágenes</a>
             </li>
             <?php
             if($Auth->user('role') == 'admin'):

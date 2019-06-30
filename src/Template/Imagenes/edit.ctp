@@ -31,18 +31,12 @@
 </div>
 <div class="row">
     <?= $this->Form->create($imagen,['type' => 'file', 'class' => '', 'id'=>'bootstrapTagsInputForm', 'onkeypress'=>'return event.keyCode != 13;']) ?>
-    <div class="col-lg-6">    
-        <div class="form-group">
-            <?=$this->Form->input('titulo',['label' => 'Título', 'class'=>'form-control']);?>
-        </div>
+    <div class="col-lg-6">
         <div class="form-group">
             <?=$this->Form->input('descripcion',['label' => 'Descripción', 'class'=>'form-control']);?>
         </div>
         <div class="form-group">
             <?=$this->Form->input('comentario',['class'=>'form-control']);?>
-        </div>
-        <div class="form-group">
-            <?=$this->Form->input('url',['class'=>'form-control']);?>
         </div>
         <div class="form-group">
             <?=$this->Form->input('tipo',['type' => 'select','options' =>$tipos,'class'=>'form-control', 'required' => 'required']);?>
