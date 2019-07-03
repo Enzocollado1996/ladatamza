@@ -51,6 +51,7 @@
     background-color: #000000;
 }
 .header-notices .region {
+    font-family: "ptsans";
     text-align: center;
     position: relative;
     color: white;
