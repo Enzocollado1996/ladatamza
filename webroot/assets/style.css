@@ -88,7 +88,11 @@
     position: relative;
     margin: 5px;
 }
+.containerScroller{
+  position: relative;
+}
 .containerScroller .overlay {
+
     background: linear-gradient(to top, #868484, transparent);
     position: absolute;
     width: 100%;
