@@ -19,7 +19,6 @@ $(document).ready(function() {
   <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
   <div class="footer">
       <div class="district">Valle de Uco</div>
-      <br>
       <div class="clearfix"></div>
   </div>
 </div>`;

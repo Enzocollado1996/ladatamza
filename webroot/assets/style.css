@@ -88,11 +88,10 @@
     position: relative;
     margin: 5px;
 }
-.containerScroller{
-  position: relative;
+.containerScroller {
+    position: relative;
 }
 .containerScroller .overlay {
-
     background: linear-gradient(to top, #868484, transparent);
     position: absolute;
     width: 100%;
@@ -134,7 +133,7 @@
     margin-right: 2px;
 }
 .shadow .title {
-    font-size: 16px;
+    font-size: 14px;
 }
 .shadow .date {
     color: #5b5b5f;
@@ -145,7 +144,9 @@
 }
 .shadow .district {
     background: black;
-    padding: 2px;
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
     color: #feee00;
 }
 .shadow .clearfix {

@@ -61,7 +61,6 @@
                     <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
                     <div class="footer">
                         <div class="district">Valle de Uco</div>
-                        <br>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -74,7 +73,7 @@
                     <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
                     <div class="footer">
                         <div class="district">Mendoza</div>
-                        <br>
+                        
                         <div class="clearfix"></div>
                     </div>
 
@@ -84,7 +83,7 @@
                     <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
                     <div class="footer">
                         <div class="district">Godoy cruz</div>
-                        <br>
+                     
                         <div class="clearfix"></div>
                     </div>
 
@@ -104,7 +103,7 @@
                     <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
                     <div class="footer">
                         <div class="district">Mendoza capital</div>
-                        <br>
+                       
                         <div class="clearfix"></div>
                     </div>
 
@@ -114,7 +113,7 @@
                     <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
                     <div class="footer">
                         <div class="district">Guaymayen</div>
-                        <br>
+                      
                         <div class="clearfix"></div>
                     </div>
 
