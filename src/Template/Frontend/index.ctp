@@ -52,7 +52,7 @@
         <div class="region">CENTRO</div>
         <div class="region">SUR</div>
     </div>
-    <div class="container">
+    <div class="container2">
         <div class="slot_container">
             <!-- norte -->
             <div class="place norte">
