@@ -196,10 +196,10 @@
     background: #000000d6;
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     z-index: 1000;
     margin: -5px;
-    top: -100vh;
+    top: -100%;
     transition: 0.5s all;
 }
 .socialmedia_modal.active {
