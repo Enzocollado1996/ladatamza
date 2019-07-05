@@ -51,3 +51,4 @@ framework by default. You can, however, replace it with any other library or
 custom styles.
 
 bootstrapToggle : http://www.bootstraptoggle.com/
+Template: https://usebootstrap.com/theme/sb-admin-2
