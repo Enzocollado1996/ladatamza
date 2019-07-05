@@ -14,24 +14,24 @@ $(document).ready(function() {
     clockFace: "TwentyFourHourClock",
     showSeconds: false
   });
-  var place = i => `   <div class="shadow">
-  <div class="date">${i} 30/10/2019</div>
-  <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-  <div class="footer">
-      <div class="district">Valle de Uco</div>
-      <div class="clearfix"></div>
-  </div>
-</div>`;
-  var i = 0;
-  var placeContent = $(".place").eq(0);
-  var placeContent2 = $(".place").eq(2);
-  var placeContent3 = $(".place").eq(1);
-  while (i < 5) {
-    placeContent.append(place(i));
-    placeContent2.append(place(i));
-    placeContent3.append(place(i));
-    i++;
-  }
+//   var place = i => `   <div class="shadow">
+//   <div class="date">${i} 30/10/2019</div>
+//   <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
+//   <div class="footer">
+//       <div class="district">Valle de Uco</div>
+//       <div class="clearfix"></div>
+//   </div>
+// </div>`;
+//   var i = 0;
+//   var placeContent = $(".place").eq(0);
+//   var placeContent2 = $(".place").eq(2);
+//   var placeContent3 = $(".place").eq(1);
+//   while (i < 5) {
+//     placeContent.append(place(i));
+//     placeContent2.append(place(i));
+//     placeContent3.append(place(i));
+//     i++;
+//   }
 
   
   //sur

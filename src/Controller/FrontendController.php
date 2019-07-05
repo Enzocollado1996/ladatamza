@@ -42,7 +42,8 @@ class FrontendController extends AppController
         $articulos_norte = [];
         $articulos_sur = [];
         $articulos_general = [];
-        
+       
+        $articulos_norte = [['hola como va','este es el titulo','asd']];
         $this->set(compact('articulos_centro','articulos_sur', 'articulos_norte','articulos_general'));
     }
     
