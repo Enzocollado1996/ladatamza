@@ -42,6 +42,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves'])
                 ->where(['zona' => 'CENTRO', 'habilitado' => true])
                 ->toArray();
         
@@ -49,6 +50,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves'])
                 ->where(['zona' => 'NORTE', 'habilitado' => true])
                 ->toArray();
         
@@ -56,7 +58,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves'])
                 ->where(['zona' => 'SUR', 'habilitado' => true])
                 ->toArray();
         
