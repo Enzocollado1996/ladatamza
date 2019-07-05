@@ -14,7 +14,7 @@ $(document).ready(function() {
     clockFace: "TwentyFourHourClock",
     showSeconds: false
   });
-//   var place = i => `   <div class="shadow">
+//   var place = i => `   <div class="shadownews">
 //   <div class="date">${i} 30/10/2019</div>
 //   <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
 //   <div class="footer">
@@ -36,8 +36,8 @@ $(document).ready(function() {
   
   //sur
   let sur = $(".slot_container .sur");
-  let quantity_sur = sur.find(".shadow").get().length;
-  var heightPlace_sur = sur.find(".shadow").height();
+  let quantity_sur = sur.find(".shadownews").get().length;
+  var heightPlace_sur = sur.find(".shadownews").height();
   var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 1);
   sur.on("touchmove", function() {
     let totalHeight = $(this).height() * 0.12;
@@ -58,8 +58,8 @@ $(document).ready(function() {
 
   //norte
   let norte = $(".slot_container .norte");
-  let quantity_norte = norte.find(".shadow").get().length;
-  var heightPlace_norte = norte.find(".shadow").height();
+  let quantity_norte = norte.find(".shadownews").get().length;
+  var heightPlace_norte = norte.find(".shadownews").height();
   var heightPlaceTotal_norte = heightPlace_norte * (quantity_norte - 1);
   norte.on("touchmove", function() {
     let totalHeight = $(this).height() * 0.12;
@@ -79,8 +79,8 @@ $(document).ready(function() {
   //
   //centro
   let centro = $(".slot_container .centro");
-  let quantity_centro = centro.find(".shadow").get().length;
-  var heightPlace_centro = centro.find(".shadow").height();
+  let quantity_centro = centro.find(".shadownews").get().length;
+  var heightPlace_centro = centro.find(".shadownews").height();
   var heightPlaceTotal_centro = heightPlace_centro * (quantity_centro - 1);
   centro.on("touchmove", function() {
     let totalHeight = $(this).height() * 0.12;
@@ -116,6 +116,7 @@ $(document).ready(function() {
 
 });
 
+
 function shareNew(url, text, title) {
   navigator
     .share({
@@ -127,3 +128,4 @@ function shareNew(url, text, title) {
       console.log("ok");
     });
 }
+

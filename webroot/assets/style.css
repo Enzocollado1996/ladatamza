@@ -113,7 +113,7 @@
 .place {
     overflow-x: hidden;
 }
-.place .shadow {
+.place .shadownews {
     -webkit-overflow-scrolling: touch;
     border-right: 2px #a5a0a0 solid;
     border-bottom: 2px #777676 solid;
@@ -124,33 +124,33 @@
     min-height: 70%;
     padding: 10px 5px;
 }
-.shadow:hover {
+.shadownews:hover {
     background: #feee00;
 }
-.shadow.center {
+.shadownews.center {
     border-right: 2px #777676 solid;
     border-bottom: 2px #777676 solid;
     margin-left: 2px;
     margin-right: 2px;
 }
-.shadow .title {
+.shadownews .title {
     font-size: 14px;
 }
-.shadow .date {
+.shadownews .date {
     color: #5b5b5f;
 }
-.shadow .footer {
+.shadownews .footer {
     position: absolute;
     bottom: 10px;
 }
-.shadow .district {
+.shadownews .district {
     background: black;
     padding: 2px 5px;
     margin-bottom: 5px;
     font-size: 10px;
     color: #feee00;
 }
-.shadow .clearfix {
+.shadownews .clearfix {
     width: 40%;
     height: 3px;
     background: #000000;
@@ -189,4 +189,59 @@
     width: 100%;
     height: auto;
     position: relative;
+}
+
+.socialmedia_modal {
+    visibility: hidden;
+    background: #000000d6;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    margin: -5px;
+    top: -100vh;
+    transition: 0.5s all;
+}
+.socialmedia_modal.active {
+    visibility: visible;
+    top: 5px;
+}
+.socialmedia_modal .close {
+    cursor: pointer;
+    width: 24px;
+    right: 10px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.socialmedia_modal .content-sm{
+    position: relative;
+    display: block;
+    justify-content: center;
+    top: 30%;
+    text-align: center;
+    margin: auto;
+    width: 55%;
+}
+/* .content-sm img{
+    margin: 0 auto;
+} */
+.socialmedia_modal .linea{
+    
+    height:1px;
+    position: relative;
+    background-color:#feee00;
+}
+
+.content-sm .social-name{
+    margin: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.social-name span{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #feee00;
 }

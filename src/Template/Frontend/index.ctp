@@ -10,6 +10,35 @@
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link rel="stylesheet" type="text/css" href="assets/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="assets/owl.theme.default.css">
+    <div class="socialmedia_modal">
+
+        <div class="content-sm">
+            <div class="social-name">
+              <span><img src="assets/images/fb.png" alt="">
+              ladatamendoza</span>
+              <div class="linea"></div>
+            </div>
+
+
+            <div class="social-name">
+              <span><img src="assets/images/insta.png" alt="">
+              ladatamendoza</span>
+              <div class="linea"></div>
+            </div>
+            <div class="social-name">
+              <span><img src="assets/images/tw.png" alt="">
+              ladatamendoza</span>
+            
+            </div>
+
+        </div>
+        <svg  onclick="cerrar();"class="close" width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
+        <g>
+            <path fill="#feee00" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
+        </g>
+        </svg>
+
+    </div>
     <div class="menu">
         <div class="weather">
             <div class="data">LA DATA MZA _</div>
@@ -28,13 +57,13 @@
         </div>
         <div class="logo"> <img src="assets/images/logo.png" alt=""></div>
         <div class="social">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-search">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <svg class="heart" onclick="socialModal();" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-heart">
                 <path
@@ -47,6 +76,7 @@
 
 <body>
 
+
     <div class="header-notices">
         <div class="region">NORTE</div>
         <div class="region">CENTRO</div>
@@ -58,44 +88,51 @@
             <!-- norte -->
             <div class="place norte">
                 <?php foreach ($articulos_norte as $noticia_norte): ?>
-                <div class="shadow">
-                <div class="date">30/10/2019</div>
-                <div class="title"><?=$noticia_norte[1]?> </div>
-                <div class="footer">
-                    <div class="district">Valle de Uco</div>
-                    <div class="clearfix"></div>
-                </div>
-                </div>
+                        <div class="shadownews">
 
-            <?php endforeach;?>
+                                <div class="date"><?=$noticia_norte->publicado->i18nFormat('dd/MM/YYYY')?> </div>
+                                <div class="title"><?=$noticia_norte->titulo?></div>
+                                <div class="footer">
+                                    <div class="district"><?=$noticia_norte->palabras_claves?> </div>
 
+                                    <div class="clearfix"></div>
+                                </div>
+                        </div>
+                <?php endforeach;?>
             </div>
             <!-- centro -->
             <div class="place centro">
-            <?php foreach ($articulos_centro as $noticia_centro): ?>
-                <div class="shadow center">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Mendoza</div>
+                <?php foreach ($articulos_centro as $noticia_centro): ?>
+                    <div class="shadownews center">
 
-                        <div class="clearfix"></div>
+                            <div class="date"><?=$noticia_centro->publicado->i18nFormat('dd/MM/YYYY')?> </div>
+                            <div class="title"><?=$noticia_centro->titulo?></div>
+                            <div class="footer">
+                                <div class="district"><?=$noticia_centro->palabras_claves?> </div>
+
+                                <div class="clearfix"></div>
+                            </div>
                     </div>
                 <?php endforeach?>
 
             </div>
             <!-- sur -->
             <div class="place sur">
-            <?php foreach ($articulos_sur as $noticia_sur): ?>
-                <div class="shadow">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Mendoza</div>
 
-                        <div class="clearfix"></div>
+                <?php foreach ($articulos_sur as $noticia_sur): ?>
+                    <div class="shadownews">
+
+                            <div class="date"><?=$noticia_sur->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                            <div class="title"><?=$noticia_sur->titulo?></div>
+                            <div class="footer">
+                                <div class="district"><?=$noticia_sur->palabras_claves?> </div>
+
+                                <div class="clearfix"></div>
+                            </div>
                     </div>
-            <?php endforeach;?>
+                <?php endforeach?>
+
+
             </div>
 
         </div>
@@ -111,16 +148,16 @@
 
     <div id="owl-demo" class="owl-carousel owl-theme">
 
-        <?php foreach($articulos_general as $general){ ?>
+        <?php foreach ($articulos_general as $general) {?>
             <div class="item"><img src="assets/images/slide1.png">
             <div class="titulo">
-                Macri habló con Trump y recibió su fuerte apoyo en el sector Económico.
+            <?=$general->titulo?>
             </div>
         </div>
 
-        <?php } ?> 
-        
-      
+        <?php }?>
+
+
     </div>
 
     <!-- <button id="asd" onclick="shareNew('laurl.com','laurl','test');">Compartir</button> -->
@@ -129,6 +166,32 @@
 
 </html>
 <script>
+
+function socialModal(){
+    $(".socialmedia_modal").addClass('active');
+    $('html,body').css({
+                    overflow: 'hidden'
+                });
+    $(".heart").css({
+        "z-index": "2000"
+    })
+}
+function cerrar(){
+
+    $(".socialmedia_modal").removeClass('active');
+
+    $('html,body').css({
+                    overflow: 'auto'
+                });
+                $(".heart").css({
+        "z-index": ""
+    })
+                // .animate({
+                //     scrollTop: $(document).height(),
+                //     scrollSpeed: 300
+                // })
+
+}
 </script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/slick.min.js"></script>
