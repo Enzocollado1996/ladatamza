@@ -74,6 +74,7 @@ class VideosController extends AppController
             $video->creado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $video->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
+            $video->tipo = 'NOTICIA';
             
             if(!empty($this->request->data['file']['name'])){
                 $fileName = time().'_'.$this->String->cleanStringToImage($this->request->data['file']['name']);
@@ -97,7 +98,6 @@ class VideosController extends AppController
                 $this->Flash->error(__('Debe seleccionar un archivo.'));
             }
         }
-        //var_dump($video);
         $this->set(compact('video'));
     }
 

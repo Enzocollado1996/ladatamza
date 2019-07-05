@@ -73,7 +73,7 @@ class ImagenesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    /*public function add()
     {
         $imagen = $this->Imagenes->newEntity();
         if ($this->request->is('post')) {
@@ -102,7 +102,7 @@ class ImagenesController extends AppController
         }
         $tipos = $this->getTipos();
         $this->set(compact('imagen', 'tipos'));
-    }
+    }*/
 
     /**
      * Edit method

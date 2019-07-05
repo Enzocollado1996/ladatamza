@@ -33,6 +33,10 @@ class VideosTable extends Table
         $this->setTable('videos');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+        
+        $this->hasMany('Publicidades', [
+            'foreignKey' => 'video_id'
+        ]);
     }
 
     /**

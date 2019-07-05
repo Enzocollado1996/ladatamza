@@ -49,6 +49,9 @@ class ImagenesTable extends Table
         /*$this->hasMany('ArticuloImagen', [
             'foreignKey' => 'imagen_id'
         ]);*/
+        $this->hasMany('Publicidades', [
+            'foreignKey' => 'imagen_id'
+        ]);
         
         $this->belongsToMany('Articulos', [
             'foreignKey' => 'imagen_id',

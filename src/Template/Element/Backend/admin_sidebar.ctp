@@ -12,10 +12,21 @@
                 <a href="<?=$this->Url->build(['controller' => 'Videos', 'action' => 'index'], true)?>"><i class="fa fa-film fa-fw"></i>&nbsp;Videos</a>
             </li>
             <li>
-                <a href="<?=$this->Url->build(['controller' => 'Backend', 'action' => 'index'], true)?>"><i class="fa fa-bullhorn fa-fw"></i>&nbsp;Publicidades</a>
+                <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'index'], true)?>"><i class="fa fa-bullhorn fa-fw"></i>
+                    Publicidades
+                    <!--<span class="fa arrow"></span>-->
+                </a>
+<!--                <ul class="nav nav-second-level collapse in" style="height: auto;">
+                    <li>
+                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'principal'], true)?>">Principal</a>
+                    </li>
+                    <li>
+                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'ruedanotas'], true)?>">Ruedas notas</a>
+                    </li>
+                </ul>-->
             </li>
             <li>
-                <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;Imágenes</a>
+                <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Imágenes</a>
             </li>
             <?php
             if($Auth->user('role') == 'admin'):

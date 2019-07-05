@@ -57,14 +57,14 @@
             <?php echo $this->Form->input('file', ['type' => 'file', 'label'=>'Archivo'/*, 'multiple'*/, 'accept'=>'.mp4, .flv']); ?>
             <div class="form-group" id="imagen-articulo"></div>
             <?php echo $this->Html->media(
-                array(
+                [
                     'videos/'.$video->nombre,
-                    array(
+                    [
                         'src' => 'videos/'.$video->nombre,
                         'type' => "video/ogg; codecs='theora, vorbis'"
-                    )
-                ),
-                array('autoplay',["controls","style='width:100%'"])
+                    ]
+                ],
+                ['controls',["style='width:100%'"]]
             ); ?>
         </div>
     </div>

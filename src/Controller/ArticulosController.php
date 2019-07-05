@@ -117,9 +117,6 @@ class ArticulosController extends AppController
                             'tmp_name' => $imagen_a_guardar['tmp_name'],
                             'type' => $imagen_a_guardar['type']
                         ];
-                        //echo '<pre>';
-                        //var_dump($filename);
-                        //echo '</pre>';
                         $imagen->descripcion = '';
                         $imagen->filename = $filename;
                         $imagen->creado = date("Y-m-d H:i:s");
@@ -127,41 +124,18 @@ class ArticulosController extends AppController
                         array_push($array_imagenes, $imagen);
                     }
                 }
-                //echo '<pre>';
-                //var_dump($array_imagenes);
-                //exit;
+                
                 if(count($array_imagenes) > 0){
                     $articulo->imagenes = $array_imagenes;
                     if (!$this->Articulos->save($articulo)) {
                         $this->Flash->error(__('La imágen no pudo ser guardada.')); 
                     }
                 }
-                /*if(!empty($this->request->data['palabras_claves'])){
-                    $array_palabras_claves = [];
-                    $tags = explode(',',$this->request->data['palabras_claves']);
-                    foreach($tags as $tag){                        
-                        $palabra_clave_existente = TableRegistry::get('PalabrasClaves')->findByTexto($tag)->first();
-                        if($palabra_clave_existente){
-                            $palabra_clave = $palabra_clave_existente;
-                        }
-                        else{
-                            $palabra_clave = TableRegistry::get('PalabrasClaves')->newEntity();
-                            $palabra_clave->texto = $tag;
-                            $palabra_clave->creado = date("Y-m-d H:i:s");
-                        }
-
-                        array_push($array_palabras_claves,$palabra_clave);
-                    }
-                    $articulo = $this->Articulos->get($articulo->id);
-                    $articulo->palabras_claves = $array_palabras_claves;
-                    $this->Articulos->save($articulo);
-                }
-                */
                 $this->Flash->success(__('El artículo ha sido guardado.'));
                 return $this->redirect(['action' => 'index']);
             }
             else{
-                $this->Flash->error(__('El no fue guardado. Intente nuevamente.'));   
+                $this->Flash->error(__('El artículo no fue guardado. Intente nuevamente.'));   
             }            
         }
         $zonas = $this->getZonas();
@@ -187,11 +161,7 @@ class ArticulosController extends AppController
             $articulo->modificado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
-            
-            //echo '<pre>';
-            //var_dump($articulo);
-            //echo '</pre>';
-            //exit;
+                        
             if ($this->Articulos->save($articulo)) {
                 $array_imagenes = [];
                 if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){

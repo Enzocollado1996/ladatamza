@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Im&aacute;genes
-            <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Nueva im&aacute;gen</a>
+            <!--<a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Nueva im&aacute;gen</a>-->
         </h2>
     </div>
     <!-- /.col-lg-12 -->

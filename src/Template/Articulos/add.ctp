@@ -16,7 +16,11 @@
     <?= $this->Form->create($articulo,['type' => 'file', 'class' => '', 'id'=>'bootstrapTagsInputForm', 'onkeypress'=>'return event.keyCode != 13;']) ?>
     <div class="col-lg-6">    
         <div class="form-group">
+            <?=$this->Form->input('zona',['type' => 'select','options' =>$zonas,'label' => 'Categoría', 'class'=>'form-control', 'required' => 'required']);?>
+        </div>
+        <div class="form-group">
             <?=$this->Form->control('titulo',['label' => 'Título', 'class'=>'form-control', 'required' => 'required']);?>
+            <h6 class="pull-right" id="count_message_titulo"></h6>
         </div>        
         <div class="form-group">
             <label>Descripción</label>
@@ -36,9 +40,6 @@
                     </span>
                 </div>
             </div>            
-        </div>
-        <div class="form-group">
-            <?=$this->Form->input('zona',['type' => 'select','options' =>$zonas,'label' => 'Categoría', 'class'=>'form-control', 'required' => 'required']);?>
         </div>
         <div class="form-group">
             <?=$this->Form->control('palabras_claves',['label' => 'Palabra clave','placeholder' => 'San Rafael', 'class'=>'form-control', 'required' => 'required']);?>
@@ -74,16 +75,41 @@
             "defaultDate":new Date()
         });
         
-        //let now = moment();
-        //console.log(now.format('DD/MM/YYYY HH:mm'));
-        
         CKEDITOR.replace('texto');
         
-        $('#bootstrapTagsInputForm')
-        .find('[name="palabras_claves_"]')
-            // Revalidate the cities field when it is changed
-            .end();
+        $('select[name=zona]').change();
     });
+    
+    $('select[name=zona]').change(function() {
+        calcularCaracteres();
+    });
+
+    function calcularCaracteres(){
+        var zona = $('select[name=zona] option:selected').val();
+        var text_max = 0;
+        if(zona == 'NORTE' || zona == 'SUR' || zona == 'CENTRO'){
+            text_max = 51;            
+        }
+        else{//generales
+            text_max = 68;
+        }
+        
+        var text_actual = $('input[name=titulo]').val().length;
+        if(text_actual > text_max){
+            $('input[name=titulo]').val($('input[name=titulo]').val().substring(0, text_max));
+            text_actual = $('input[name=titulo]').val().length;
+        }
+        
+        $('input[name=titulo]').attr('maxlength',text_max);
+        $('#count_message_titulo').html(text_max-text_actual + ' caracteres restantes');
+
+        $('input[name=titulo]').keyup(function() {
+          var text_length = $(this).val().length;
+          var text_remaining = text_max - text_length;
+
+          $('#count_message_titulo').html(text_remaining + ' caracteres restantes');
+        });
+    }
     
     function archivo(evt) {
         $('#imagen-articulo').empty();
