@@ -41,23 +41,35 @@ class FrontendController extends AppController
         $articulos_centro = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
-                        ])->where(['zona' => 'CENTRO'])->toArray();
+                        ])
+                ->where(['zona' => 'CENTRO', 'habilitado' => true])
+                ->toArray();
         
         $articulos_norte = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
-                        ])->where(['zona' => 'NORTE'])->toArray();
+                        ])
+                ->where(['zona' => 'NORTE', 'habilitado' => true])
+                ->toArray();
         
         $articulos_sur = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
-                        ])->where(['zona' => 'SUR'])->toArray();
+                        ])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado'])
+                ->where(['zona' => 'SUR', 'habilitado' => true])
+                ->toArray();
         
         $articulos_general = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 10
-                        ])->where(['zona' => 'GENERAL'])->toArray();
+                        ])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado'])
+                ->contain(['Imagenes'])
+                ->where(['zona' => 'GENERAL', 'habilitado' => true])
+                ->toArray();
         
+        //echo '<pre>';
         //var_dump($articulos_centro);
         //var_dump($articulos_norte);
         //var_dump($articulos_sur);
