@@ -38,10 +38,31 @@ class FrontendController extends AppController
      */
     public function index()
     {
-        $articulos_centro = [];
-        $articulos_norte = [];
-        $articulos_sur = [];
-        $articulos_general = [];
+        $articulos_centro = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 100
+                        ])->where(['zona' => 'CENTRO'])->toArray();
+        
+        $articulos_norte = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 100
+                        ])->where(['zona' => 'NORTE'])->toArray();
+        
+        $articulos_sur = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 100
+                        ])->where(['zona' => 'SUR'])->toArray();
+        
+        $articulos_general = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 10
+                        ])->where(['zona' => 'GENERAL'])->toArray();
+        
+        //var_dump($articulos_centro);
+        //var_dump($articulos_norte);
+        //var_dump($articulos_sur);
+        //var_dump($articulos_general);
+        //exit;
         
         $this->set(compact('articulos_centro','articulos_sur', 'articulos_norte','articulos_general'));
     }
