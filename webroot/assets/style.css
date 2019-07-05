@@ -25,14 +25,17 @@
 .weather .data {
     position: absolute;
     top: 0;
+    z-index: 100;
     background: #feee00;
+    font-size: 12px;
 }
 .weather .temp {
     grid-area: "A";
     font-weight: 600;
 }
-.weather .data {
-    font-size: 12px;
+
+.menu .logo {
+    padding: 3px;
 }
 .menu .logo img {
     width: 100px;
@@ -87,7 +90,8 @@
 }
 .container {
     position: relative;
-    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .containerScroller {
     position: relative;
