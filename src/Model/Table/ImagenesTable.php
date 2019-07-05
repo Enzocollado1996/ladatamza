@@ -32,15 +32,15 @@ class ImagenesTable extends Table
     {
         parent::initialize($config);
         
-        $this->addBehavior('Proffer.Proffer', [
-            'filename' => [
-                'dir' => 'file_url',
-                'thumbnailSizes' => [
-                    //'square' => ['w' => 100, 'h' => 100],
-                    //'large' => ['w' => 250, 'h' => 250]
-                ]
-            ]
-        ]);
+        // $this->addBehavior('Proffer.Proffer', [
+        //     'filename' => [
+        //         'dir' => 'file_url',
+        //         'thumbnailSizes' => [
+        //             //'square' => ['w' => 100, 'h' => 100],
+        //             //'large' => ['w' => 250, 'h' => 250]
+        //         ]
+        //     ]
+        // ]);
         
         $this->setTable('imagenes');
         $this->setDisplayField('id');
