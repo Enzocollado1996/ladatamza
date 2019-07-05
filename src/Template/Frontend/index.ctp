@@ -52,76 +52,50 @@
         <div class="region">CENTRO</div>
         <div class="region">SUR</div>
     </div>
+
     <div class="containerScroller">
         <div class="slot_container">
             <!-- norte -->
             <div class="place norte">
+                <?php foreach ($articulos_norte as $noticia_norte): ?>
                 <div class="shadow">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Valle de Uco</div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="date">30/10/2019</div>
+                <div class="title"><?=$noticia_norte[1]?> </div>
+                <div class="footer">
+                    <div class="district">Valle de Uco</div>
+                    <div class="clearfix"></div>
                 </div>
+                </div>
+
+            <?php endforeach;?>
 
             </div>
             <!-- centro -->
             <div class="place centro">
+            <?php foreach ($articulos_centro as $noticia_centro): ?>
                 <div class="shadow center">
                     <div class="date">30/10/2019</div>
                     <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
                     <div class="footer">
                         <div class="district">Mendoza</div>
-                        
+
                         <div class="clearfix"></div>
                     </div>
+                <?php endforeach?>
 
-                </div>
-                <div class="shadow center">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Godoy cruz</div>
-                     
-                        <div class="clearfix"></div>
-                    </div>
-
-                </div>
-                <div class="shadow center">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Mendoza capital</div>
-                        <br>
-                        <div class="clearfix"></div>
-                    </div>
-
-                </div>
-                <div class="shadow center">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Mendoza capital</div>
-                       
-                        <div class="clearfix"></div>
-                    </div>
-
-                </div>
-                <div class="shadow center">
-                    <div class="date">30/10/2019</div>
-                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-                    <div class="footer">
-                        <div class="district">Guaymayen</div>
-                      
-                        <div class="clearfix"></div>
-                    </div>
-
-                </div>
             </div>
             <!-- sur -->
             <div class="place sur">
+            <?php foreach ($articulos_sur as $noticia_sur): ?>
+                <div class="shadow">
+                    <div class="date">30/10/2019</div>
+                    <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
+                    <div class="footer">
+                        <div class="district">Mendoza</div>
 
+                        <div class="clearfix"></div>
+                    </div>
+            <?php endforeach;?>
             </div>
 
         </div>
@@ -137,22 +111,16 @@
 
     <div id="owl-demo" class="owl-carousel owl-theme">
 
-        <div class="item"><img src="assets/images/slide1.png">
+        <?php foreach($articulos_general as $general){ ?>
+            <div class="item"><img src="assets/images/slide1.png">
             <div class="titulo">
                 Macri habló con Trump y recibió su fuerte apoyo en el sector Económico.
             </div>
         </div>
-        <div class="item"><img src="assets/images/slide1.png">
-            <div class="titulo">
-                Macri habló con Trump y recibió su fuerte apoyo en el sector Económico.
-            </div>
-        </div>
-        <div class="item"><img src="assets/images/slide1.png">
-            <div class="titulo">
-                Macri habló con Trump y recibió su fuerte apoyo en el sector Económico.
-            </div>
-        </div>
-  
+
+        <?php } ?> 
+        
+      
     </div>
 
     <!-- <button id="asd" onclick="shareNew('laurl.com','laurl','test');">Compartir</button> -->
@@ -160,6 +128,8 @@
 </body>
 
 </html>
+<script>
+</script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/slick.min.js"></script>
 <script src="assets/js/flipclock.min.js"></script>
