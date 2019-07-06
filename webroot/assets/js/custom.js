@@ -13,6 +13,7 @@ function positions(latitude,longitude){
     }
   )
 }
+
 function translateWeather(weatherName){
 
   let tiempo = ""
