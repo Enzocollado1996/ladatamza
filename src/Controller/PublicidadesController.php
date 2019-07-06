@@ -129,6 +129,7 @@ class PublicidadesController extends AppController
         if ($this->request->is('post')) {
             $publicidad = $this->Publicidades->patchEntity($publicidad, $this->request->getData());
             $publicidad->tipo = 'INICIAL';
+            $publicidad->zona = 'NINGUNA';
             $publicidad->creado = date("Y-m-d H:i:s");
             
             if ($this->Publicidades->save($publicidad)) {
