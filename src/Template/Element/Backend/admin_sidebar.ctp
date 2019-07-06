@@ -12,18 +12,18 @@
                 <a href="<?=$this->Url->build(['controller' => 'Videos', 'action' => 'index'], true)?>"><i class="fa fa-film fa-fw"></i>&nbsp;Videos</a>
             </li>
             <li>
-                <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'index'], true)?>"><i class="fa fa-bullhorn fa-fw"></i>
+                <a href="#"><i class="fa fa-bullhorn fa-fw"></i>
                     Publicidades
                     <!--<span class="fa arrow"></span>-->
                 </a>
-<!--                <ul class="nav nav-second-level collapse in" style="height: auto;">
+                <ul class="nav nav-second-level collapse in" style="height: auto;">
                     <li>
-                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'principal'], true)?>">Principal</a>
+                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'principal'], true)?>">Principales</a>
                     </li>
                     <li>
-                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'ruedanotas'], true)?>">Ruedas notas</a>
+                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'ruedanotas'], true)?>">Entre notas</a>
                     </li>
-                </ul>-->
+                </ul>
             </li>
             <li>
                 <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Imágenes</a>

@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Nueva publicidad principal
-            <a href="<?=$this->Url->build(['action' => 'index'], true)?>" class="btn btn-default pull-right"><span class="fa fa-th-list"></span>&nbsp;Listado</a>
+            <a href="<?=$this->Url->build(['action' => 'principal'], true)?>" class="btn btn-default pull-right"><span class="fa fa-th-list"></span>&nbsp;Listado</a>
         </h2>
     </div>
     <!-- /.col-lg-12 -->

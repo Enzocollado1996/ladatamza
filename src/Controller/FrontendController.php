@@ -17,6 +17,7 @@ class FrontendController extends AppController
     public function initialize(){
         parent::initialize();
         $this->Articulos = TableRegistry::get('Articulos');
+        $this->Publicidades = TableRegistry::get('Publicidades');
     }
     
     public function beforeFilter(Event $event)
@@ -71,14 +72,53 @@ class FrontendController extends AppController
                 ->where(['zona' => 'GENERAL', 'habilitado' => true])
                 ->toArray();
         
+        $publicidad_inicial = $this->Publicidades->find('all')
+                ->contain(['Imagenes', 'Videos'])
+                ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
+                ->first();
+        
+        $publicidad_centro = $this->Publicidades->find('all', [
+                            'order' => ['orden' => 'asc'],
+                            'limit' => 10
+                        ])
+                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'CENTRO'])
+                ->toArray();
+        
+        $publicidad_norte = $this->Publicidades->find('all', [
+                            'order' => ['orden' => 'asc'],
+                            'limit' => 10
+                        ])
+                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'NORTE'])
+                ->toArray();
+        
+        $publicidad_sur = $this->Publicidades->find('all', [
+                            'order' => ['orden' => 'asc'],
+                            'limit' => 10
+                        ])
+                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'SUR'])
+                ->toArray();
+        
         //echo '<pre>';
         //var_dump($articulos_centro);
         //var_dump($articulos_norte);
         //var_dump($articulos_sur);
         //var_dump($articulos_general);
+        //var_dump($publicidad_inicial);
+        //var_dump($publicidad_centro);
+        //var_dump($publicidad_norte);
+        //var_dump($publicidad_sur);
         //exit;
         
-        $this->set(compact('articulos_centro','articulos_sur', 'articulos_norte','articulos_general'));
+        $this->set(compact('articulos_centro','articulos_sur', 
+                'articulos_norte','articulos_general', 
+                'publicidad_centro', 'publicidad_inicial', 
+                'publicidad_norte', 'publicidad_sur'));
     }
     
     /**

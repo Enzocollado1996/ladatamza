@@ -46,6 +46,7 @@ class Publicidad extends Entity
         'orden' => true,
         'ir_a_url' => true,
         'imagen' => true,
-        'video' => true
+        'video' => true,
+        'zona' => true
     ];
 }

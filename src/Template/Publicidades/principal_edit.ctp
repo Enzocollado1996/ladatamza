@@ -10,7 +10,7 @@
             <?= $this->Html->link('<span class="fa fa-trash"></span>&nbsp;Eliminar', 
                         ['action' => '#'], 
                         ['data-toggle' => 'modal', 'data-target' => '#basicModal' . $publicidad->id, 'escape' => false, 'title' => 'Eliminar', 'class' => 'btn btn-danger pull-right']) ?>
-            <a href="<?=$this->Url->build(['action' => 'index'], true)?>" class="btn btn-default pull-right" style="margin-right:5px;"><span class="fa fa-th-list"></span>&nbsp;Listado</a>            
+            <a href="<?=$this->Url->build(['action' => 'principal'], true)?>" class="btn btn-default pull-right" style="margin-right:5px;"><span class="fa fa-th-list"></span>&nbsp;Listado</a>            
             <div class="modal fade" id="basicModal<?= $publicidad->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <?= $this->Form->postLink('Borrar', ['action' => 'delete', $publicidad->id], ['class' => 'btn btn-danger']) ?>
+                            <?= $this->Form->postLink('Borrar', ['action' => 'principal_delete', $publicidad->id], ['class' => 'btn btn-danger']) ?>
                         </div>
                     </div>
                 </div>

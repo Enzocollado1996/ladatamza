@@ -21,6 +21,15 @@ class PublicidadesController extends AppController
         $this->loadComponent('String');
     }
     
+    private function getZonas(){        
+        $options = [
+            'SUR' => 'SUR',
+            'CENTRO' => 'CENTRO',
+            'NORTE' => 'NORTE'
+        ];
+        return $options;
+    }
+    
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
@@ -45,9 +54,24 @@ class PublicidadesController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
+    public function ruedanotas()
     {
         $this->paginate = [
+            'conditions' => ['Publicidades.tipo' => 'RULETA'],
+            'contain' => ['Imagenes'],
+            'order' => [
+                'Publicidades.creado' => 'desc'
+            ]
+        ];
+        $publicidades = $this->paginate($this->Publicidades);
+
+        $this->set(compact('publicidades'));
+    }
+    
+    public function principal()
+    {
+        $this->paginate = [
+            'conditions' => ['Publicidades.tipo' => 'INICIAL'],
             'contain' => ['Imagenes', 'Videos'],
             'order' => [
                 'Publicidades.creado' => 'desc'
@@ -109,12 +133,14 @@ class PublicidadesController extends AppController
                 }
                 
                 $this->Flash->success(__('La publicidad ha sido guardada.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'ruedanotas']);
             }
             $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
         }
         //$imagenes = $this->Publicidades->Imagenes->find('list', ['limit' => 200]);
         //$videos = $this->Publicidades->Videos->find('list', ['limit' => 200]);
+        $zonas = $this->getZonas();
+        $this->set('zonas', $zonas);
         $this->set(compact('publicidad'/*, 'imagenes', 'videos'*/));
     }
 
@@ -129,6 +155,7 @@ class PublicidadesController extends AppController
         if ($this->request->is('post')) {
             $publicidad = $this->Publicidades->patchEntity($publicidad, $this->request->getData());
             $publicidad->tipo = 'INICIAL';
+            $publicidad->zona = 'NINGUNA';
             $publicidad->creado = date("Y-m-d H:i:s");
             
             if ($this->Publicidades->save($publicidad)) {
@@ -168,14 +195,14 @@ class PublicidadesController extends AppController
                         $video->tipo = 'PUBLICIDAD';
                         $publicidad->video = $video;
                         $this->Publicidades->save($publicidad);
-                        return $this->redirect(['action' => 'index']);
+                        return $this->redirect(['action' => 'principal']);
                     }else{
                         $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
                     }
                 }
                 
                 $this->Flash->success(__('La publicidad ha sido guardada.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'principal']);
             }
             $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
         }
@@ -242,14 +269,14 @@ class PublicidadesController extends AppController
                         $video->tipo = 'PUBLICIDAD';
                         $publicidad->video = $video;
                         $this->Publicidades->save($publicidad);
-                        return $this->redirect(['action' => 'index']);
+                        return $this->redirect(['action' => 'principal']);
                     }else{
                         $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
                     }
                 }
                 
                 $this->Flash->success(__('La publicidad ha sido guardada.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'principal']);
             }
             $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
         }        
@@ -297,10 +324,12 @@ class PublicidadesController extends AppController
                 }
                 
                 $this->Flash->success(__('La publicidad ha sido guardada.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'ruedanotas']);
             }
             $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
-        }        
+        }
+        $zonas = $this->getZonas();
+        $this->set('zonas', $zonas);
         $this->set(compact('publicidad'));
     }
     
@@ -311,7 +340,7 @@ class PublicidadesController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function principalDelete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $publicidad = $this->Publicidades->get($id, [
@@ -328,12 +357,37 @@ class PublicidadesController extends AppController
             }
             $this->Videos->delete($publicidad->video);
         }
+        if ($this->Publicidades->delete($publicidad)) {
+            $this->Flash->success(__('La publicidad ha sido borrada.'));
+        } else {
+            $this->Flash->error(__('La publicidad no pudo ser borada. Intente nuevamente.'));
+        }
+
+        return $this->redirect(['action' => 'principal']);
+    }
+    
+    /**
+     * Delete method
+     *
+     * @param string|null $id Publicidad id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $publicidad = $this->Publicidades->get($id, [
+            'contain' => ['Imagenes']
+        ]);
+        if ($publicidad->has('imagen')) {
+            $this->Imagenes->delete($publicidad->imagen);
+        }
         if ($this->Publicidades->delete($publicidad)) {            
             $this->Flash->success(__('La publicidad ha sido borrada.'));
         } else {
             $this->Flash->error(__('La publicidad no pudo ser borada. Intente nuevamente.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'ruedanotas']);
     }
 }
