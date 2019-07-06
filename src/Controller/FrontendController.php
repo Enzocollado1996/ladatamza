@@ -104,16 +104,16 @@ class FrontendController extends AppController
                 ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'SUR'])
                 ->toArray();
         
-        echo '<pre>';
+        //echo '<pre>';
         //var_dump($articulos_centro);
         //var_dump($articulos_norte);
         //var_dump($articulos_sur);
         //var_dump($articulos_general);
-        var_dump($publicidad_inicial);
-        var_dump($publicidad_centro);
-        var_dump($publicidad_norte);
-        var_dump($publicidad_sur);
-        exit;
+        //var_dump($publicidad_inicial);
+        //var_dump($publicidad_centro);
+        //var_dump($publicidad_norte);
+        //var_dump($publicidad_sur);
+        //exit;
         
         $this->set(compact('articulos_centro','articulos_sur', 
                 'articulos_norte','articulos_general', 
