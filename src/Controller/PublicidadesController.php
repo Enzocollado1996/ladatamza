@@ -321,17 +321,14 @@ class PublicidadesController extends AppController
             $this->Imagenes->delete($publicidad->imagen);
         }
         if ($publicidad->has('video')) {
+            $uploadPath = Configure::read('path_video_subida');
+            $uploadFile = $uploadPath.$publicidad->nombre;
+            if (file_exists(WWW_ROOT.$uploadFile)) {
+                unlink(WWW_ROOT.$uploadFile);
+            }
             $this->Videos->delete($publicidad->video);
         }
-        if ($this->Publicidades->delete($publicidad)) {
-            if($publicidad->video_id != null){
-                $uploadPath = Configure::read('path_video_subida');
-                $uploadFile = $uploadPath.$publicidad->nombre;
-                if (file_exists(WWW_ROOT.$uploadFile)) {
-                    unlink(WWW_ROOT.$uploadFile);
-                }
-            }
-            
+        if ($this->Publicidades->delete($publicidad)) {            
             $this->Flash->success(__('La publicidad ha sido borrada.'));
         } else {
             $this->Flash->error(__('La publicidad no pudo ser borada. Intente nuevamente.'));
