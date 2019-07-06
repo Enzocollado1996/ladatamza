@@ -4,31 +4,50 @@
  * @var \App\Model\Entity\Publicidad $publicidad
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Publicidades'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Imagenes'), ['controller' => 'Imagenes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Imagen'), ['controller' => 'Imagenes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Videos'), ['controller' => 'Videos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Video'), ['controller' => 'Videos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="publicidades form large-9 medium-8 columns content">
-    <?= $this->Form->create($publicidad) ?>
-    <fieldset>
-        <legend><?= __('Add Publicidad') ?></legend>
-        <?php
-            echo $this->Form->control('nombre');
-            echo $this->Form->control('tipo');
-            echo $this->Form->control('url_video_externo');
-            echo $this->Form->control('url_img_externa');
-            echo $this->Form->control('creado', ['empty' => true]);
-            echo $this->Form->control('modificado', ['empty' => true]);
-            echo $this->Form->control('imagen_id', ['options' => $imagenes, 'empty' => true]);
-            echo $this->Form->control('video_id', ['options' => $videos, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Nueva publicidad secundaria
+            <a href="<?=$this->Url->build(['action' => 'index'], true)?>" class="btn btn-default pull-right"><span class="fa fa-th-list"></span>&nbsp;Listado</a>
+        </h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <?= $this->Form->create($publicidad,['type' => 'file', 'class' => '', 'id'=>'bootstrapTagsInputForm', 'onkeypress'=>'return event.keyCode != 13;']) ?>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <?=$this->Form->control('nombre',['class'=>'form-control', 'required' => 'required']);?>
+        </div>
+        <div class="form-group">
+            <?=$this->Form->control('ir_a_url',['type'=> 'text','label' => 'Ir a url','class'=>'form-control']);?>
+        </div>
+        <div class="form-group">
+            <?=$this->Form->control('orden',['type'=> 'number','label' => 'Posición entre notas','class'=>'form-control', 'placeholder' => '5', 'required' => 'required']);?>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <?=$this->Form->input('habilitado', ['label' => 'Habilitada','type' => 'checkbox']);?>
+                </label>
+            </div>
+        </div>
+        <?= $this->Form->button('Guardar',['class'=>'btn btn-success btn-block','type' => 'submit']) ?>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Imágen
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <?=$this->Form->control('url_img_externa',['label' => 'Url imágen externa','type'=> 'text','class'=>'form-control']);?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('filename', ['type' => 'file', 'label'=>'Imágen'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
+                    <div class="form-group" id="imagen-articulo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <?= $this->Form->end() ?>
 </div>

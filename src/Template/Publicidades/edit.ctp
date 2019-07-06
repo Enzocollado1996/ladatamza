@@ -4,37 +4,74 @@
  * @var \App\Model\Entity\Publicidad $publicidad
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $publicidad->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $publicidad->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Publicidades'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Imagenes'), ['controller' => 'Imagenes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Imagen'), ['controller' => 'Imagenes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Videos'), ['controller' => 'Videos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Video'), ['controller' => 'Videos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="publicidades form large-9 medium-8 columns content">
-    <?= $this->Form->create($publicidad) ?>
-    <fieldset>
-        <legend><?= __('Edit Publicidad') ?></legend>
-        <?php
-            echo $this->Form->control('nombre');
-            echo $this->Form->control('tipo');
-            echo $this->Form->control('url_video_externo');
-            echo $this->Form->control('url_img_externa');
-            echo $this->Form->control('creado', ['empty' => true]);
-            echo $this->Form->control('modificado', ['empty' => true]);
-            echo $this->Form->control('imagen_id', ['options' => $imagenes, 'empty' => true]);
-            echo $this->Form->control('video_id', ['options' => $videos, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Editar publicidad secundaria
+            <?= $this->Html->link('<span class="fa fa-trash"></span>&nbsp;Eliminar', 
+                        ['action' => '#'], 
+                        ['data-toggle' => 'modal', 'data-target' => '#basicModal' . $publicidad->id, 'escape' => false, 'title' => 'Eliminar', 'class' => 'btn btn-danger pull-right']) ?>
+            <a href="<?=$this->Url->build(['action' => 'index'], true)?>" class="btn btn-default pull-right" style="margin-right:5px;"><span class="fa fa-th-list"></span>&nbsp;Listado</a>            
+            <div class="modal fade" id="basicModal<?= $publicidad->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Está seguro de borrar el registro #<?= $publicidad->id ?>?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <?= $this->Form->postLink('Borrar', ['action' => 'delete', $publicidad->id], ['class' => 'btn btn-danger']) ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h2>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <?= $this->Form->create($publicidad,['type' => 'file', 'class' => '', 'id'=>'bootstrapTagsInputForm', 'onkeypress'=>'return event.keyCode != 13;']) ?>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <?=$this->Form->control('nombre',['class'=>'form-control', 'required' => 'required']);?>
+        </div>
+        <div class="form-group">
+            <?=$this->Form->control('ir_a_url',['type'=> 'text','label' => 'Ir a url','class'=>'form-control']);?>
+        </div>
+        <div class="form-group">
+            <?=$this->Form->control('orden',['type'=> 'number','label' => 'Posición entre notas','class'=>'form-control', 'placeholder' => '5', 'required' => 'required']);?>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <?=$this->Form->input('habilitado', ['label' => 'Habilitada','type' => 'checkbox']);?>
+                </label>
+            </div>
+        </div>
+        <?= $this->Form->button('Guardar',['class'=>'btn btn-success btn-block','type' => 'submit']) ?>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Imágen
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <?=$this->Form->control('url_img_externa',['label' => 'Url imágen externa','type'=> 'text','class'=>'form-control']);?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->Form->input('filename', ['type' => 'file', 'label'=>'Imágen'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
+                    <div class="form-group" id ="imagen-publicidad">
+                        <?php
+                        if($publicidad->has('imagen')){
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $publicidad->imagen->file_url.'/'.$publicidad->imagen->filename, 
+                                ['style'=> 'position: relative; width: 100%; margin: 10px 0;']);
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <?= $this->Form->end() ?>
 </div>

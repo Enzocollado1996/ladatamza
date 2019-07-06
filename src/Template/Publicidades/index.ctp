@@ -7,8 +7,8 @@
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Publicidades 
-            <a href="<?=$this->Url->build(['action' => 'principal_add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Pauta principal</a>
-            <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Pauta en notas</a>
+            <a href="<?=$this->Url->build(['action' => 'principal_add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Principal</a>
+            <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right" style="margin-right:5px;"><span class="fa fa-plus"></span>&nbsp;Entre notas</a>
         </h2>
     </div>
     <!-- /.col-lg-12 -->
@@ -22,10 +22,10 @@
                 <th scope="col"><?= $this->Paginator->sort('tipo') ?></th>
                 <th scope="col">Creado</th>
                 <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('activo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('activo', 'Visible') ?></th>
 <!--                <th scope="col"><?= $this->Paginator->sort('imagen_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('video_id') ?></th>-->
-                <th scope="col" class="actions"><?= __('Acciones') ?></th>
+                <th scope="col" class="acciones"><?= __('Acciones') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@
             <tr>
                 <td><?= $this->Number->format($publicidad->id) ?></td>
                 <td><?= h($publicidad->nombre) ?></td>
-                <td><?= h($publicidad->tipo) ?></td>
+                <td><?= h($publicidad->tipo == 'RULETA' ? 'SECUNDARIA' : $publicidad->tipo) ?></td>
                 <td><?= h($publicidad->creado) ?></td>
                 <td><?= h($publicidad->modificado) ?></td>
                 <td><?= h($publicidad->habilitado)  ? 'Si' : 'No' ?></td>

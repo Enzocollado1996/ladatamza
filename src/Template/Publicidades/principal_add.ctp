@@ -24,7 +24,7 @@
         <div class="form-group">
             <div class="checkbox">
                 <label>
-                    <?=$this->Form->input('habilitado', ['label' => 'Habilitado','type' => 'checkbox']);?>
+                    <?=$this->Form->input('habilitado', ['label' => 'Habilitada','type' => 'checkbox']);?>
                 </label>
             </div>
         </div>

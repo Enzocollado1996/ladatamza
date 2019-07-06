@@ -18,6 +18,8 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('titulo', 'Título') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('tipo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('creado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('publicado') ?></th>
@@ -29,6 +31,8 @@
             <tr>
                 <td><?= $this->Number->format($video->id) ?></td>
                 <td><?= h($video->titulo) ?></td>
+                <td><?= h($video->nombre) ?></td>
+                <td><?= h($video->tipo) ?></td>
                 <td><?= h($video->creado) ?></td>
                 <td><?= h($video->modificado) ?></td>
                 <td><?= h($video->publicado) ?></td>

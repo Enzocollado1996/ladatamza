@@ -85,16 +85,37 @@ class PublicidadesController extends AppController
         if ($this->request->is('post')) {
             $publicidad = $this->Publicidades->patchEntity($publicidad, $this->request->getData());
             $publicidad->tipo = 'RULETA';
+            $publicidad->creado = date("Y-m-d H:i:s");
+            
             if ($this->Publicidades->save($publicidad)) {
-                $this->Flash->success(__('The publicidad has been saved.'));
-
+                // Proceso imagen de publicidad si fue cagada
+                if(!empty($this->request->data['filename']) && !empty($this->request->data['filename']["tmp_name"])){
+                    $imagen_a_guardar = $this->request->data['filename'];
+                    $imagen = TableRegistry::get('Imagenes')->newEntity();
+                    $filename = [
+                        'error' => $imagen_a_guardar['error'],
+                        'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                        'size' => $imagen_a_guardar['size'],
+                        'tmp_name' => $imagen_a_guardar['tmp_name'],
+                        'type' => $imagen_a_guardar['type']
+                    ];
+                    $imagen->descripcion = '';
+                    $imagen->filename = $filename;                        
+                    $imagen->creado = date("Y-m-d H:i:s");
+                    $imagen->tipo = 'PUBLICIDAD';
+                    
+                    $publicidad->imagen = $imagen;
+                    $this->Publicidades->save($publicidad);
+                }
+                
+                $this->Flash->success(__('La publicidad ha sido guardada.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The publicidad could not be saved. Please, try again.'));
+            $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
         }
-        $imagenes = $this->Publicidades->Imagenes->find('list', ['limit' => 200]);
-        $videos = $this->Publicidades->Videos->find('list', ['limit' => 200]);
-        $this->set(compact('publicidad', 'imagenes', 'videos'));
+        //$imagenes = $this->Publicidades->Imagenes->find('list', ['limit' => 200]);
+        //$videos = $this->Publicidades->Videos->find('list', ['limit' => 200]);
+        $this->set(compact('publicidad'/*, 'imagenes', 'videos'*/));
     }
 
     /**
@@ -132,6 +153,7 @@ class PublicidadesController extends AppController
                     $this->Publicidades->save($publicidad);
                 }
                 
+                // Proceso video de publicidad si fue cagado
                 if(!empty($this->request->data['file']['name'])){
                     $fileName = time().'_'.$this->String->cleanStringToImage($this->request->data['file']['name']);
                     $uploadPath = Configure::read('path_video_subida');
@@ -157,9 +179,9 @@ class PublicidadesController extends AppController
             }
             $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
         }
-        $imagenes = $this->Publicidades->Imagenes->find('list', ['limit' => 200]);
-        $videos = $this->Publicidades->Videos->find('list', ['limit' => 200]);
-        $this->set(compact('publicidad', 'imagenes', 'videos'));
+        //$imagenes = $this->Publicidades->Imagenes->find('list', ['limit' => 200]);
+        //$videos = $this->Publicidades->Videos->find('list', ['limit' => 200]);
+        $this->set(compact('publicidad'/*, 'imagenes', 'videos'*/));
     }
     
     /**
@@ -172,9 +194,7 @@ class PublicidadesController extends AppController
         $publicidad = $this->Publicidades->get($id, [
             'contain' => ['Imagenes', 'Videos']
         ]);
-        //echo '<pre>';
-        //var_dump($publicidad);
-        //exit;
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $publicidad = $this->Publicidades->patchEntity($publicidad, $this->request->getData());
             $publicidad->modificado = date("Y-m-d H:i:s");
@@ -232,8 +252,7 @@ class PublicidadesController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
-        }
-        
+        }        
         $this->set(compact('publicidad'));
     }
     
@@ -247,22 +266,44 @@ class PublicidadesController extends AppController
     public function edit($id = null)
     {
         $publicidad = $this->Publicidades->get($id, [
-            'contain' => []
+            'contain' => ['Imagenes']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $publicidad = $this->Publicidades->patchEntity($publicidad, $this->request->getData());
+            $publicidad->modificado = date("Y-m-d H:i:s");
             if ($this->Publicidades->save($publicidad)) {
-                $this->Flash->success(__('The publicidad has been saved.'));
-
+                // Proceso imagen de publicidad si fue cagada
+                if(!empty($this->request->data['filename']) && !empty($this->request->data['filename']["tmp_name"])){
+                    $imagen_a_guardar = $this->request->data['filename'];
+                    $imagen = TableRegistry::get('Imagenes')->newEntity();
+                    $filename = [
+                        'error' => $imagen_a_guardar['error'],
+                        'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                        'size' => $imagen_a_guardar['size'],
+                        'tmp_name' => $imagen_a_guardar['tmp_name'],
+                        'type' => $imagen_a_guardar['type']
+                    ];
+                    $imagen->descripcion = '';
+                    $imagen->filename = $filename;                        
+                    $imagen->creado = date("Y-m-d H:i:s");
+                    $imagen->tipo = 'PUBLICIDAD';
+                    
+                    if ($publicidad->has('imagen')) {
+                        $this->Imagenes->delete($publicidad->imagen);
+                    }
+                    
+                    $publicidad->imagen = $imagen;
+                    $this->Publicidades->save($publicidad);                    
+                }
+                
+                $this->Flash->success(__('La publicidad ha sido guardada.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The publicidad could not be saved. Please, try again.'));
-        }
-        $imagenes = $this->Publicidades->Imagenes->find('list', ['limit' => 200]);
-        $videos = $this->Publicidades->Videos->find('list', ['limit' => 200]);
-        $this->set(compact('publicidad', 'imagenes', 'videos'));
+            $this->Flash->error(__('La publicidad no fue guardada. Intente nuevamente.'));   
+        }        
+        $this->set(compact('publicidad'));
     }
-
+    
     /**
      * Delete method
      *
@@ -276,6 +317,12 @@ class PublicidadesController extends AppController
         $publicidad = $this->Publicidades->get($id, [
             'contain' => ['Imagenes', 'Videos']
         ]);
+        if ($publicidad->has('imagen')) {
+            $this->Imagenes->delete($publicidad->imagen);
+        }
+        if ($publicidad->has('video')) {
+            $this->Videos->delete($publicidad->video);
+        }
         if ($this->Publicidades->delete($publicidad)) {
             if($publicidad->video_id != null){
                 $uploadPath = Configure::read('path_video_subida');
@@ -287,7 +334,7 @@ class PublicidadesController extends AppController
             
             $this->Flash->success(__('La publicidad ha sido borrada.'));
         } else {
-            $this->Flash->error(__('The publicidad could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La publicidad no pudo ser borada. Intente nuevamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

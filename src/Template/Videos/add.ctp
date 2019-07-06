@@ -27,7 +27,7 @@
             </div>            
         </div>
         <div class="form-group">
-            <?=$this->Form->input('titulo',['label' => 'Título', 'class'=>'form-control', 'required' => 'required']);?>
+            <?=$this->Form->input('titulo',['label' => 'Título','type'=> 'text', 'class'=>'form-control', 'required' => 'required']);?>
         </div>
         <div class="form-group">
             <?=$this->Form->input('comentario',['label' => 'Comentario', 'class'=>'form-control']);?>
