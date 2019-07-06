@@ -153,14 +153,17 @@
 
         <?php foreach ($articulos_general as $general) {?>
             <div class="item">
-      
-                <?php
+            <?php
                 if($general->has('imagenes')){
                     $imagen = $general->imagenes[0];
-                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url.'/'.$imagen->filename);
+                     echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url.'/'.$imagen->filename);
+                    
                 }
-                
+                else{
+                   echo '<img src="assets/images/test.jpg" alt="">';
+                }
                 ?>
+          
                 <div class="titulo">
                     <?=$general->titulo?>
                 </div>

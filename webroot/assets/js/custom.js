@@ -1,12 +1,4 @@
-$(".slick-carousel").slick({
-  infinite: true,
-  vertical: true,
-  verticalSwiping: true,
-  slidesToShow: 1,
-  slidesToScroll: 3,
-  prevArrow: $(".top-arrow"),
-  nextArrow: $(".bottom-arrow")
-});
+
 var clock;
 function positions(latitude,longitude){
 
@@ -111,7 +103,7 @@ $(document).ready(function() {
   //
  
   $("#owl-demo").owlCarousel({
- 
+    autoHeight: true,
     navigation : true, // Show next and prev buttons
     slideSpeed : 300,
     paginationSpeed : 400,
