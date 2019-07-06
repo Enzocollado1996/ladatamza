@@ -28,7 +28,7 @@
             <div class="social-name">
               <span><img src="assets/images/tw.png" alt="">
               ladatamendoza</span>
-            
+
             </div>
 
         </div>
@@ -42,8 +42,9 @@
     <div class="menu">
         <div class="weather">
             <div class="data">LA DATA MZA _</div>
-            <div class="temp">12º</div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <div class="temp"></div>
+            <img src="" alt="" width="24">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-cloud-snow">
                 <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path>
@@ -53,7 +54,7 @@
                 <line x1="12" y1="22" x2="12" y2="22"></line>
                 <line x1="16" y1="16" x2="16" y2="16"></line>
                 <line x1="16" y1="20" x2="16" y2="20"></line>
-            </svg>
+            </svg> -->
         </div>
         <div class="logo"> <img src="assets/images/logo.png" alt=""></div>
         <div class="social">
@@ -99,6 +100,7 @@
                                 </div>
                         </div>
                 <?php endforeach;?>
+                <div class="shadownews empty"></div>
             </div>
             <!-- centro -->
             <div class="place centro">
@@ -114,7 +116,7 @@
                             </div>
                     </div>
                 <?php endforeach?>
-
+                <div class="shadownews empty"></div>
             </div>
             <!-- sur -->
             <div class="place sur">
@@ -130,8 +132,9 @@
                                 <div class="clearfix"></div>
                             </div>
                     </div>
-                <?php endforeach?>
 
+                <?php endforeach?>
+             <div class="shadownews empty"></div>
 
             </div>
 
@@ -149,7 +152,7 @@
     <div id="owl-demo" class="owl-carousel owl-theme">
 
         <?php foreach ($articulos_general as $general) {?>
-            <div class="item"><img src="assets/images/slide1.png">
+            <div class="item"><img src="assets/images/test.jpg">
             <div class="titulo">
             <?=$general->titulo?>
             </div>
@@ -186,10 +189,7 @@ function cerrar(){
                 $(".heart").css({
         "z-index": ""
     })
-                // .animate({
-                //     scrollTop: $(document).height(),
-                //     scrollSpeed: 300
-                // })
+
 
 }
 </script>

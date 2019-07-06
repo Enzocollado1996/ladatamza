@@ -8,51 +8,74 @@ $(".slick-carousel").slick({
   nextArrow: $(".bottom-arrow")
 });
 var clock;
+function positions(latitude,longitude){
+
+  var url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`
+  $.get(url).then(
+    data => {
+      var grados = (Number(data.main.temp) - 273.15).toFixed(1);
+      var iconname = translateWeather(data.weather[0].main)
+      $(".weather").find('img').attr('src','assets/images/'+iconname+'.png')
+      $(".temp").text(grados+"º")
+    
+    }
+  )
+}
+function translateWeather(weatherName){
+
+  let tiempo = ""
+  switch(weatherName){
+    case 'Snow' : tiempo = 'nieve';
+    case 'Clear' : tiempo = 'sol';
+    case 'Rain' : tiempo = 'lluvia';
+    case 'Clouds' : tiempo = 'nublado'
+    default : tiempo = 'sol';
+  }
+
+  return tiempo;
+}
+function validateTime (){
+  let time = new Date()
+  let from = new Date().setHours(19,55)
+  let to = new Date().setHours(20,05)
+
+  if(time > from && time < to){
+    $(".container_clock").css('background','#feee00')
+  }
+
+}
 $(document).ready(function() {
-  let clock = $(".clock").FlipClock({
+
+  setInterval(()=>{
+    validateTime()
+  },1000)
+  
+  var watchID = navigator.geolocation.getCurrentPosition(function(position) {
+    positions(position.coords.latitude, position.coords.longitude);
+  });
+  
+    let clock = $(".clock").FlipClock({
     // clockFace: 'HourlyCounter'
     clockFace: "TwentyFourHourClock",
     showSeconds: false
   });
-//   var place = i => `   <div class="shadownews">
-//   <div class="date">${i} 30/10/2019</div>
-//   <div class="title">No se podrán usar las Red Bus que cargaron saldo.</div>
-//   <div class="footer">
-//       <div class="district">Valle de Uco</div>
-//       <div class="clearfix"></div>
-//   </div>
-// </div>`;
-//   var i = 0;
-//   var placeContent = $(".place").eq(0);
-//   var placeContent2 = $(".place").eq(2);
-//   var placeContent3 = $(".place").eq(1);
-//   while (i < 5) {
-//     placeContent.append(place(i));
-//     placeContent2.append(place(i));
-//     placeContent3.append(place(i));
-//     i++;
-//   }
+ 
 
-  
   //sur
   let sur = $(".slot_container .sur");
   let quantity_sur = sur.find(".shadownews").get().length;
   var heightPlace_sur = sur.find(".shadownews").height();
-  var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 1);
+  var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 1.5);
   sur.on("touchmove", function() {
-    let totalHeight = $(this).height() * 0.12;
-    console.log(
-      "%c vport  = " + (heightPlaceTotal_sur+ totalHeight),
+     console.log(
+      "%c vport  = " + (heightPlaceTotal_sur),
       "color:#3f51b5;font-weight:bold;"
     );
 
     let scroll = $(this).scrollTop();
     console.log("%c scroll  = " + scroll, "color:#ff5722;font-weight:bold;");
-    if (scroll > (heightPlaceTotal_sur+ totalHeight)) {
-   
-        $(this).animate({ scrollTop: 0 }, 0);
-     
-    }
+    if (scroll > heightPlaceTotal_sur) 
+       $(this).animate({ scrollTop: 0 }, 0);
   });
   //
 
@@ -60,42 +83,30 @@ $(document).ready(function() {
   let norte = $(".slot_container .norte");
   let quantity_norte = norte.find(".shadownews").get().length;
   var heightPlace_norte = norte.find(".shadownews").height();
-  var heightPlaceTotal_norte = heightPlace_norte * (quantity_norte - 1);
+  var heightPlaceTotal_norte = heightPlace_norte * (quantity_norte - 1.5);
   norte.on("touchmove", function() {
-    let totalHeight = $(this).height() * 0.12;
-    console.log(
-      "%c vport  = " + (heightPlaceTotal_norte + totalHeight),
-      "color:#3f51b5;font-weight:bold;"
-    );
+   
 
     let scroll = $(this).scrollTop();
-    console.log("%c scroll  = " + scroll, "color:#ff5722;font-weight:bold;");
-    if (scroll > heightPlaceTotal_norte + totalHeight) {
- 
+   
+    if (scroll > heightPlaceTotal_norte) 
         $(this).animate({ scrollTop: 0 }, 0);
    
-    }
+    
   });
   //
   //centro
   let centro = $(".slot_container .centro");
   let quantity_centro = centro.find(".shadownews").get().length;
   var heightPlace_centro = centro.find(".shadownews").height();
-  var heightPlaceTotal_centro = heightPlace_centro * (quantity_centro - 1);
+  var heightPlaceTotal_centro = heightPlace_centro * (quantity_centro - 1.5);
   centro.on("touchmove", function() {
-    let totalHeight = $(this).height() * 0.12;
-    console.log(
-      "%c vport  = " + (heightPlaceTotal_centro + totalHeight),
-      "color:#3f51b5;font-weight:bold;"
-    );
-
-    let scroll = $(this).scrollTop();
-    console.log("%c scroll  = " + scroll, "color:#ff5722;font-weight:bold;");
-    if (scroll > heightPlaceTotal_centro + totalHeight) {
-
-        $(this).animate({ scrollTop: 0 }, 0);
    
-    }
+    let scroll = $(this).scrollTop();
+     if (scroll > heightPlaceTotal_centro) 
+       $(this).animate({ scrollTop: 0 }, 0);
+   
+    
   });
   //
  

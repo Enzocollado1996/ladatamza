@@ -28,12 +28,16 @@
     z-index: 100;
     background: #feee00;
     font-size: 12px;
+    padding: 0 5px;
 }
 .weather .temp {
     grid-area: "A";
     font-weight: 600;
+    margin-left: 5px;
 }
-
+.weather img{
+    margin-left: 5px;
+}
 .menu .logo {
     padding: 3px;
 }
@@ -131,6 +135,9 @@
 .shadownews:hover {
     background: #feee00;
 }
+.shadownews.empty{
+    min-height: calc(30% - 8px) !important
+}
 .shadownews.center {
     border-right: 2px #777676 solid;
     border-bottom: 2px #777676 solid;
@@ -187,6 +194,9 @@
     right: 0;
     line-height: 25px;
     padding: 5px;
+}
+#owl-demo {
+    height: 200px;
 }
 #owl-demo .item img {
     display: block;
