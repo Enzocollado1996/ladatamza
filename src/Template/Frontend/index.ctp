@@ -149,19 +149,20 @@
     <div id="owl-demo" class="owl-carousel owl-theme">
 
         <?php foreach ($articulos_general as $general) {?>
-            <div class="item"><img src="assets/images/slide1.png">
-            <div class="titulo">
-            <?=$general->titulo?>
+            <div class="item">
+                <?php
+                if($general->has('imagenes')){
+                    $imagen = $general->imagenes[0];
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url.'/'.$imagen->filename);
+                }
+                ?>
+                <div class="titulo">
+                    <?=$general->titulo?>
+                </div>
             </div>
-        </div>
-
         <?php }?>
-
-
     </div>
-
     <!-- <button id="asd" onclick="shareNew('laurl.com','laurl','test');">Compartir</button> -->
-
 </body>
 
 </html>
