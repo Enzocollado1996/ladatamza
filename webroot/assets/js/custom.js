@@ -2,7 +2,7 @@
 var clock;
 function positions(latitude,longitude){
 
-  var url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`
+  var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`
   $.get(url).then(
     data => {
       var grados = (Number(data.main.temp) - 273.15).toFixed(1);
