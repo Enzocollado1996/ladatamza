@@ -81,32 +81,39 @@ class FrontendController extends AppController
                             'order' => ['orden' => 'asc'],
                             'limit' => 10
                         ])
-                ->contain(['Imagenes', 'Videos'])
-                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true])
-                ->first();
+                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'CENTRO'])
+                ->toArray();
         
         $publicidad_norte = $this->Publicidades->find('all', [
                             'order' => ['orden' => 'asc'],
                             'limit' => 10
                         ])
-                ->contain(['Imagenes', 'Videos'])
-                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true])
-                ->first();
+                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'NORTE'])
+                ->toArray();
         
         $publicidad_sur = $this->Publicidades->find('all', [
                             'order' => ['orden' => 'asc'],
                             'limit' => 10
                         ])
-                ->contain(['Imagenes', 'Videos'])
-                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true])
-                ->first();
-        //echo '<pre>';
+                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'SUR'])
+                ->toArray();
+        
+        echo '<pre>';
         //var_dump($articulos_centro);
         //var_dump($articulos_norte);
         //var_dump($articulos_sur);
         //var_dump($articulos_general);
-        //var_dump($publicidad_inicial);
-        //exit;
+        var_dump($publicidad_inicial);
+        var_dump($publicidad_centro);
+        var_dump($publicidad_norte);
+        var_dump($publicidad_sur);
+        exit;
         
         $this->set(compact('articulos_centro','articulos_sur', 
                 'articulos_norte','articulos_general', 

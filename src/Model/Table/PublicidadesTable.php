@@ -95,6 +95,11 @@ class PublicidadesTable extends Table
         $validator
             ->scalar('ir_a_url')
             ->allowEmptyString('ir_a_url');
+        
+        $validator
+            ->scalar('zona')
+            ->requirePresence('zona', 'create')
+            ->allowEmptyString('zona', false);
 
         return $validator;
     }

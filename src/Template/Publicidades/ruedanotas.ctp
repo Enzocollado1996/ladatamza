@@ -6,9 +6,8 @@
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h2 class="page-header">Publicidades 
-            <a href="<?=$this->Url->build(['action' => 'principal_add'], true)?>" class="btn btn-success pull-right"><span class="fa fa-plus"></span>&nbsp;Principal</a>
-            <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right" style="margin-right:5px;"><span class="fa fa-plus"></span>&nbsp;Entre notas</a>
+        <h2 class="page-header">Publicidades secundarias
+            <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right" style="margin-right:5px;"><span class="fa fa-plus"></span>&nbsp;Nueva publicidad</a>
         </h2>
     </div>
     <!-- /.col-lg-12 -->
@@ -19,10 +18,12 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('tipo') ?></th>
-                <th scope="col">Creado</th>
-                <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('activo', 'Visible') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('zona', 'Categoría') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('orden') ?></th>
+                <th scope="col">Tiene imágen</th>
+                <th scope="col">Creado</th>
+                <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>                
 <!--                <th scope="col"><?= $this->Paginator->sort('imagen_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('video_id') ?></th>-->
                 <th scope="col" class="acciones"><?= __('Acciones') ?></th>
@@ -33,10 +34,12 @@
             <tr>
                 <td><?= $this->Number->format($publicidad->id) ?></td>
                 <td><?= h($publicidad->nombre) ?></td>
-                <td><?= h($publicidad->tipo == 'RULETA' ? 'SECUNDARIA' : $publicidad->tipo) ?></td>
-                <td><?= h($publicidad->creado) ?></td>
-                <td><?= h($publicidad->modificado) ?></td>
                 <td><?= h($publicidad->habilitado)  ? 'Si' : 'No' ?></td>
+                <td><?= h($publicidad->zona) ?></td>
+                <td><?= h($publicidad->orden) ?></td>
+                <td><?= $publicidad->has('imagen') ? 'Si' : 'No' ?></td>                
+                <td><?= h($publicidad->creado) ?></td>
+                <td><?= h($publicidad->modificado) ?></td>                
 <!--                <td><?= $publicidad->has('imagen') ? $this->Html->link($publicidad->imagen->id, ['controller' => 'Imagenes', 'action' => 'view', $publicidad->imagen->id]) : '' ?></td>
                 <td><?= $publicidad->has('video') ? $this->Html->link($publicidad->video->id, ['controller' => 'Videos', 'action' => 'view', $publicidad->video->id]) : '' ?></td>-->
                 <td class="actions">
