@@ -40,6 +40,9 @@ function validateTime (){
 $(document).ready(function() {
   setTimeout(()=>{
     $(".publicidad").show();
+    $('html,body').css({
+      overflow: 'hidden'
+  });
   },
   5000)
   setInterval(()=>{
@@ -148,6 +151,10 @@ function cerrar(){
 function cerrarPpal()
 {
   $(".publicidad").hide();
+  
+  $('html,body').css({
+    overflow: 'auto'
+});
 }
 
 function shareNew(url, text, title) {
