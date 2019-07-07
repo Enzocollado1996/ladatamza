@@ -43,7 +43,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'CENTRO', 'habilitado' => true])
                 ->toArray();
         
@@ -51,7 +51,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'NORTE', 'habilitado' => true])
                 ->toArray();
         
@@ -59,7 +59,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'SUR', 'habilitado' => true])
                 ->toArray();
         
@@ -67,7 +67,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'asc'],
                             'limit' => 10
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado','Articulos.slug'])
                 ->contain(['Imagenes'])
                 ->where(['zona' => 'GENERAL', 'habilitado' => true])
                 ->toArray();
@@ -136,8 +136,6 @@ class FrontendController extends AppController
 
         $this->set('articulo', $articulo);
     }
-    
-    
     
     /**
      * View method
