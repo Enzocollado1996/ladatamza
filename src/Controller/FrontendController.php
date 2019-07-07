@@ -128,6 +128,24 @@ class FrontendController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
+    public function verArticulo($slug = null)
+    {
+        $articulo = $this->Articulos->findBySlug($slug, [
+            'contain' => ['Imagenes']
+        ])->first();
+
+        $this->set('articulo', $articulo);
+    }
+    
+    
+    
+    /**
+     * View method
+     *
+     * @param string|null $id Backend id.
+     * @return \Cake\Http\Response|void
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
     /*public function view($id = null)
     {
         $backend = $this->Backend->get($id, [

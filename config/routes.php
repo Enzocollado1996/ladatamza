@@ -65,6 +65,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     //$routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);ç
     /*** Rutas frontend ***/
     $routes->connect('/', ['controller' => 'Frontend', 'action' => 'index']);
+    //$routes->connect('/:slug', ['controller' => 'Frontend', 'action' => 'ver_articulo']);
     
     /*** Rutas backend ***/
     $routes->connect('/admin', ['controller' => 'Users', 'action' => 'login']);

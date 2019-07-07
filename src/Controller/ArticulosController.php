@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Core\Configure;
+use Cake\Utility\Inflector;
 /**
  * Articulos Controller
  *
@@ -78,8 +79,12 @@ class ArticulosController extends AppController
     public function add()
     {
         $articulo = $this->Articulos->newEntity();
+        //$inf = Inflector::slug("esto es un téxto de pru¿?eba para inflector", '-');
+        //var_dump($inf);
+        //exit;
         if ($this->request->is('post')) {
             $articulo = $this->Articulos->patchEntity($articulo, $this->request->getData());
+            $articulo->slug = Inflector::slug(strtolower($this->request->data('titulo'))." ".time(), '-');
             $articulo->creado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
@@ -99,7 +104,7 @@ class ArticulosController extends AppController
                             'type' => $imagen_a_guardar['type']
                         ];
                         $imagen->descripcion = '';
-                        $imagen->filename = $filename;                        
+                        $imagen->filename = $filename;
                         $imagen->creado = date("Y-m-d H:i:s");
                         $imagen->tipo = 'NOTICIA';
                         array_push($array_imagenes, $imagen);
@@ -158,6 +163,7 @@ class ArticulosController extends AppController
         
         if ($this->request->is(['patch', 'post', 'put'])) {
             $articulo = $this->Articulos->patchEntity($articulo, $this->request->data);
+            $articulo->slug = Inflector::slug(strtolower($this->request->data('titulo'))." ".time(), '-');
             $articulo->modificado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
