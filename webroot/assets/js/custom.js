@@ -38,7 +38,10 @@ function validateTime (){
 
 }
 $(document).ready(function() {
-
+  setTimeout(()=>{
+    $(".publicidad").show();
+  },
+  5000)
   setInterval(()=>{
     validateTime()
   },1000)
@@ -104,7 +107,7 @@ $(document).ready(function() {
   //
  
   $("#owl-demo").owlCarousel({
-    autoHeight: true,
+    autoHeight: false,
     navigation : true, // Show next and prev buttons
     slideSpeed : 300,
     paginationSpeed : 400,
@@ -120,6 +123,32 @@ $(document).ready(function() {
 
 });
 
+function socialModal(){
+  $(".socialmedia_modal").addClass('active');
+  $('html,body').css({
+                  overflow: 'hidden'
+              });
+  $(".heart").css({
+      "z-index": "2000"
+  })
+}
+function cerrar(){
+
+  $(".socialmedia_modal").removeClass('active');
+
+  $('html,body').css({
+                  overflow: 'auto'
+              });
+              $(".heart").css({
+      "z-index": ""
+  })
+
+
+}
+function cerrarPpal()
+{
+  $(".publicidad").hide();
+}
 
 function shareNew(url, text, title) {
   navigator
