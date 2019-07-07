@@ -1,16 +1,8 @@
-$(".slick-carousel").slick({
-  infinite: true,
-  vertical: true,
-  verticalSwiping: true,
-  slidesToShow: 1,
-  slidesToScroll: 3,
-  prevArrow: $(".top-arrow"),
-  nextArrow: $(".bottom-arrow")
-});
+
 var clock;
 function positions(latitude,longitude){
 
-  var url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`
+  var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`
   $.get(url).then(
     data => {
       var grados = (Number(data.main.temp) - 273.15).toFixed(1);
@@ -21,6 +13,7 @@ function positions(latitude,longitude){
     }
   )
 }
+
 function translateWeather(weatherName){
 
   let tiempo = ""
@@ -45,7 +38,10 @@ function validateTime (){
 
 }
 $(document).ready(function() {
-
+  setTimeout(()=>{
+    $(".publicidad").show();
+  },
+  5000)
   setInterval(()=>{
     validateTime()
   },1000)
@@ -111,7 +107,7 @@ $(document).ready(function() {
   //
  
   $("#owl-demo").owlCarousel({
- 
+    autoHeight: false,
     navigation : true, // Show next and prev buttons
     slideSpeed : 300,
     paginationSpeed : 400,
@@ -127,6 +123,32 @@ $(document).ready(function() {
 
 });
 
+function socialModal(){
+  $(".socialmedia_modal").addClass('active');
+  $('html,body').css({
+                  overflow: 'hidden'
+              });
+  $(".heart").css({
+      "z-index": "2000"
+  })
+}
+function cerrar(){
+
+  $(".socialmedia_modal").removeClass('active');
+
+  $('html,body').css({
+                  overflow: 'auto'
+              });
+              $(".heart").css({
+      "z-index": ""
+  })
+
+
+}
+function cerrarPpal()
+{
+  $(".publicidad").hide();
+}
 
 function shareNew(url, text, title) {
   navigator

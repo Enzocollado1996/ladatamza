@@ -10,51 +10,15 @@
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <link rel="stylesheet" type="text/css" href="assets/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="assets/owl.theme.default.css">
-    <div class="socialmedia_modal">
-
-        <div class="content-sm">
-            <div class="social-name">
-              <span><img src="assets/images/fb.png" alt="">
-              ladatamendoza</span>
-              <div class="linea"></div>
-            </div>
-
-
-            <div class="social-name">
-              <span><img src="assets/images/insta.png" alt="">
-              ladatamendoza</span>
-              <div class="linea"></div>
-            </div>
-            <div class="social-name">
-              <span><img src="assets/images/tw.png" alt="">
-              ladatamendoza</span>
-
-            </div>
-
-        </div>
-        <svg  onclick="cerrar();"class="close" width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
-        <g>
-            <path fill="#feee00" d="M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59   c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59   c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0   L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z"/>
-        </g>
-        </svg>
-
-    </div>
+   
+    <?= $this->element('modals/socials') ?>
+ 
     <div class="menu">
         <div class="weather">
             <div class="data">LA DATA MZA _</div>
             <div class="temp"></div>
             <img src="" alt="" width="24">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-cloud-snow">
-                <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path>
-                <line x1="8" y1="16" x2="8" y2="16"></line>
-                <line x1="8" y1="20" x2="8" y2="20"></line>
-                <line x1="12" y1="18" x2="12" y2="18"></line>
-                <line x1="12" y1="22" x2="12" y2="22"></line>
-                <line x1="16" y1="16" x2="16" y2="16"></line>
-                <line x1="16" y1="20" x2="16" y2="20"></line>
-            </svg> -->
+         
         </div>
         <div class="logo"> <img src="assets/images/logo.png" alt=""></div>
         <div class="social">
@@ -77,7 +41,7 @@
 
 <body>
 
-
+<?= $this->element('modals/publicidadPrincipal') ?>
     <div class="header-notices">
         <div class="region">NORTE</div>
         <div class="region">CENTRO</div>
@@ -153,14 +117,16 @@
 
         <?php foreach ($articulos_general as $general) {?>
             <div class="item">
-      
-                <?php
-                if($general->has('imagenes')){
+            <?php
+                if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
-                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url.'/'.$imagen->filename);
-                }
-                
-                ?>
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename);
+
+                    } else {
+                        echo '<img src="assets/images/test.jpg" alt="">';
+                    }
+                    ?>
+
                 <div class="titulo">
                     <?=$general->titulo?>
                 </div>
@@ -173,28 +139,7 @@
 </html>
 <script>
 
-function socialModal(){
-    $(".socialmedia_modal").addClass('active');
-    $('html,body').css({
-                    overflow: 'hidden'
-                });
-    $(".heart").css({
-        "z-index": "2000"
-    })
-}
-function cerrar(){
 
-    $(".socialmedia_modal").removeClass('active');
-
-    $('html,body').css({
-                    overflow: 'auto'
-                });
-                $(".heart").css({
-        "z-index": ""
-    })
-
-
-}
 </script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/slick.min.js"></script>
