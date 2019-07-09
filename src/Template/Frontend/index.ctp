@@ -118,7 +118,7 @@
                     ?>
 
                 <div class="titulo">
-                    <a href="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>"
+                    <a href="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>">
                     <?=$general->titulo?>
                     </a>
                 </div>
