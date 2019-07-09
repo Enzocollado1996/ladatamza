@@ -65,7 +65,7 @@
             <!-- centro -->
             <div class="place centro">
                 <?php foreach ($articulos_centro as $noticia_centro): ?>
-                    <div class="shadownews center" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'verArticulo',$noticia_centro->slug]) ?>')">
+                    <div class="shadownews center" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_centro->slug]) ?>')">
 
                             <div class="date"><?=$noticia_centro->publicado->i18nFormat('dd/MM/YYYY')?> </div>
                             <div class="title"><?=$noticia_centro->titulo?></div>
@@ -80,19 +80,16 @@
             </div>
             <!-- sur -->
             <div class="place sur">
-
                 <?php foreach ($articulos_sur as $noticia_sur): ?>
-                    <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'verArticulo',$noticia_sur->slug]) ?>')">
+                    <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_sur->slug]) ?>')">
 
-                            <div class="date"><?=$noticia_sur->publicado->i18nFormat('dd/MM/YYYY')?></div>
-                            <div class="title"><?=$noticia_sur->titulo?></div>
-                            <div class="footer">
-                                <div class="district"><?=$noticia_sur->palabras_claves?> </div>
-
-                                <div class="clearfix"></div>
-                            </div>
+                        <div class="date"><?=$noticia_sur->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                        <div class="title"><?=$noticia_sur->titulo?></div>
+                        <div class="footer">
+                            <div class="district"><?=$noticia_sur->palabras_claves?> </div>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
-
                 <?php endforeach?>
              <div class="shadownews empty"></div>
 
@@ -106,11 +103,8 @@
         <div class="hrs"><span></span>20:00hrs. <br>Resumen</div>
         <div class="clock"></div>
     </div>
-
     <div class="divider"></div>
-
     <div id="owl-demo" class="owl-carousel owl-theme">
-
         <?php foreach ($articulos_general as $general) {?>
             <div class="item">
             <?php
@@ -124,7 +118,9 @@
                     ?>
 
                 <div class="titulo">
+                    <a href="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>"
                     <?=$general->titulo?>
+                    </a>
                 </div>
             </div>
         <?php }?>
