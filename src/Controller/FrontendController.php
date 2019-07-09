@@ -27,7 +27,7 @@ class FrontendController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
-        $this->Auth->allow(['index', 'verArticulo']);
+        $this->Auth->allow(['index', 'verArticulo', 'verSeccion']);
         $this->set('title_for_layout', "Frontend");
         $this->viewBuilder()->setLayout('frontend');
     }
@@ -129,21 +129,44 @@ class FrontendController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function verArticulo($slug = null)
-    {
+    {        
         $articulo = $this->Articulos->findBySlug($slug, [
             'contain' => ['Imagenes']
         ])->first();
-        $relacionados = $this->Articulos->find('all', [
+        //$this->Articulos->recursive = 1;
+        $articulos = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
-                ->where(['zona' => $articulo->zona, 'habilitado' => true])
+                //->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->where(['Articulos.zona' => $articulo->zona, 'Articulos.habilitado' => true, 'Articulos.id !=' =>$articulo->id])
                 ->toArray();
-        $this->set('articulo', $articulo);
-        $this->set('relacionados', $relacionados);
+        array_unshift($articulos,$articulo);
+        $this->set('articulos', $articulos);
     }
     
+    /**
+     * View method
+     *
+     * @param string|null $id Backend id.
+     * @return \Cake\Http\Response|void
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function verSeccion($seccion = null)
+    {
+        /*$articulo = $this->Articulos->findBySlug($slug, [
+            'contain' => ['Imagenes']
+        ])->first();*/
+        $articulos = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 100
+                        ])
+                //->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->where(['zona' => $seccion, 'habilitado' => true])
+                ->toArray();
+        $this->set('articulos', $articulos);
+        $this->render('ver-articulo');
+    }
     /**
      * View method
      *

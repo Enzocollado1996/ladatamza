@@ -1,4 +1,4 @@
 <?php
 echo '<pre>';
-var_dump($articulo);
+var_dump($articulos);
 ?>
