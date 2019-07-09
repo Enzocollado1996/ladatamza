@@ -139,6 +139,7 @@ class FrontendController extends AppController
                             'limit' => 100
                         ])
                 //->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->contain(['Imagenes'])
                 ->where(['Articulos.zona' => $articulo->zona, 'Articulos.habilitado' => true, 'Articulos.id !=' =>$articulo->id])
                 ->toArray();
         array_unshift($articulos,$articulo);
@@ -162,9 +163,13 @@ class FrontendController extends AppController
                             'limit' => 100
                         ])
                 //->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->contain(['Imagenes'])
                 ->where(['zona' => $seccion, 'habilitado' => true])
                 ->toArray();
         $this->set('articulos', $articulos);
+        //echo '<pre>';
+        //var_dump($articulos);
+        //exit;
         $this->render('ver-articulo');
     }
     /**

@@ -17,10 +17,13 @@
         <div class="weather">
             <div class="data">LA DATA MZA _</div>
             <div class="temp"></div>
-            <img src="" alt="" width="24">
-         
+            <img src="" alt="" width="24">         
         </div>
-        <div class="logo"> <img src="assets/images/logo.png" alt=""></div>
+        <div class="logo">
+            <a href="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'index']) ?>">
+                <img src="assets/images/logo.png" alt="">
+            </a>
+        </div>
         <div class="social">
             <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -38,22 +41,16 @@
         </div>
     </div>
 </head>
-
 <body>
-
-<?= $this->element('modals/publicidadPrincipal') ?>
-    <div class="header-notices">
-        <div class="region">NORTE</div>
-        <div class="region">CENTRO</div>
-        <div class="region">SUR</div>
-    </div>
+    <?= $this->element('modals/publicidadPrincipal') ?>
+    <?= $this->element('Frontend/menu') ?>
 
     <div class="containerScroller">
         <div class="slot_container">
             <!-- norte -->
             <div class="place norte">
                 <?php foreach ($articulos_norte as $noticia_norte): ?>
-                        <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'verArticulo',$noticia_norte->slug]) ?>')">
+                        <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_norte->slug]) ?>')">
 
                                 <div class="date"><?=$noticia_norte->publicado->i18nFormat('dd/MM/YYYY')?> </div>
                                 <div class="title"><?=$noticia_norte->titulo?></div>

@@ -1,13 +1,9 @@
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
-
     <?=$this->Html->css('style_detalle.css')?>
     <?=$this->element('modals/socials')?>
     <div class="menu">
@@ -15,9 +11,8 @@
             <div class="data">LA DATA MZA _</div>
             <div class="temp"></div>
             <img src="" alt="" width="24">
-
-        </div>
-        <div class="logo"> <img src="../../assets/images/logo.png" alt=""></div>
+        </div>        
+        <div class="logo"><img src="assets/images/logo.png" alt=""></div>
         <div class="social">
             <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -35,33 +30,40 @@
         </div>
     </div>
 </head>
-
 <body>
-
-
-    <div class="header-notices">
-        <div class="region">NORTE</div>
-        <div class="region">CENTRO</div>
-        <div class="region">SUR</div>
-    </div>
+    <?= $this->element('Frontend/menu') ?>
     <?php foreach ($articulos as $articulo): ?>
     <section>
-
-
-
         <div class="imagen">
-
-        <?=$articulo->publicado;?>
-
-        <?php echo '<img class="banner" src="../../assets/images/test.jpg" alt="">'; ?>
+        <?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?>
+        <?php
+        if(count($articulo->imagenes) > 0){
+            foreach($articulo->imagenes as $imagen){
+                if($imagen->tipo == 'NOTICIA')
+                {
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class'=> 'banner']);
+                }
+            }            
+        }
+        ?>
         </div>
-          <div class="info">
+        <div class="info">
             <div class="titulo"><?=$articulo->titulo;?></div>
             <div class="cuerpo">
                 <?php echo $articulo->texto; ?>
             </div>
         </div>
-        </section>
+        <?php
+        if(count($articulo->imagenes) > 0){
+            foreach($articulo->imagenes as $imagen){
+                if($imagen->tipo == 'PUBLICIDAD')
+                {
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class'=> 'banner']);
+                }
+            }            
+        }
+        ?>
+    </section>
     <?php endforeach;?>
 </body>
 </html>
