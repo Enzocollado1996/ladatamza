@@ -53,13 +53,12 @@
             <!-- norte -->
             <div class="place norte">
                 <?php foreach ($articulos_norte as $noticia_norte): ?>
-                        <div class="shadownews">
+                        <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'verArticulo',$noticia_norte->slug]) ?>')">
 
                                 <div class="date"><?=$noticia_norte->publicado->i18nFormat('dd/MM/YYYY')?> </div>
                                 <div class="title"><?=$noticia_norte->titulo?></div>
                                 <div class="footer">
                                     <div class="district"><?=$noticia_norte->palabras_claves?> </div>
-
                                     <div class="clearfix"></div>
                                 </div>
                         </div>
@@ -69,7 +68,7 @@
             <!-- centro -->
             <div class="place centro">
                 <?php foreach ($articulos_centro as $noticia_centro): ?>
-                    <div class="shadownews center">
+                    <div class="shadownews center" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'verArticulo',$noticia_centro->slug]) ?>')">
 
                             <div class="date"><?=$noticia_centro->publicado->i18nFormat('dd/MM/YYYY')?> </div>
                             <div class="title"><?=$noticia_centro->titulo?></div>
@@ -86,7 +85,7 @@
             <div class="place sur">
 
                 <?php foreach ($articulos_sur as $noticia_sur): ?>
-                    <div class="shadownews">
+                    <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'verArticulo',$noticia_sur->slug]) ?>')">
 
                             <div class="date"><?=$noticia_sur->publicado->i18nFormat('dd/MM/YYYY')?></div>
                             <div class="title"><?=$noticia_sur->titulo?></div>
@@ -139,7 +138,9 @@
 </html>
 <script>
 
-
+function gotodetail(url){
+location.href = url
+}
 </script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/slick.min.js"></script>
