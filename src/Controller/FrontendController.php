@@ -27,7 +27,7 @@ class FrontendController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
-        $this->Auth->allow(['index']);
+        $this->Auth->allow(['index', 'verArticulo']);
         $this->set('title_for_layout', "Frontend");
         $this->viewBuilder()->setLayout('frontend');
     }
@@ -133,8 +133,15 @@ class FrontendController extends AppController
         $articulo = $this->Articulos->findBySlug($slug, [
             'contain' => ['Imagenes']
         ])->first();
-
+        $relacionados = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 100
+                        ])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->where(['zona' => $articulo->zona, 'habilitado' => true])
+                ->toArray();
         $this->set('articulo', $articulo);
+        $this->set('relacionados', $relacionados);
     }
     
     /**
