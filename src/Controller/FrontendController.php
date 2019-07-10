@@ -28,10 +28,30 @@ class FrontendController extends AppController
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
         $this->Auth->allow(['index', 'verArticulo', 'verSeccion']);
-        $this->set('title_for_layout', "Frontend");
+        $this->set('title_for_layout', "Diario digital");
         $this->viewBuilder()->setLayout('frontend');
     }
     
+    private function insert($array, $index, $val) { //function decleration
+        $temp = array(); // this temp array will hold the value 
+        $size = count($array); //because I am going to use this more than one time
+        // Validation -- validate if index value is proper (you can omit this part)       
+            if (!is_int($index) || $index < 0 || $index > $size) {
+                echo "Error: Wrong index at Insert. Index: " . $index . " Current Size: " . $size;
+                echo "<br/>";
+                return false;
+            }    
+        //here is the actual insertion code
+        //slice part of the array from 0 to insertion index
+        $temp = array_slice($array, 0, $index);//e.g index=5, then slice will result elements [0-4]
+        //add the value at the end of the temp array// at the insertion index e.g 5
+        array_push($temp, $val);
+        //reconnect the remaining part of the array to the current temp
+        $temp = array_merge($temp, array_slice($array, $index, $size)); 
+        $array = $temp;//swap// no need for this if you pass the array cuz you can simply return $temp, but, if u r using a class array for example, this is useful. 
+
+         return $array; // you can return $temp instead if you don't use class array
+    }
     /**
      * Index method
      *
@@ -47,6 +67,19 @@ class FrontendController extends AppController
                 ->where(['zona' => 'CENTRO', 'habilitado' => true])
                 ->toArray();
         
+        $publicidades_centro = $this->Publicidades->find('all',[
+                'order' => ['orden' => 'asc'],
+                'limit' => 100
+                ])
+                ->contain(['Imagenes'])
+                ->where(['zona' => 'CENTRO', 'habilitado' => true])
+                ->toArray();
+        
+        //Completo los articulos con publicidades
+        foreach($publicidades_centro as $publicidad_centro){
+            $articulos_centro = $this->insert($articulos_centro, $publicidad_centro->orden - 1, $publicidad_centro);            
+        }
+        
         $articulos_norte = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
@@ -55,6 +88,19 @@ class FrontendController extends AppController
                 ->where(['zona' => 'NORTE', 'habilitado' => true])
                 ->toArray();
         
+        $publicidades_norte = $this->Publicidades->find('all',[
+                'order' => ['orden' => 'asc'],
+                'limit' => 100
+                ])
+                ->contain(['Imagenes'])
+                ->where(['zona' => 'NORTE', 'habilitado' => true])
+                ->toArray();
+        
+        //Completo los articulos con publicidades
+        foreach($publicidades_norte as $publicidad_norte){
+            $articulos_norte = $this->insert($articulos_norte, $publicidad_norte->orden - 1, $publicidad_norte);            
+        }
+        
         $articulos_sur = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
@@ -62,6 +108,19 @@ class FrontendController extends AppController
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'SUR', 'habilitado' => true])
                 ->toArray();
+        
+        $publicidades_sur = $this->Publicidades->find('all',[
+                'order' => ['orden' => 'asc'],
+                'limit' => 100
+                ])
+                ->contain(['Imagenes'])
+                ->where(['zona' => 'SUR', 'habilitado' => true])
+                ->toArray();
+        
+        //Completo los articulos con publicidades
+        foreach($publicidades_sur as $publicidad_sur){
+            $articulos_sur = $this->insert($articulos_sur, $publicidad_sur->orden - 1, $publicidad_sur);            
+        }
         
         $articulos_general = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
