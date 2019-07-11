@@ -52,6 +52,7 @@ class FrontendController extends AppController
 
          return $array; // you can return $temp instead if you don't use class array
     }
+    
     /**
      * Index method
      *
@@ -175,9 +176,7 @@ class FrontendController extends AppController
         //exit;
         
         $this->set(compact('articulos_centro','articulos_sur', 
-                'articulos_norte','articulos_general', 
-                'publicidad_centro', 'publicidad_inicial', 
-                'publicidad_norte', 'publicidad_sur'));
+                'articulos_norte','articulos_general', 'publicidad_inicial'));
     }
     
     /**

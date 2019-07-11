@@ -50,23 +50,28 @@
             <!-- norte -->
             <div class="place norte">
                 <?php foreach ($articulos_norte as $noticia_norte): ?>
-                        <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_norte->slug]) ?>')">
-
-                                <div class="date"><?=$noticia_norte->publicado->i18nFormat('dd/MM/YYYY')?> </div>
-                                <div class="title"><?=$noticia_norte->titulo?></div>
-                                <div class="footer">
-                                    <div class="district"><?=$noticia_norte->palabras_claves?> </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                        </div>
+                    <?php if(isset($noticia_norte->titulo)):?>
+                    <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_norte->slug]) ?>')">
+                            <div class="date"><?=$noticia_norte->publicado->i18nFormat('dd/MM/YYYY')?> </div>
+                            <div class="title"><?=$noticia_norte->titulo?></div>
+                            <div class="footer">
+                                <div class="district"><?=$noticia_norte->palabras_claves?> </div>
+                                <div class="clearfix"></div>
+                            </div>
+                    </div>
+                    <?php else: ?>
+                    <div class="shadownews empty">
+                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_norte->imagen->file_url . '/' . $noticia_norte->imagen->filename);?>
+                    </div>
+                    <?php endif; ?>
                 <?php endforeach;?>
                 <div class="shadownews empty"></div>
             </div>
             <!-- centro -->
             <div class="place centro">
                 <?php foreach ($articulos_centro as $noticia_centro): ?>
+                    <?php if(isset($noticia_centro->titulo)):?>
                     <div class="shadownews center" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_centro->slug]) ?>')">
-
                             <div class="date"><?=$noticia_centro->publicado->i18nFormat('dd/MM/YYYY')?> </div>
                             <div class="title"><?=$noticia_centro->titulo?></div>
                             <div class="footer">
@@ -75,12 +80,18 @@
                                 <div class="clearfix"></div>
                             </div>
                     </div>
+                    <?php else: ?>
+                    <div class="shadownews empty">
+                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_centro->imagen->file_url . '/' . $noticia_centro->imagen->filename);?>
+                    </div>
+                    <?php endif; ?>
                 <?php endforeach?>
                 <div class="shadownews empty"></div>
             </div>
             <!-- sur -->
             <div class="place sur">
                 <?php foreach ($articulos_sur as $noticia_sur): ?>
+                <?php if(isset($noticia_sur->titulo)):?>
                     <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_sur->slug]) ?>')">
 
                         <div class="date"><?=$noticia_sur->publicado->i18nFormat('dd/MM/YYYY')?></div>
@@ -90,11 +101,14 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+                    <?php else: ?>
+                    <div class="shadownews empty">
+                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename);?>
+                    </div>
+                    <?php endif; ?>
                 <?php endforeach?>
              <div class="shadownews empty"></div>
-
             </div>
-
         </div>
         <div class="overlay"></div>
     </div>
