@@ -61,7 +61,7 @@
                     </div>
                     <?php else: ?>
                     <div class="shadownews empty">
-                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_norte->imagen->file_url . '/' . $noticia_norte->imagen->filename);?>
+                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_norte->imagen->file_url . '/' . $noticia_norte->imagen->filename, ['style'=> 'width:100%']);?>
                     </div>
                     <?php endif; ?>
                 <?php endforeach;?>
@@ -82,7 +82,7 @@
                     </div>
                     <?php else: ?>
                     <div class="shadownews empty">
-                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_centro->imagen->file_url . '/' . $noticia_centro->imagen->filename);?>
+                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_centro->imagen->file_url . '/' . $noticia_centro->imagen->filename, ['style'=> 'width:100%']);?>
                     </div>
                     <?php endif; ?>
                 <?php endforeach?>
@@ -103,7 +103,7 @@
                     </div>
                     <?php else: ?>
                     <div class="shadownews empty">
-                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename);?>
+                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename, ['style'=> 'width:100%']);?>
                     </div>
                     <?php endif; ?>
                 <?php endforeach?>

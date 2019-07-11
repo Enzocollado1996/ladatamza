@@ -19,13 +19,13 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('publicado') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
                 <!--<th scope="col"><?= $this->Paginator->sort('visitas') ?></th>-->
                 <th scope="col"><?= $this->Paginator->sort('habilitado', 'Visible') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('zona') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('palabras_claves') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('publicado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('creado') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
@@ -35,12 +35,12 @@
                 <td><?= $this->Number->format($articulo->id) ?></td>
                 <td><?= h($articulo->titulo) ?></td>
                 <td><?= h($articulo->publicado) ?></td>
-                <td><?= h($articulo->modificado) ?></td>
                 <!--<td><?= $this->Number->format($articulo->visitas) ?></td>-->
-                <td><?= h($articulo->habilitado)  ? 'Si' : 'No' ?></td>
                 <td><?= h($articulo->zona) ?></td>
                 <td><?= h($articulo->palabras_claves) ?></td>
+                <td><?= h($articulo->habilitado)  ? 'Si' : 'No' ?></td>
                 <td><?= h($articulo->creado) ?></td>
+                <td><?= h($articulo->modificado) ?></td>
                 <td class="actions">
                     <!--<?= $this->Html->link('<span class="fa fa-eye"></span>', ['action' => 'view', $articulo->id], ['escape' => false, 'title' => __('Ver'), 'class' => 'btn btn-info btn-xs']) ?>-->
                     <?= $this->Html->link('<span class="fa fa-pencil"></span>', ['action' => 'edit', $articulo->id], ['escape' => false, 'title' => __('Editar'), 'class' => 'btn btn-primary btn-xs']) ?>
