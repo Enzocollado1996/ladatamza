@@ -73,12 +73,14 @@ class FrontendController extends AppController
                 'limit' => 100
                 ])
                 ->contain(['Imagenes'])
-                ->where(['zona' => 'CENTRO', 'habilitado' => true])
+                ->where(['Publicidades.zona' => 'CENTRO', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
                 ->toArray();
         
         //Completo los articulos con publicidades
-        foreach($publicidades_centro as $publicidad_centro){
-            $articulos_centro = $this->insert($articulos_centro, $publicidad_centro->orden - 1, $publicidad_centro);            
+        if(count($articulos_centro) > 0){
+            foreach($publicidades_centro as $publicidad_centro){
+                $articulos_centro = $this->insert($articulos_centro, $publicidad_centro->orden - 1, $publicidad_centro);            
+            }
         }
         
         $articulos_norte = $this->Articulos->find('all', [
@@ -94,12 +96,14 @@ class FrontendController extends AppController
                 'limit' => 100
                 ])
                 ->contain(['Imagenes'])
-                ->where(['zona' => 'NORTE', 'habilitado' => true])
+                ->where(['Publicidades.zona' => 'NORTE', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
                 ->toArray();
         
         //Completo los articulos con publicidades
-        foreach($publicidades_norte as $publicidad_norte){
-            $articulos_norte = $this->insert($articulos_norte, $publicidad_norte->orden - 1, $publicidad_norte);            
+        if(count($articulos_norte) > 0){
+            foreach($publicidades_norte as $publicidad_norte){
+                $articulos_norte = $this->insert($articulos_norte, $publicidad_norte->orden - 1, $publicidad_norte);            
+            }
         }
         
         $articulos_sur = $this->Articulos->find('all', [
@@ -115,13 +119,15 @@ class FrontendController extends AppController
                 'limit' => 100
                 ])
                 ->contain(['Imagenes'])
-                ->where(['zona' => 'SUR', 'habilitado' => true])
+                ->where(['Publicidades.zona' => 'SUR', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
                 ->toArray();
-        
+
         //Completo los articulos con publicidades
-        foreach($publicidades_sur as $publicidad_sur){
-            $articulos_sur = $this->insert($articulos_sur, $publicidad_sur->orden - 1, $publicidad_sur);            
-        }
+        if(count($articulos_sur) > 0){
+           foreach($publicidades_sur as $publicidad_sur){
+                $articulos_sur = $this->insert($articulos_sur, $publicidad_sur->orden - 1, $publicidad_sur);            
+            } 
+        }        
         
         $articulos_general = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
@@ -137,33 +143,6 @@ class FrontendController extends AppController
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
                 ->first();
         
-        $publicidad_centro = $this->Publicidades->find('all', [
-                            'order' => ['orden' => 'asc'],
-                            'limit' => 10
-                        ])
-                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
-                ->contain(['Imagenes'])
-                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'CENTRO'])
-                ->toArray();
-        
-        $publicidad_norte = $this->Publicidades->find('all', [
-                            'order' => ['orden' => 'asc'],
-                            'limit' => 10
-                        ])
-                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
-                ->contain(['Imagenes'])
-                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'NORTE'])
-                ->toArray();
-        
-        $publicidad_sur = $this->Publicidades->find('all', [
-                            'order' => ['orden' => 'asc'],
-                            'limit' => 10
-                        ])
-                ->select(['Publicidades.id', 'Publicidades.nombre', 'Imagenes.id', 'Imagenes.filename', 'Imagenes.file_url'])
-                ->contain(['Imagenes'])
-                ->where(['Publicidades.tipo' => 'RULETA', 'Publicidades.habilitado' => true, 'zona' => 'SUR'])
-                ->toArray();
-        
         //echo '<pre>';
         //var_dump($articulos_centro);
         //var_dump($articulos_norte);
@@ -175,8 +154,8 @@ class FrontendController extends AppController
         //var_dump($publicidad_sur);
         //exit;
         
-        $this->set(compact('articulos_centro','articulos_sur', 
-                'articulos_norte','articulos_general', 'publicidad_inicial'));
+        $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
+                'articulos_general', 'publicidad_inicial'));
     }
     
     /**
