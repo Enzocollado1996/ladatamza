@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="assets/owl.theme.default.css">
    
     <?= $this->element('modals/socials') ?>
- 
+    
     <div class="menu">
         <div class="weather">
             <div class="data">LA DATA MZA _</div>
@@ -138,5 +138,6 @@ location.href = url
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/slick.min.js"></script>
 <script src="assets/js/flipclock.min.js"></script>
-<script src="assets/js/custom.js"></script>
+<script src="assets/js/functions.js"></script>
+<script src="assets/js/index.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
