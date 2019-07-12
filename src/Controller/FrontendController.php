@@ -27,7 +27,7 @@ class FrontendController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
-        $this->Auth->allow(['index', 'verArticulo', 'verSeccion']);
+        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota']);
         $this->set('title_for_layout', "Diario digital");
         $this->viewBuilder()->setLayout('frontend');
     }
@@ -207,6 +207,30 @@ class FrontendController extends AppController
         //echo '<pre>';
         //var_dump($articulos);
         //exit;
+        $this->render('ver-articulo');
+    }
+    
+    public function buscarNota($query = null){
+        $articulos = $this->Articulos->find('all', [
+                            'order' => ['publicado' => 'asc'],
+                            'limit' => 100
+                        ])
+                ->select([
+                    'Articulos.id', 
+                    'Articulos.titulo', 
+                    'Articulos.descripcion',
+                    'Articulos.texto',
+                    'Articulos.publicado',
+                    'Articulos.zona',
+                    'Articulos.palabras_claves',
+                    'Articulos.slug'])
+                ->contain(['Imagenes'])
+                ->where(['Articulos.titulo LIKE' => '%'.$query.'%'])
+                ->orWhere(['Articulos.descripcion LIKE' => '%'.$query.'%'])
+                ->orWhere(['Articulos.palabras_claves LIKE' => '%'.$query.'%'])
+                ->toArray();
+
+        $this->set('articulos', $articulos);
         $this->render('ver-articulo');
     }
     /**
