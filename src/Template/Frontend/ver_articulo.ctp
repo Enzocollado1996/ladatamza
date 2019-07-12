@@ -10,23 +10,21 @@
 
         <div class="content-sm">
             <div class="social-name">
-              <span><img src="../../assets/images/fb.png" alt="">
+              <span><?php echo $this->Html->image("../assets/images/fb.png");?>
               ladatamendoza</span>
               <div class="linea"></div>
             </div>
 
 
             <div class="social-name">
-              <span><img src="../../assets/images/insta.png" alt="">
+              <span><?php echo $this->Html->image("../assets/images/insta.png");?>
               ladatamendoza</span>
               <div class="linea"></div>
             </div>
             <div class="social-name">
-              <span><img src="../../assets/images/tw.png" alt="">
+              <span><?php echo $this->Html->image("../assets/images/tw.png");?>
               ladatamendoza</span>
-
             </div>
-
         </div>
         <svg  onclick="cerrar();"class="close" width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
         <g>
@@ -42,7 +40,7 @@
             <img src="" alt="" width="24">
         </div>
         <div class="logo">   <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>">
-                <img src="../../assets/images/logo.png" alt="">
+                <?php echo $this->Html->image("../assets/images/logo.png");?>
             </a></div>
         <div class="social">
             <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -69,16 +67,16 @@
         <div class="imagen">
         <?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?>
         <?php
-if (count($articulo->imagenes) > 0) {
-    foreach ($articulo->imagenes as $imagen) {
-        if ($imagen->tipo == 'NOTICIA') {
-            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+        if (count($articulo->imagenes) > 0) {
+            foreach ($articulo->imagenes as $imagen) {
+                if ($imagen->tipo == 'NOTICIA') {
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                }
+            }
+        } else {
+            echo '<div class="banner-empty"></div>';
         }
-    }
-} else {
-    echo '<div class="banner-empty"></div>';
-}
-?>
+        ?>
         </div>
         <div class="info">
             <div class="titulo"><?=$articulo->titulo;?></div>
@@ -87,21 +85,20 @@ if (count($articulo->imagenes) > 0) {
             </div>
         </div>
         <?php
-if (count($articulo->imagenes) > 0) {
-    foreach ($articulo->imagenes as $imagen) {
-        if ($imagen->tipo == 'PUBLICIDAD') {
-            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+        if (count($articulo->imagenes) > 0) {
+            foreach ($articulo->imagenes as $imagen) {
+                if ($imagen->tipo == 'PUBLICIDAD') {
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                }
+            }
         }
-    }
-}
-?>
+        ?>
     </section>
     <?php endforeach;?>
 </body>
 </html>
-<script src="../../assets/js/jquery.min.js"></script>
-<script src="../../assets/js/functions.js"></script>
-
+<?= $this->Html->script('../assets/js/jquery.min'); ?>
+<?= $this->Html->script('../assets/js/functions'); ?>
 
 <script>
 
