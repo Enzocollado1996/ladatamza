@@ -98,7 +98,7 @@ body {
 }
 .container {
     position: relative;
-
+    overflow-x: hidden;
     /* margin-left: 5px;
     margin-right: 5px; */
 }
@@ -208,14 +208,13 @@ body {
     line-height: 25px;
     padding: 5px;
 }
-#owl-demo .item {
-    height: 250px;
-}
+
 #owl-demo .item img {
     display: block;
     width: 100%;
     height: auto;
     position: relative;
+    max-height: 200px;
 }
 
 .socialmedia_modal {

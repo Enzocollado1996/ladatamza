@@ -4,25 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
- 
-    <?= $this->Html->css('../assets/style_detalle.css') ?>
+
+    <?=$this->Html->css('../assets/style_detalle.css')?>
     <div class="socialmedia_modal">
 
         <div class="content-sm">
             <div class="social-name">
-              <span><?php echo $this->Html->image("../assets/images/fb.png");?>
+              <span><?php echo $this->Html->image("../assets/images/fb.png"); ?>
               ladatamendoza</span>
               <div class="linea"></div>
             </div>
 
 
             <div class="social-name">
-              <span><?php echo $this->Html->image("../assets/images/insta.png");?>
+              <span><?php echo $this->Html->image("../assets/images/insta.png"); ?>
               ladatamendoza</span>
               <div class="linea"></div>
             </div>
             <div class="social-name">
-              <span><?php echo $this->Html->image("../assets/images/tw.png");?>
+              <span><?php echo $this->Html->image("../assets/images/tw.png"); ?>
               ladatamendoza</span>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <img src="" alt="" width="24">
         </div>
         <div class="logo">   <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>">
-                <?php echo $this->Html->image("../assets/images/logo.png");?>
+                <?php echo $this->Html->image("../assets/images/logo.png"); ?>
             </a></div>
         <div class="social">
             <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -65,47 +65,58 @@
     <?php foreach ($articulos as $articulo): ?>
     <section>
         <div class="imagen">
-        <?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?>
+        <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
         <?php
-        if (count($articulo->imagenes) > 0) {
-            foreach ($articulo->imagenes as $imagen) {
-                if ($imagen->tipo == 'NOTICIA') {
-                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                }
-            }
-        } else {
-            echo '<div class="banner-empty"></div>';
+if (count($articulo->imagenes) > 0) {
+    foreach ($articulo->imagenes as $imagen) {
+        if ($imagen->tipo == 'NOTICIA') {
+            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
         }
-        ?>
+    }
+} else {
+    echo '<div class="banner-empty"></div>';
+}
+?>
         </div>
         <div class="info">
             <div class="titulo"><?=$articulo->titulo;?></div>
+            <div class="share">
+                <div class="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $noticia_centro->slug])?>', '', '<?=$$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
+                <?php echo $this->Html->image("../assets/images/back.png", ['class' => 'back']) ?>
+
+                </div>
             <div class="cuerpo">
+
                 <?php echo $articulo->texto; ?>
             </div>
         </div>
         <?php
-        if (count($articulo->imagenes) > 0) {
-            foreach ($articulo->imagenes as $imagen) {
-                if ($imagen->tipo == 'PUBLICIDAD') {
-                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                }
-            }
+if (count($articulo->imagenes) > 0) {
+    foreach ($articulo->imagenes as $imagen) {
+        if ($imagen->tipo == 'PUBLICIDAD') {
+            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
         }
-        ?>
+    }
+}
+?>
     </section>
     <?php endforeach;?>
 </body>
 </html>
-<?= $this->Html->script('../assets/js/jquery.min'); ?>
-<?= $this->Html->script('../assets/js/functions'); ?>
+<?=$this->Html->script('../assets/js/jquery.min');?>
+<?=$this->Html->script('../assets/js/functions');?>
 
 <script>
 
 
 $(document).ready(function() {
 
+$('.back').on('click',()=>{
+    location.href = '/'
+})
+$('.share_url').on('click',()=>{
 
+})
 var watchID = navigator.geolocation.getCurrentPosition(function(position) {
   positions(position.coords.latitude, position.coords.longitude);
 });

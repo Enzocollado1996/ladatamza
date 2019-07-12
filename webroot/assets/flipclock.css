@@ -59,7 +59,7 @@
 .flip-clock-wrapper {
   text-align: center;
   position: relative;
-  width: 250px;
+  width: 220px;
   /* margin: 1em; */
 }
 
@@ -224,7 +224,7 @@
 }
 
 .flip-clock-divider {
-  float: left;
+  float:left;
   display: inline-block;
   position: relative;
   width: 20px;

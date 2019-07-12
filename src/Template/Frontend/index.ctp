@@ -79,12 +79,12 @@
                             </div>
                     </div>
                     <?php else: ?>
-                    <div class="shadownews empty">
+                    <div class="shadownews center empty">
                         <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_centro->imagen->file_url . '/' . $noticia_centro->imagen->filename, ['style'=> 'width:100%']);?>
                     </div>
                     <?php endif; ?>
                 <?php endforeach?>
-                <div class="shadownews empty"></div>
+                <div class="shadownews center empty"></div>
             </div>
             <!-- sur -->
             <div class="place sur">
@@ -101,7 +101,7 @@
                     </div>
                     <?php else: ?>
                     <div class="shadownews empty">
-                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename, ['style'=> 'width:100%']);?>
+                        <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename, ['style'=> 'width:100%']);?>
                     </div>
                     <?php endif; ?>
                 <?php endforeach?>
