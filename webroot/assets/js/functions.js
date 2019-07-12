@@ -75,8 +75,8 @@ function shareNew(url, text, title) {
     .share({
       title: title,
       text: "Ladatamendoza",
-      url: url,
-      image: 'https://translate.google.com/about/images/screen-video-type.png'
+      url: url
+     
     })
     .then(() => {
       console.log("ok");
