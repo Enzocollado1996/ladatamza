@@ -72,9 +72,9 @@ function goNews(url){
 function shareNew(url, text, title) {
   navigator
     .share({
-      title: "hola",
-      text: "compartir",
-      url: "https://www.google.com.ar"
+      title: title,
+      text: "Ladatamendoza",
+      url: url
     })
     .then(() => {
       console.log("ok");
