@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
     <title>Document</title>
 
     <?=$this->Html->css('../assets/style_detalle.css')?>
@@ -81,7 +82,7 @@ if (count($articulo->imagenes) > 0) {
         <div class="info">
             <div class="titulo"><?=$articulo->titulo;?></div>
             <div class="share">
-                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug],true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
+                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
                 <?php echo $this->Html->image("../assets/images/back.png", ['class' => 'back']) ?>
 
                 </div>
@@ -114,9 +115,7 @@ $(document).ready(function() {
 $('.back').on('click',()=>{
     location.href = '/'
 })
-$('.share_url').on('click',()=>{
 
-})
 var watchID = navigator.geolocation.getCurrentPosition(function(position) {
   positions(position.coords.latitude, position.coords.longitude);
 });

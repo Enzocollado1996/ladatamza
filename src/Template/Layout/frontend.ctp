@@ -13,7 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'Ladatamdza';
+$cakeDescription = 'La data mza - Diario';
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,8 +25,8 @@ $cakeDescription = 'Ladatamdza';
         );?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= $cakeDescription ?>
+ 
     </title>
     <?= $this->fetch('meta') ?>
     <?= $this->Html->css('../assets/style.css') ?>
