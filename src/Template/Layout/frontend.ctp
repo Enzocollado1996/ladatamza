@@ -21,7 +21,6 @@ $cakeDescription = 'Ladatamdza';
     <?= $this->Html->charset() ?>
     <?= $this->Html->meta(
             'favicon.png',
-            
             ['type' => 'png']
         );?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,10 +28,9 @@ $cakeDescription = 'Ladatamdza';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-  
-
     <?= $this->fetch('meta') ?>
-
+    <?= $this->Html->css('../assets/style.css') ?>
+    
 </head>
 <body>
     <div class="container clearfix">

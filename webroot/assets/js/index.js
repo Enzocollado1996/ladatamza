@@ -1,6 +1,8 @@
 $(document).ready(function() {
     setTimeout(()=>{
+      if(!sessionStorage.getItem('mp'))
       $(".publicidad").show();
+      sessionStorage.setItem('mp',true)
       $('html,body').css({
         overflow: 'hidden'
     });
@@ -25,7 +27,7 @@ $(document).ready(function() {
     let sur = $(".slot_container .sur");
     let quantity_sur = sur.find(".shadownews").get().length;
     var heightPlace_sur = sur.find(".shadownews").height();
-    var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 1.5);
+    var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 2.2);
     sur.on("touchmove", function() {
        console.log(
         "%c vport  = " + (heightPlaceTotal_sur),
@@ -43,7 +45,7 @@ $(document).ready(function() {
     let norte = $(".slot_container .norte");
     let quantity_norte = norte.find(".shadownews").get().length;
     var heightPlace_norte = norte.find(".shadownews").height();
-    var heightPlaceTotal_norte = heightPlace_norte * (quantity_norte - 1.5);
+    var heightPlaceTotal_norte = heightPlace_norte * (quantity_norte - 2.2);
     norte.on("touchmove", function() {
      
   
@@ -59,7 +61,7 @@ $(document).ready(function() {
     let centro = $(".slot_container .centro");
     let quantity_centro = centro.find(".shadownews").get().length;
     var heightPlace_centro = centro.find(".shadownews").height();
-    var heightPlaceTotal_centro = heightPlace_centro * (quantity_centro - 1.5);
+    var heightPlaceTotal_centro = heightPlace_centro * (quantity_centro - 2.2);
     centro.on("touchmove", function() {
      
       let scroll = $(this).scrollTop();

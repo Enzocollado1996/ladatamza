@@ -6,6 +6,9 @@
     src: url(./fonts/ARENAC.TTF);
     font-family: "arena";
 }
+body {
+    margin: 5px;
+}
 .divider {
     margin: 4px;
     display: block;
@@ -54,7 +57,7 @@
 .header-notices {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 3px 0;
+
     background-color: #000000;
 }
 .header-notices .region {
@@ -62,6 +65,7 @@
     text-align: center;
     position: relative;
     color: white;
+    padding: 5px;
     font-weight: 600;
 }
 .container_clock {
@@ -94,6 +98,7 @@
 }
 .container {
     position: relative;
+
     /* margin-left: 5px;
     margin-right: 5px; */
 }
@@ -144,7 +149,7 @@
     background-color: white;
 }
 .shadownews.empty {
-    min-height: calc(30% - 8px) !important;
+    min-height: calc(30% - 30px) !important;
 }
 .shadownews.center {
     border-right: 2px #777676 solid;
@@ -290,4 +295,9 @@
     top: 10px;
     cursor: pointer;
     width: 24px;
+}
+@media (max-width: 320px) {
+    .container_clock .hrs {
+        font-size: 12px;
+    }
 }
