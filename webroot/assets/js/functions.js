@@ -70,13 +70,13 @@ function goNews(url){
   location.href= url
 }
 function shareNew(url, text, title) {
-  alert("asd")
+  
   navigator
     .share({
       title: title,
       text: "Ladatamendoza",
       url: url,
-      image: '../assets/images/share.png'
+      image: 'https://translate.google.com/about/images/screen-video-type.png'
     })
     .then(() => {
       console.log("ok");
