@@ -167,10 +167,8 @@ class FrontendController extends AppController
      */
     public function verArticulo($slug = null)
     {        
-        $articulo = $this->Articulos->findBySlug($slug, [
-            'contain' => ['Imagenes']
-        ])->first();
-        //$this->Articulos->recursive = 1;
+        $articulo = $this->Articulos->findBySlug($slug)->contain(['Imagenes'])->first();
+
         $articulos = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
