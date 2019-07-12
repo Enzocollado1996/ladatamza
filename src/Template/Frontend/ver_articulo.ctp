@@ -81,7 +81,7 @@ if (count($articulo->imagenes) > 0) {
         <div class="info">
             <div class="titulo"><?=$articulo->titulo;?></div>
             <div class="share">
-                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $noticia_centro->slug])?>', '', '<?=$$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
+                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug])?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
                 <?php echo $this->Html->image("../assets/images/back.png", ['class' => 'back']) ?>
 
                 </div>
