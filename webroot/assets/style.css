@@ -32,7 +32,7 @@ body {
     z-index: 100;
     background: #feee00;
     font-size: 12px;
-    padding: 0 5px;
+    padding: 2px 5px;
 }
 .weather .temp {
     grid-area: "A";
@@ -43,10 +43,12 @@ body {
     margin-left: 5px;
 }
 .menu .logo {
-    padding: 3px;
+    /* padding: 3px; */
+    display: flex;
+    justify-content: center;
 }
 .menu .logo img {
-    width: 100px;
+    width: 70px;
 }
 .menu .social {
     color: #feee00;
@@ -74,6 +76,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 .container_clock .hrs {
     font-family: "ptsans";
@@ -312,20 +315,28 @@ body {
     color: #feee00;
 }
 /* publicidad */
-.publicidad {
+.publicidad,
+.video_publicitario {
     position: fixed;
     z-index: 999;
     top: 0;
     border: 5px solid #feee00;
+    background: #000000;
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     left: 0;
     overflow: hidden;
     display: none;
 }
-.publicidad img {
+.publicidad a {
     width: 100%;
     height: 100%;
+}
+.publicidad a img {
+    width: 100%;
+}
+.publicidad img {
+    width: 100%;
 }
 
 .publicidad .cerrarPpal {
@@ -334,6 +345,15 @@ body {
     top: 10px;
     cursor: pointer;
     width: 24px;
+}
+
+.oVideo{
+    background-color: #ff000000;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+
 }
 /* responsive */
 

@@ -11,13 +11,14 @@
    
     <?= $this->element('modals/socials') ?>
     <?= $this->element('modals/search') ?>
+  
     <?= $this->element('Frontend/header') ?>
     
 </head>
 <body>
     <?= $this->element('modals/publicidadPrincipal') ?>
     <?= $this->element('Frontend/menu') ?>
-
+    <?= $this->element('modals/publicidadBoton') ?>
     <div class="containerScroller">
         <div class="slot_container">
             <!-- norte -->
@@ -89,6 +90,7 @@
     <div class="container_clock">
         <div class="hrs"><span></span>20:00hrs. <br>Resumen</div>
         <div class="clock"></div>
+        <div class="oVideo" onclick="openVideo()"></div>
     </div>
     <div class="divider"></div>
     <div id="owl-demo" class="owl-carousel owl-theme">

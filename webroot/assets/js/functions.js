@@ -38,16 +38,16 @@ function validateTime() {
 }
 
 function socialModal(filter) {
-
     if (filter) {
         $(".buscar_modal").addClass("active");
         $(".lupa").css({
             "z-index": "2000",
-            "color":"white"
+            color: "white"
         });
-        $(".close").find('g path').css({'fill':'#fff'})
-    }
-     else {
+        $(".close")
+            .find("g path")
+            .css({ fill: "#fff" });
+    } else {
         $(".socialmedia_modal").addClass("active");
 
         $(".heart").css({
@@ -64,11 +64,11 @@ function cerrar(filter) {
         $(".buscar_modal").removeClass("active");
         $(".lupa").css({
             "z-index": "",
-            "color":"#feee00"
-            
-        })
-        $(".close").find('g path').css({'fill':'#feee00'})
-      
+            color: "#feee00"
+        });
+        $(".close")
+            .find("g path")
+            .css({ fill: "#feee00" });
     } else {
         $(".socialmedia_modal").removeClass("active");
         $(".heart").css({
@@ -99,4 +99,30 @@ function shareNew(url, text, title) {
         .then(() => {
             console.log("ok");
         });
+}
+
+function openVideo() {
+    let url = "/FrontEnd/buscar_video";
+    // /FrontEnd/buscar_video
+
+    $.ajax({
+        url: url
+    }).done(
+        data => {
+            urlPrincipal = `${location.host}/files/videos/${data.url}`;
+            // $("#video_target").html(
+            //     '<source src="' + urlPrincipal + '" type="video/mp4"></source>'
+            // );
+           // $("#video_target")[0].load();
+            // $("#video_target")[0].play();
+
+            $(".video_publicitario").show();
+            $("html,body").css({
+                overflow: "auto"
+            });
+        },
+        err => {
+            console.log(err);
+        }
+    );
 }

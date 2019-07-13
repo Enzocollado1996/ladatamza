@@ -31,7 +31,7 @@ $cakeDescription = 'La data mza - Diario';
     </title>
     <?= $this->fetch('meta') ?>
     <?= $this->Html->css('../assets/style.css') ?>
-    
+    <?= $this->HTml->css('../assets/normalize.css') ?>
 </head>
 <body>
     <div class="container clearfix">
