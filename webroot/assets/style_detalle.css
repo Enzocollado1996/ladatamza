@@ -1,14 +1,18 @@
 @font-face {
-    src: url(../assets/fonts/PTSans.ttc);
+    src: url(./fonts/PTSans-Regular.ttf);
     font-family: "ptsans";
 }
 @font-face {
     src: url(../assets/fonts/fonts/ARENAC.TTF);
     font-family: "arena";
 }
+body {
+    overflow: auto;
+}
 section {
     display: block;
     font-family: "ptsans";
+    position: relative;
 }
 section .banner {
     width: 100%;
@@ -41,7 +45,7 @@ section .info .titulo {
 section .info .cuerpo {
     color: #444242;
     font-size: 13px;
-    padding-left:5px;
+    padding-left: 5px;
     padding-right: 40px;
 }
 
@@ -56,4 +60,54 @@ section .info .share {
     width: 35px;
     right: 0;
     align-items: center;
+}
+.notFound {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: ptsans;
+    color: #feee00;
+}
+
+.scroller {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+.scroller img {
+    animation: 1s fadeOutDown infinite;
+}
+
+.scroller_back {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+.scroller_back img {
+    animation: .7s fadeInRight infinite;
+}
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }

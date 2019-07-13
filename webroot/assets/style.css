@@ -1,13 +1,14 @@
 @font-face {
-    src: url(./fonts/PTSans.ttc);
+    src: url(./fonts/PTSans-Regular.ttf);
     font-family: "ptsans";
 }
 @font-face {
-    src: url(./fonts/ARENAC.TTF);
+    src: url(./fonts/PTSans-Regular.ttf);
     font-family: "arena";
 }
 body {
     margin: 5px;
+    overflow: hidden;
 }
 .divider {
     margin: 4px;
@@ -88,16 +89,16 @@ body {
     border-radius: 50%;
     margin: 5px;
 }
-
+/* tombola */
 .slot_container {
     font-family: "ptsans";
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    height: 250px;
+    height: 200px;
     position: relative;
 }
 .container {
-    position: relative;
+    /* position: relative; */
     overflow-x: hidden;
     /* margin-left: 5px;
     margin-right: 5px; */
@@ -109,7 +110,7 @@ body {
     background: linear-gradient(to top, #868484, transparent);
     position: absolute;
     width: 100%;
-    height: 100px;
+    height: 50px;
     bottom: 0;
     z-index: 100;
 }
@@ -217,7 +218,8 @@ body {
     max-height: 200px;
 }
 
-.socialmedia_modal {
+.socialmedia_modal,
+.buscar_modal {
     visibility: hidden;
     background: #000000d6;
     position: fixed;
@@ -228,11 +230,13 @@ body {
     top: -100%;
     transition: 0.5s all;
 }
-.socialmedia_modal.active {
+.socialmedia_modal.active,
+.buscar_modal.active {
     visibility: visible;
     top: 5px;
 }
-.socialmedia_modal .close {
+.socialmedia_modal .close,
+.buscar_modal .close {
     cursor: pointer;
     width: 24px;
     right: 10px;
@@ -240,7 +244,9 @@ body {
     bottom: 10px;
 }
 
-.socialmedia_modal .content-sm {
+/* modales */
+.socialmedia_modal .content-sm,
+.buscar_modal .content-sm {
     position: relative;
     display: block;
     justify-content: center;
@@ -250,9 +256,43 @@ body {
     width: 55%;
     font-family: ptsans;
 }
-/* .content-sm img{
-    margin: 0 auto;
-} */
+.content-sm.src {
+    width: 75%;
+    top: 40%;
+}
+.src input {
+    text-align: center;
+    font-family: ptsans;
+    font-size: 15px;
+    color: #fff;
+    width: 80%;
+    padding: 0 10px;
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+.src input:focus {
+    outline: none;
+}
+.src button {
+    margin: 20px;
+    font-size: 15px;
+    background: #feee00;
+    border: none;
+    font-size: 1em;
+    width: 150px;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+.src button:hover {
+    color: #feee00;
+    background-color: #fff;
+}
+.src button:focus {
+    outline: none;
+}
 .socialmedia_modal .linea {
     height: 1px;
     position: relative;
@@ -271,7 +311,7 @@ body {
     justify-content: space-evenly;
     color: #feee00;
 }
-
+/* publicidad */
 .publicidad {
     position: fixed;
     z-index: 999;
@@ -295,6 +335,8 @@ body {
     cursor: pointer;
     width: 24px;
 }
+/* responsive */
+
 @media (max-width: 320px) {
     .container_clock .hrs {
         font-size: 12px;

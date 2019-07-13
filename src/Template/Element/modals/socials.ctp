@@ -1,24 +1,21 @@
  <div class="socialmedia_modal">
-
-        <div class="content-sm">
+ <div class="content-sm">
             <div class="social-name">
-              <span><img src="assets/images/fb.png" alt="">
+              <span><?php echo $this->Html->image("../assets/images/fb.png"); ?>
               ladatamendoza</span>
               <div class="linea"></div>
             </div>
 
 
             <div class="social-name">
-              <span><img src="assets/images/insta.png" alt="">
+              <span><?php echo $this->Html->image("../assets/images/insta.png"); ?>
               ladatamendoza</span>
               <div class="linea"></div>
             </div>
             <div class="social-name">
-              <span><img src="assets/images/tw.png" alt="">
+              <span><?php echo $this->Html->image("../assets/images/tw.png"); ?>
               ladatamendoza</span>
-
             </div>
-
         </div>
         <svg  onclick="cerrar();"class="close" width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
         <g>

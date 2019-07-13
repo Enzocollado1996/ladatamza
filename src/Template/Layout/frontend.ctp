@@ -18,6 +18,7 @@ $cakeDescription = 'La data mza - Diario';
 <!DOCTYPE html>
 <html>
 <head>
+    
     <?= $this->Html->charset() ?>
     <?= $this->Html->meta(
             'favicon.png',
