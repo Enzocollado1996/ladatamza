@@ -87,16 +87,38 @@ class VideosController extends AppController
                     
                     if ($this->Videos->save($video)) {
                         $this->Flash->success(__('El video ha sido guardado.'));
-                        return $this->redirect(['action' => 'index']);
-                    }else{
+                        //return $this->redirect(['action' => 'index']);
+                    }/*else{
                         $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
-                    }
-                }else{
+                    }*/
+                }/*else{
                     $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
-                }
-            }else{
-                $this->Flash->error(__('Debe seleccionar un archivo.'));
+                }*/
             }
+            
+            if(!empty($this->request->data['file2']['name'])){
+                $fileName = time().'_'.$this->String->cleanStringToImage($this->request->data['file2']['name']);
+                $uploadPath = Configure::read('path_video_subida');
+                $uploadFile = $uploadPath.$fileName;
+                
+                if(move_uploaded_file($this->request->data['file2']['tmp_name'],WWW_ROOT.$uploadFile)){
+                    //$uploadData = $this->Videos->newEntity();
+                    $video->nombre_publicidad = $fileName;
+                    
+                    if ($this->Videos->save($video)) {
+                        //$this->Flash->success(__('El video ha sido guardado.'));
+                        
+                    }/*else{
+                        $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
+                    }*/
+                }/*else{
+                    $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
+                }*/
+            }
+            return $this->redirect(['action' => 'index']);
+            /*else{
+                $this->Flash->error(__('Debe seleccionar un archivo.'));
+            }*/
         }
         $this->set(compact('video'));
     }

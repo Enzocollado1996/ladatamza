@@ -18,6 +18,7 @@ class FrontendController extends AppController
         parent::initialize();
         $this->Articulos = TableRegistry::get('Articulos');
         $this->Publicidades = TableRegistry::get('Publicidades');
+        $this->Videos = TableRegistry::get('Videos');
     }
     
     public function beforeFilter(Event $event)
@@ -141,19 +142,8 @@ class FrontendController extends AppController
         $publicidad_inicial = $this->Publicidades->find('all')
                 ->contain(['Imagenes', 'Videos'])
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
-                ->first();
-        
-        //echo '<pre>';
-        //var_dump($articulos_centro);
-        //var_dump($articulos_norte);
-        //var_dump($articulos_sur);
-        //var_dump($articulos_general);
-        //var_dump($publicidad_inicial);
-        //var_dump($publicidad_centro);
-        //var_dump($publicidad_norte);
-        //var_dump($publicidad_sur);
-        //exit;
-        
+                ->first();        
+       
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
                 'articulos_general', 'publicidad_inicial'));
     }
@@ -202,9 +192,6 @@ class FrontendController extends AppController
                 ->where(['zona' => $seccion, 'habilitado' => true])
                 ->toArray();
         $this->set('articulos', $articulos);
-        //echo '<pre>';
-        //var_dump($articulos);
-        //exit;
         $this->render('ver-articulo');
     }
     
@@ -230,6 +217,19 @@ class FrontendController extends AppController
 
         $this->set('articulos', $articulos);
         $this->render('ver-articulo');
+    }
+    
+    public function buscarVideo(){
+        $video = $this->Videos->find('all', [
+                            'order' => ['publicado' => 'asc']
+                        ])
+                ->first()
+                ->toArray();
+        echo '<pre>';
+        var_dump($video);
+        exit;
+        $this->set('video', $video);
+        //$this->render('ver-articulo');
     }
     /**
      * View method

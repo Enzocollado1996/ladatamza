@@ -69,6 +69,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/nota/*', ['controller' => 'Frontend', 'action' => 'ver_articulo']);
     $routes->connect('/seccion/*', ['controller' => 'Frontend', 'action' => 'ver_seccion']);
     $routes->connect('/buscar/*', ['controller' => 'Frontend', 'action' => 'buscar_nota']);
+    $routes->connect('/video/', ['controller' => 'Frontend', 'action' => 'buscar_video']);
     
     /*** Rutas backend ***/
     $routes->connect('/admin', ['controller' => 'Users', 'action' => 'login']);

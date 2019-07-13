@@ -37,7 +37,9 @@
     <div class="col-lg-6">
         <div class="form-group">            
             <?php echo $this->Form->input('file', ['type' => 'file', 'label'=>'Archivo'/*, 'multiple'*/, 'accept'=>'.mp4, .flv', 'required' => 'required']); ?>
-            <div class="form-group" id="imagen-articulo"></div>            
+        </div>
+        <div class="form-group">            
+            <?php echo $this->Form->input('file2', ['type' => 'file', 'label'=>'Archivo publicidad'/*, 'multiple'*/, 'accept'=>'.mp4, .flv']); ?>          
         </div>
     </div>
     <?= $this->Form->end() ?>
