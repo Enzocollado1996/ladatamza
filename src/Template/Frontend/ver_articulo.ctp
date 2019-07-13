@@ -7,14 +7,14 @@
     <title>Document</title>
 
     <?=$this->Html->css('../assets/style_detalle.css')?>
-    <?= $this->element('modals/socials') ?>
-    <?= $this->element('modals/search') ?>
-    <?= $this->element('Frontend/header') ?>
+    <?=$this->element('modals/socials')?>
+    <?=$this->element('modals/search')?>
+    <?=$this->element('Frontend/header')?>
 </head>
 <body>
 
     <?=$this->element('Frontend/menu-detalle')?>
-    <?php if(count($articulos) > 0) : ?>
+    <?php if (count($articulos) > 0): ?>
     <?php foreach ($articulos as $articulo): ?>
     <section>
         <div class="imagen">
@@ -51,15 +51,16 @@ if (count($articulo->imagenes) > 0) {
         }
     }
 }
-?>  <?php  if ($articulo !== end($articulos)) 
-    echo '<div class="scroller">'. $this->Html->image("../assets/images/arrow-bot.png").'</div>';
-    
-   else 
-   echo '<div class="scroller_back">'. $this->Html->image("../assets/images/back.png").'</div>';
-   ?>
+?>  <?php if ($articulo !== end($articulos)) {
+    echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bot.png") . '</div>';
+} else {
+    echo '<div class="scroller_back back">' . $this->Html->image("../assets/images/back.png") . '</div>';
+}
+
+?>
     </section>
     <?php endforeach;?>
-    <?php else :?>
+    <?php else: ?>
     <div class="notFound">
     <svg   width="100" height="100" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -69,8 +70,8 @@ if (count($articulo->imagenes) > 0) {
             </svg>
             <span style="color:#000">No se encontraron resultados<span>
     </div>
-    
-    <?php endif ?>
+
+    <?php endif?>
 </body>
 </html>
 <?=$this->Html->script('../assets/js/jquery.min');?>
@@ -88,7 +89,11 @@ $('.back').on('click',()=>{
 var watchID = navigator.geolocation.getCurrentPosition(function(position) {
   positions(position.coords.latitude, position.coords.longitude);
 });
-
+$("#target").submit(function(event) {
+        event.preventDefault();
+        let data = $(this).find('input').val()
+        location.href = `${$(this).attr('action')}/${data}`
+    });
 });
 
 

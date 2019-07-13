@@ -62,12 +62,15 @@ section .info .share {
     align-items: center;
 }
 .notFound {
+   
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: ptsans;
     color: #feee00;
+    height: calc(100vh - 230px);
+    justify-content: center;
 }
 
 .scroller {
