@@ -5,7 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Core\Configure;
-
+use Cake\Http\Response;
 /**
  * Backend Controller
  *
@@ -221,15 +221,18 @@ class FrontendController extends AppController
     
     public function buscarVideo(){
         $video = $this->Videos->find('all', [
-                            'order' => ['publicado' => 'asc']
+                            'order' => ['publicado' => 'desc']
                         ])
                 ->first()
                 ->toArray();
-        echo '<pre>';
-        var_dump($video);
-        exit;
-        $this->set('video', $video);
-        //$this->render('ver-articulo');
+        
+        $response = ['url'=>$video['nombre'], 'url_publicidad'=>$video['nombre_publicidad']];
+
+        $this->set([
+            'my_response' => $response,
+            '_serialize' => 'my_response',
+        ]);
+        $this->RequestHandler->renderAs($this, 'json');
     }
     /**
      * View method

@@ -84,16 +84,11 @@ class VideosController extends AppController
                 if(move_uploaded_file($this->request->data['file']['tmp_name'],WWW_ROOT.$uploadFile)){
                     //$uploadData = $this->Videos->newEntity();
                     $video->nombre = $fileName;
-                    
-                    if ($this->Videos->save($video)) {
-                        $this->Flash->success(__('El video ha sido guardado.'));
-                        //return $this->redirect(['action' => 'index']);
-                    }/*else{
-                        $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
-                    }*/
-                }/*else{
+                    $this->Videos->save($video);
+                }
+                else{
                     $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
-                }*/
+                }
             }
             
             if(!empty($this->request->data['file2']['name'])){
@@ -104,16 +99,11 @@ class VideosController extends AppController
                 if(move_uploaded_file($this->request->data['file2']['tmp_name'],WWW_ROOT.$uploadFile)){
                     //$uploadData = $this->Videos->newEntity();
                     $video->nombre_publicidad = $fileName;
-                    
-                    if ($this->Videos->save($video)) {
-                        //$this->Flash->success(__('El video ha sido guardado.'));
-                        
-                    }/*else{
-                        $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
-                    }*/
-                }/*else{
+                    $this->Videos->save($video);
+                }
+                else{
                     $this->Flash->error(__('No se pudo crear el video. Intente nuevamente.'));
-                }*/
+                }
             }
             return $this->redirect(['action' => 'index']);
             /*else{

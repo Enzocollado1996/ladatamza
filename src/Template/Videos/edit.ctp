@@ -55,12 +55,24 @@
     <div class="col-lg-6">
         <div class="form-group">            
             <?php echo $this->Form->input('file', ['type' => 'file', 'label'=>'Archivo'/*, 'multiple'*/, 'accept'=>'.mp4, .flv']); ?>
-            <div class="form-group" id="imagen-articulo"></div>
             <?php echo $this->Html->media(
                 [
                     'videos/'.$video->nombre,
                     [
                         'src' => 'videos/'.$video->nombre,
+                        'type' => "video/ogg; codecs='theora, vorbis'"
+                    ]
+                ],
+                ['controls',["style='width:100%'"]]
+            ); ?>
+        </div>
+        <div class="form-group">            
+            <?php echo $this->Form->input('file2', ['type' => 'file', 'label'=>'Archivo publicidad', 'accept'=>'.mp4, .flv']); ?>
+            <?php echo $this->Html->media(
+                [
+                    'videos/'.$video->nombre_publicidad,
+                    [
+                        'src' => 'videos/'.$video->nombre_publicidad,
                         'type' => "video/ogg; codecs='theora, vorbis'"
                     ]
                 ],
