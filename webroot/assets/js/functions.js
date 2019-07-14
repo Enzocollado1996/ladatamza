@@ -109,12 +109,12 @@ function openVideo() {
         url: url
     }).done(
         data => {
-            urlPrincipal = `${location.host}/files/videos/${data.url}`;
-            // $("#video_target").html(
-            //     '<source src="' + urlPrincipal + '" type="video/mp4"></source>'
-            // );
-           // $("#video_target")[0].load();
-            // $("#video_target")[0].play();
+            urlPrincipal = `${location.href}files/videos/${data.url}`;
+            $("#video_target").html(
+                '<source src="'+urlPrincipal+'" type="video/mp4"></source>'
+            );
+           $("#video_target")[0].load();
+            $("#video_target")[0].play();
 
             $(".video_publicitario").show();
             $("html,body").css({

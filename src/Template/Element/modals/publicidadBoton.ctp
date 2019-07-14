@@ -1,8 +1,7 @@
 <div class="video_publicitario">
-    <video width="320" height="240" controls="controls" id="video_target">
+<video controls id="video_target" width="100" height="100">
     <!-- <source  id="video_1" type="video/mp4">-->
-    <source src="https://www.youtube.com/watch?v=4IULe2F9CXM" type="video/mp4"> 
+    <!-- <source src="https://ladatamza.com/files/videos/1562459897_PSReceta-Digital20190503WPP.mp4" type="video/mp4"> -->
     </video>
 
-  
 </div>

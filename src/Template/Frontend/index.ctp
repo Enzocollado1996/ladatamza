@@ -87,6 +87,7 @@
         <div class="overlay"></div>
     </div>
     <div class="divider"></div>
+   
     <div class="container_clock">
         <div class="hrs"><span></span>20:00hrs. <br>Resumen</div>
         <div class="clock"></div>
