@@ -96,7 +96,6 @@ function closeVideo() {
     $("#video_target")
         .find("source")
         .remove();
-
     // video.load();
     $(".video_publicitario").hide();
 }

@@ -8,6 +8,7 @@
 }
 body {
     overflow: auto;
+    margin: 5px;
 }
 section {
     display: block;
@@ -58,7 +59,7 @@ section .info .share {
     background: #feee00;
     height: 100px;
     width: 35px;
-    right: 0;
+    right: -5px;
     align-items: center;
 }
 .notFound {
