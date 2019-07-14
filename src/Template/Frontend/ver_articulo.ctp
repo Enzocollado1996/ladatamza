@@ -39,7 +39,7 @@ if (count($articulo->imagenes) > 0) {
                 <?php echo $this->Html->image("../assets/images/back.png", ['class' => 'back']) ?>
 
                 </div>
-            <div class="cuerpo">
+                <div class="cuerpo">
 
                 <?php echo $articulo->texto; ?>
             </div>
@@ -79,7 +79,7 @@ if (count($articulo->imagenes) > 0) {
 		c0.19,0.102,0.303,0.295,0.303,0.502v4.293c2.578,0.336,13.674,2.33,13.674,11.674c0,0.271-0.191,0.508-0.459,0.562
 		C26.18,21.891,26.141,21.891,26.105,21.891z"/>
 	<g>
-	
+
 </svg>
 
     </div>
@@ -89,6 +89,7 @@ if (count($articulo->imagenes) > 0) {
 </html>
 <?=$this->Html->script('../assets/js/jquery.min');?>
 <?=$this->Html->script('../assets/js/functions');?>
+<?=$this->Html->script('../assets/js/jquery.paroller.min.js');?>
 
 <script>
 
@@ -109,5 +110,15 @@ $("#target").submit(function(event) {
     });
 });
 
+$('.info').paroller({
+factorXs: 0.2,
+factorSm: 0.2,
+factorMd: -0.4,
+factorLg: -0.5,
+factorXl: -0.6,
+factor: 0.1,
+type: 'foreground',
+direction: 'vertical'
+});
 
 </script>
