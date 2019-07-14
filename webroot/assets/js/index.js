@@ -82,4 +82,13 @@ $(document).ready(function() {
         let data = $(this).find('input').val()
         location.href = `${$(this).attr('action')}/${data}`
     });
+
+    $('#video_target').on('ended',function(){
+        
+        let url = $(this).find('source').attr('data')
+            $("advertising").hide();
+        $(this).html(`<source src="${url}" type="video/mp4"></source>`)
+        $(this).attr('controls','controls')
+        $(this).load();
+    });
 });

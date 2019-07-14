@@ -100,29 +100,61 @@ function shareNew(url, text, title) {
             console.log("ok");
         });
 }
-
+function saltarAnuncio(){
+    let video = $("#video_target");
+    video.stop();
+    let url = video.find('source').attr('data')
+    $("advertising").hide();
+    video.html(`<source src="${url}" type="video/mp4"></source>`)
+    video.attr('controls','controls')
+    video.load();
+}
 function openVideo() {
-    let url = "/FrontEnd/buscar_video";
+    let url = "/frontend/buscar_video";
     // /FrontEnd/buscar_video
 
     $.ajax({
         url: url
-    }).done(
-        data => {
-            urlPrincipal = `${location.href}files/videos/${data.url}`;
-            $("#video_target").html(
-                '<source src="'+urlPrincipal+'" type="video/mp4"></source>'
-            );
-           $("#video_target")[0].load();
-            $("#video_target")[0].play();
-
+    })
+        .done(data => {
+            console.log(data);
+            $("advertising").show();
+            let urlPrincipal = `${location.href}files/videos/${data.url}`;
+            let video = $("#video_target");
+            if (data.url_publicidad !== "") {
+                let urlpubli = `${location.href}files/videos/${
+                    data.url_publicidad
+                }`;
+                video.append(
+                    '<source src="' + urlpubli + '" type="video/mp4" data="'+urlPrincipal+'"></source>'
+                );
+            }
+       
+            video.load();
+            
+          
+            let draw_width = 0
+            let videoduration = 0;
+            let timmer = 2
+            var interval  = setInterval(function(e) {
+               
+                let width = $("advertising").width()
+                draw_width += width / video[0].duration
+                $("advertising .bar").css('width',draw_width+"px")
+            
+                videoduration = video[0].duration
+                if(timmer >= videoduration)
+                clearInterval(interval);
+                if(timmer == 4)
+                $(".saltar").css('opacity',1)
+                timmer ++;
+                
+            }, 1000);
+        
             $(".video_publicitario").show();
             $("html,body").css({
                 overflow: "auto"
             });
-        },
-        err => {
-            console.log(err);
-        }
-    );
+        })
+        .error(error => console.log(error));
 }

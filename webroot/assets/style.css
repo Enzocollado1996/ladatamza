@@ -359,7 +359,43 @@ video {
     height: 100%;
 }
 /* responsive */
+advertising {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    font-family: ptsans;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+advertising .saltar {
+    left: calc(50% - 75px);
+    height: 40px;
+    width: 150px;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: #feee00;
+    opacity: 0;
+    transition: .3s all linear;
+}
 
+advertising .bar{
+    margin-top:4px;
+    align-self: end;
+    height: 5px;
+    background-color: #2d2d2d;
+    width: 0;
+  
+}
+.saltar:focus {
+    outline: none;
+}
+.saltar:hover{
+    border:none;
+    background-color:#feee00;
+    color:white
+}
 @media (max-width: 320px) {
     .container_clock .hrs {
         font-size: 12px;
