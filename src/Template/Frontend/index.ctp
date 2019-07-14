@@ -108,9 +108,9 @@
                     ?>
 
                 <div class="titulo">
-                    <a href="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>">
+                    <div onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')">
                     <?=$general->titulo?>
-                    </a>
+                    </div>
                 </div>
             </div>
         <?php }?>

@@ -124,11 +124,16 @@ function openVideo() {
             $("advertising").show();
             let urlPrincipal = `${location.href}files/videos/${data.url}`;
             let video = $("#video_target");
+            video.removeAttr("controls", "false").attr('autoplay');
+            video
+            .find("source")
+            .remove();
+
             if (data.url_publicidad !== "") {
                 let urlpubli = `${location.href}files/videos/${
                     data.url_publicidad
                 }`;
-                video.append(
+                video.html(
                     '<source src="' +
                         urlpubli +
                         '" type="video/mp4" data="' +
@@ -168,7 +173,7 @@ function saltarAnuncio() {
     let url = video.find("source").attr("data");
     if (url == undefined) {
         video[0].removeAttr("autoplay");
-        $(this).removeAttr("controls","false");
+        $(this).removeAttr("controls", "false");
         video.load();
     } else {
         $("advertising").hide();
@@ -179,4 +184,8 @@ function saltarAnuncio() {
     }
 
     video.find("source").removeAttr("data");
+}
+
+function generales(url) {
+    location.href = url;
 }

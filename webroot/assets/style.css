@@ -9,6 +9,7 @@
 body {
     margin: 5px;
     overflow: hidden;
+    height: calc(100vh - 20px);
 }
 .divider {
     margin: 4px;
@@ -31,13 +32,15 @@ body {
     top: 0;
     z-index: 100;
     background: #feee00;
-    font-size: 12px;
+    font-size: 10px;
     padding: 2px 5px;
+  
 }
 .weather .temp {
     grid-area: "A";
     font-weight: 600;
     margin-left: 5px;
+    margin-top: 5px;
 }
 .weather img {
     margin-left: 5px;

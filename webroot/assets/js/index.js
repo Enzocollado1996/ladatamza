@@ -83,7 +83,7 @@ $(document).ready(function() {
             .attr("data");
         if (url == undefined) {
             $(this).removeAttr("autoplay");
-            $(this).removeAttr("controls","false");
+            
             $(this).load();
         } else {
             $("advertising").hide();
