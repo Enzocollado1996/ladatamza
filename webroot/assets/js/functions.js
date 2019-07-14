@@ -86,6 +86,20 @@ function cerrarPpal() {
         overflow: "auto"
     });
 }
+function closeVideo() {
+    $(".saltar").css("opacity", 0);
+    $(".bar").css("width", 0);
+    clearInterval(interval);
+    let video = $("#video_target")[0];
+    video.pause();
+    $("#video_target").removeAttr("controls");
+    $("#video_target")
+        .find("source")
+        .remove();
+
+    // video.load();
+    $(".video_publicitario").hide();
+}
 function goNews(url) {
     location.href = url;
 }
@@ -100,25 +114,14 @@ function shareNew(url, text, title) {
             console.log("ok");
         });
 }
-function saltarAnuncio(){
-    let video = $("#video_target");
-    video.stop();
-    let url = video.find('source').attr('data')
-    video.find('source').removeAttr('data')
-    $("advertising").hide();
-    video.html(`<source src="${url}" type="video/mp4"></source>`)
-    video.attr('controls','controls')
-    video.load();
-}
+
 function openVideo() {
     let url = "/frontend/buscar_video";
-    // /FrontEnd/buscar_video
 
     $.ajax({
         url: url
     })
         .done(data => {
-           
             $("advertising").show();
             let urlPrincipal = `${location.href}files/videos/${data.url}`;
             let video = $("#video_target");
@@ -127,35 +130,54 @@ function openVideo() {
                     data.url_publicidad
                 }`;
                 video.append(
-                    '<source src="' + urlpubli + '" type="video/mp4" data="'+urlPrincipal+'"></source>'
+                    '<source src="' +
+                        urlpubli +
+                        '" type="video/mp4" data="' +
+                        urlPrincipal +
+                        '"></source>'
                 );
             }
-       
+
             video.load();
-            
-          
-            let draw_width = 0
+
+            let draw_width = 0;
             let videoduration = 0;
-            let timmer = 2
-            var interval  = setInterval(function(e) {
-               
-                let width = $("advertising").width()
-                draw_width += width / video[0].duration
-                $("advertising .bar").css('width',draw_width+"px")
-            
-                videoduration = video[0].duration
-                if(timmer >= videoduration)
-                clearInterval(interval);
-                if(timmer == 4)
-                $(".saltar").css('opacity',1)
-                timmer ++;
-                
+            let timmer = 2;
+            interval = setInterval(function(e) {
+                let width = $("advertising").width();
+                draw_width += width / video[0].duration;
+                $("advertising .bar").css("width", draw_width + "px");
+
+                videoduration = video[0].duration;
+                if (timmer >= videoduration) clearInterval(interval);
+                if (timmer == 5) $(".saltar").css("opacity", 1);
+                timmer++;
+                console.log(timmer);
             }, 1000);
-        
+
             $(".video_publicitario").show();
             $("html,body").css({
                 overflow: "auto"
             });
         })
         .error(error => console.log(error));
+}
+function saltarAnuncio() {
+    clearInterval(interval);
+    let video = $("#video_target");
+    video.stop();
+    let url = video.find("source").attr("data");
+    if (url == undefined) {
+        video[0].removeAttr("autoplay");
+        $(this).removeAttr("controls","false");
+        video.load();
+    } else {
+        $("advertising").hide();
+
+        video.html(`<source src="${url}" type="video/mp4"></source>`);
+        video.attr("controls", "controls");
+        video.load();
+    }
+
+    video.find("source").removeAttr("data");
 }

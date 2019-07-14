@@ -338,7 +338,13 @@ body {
 .publicidad img {
     width: 100%;
 }
-
+.video_publicitario .closeVideo{
+    position: absolute;
+    top: 0;
+    width: 20px;
+    right: 10px;
+    z-index: 99999;
+}
 .publicidad .cerrarPpal {
     position: absolute;
     right: 10px;
@@ -357,6 +363,7 @@ body {
 video {
     width: 100%;
     height: 100%;
+  
 }
 /* responsive */
 advertising {
@@ -384,7 +391,7 @@ advertising .bar{
     margin-top:4px;
     align-self: end;
     height: 5px;
-    background-color: #2d2d2d;
+    background-color: #545050;
     width: 0;
   
 }

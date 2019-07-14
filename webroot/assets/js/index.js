@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    const interval = 0;
     setTimeout(() => {
         if (!sessionStorage.getItem("mp")) $(".publicidad").show();
         sessionStorage.setItem("mp", true);
@@ -26,16 +27,7 @@ $(document).ready(function() {
     var heightPlace_sur = sur.find(".shadownews").height();
     var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 2.2);
     sur.on("touchmove", function() {
-        console.log(
-            "%c vport  = " + heightPlaceTotal_sur,
-            "color:#3f51b5;font-weight:bold;"
-        );
-
-        let scroll = $(this).scrollTop();
-        console.log(
-            "%c scroll  = " + scroll,
-            "color:#ff5722;font-weight:bold;"
-        );
+      
         if (scroll > heightPlaceTotal_sur) $(this).animate({ scrollTop: 0 }, 0);
     });
     //
@@ -84,16 +76,27 @@ $(document).ready(function() {
             .val();
         location.href = `${$(this).attr("action")}/${data}`;
     });
-
+    $("#video_target").click((e) => {
+       alert("asdasdsda")
+        //  $(".closeVideo").toggle(()=> $(this).show(),()=>$(this).hide());
+         $(".closeVideo").toggle()
+    });
     $("#video_target").on("ended", function() {
         let url = $(this)
             .find("source")
             .attr("data");
-        if (url == undefined) return false;
-        $("advertising").hide();
-        $(this).html(`<source src="${url}" type="video/mp4"></source>`);
-        $(this).attr("controls", "controls");
-        $(this).load();
-        video.find("source").removeAttr("data");
+        if (url == undefined) {
+            $(this).removeAttr("autoplay");
+            $(this).removeAttr("controls","false");
+            $(this).load();
+        } else {
+            $("advertising").hide();
+            $(this).html(`<source src="${url}" type="video/mp4"></source>`);
+            $(this).attr("controls", "controls");
+            $(this)
+                .find("source")
+                .removeAttr("data");
+            $(this).load();
+        }
     });
 });
