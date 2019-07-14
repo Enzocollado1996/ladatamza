@@ -104,6 +104,7 @@ function saltarAnuncio(){
     let video = $("#video_target");
     video.stop();
     let url = video.find('source').attr('data')
+    video.find('source').removeAttr('data')
     $("advertising").hide();
     video.html(`<source src="${url}" type="video/mp4"></source>`)
     video.attr('controls','controls')
@@ -117,7 +118,7 @@ function openVideo() {
         url: url
     })
         .done(data => {
-            console.log(data);
+           
             $("advertising").show();
             let urlPrincipal = `${location.href}files/videos/${data.url}`;
             let video = $("#video_target");
