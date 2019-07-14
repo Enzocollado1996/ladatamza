@@ -10,6 +10,9 @@ body {
     overflow: auto;
     margin: 5px;
 }
+.container{
+    overflow-x:initial;
+}
 section {
     display: block;
     font-family: "ptsans";
