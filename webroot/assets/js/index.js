@@ -76,11 +76,7 @@ $(document).ready(function() {
             .val();
         location.href = `${$(this).attr("action")}/${data}`;
     });
-    $("#video_target").click((e) => {
-       alert("asdasdsda")
-        //  $(".closeVideo").toggle(()=> $(this).show(),()=>$(this).hide());
-         $(".closeVideo").toggle()
-    });
+  
     $("#video_target").on("ended", function() {
         let url = $(this)
             .find("source")
