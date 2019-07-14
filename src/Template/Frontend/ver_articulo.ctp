@@ -17,6 +17,7 @@
     <?=$this->element('Frontend/menu-detalle')?>
     <?php if (count($articulos) > 0): ?>
     <?php foreach ($articulos as $articulo): ?>
+    
     <section>
         <div class="imagen">
         <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
@@ -32,7 +33,7 @@ if (count($articulo->imagenes) > 0) {
 }
 ?>
         </div>
-        <div class="info">
+        <div class="info <?php echo $articulo->id == $articulos[0]->id ?  'primero' :  'medio' ?>" >
             <div class="titulo"><?=$articulo->titulo;?></div>
             <div class="share">
                 <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
@@ -110,14 +111,26 @@ $("#target").submit(function(event) {
     });
 });
 
-$('.info').paroller({
-factorXs: 0.2,
-factorSm: 0.2,
+$('.primero').paroller({
+factorXs: 0,
+factorSm: 0,
 factorMd: -0.4,
 factorLg: -0.5,
 factorXl: -0.6,
 factor: 0.1,
 type: 'foreground',
+transition: 'transform 0.2s ease-in',
+direction: 'vertical'
+});
+$('.medio').paroller({
+factorXs: 0.2,
+factorSm: 0.2,
+factorMd: -0.4,
+factorLg: -0.5,
+factorXl: -0.6,
+factor: -0.1,
+type: 'foreground',
+transition: 'transform 0.2s ease-in',
 direction: 'vertical'
 });
 
