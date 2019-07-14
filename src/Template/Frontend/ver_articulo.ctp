@@ -123,8 +123,8 @@ transition: 'transform 0.2s ease-in',
 direction: 'vertical'
 });
 $('.medio').paroller({
-factorXs: 0.2,
-factorSm: 0.2,
+factorXs: 0.1,
+factorSm: 0.1,
 factorMd: -0.4,
 factorLg: -0.5,
 factorXl: -0.6,
