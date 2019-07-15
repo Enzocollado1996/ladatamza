@@ -121,14 +121,14 @@ function openVideo() {
         url: url
     })
         .done(data => {
-            $("advertising").show();
+           
             let urlPrincipal = `${location.href}files/videos/${data.url}`;
             let video = $("#video_target");
-            video.removeAttr("controls", "false").attr('autoplay');
+            video.removeAttr("controls", "false").attr('autoplay','autoplay');
             video
             .find("source")
             .remove();
-
+            $("advertising").show();
             if (data.url_publicidad !== "") {
                 let urlpubli = `${location.href}files/videos/${
                     data.url_publicidad
