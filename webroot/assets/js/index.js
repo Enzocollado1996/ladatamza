@@ -27,7 +27,8 @@ $(document).ready(function() {
     var heightPlace_sur = sur.find(".shadownews").height();
     var heightPlaceTotal_sur = heightPlace_sur * (quantity_sur - 2.2);
     sur.on("touchmove", function() {
-      
+        let scroll = $(this).scrollTop();
+         console.log(scroll," ",heightPlaceTotal_sur)
         if (scroll > heightPlaceTotal_sur) $(this).animate({ scrollTop: 0 }, 0);
     });
     //
