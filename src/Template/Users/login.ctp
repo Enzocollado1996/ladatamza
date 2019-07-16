@@ -30,6 +30,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body { 
+            background-image: url('img/bg.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center; 
+        }
+    </style>
 </head>
 
 <body>
@@ -37,7 +45,7 @@
         <div class="row">
             <?= $this->Flash->render('auth') ?>
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
+                <div class="login-panel panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Iniciar sesión</h3>
                     </div>
@@ -56,7 +64,7 @@
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                     </label>
                                 </div>-->
-                                <?= $this->Form->button(__('Ingresar'),['class'=>'btn btn-lg btn-success btn-block']); ?>
+                                <?= $this->Form->button(__('Ingresar'),['class'=>'btn btn-lg btn-primary btn-block']); ?>
                             </fieldset>
                         <?= $this->Form->end() ?>                        
                     </div>

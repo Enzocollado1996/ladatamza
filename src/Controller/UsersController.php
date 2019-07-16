@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Core\Configure;
+use Cake\Utility\Inflector;
 // Prior to 3.6 use Cake\Network\Exception\NotFoundException
 use Cake\Http\Exception\NotFoundException;
 
@@ -32,7 +34,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('Usuario o contraseña incorrecta, intente de nuevo.'));
         }
-        $this->set('title_for_layout', "CMS - MDZ Federal");
+        $this->set('title_for_layout', "CMS-".Configure::read('nombre_portal'));
         $this->viewBuilder()->setLayout('');
     }
 

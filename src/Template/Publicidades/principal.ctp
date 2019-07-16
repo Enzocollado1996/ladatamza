@@ -16,7 +16,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id', '#') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('activo', 'Visible') ?></th>
                 <th scope="col">Tiene imágen</th>
@@ -33,9 +33,9 @@
             <tr>
                 <td><?= $this->Number->format($publicidad->id) ?></td>
                 <td><?= h($publicidad->nombre) ?></td>
-                <td><?= h($publicidad->habilitado) ? 'Si' : 'No' ?></td>
-                <td><?= $publicidad->has('imagen') ? 'Si' : 'No' ?></td>
-                <td><?= $publicidad->has('video') ? 'Si' : 'No' ?></td>
+                <td style="text-align: center;font-size: 15px;"><?= h($publicidad->habilitado)?'<span class="fa fa-check-circle" style="color:green;"></span>' : '<span class="fa fa-times" style="color:red;"></span>' ?></td>
+                <td style="text-align: center;font-size: 15px;"><?= $publicidad->has('imagen')?'<span class="fa fa-check-circle" style="color:green;"></span>' : '<span class="fa fa-times" style="color:red;"></span>' ?></td>
+                <td style="text-align: center;font-size: 15px;"><?= $publicidad->has('video')?'<span class="fa fa-check-circle" style="color:green;"></span>' : '<span class="fa fa-times" style="color:red;"></span>' ?></td>
 <!--                <td><?= $publicidad->has('imagen') ? $this->Html->link($publicidad->imagen->id, ['controller' => 'Imagenes', 'action' => 'view', $publicidad->imagen->id]) : '' ?></td>
                 <td><?= $publicidad->has('video') ? $this->Html->link($publicidad->video->id, ['controller' => 'Videos', 'action' => 'view', $publicidad->video->id]) : '' ?></td>-->
                 <td><?= h($publicidad->creado) ?></td>

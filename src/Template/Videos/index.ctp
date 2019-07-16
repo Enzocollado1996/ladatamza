@@ -16,13 +16,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id', '#') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('titulo', 'Título') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('tipo') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('publicado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('creado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('publicado') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
             </tr>
         </thead>
@@ -33,9 +33,9 @@
                 <td><?= h($video->titulo) ?></td>
                 <td><?= h($video->nombre) ?></td>
                 <td><?= h($video->tipo) ?></td>
+                <td><?= h($video->publicado) ?></td>
                 <td><?= h($video->creado) ?></td>
                 <td><?= h($video->modificado) ?></td>
-                <td><?= h($video->publicado) ?></td>
                 <td class="actions">
                     <!--<?= $this->Html->link('<span class="fa fa-eye"></span>', ['action' => 'view', $video->id], ['escape' => false, 'title' => __('Ver'), 'class' => 'btn btn-info btn-xs']) ?>-->
                     <?= $this->Html->link('<span class="fa fa-pencil"></span>', ['action' => 'edit', $video->id], ['escape' => false, 'title' => __('Editar'), 'class' => 'btn btn-primary btn-xs']) ?>

@@ -17,13 +17,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id', '#') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('titulo') ?></th>
-                <!--<th scope="col"><?= $this->Paginator->sort('visitas') ?></th>-->
-                <th scope="col"><?= $this->Paginator->sort('habilitado', 'Visible') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('zona') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('palabras_claves') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('publicado') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('habilitado', 'Publicado') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('zona', 'Sección') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('palabras_claves', 'Palabra clave') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('habilitado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('creado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
                 <th scope="col" class="actions"><?= __('Acciones') ?></th>
@@ -34,11 +33,13 @@
             <tr>
                 <td><?= $this->Number->format($articulo->id) ?></td>
                 <td><?= h($articulo->titulo) ?></td>
-                <td><?= h($articulo->publicado) ?></td>
+                <td><?= h($articulo->publicado)?></td>
                 <!--<td><?= $this->Number->format($articulo->visitas) ?></td>-->
                 <td><?= h($articulo->zona) ?></td>
                 <td><?= h($articulo->palabras_claves) ?></td>
-                <td><?= h($articulo->habilitado)  ? 'Si' : 'No' ?></td>
+                <td style="text-align: center;font-size: 15px;">
+                <?= h($articulo->habilitado)?'<span class="fa fa-check-circle" style="color:green;"></span>' : '<span class="fa fa-times" style="color:red;"></span>'?>
+                </td>
                 <td><?= h($articulo->creado) ?></td>
                 <td><?= h($articulo->modificado) ?></td>
                 <td class="actions">

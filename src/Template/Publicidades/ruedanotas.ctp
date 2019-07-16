@@ -16,7 +16,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id', '#') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('activo', 'Visible') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('zona', 'Categoría') ?></th>
@@ -34,10 +34,10 @@
             <tr>
                 <td><?= $this->Number->format($publicidad->id) ?></td>
                 <td><?= h($publicidad->nombre) ?></td>
-                <td><?= h($publicidad->habilitado)  ? 'Si' : 'No' ?></td>
+                <td style="text-align: center;font-size: 15px;"><?= h($publicidad->habilitado)?'<span class="fa fa-check-circle" style="color:green;"></span>' : '<span class="fa fa-times" style="color:red;"></span>'?></td>
                 <td><?= h($publicidad->zona) ?></td>
                 <td><?= h($publicidad->orden) ?></td>
-                <td><?= $publicidad->has('imagen') ? 'Si' : 'No' ?></td>                
+                <td style="text-align: center;font-size: 15px;"><?= $publicidad->has('imagen')?'<span class="fa fa-check-circle" style="color:green;"></span>' : '<span class="fa fa-times" style="color:red;"></span>'?></td>                
                 <td><?= h($publicidad->creado) ?></td>
                 <td><?= h($publicidad->modificado) ?></td>                
 <!--                <td><?= $publicidad->has('imagen') ? $this->Html->link($publicidad->imagen->id, ['controller' => 'Imagenes', 'action' => 'view', $publicidad->imagen->id]) : '' ?></td>

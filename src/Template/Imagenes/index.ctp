@@ -16,9 +16,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id', '#') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('file_url','Carpeta') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('filename', 'Nombre archivo') ?></th>
+                <th scope="col" style="width: 20%;"><?= $this->Paginator->sort('filename', 'Nombre archivo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('tipo') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('creado') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modificado') ?></th>
