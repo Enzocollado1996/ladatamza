@@ -3,9 +3,7 @@ $(document).ready(function() {
     setTimeout(() => {
         if (!sessionStorage.getItem("mp")) $(".publicidad").show();
         sessionStorage.setItem("mp", true);
-        $("html,body").css({
-            overflow: "hidden"
-        });
+        
     }, 5000);
     setInterval(() => {
         validateTime();

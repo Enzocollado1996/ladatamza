@@ -6,10 +6,11 @@
     src: url(./fonts/PTSans-Regular.ttf);
     font-family: "arena";
 }
-body {
+html,body {
     margin: 5px;
     overflow: hidden;
-    height: calc(100vh - 20px);
+    height: calc(100vh - 85px);
+    touch-action: pan-x;
 }
 .divider {
     margin: 4px;
@@ -26,14 +27,16 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 5px;
 }
 .weather .data {
     position: absolute;
     top: 0;
     z-index: 100;
     background: #feee00;
-    font-size: 10px;
+    font-size: 8px;
     padding: 2px 5px;
+    letter-spacing: 2px;
 }
 .weather .temp {
     grid-area: "A";
@@ -50,7 +53,7 @@ body {
     justify-content: center;
 }
 .menu .logo img {
-    width: 70px;
+    width: 100px;
 }
 .menu .social {
     color: #feee00;
@@ -58,11 +61,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
+    padding-right: 5px;
 }
 .header-notices {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-
     background-color: #000000;
 }
 .header-notices .region {
@@ -73,8 +76,9 @@ body {
     padding: 5px;
     font-weight: 600;
 }
+/* //linear-gradient(45deg, #6b6666, #000000f5); */
 .container_clock {
-    background: linear-gradient(45deg, #6b6666, #000000f5);
+    background: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,6 +89,8 @@ body {
     display: flex;
     align-items: center;
     padding: 2px;
+    font-size: 10px;
+    color:white
 }
 
 .hrs span {
@@ -93,6 +99,12 @@ body {
     height: 15px;
     border-radius: 50%;
     margin: 5px;
+}
+.container_clock .resumen{
+    font-family: ptsans;
+    font-size: 10px;
+    color: white;
+    margin-right: 5px;
 }
 /* tombola */
 .slot_container {
@@ -143,15 +155,16 @@ body {
     min-height: 70%;
     padding: 10px 5px;
 }
-.shadownews:hover {
+.shadownews:active {
     background-color: #feee00;
 }
-.shadownews:hover .date,
-.shadownews:hover .title {
+
+.shadownews:active .date,
+.shadownews:active .title {
     color: white;
 }
-.shadownews:hover .district,
-.shadownews:hover .clearfix {
+.shadownews:active .district,
+.shadownews:active .clearfix {
     background-color: white;
 }
 .shadownews.empty {
@@ -165,9 +178,11 @@ body {
 }
 .shadownews .title {
     font-size: 14px;
+    font-weight: 1000;
 }
 .shadownews .date {
     color: #5b5b5f;
+    font-size: 10px;
 }
 .shadownews .footer {
     position: absolute;
@@ -201,28 +216,32 @@ body {
     /* align-items: center;
     justify-content: center; */
 }
-
-#owl-demo .titulo {
+.owl-carousel{
+    position: relative;
+}
+ .owl-carousel .titulo {
     font-family: "arena";
     font-weight: 600;
     font-size: 18px;
-    max-width: 67%;
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     background-color: #feee00;
     right: 0;
     line-height: 25px;
     padding: 5px;
 }
 
-#owl-demo .item img {
+
+.owl-carousel .item img {
     display: block;
     width: 100%;
     height: auto;
     position: relative;
     max-height: 200px;
+} 
+.owl-carousel .owl-item {
+    height:200px;
 }
-
 .socialmedia_modal,
 .buscar_modal {
     visibility: hidden;

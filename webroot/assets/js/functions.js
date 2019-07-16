@@ -51,12 +51,11 @@ function socialModal(filter) {
         $(".socialmedia_modal").addClass("active");
 
         $(".heart").css({
-            "z-index": "2000"
+            "z-index": "2000",
+            "color:":"red"
         });
     }
-    $("html,body").css({
-        overflow: "hidden"
-    });
+   
 }
 
 function cerrar(filter) {
@@ -75,16 +74,11 @@ function cerrar(filter) {
             "z-index": ""
         });
     }
-    $("html,body").css({
-        overflow: "auto"
-    });
+ 
 }
 function cerrarPpal() {
     $(".publicidad").hide();
-
-    $("html,body").css({
-        overflow: "auto"
-    });
+   
 }
 function closeVideo() {
     $(".saltar").css("opacity", 0);
@@ -160,9 +154,7 @@ function openVideo() {
             }, 1000);
 
             $(".video_publicitario").show();
-            $("html,body").css({
-                overflow: "auto"
-            });
+           
         })
         .error(error => console.log(error));
 }

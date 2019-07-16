@@ -89,8 +89,9 @@
     <div class="divider"></div>
    
     <div class="container_clock">
-        <div class="hrs"><span></span>20:00hrs. <br>Resumen</div>
+        <div class="hrs"><span></span>20:00hrs.</div>
         <div class="clock"></div>
+        <div class="resumen">RESUMEN</div>
         <div class="oVideo" onclick="openVideo()"></div>
     </div>
     <div class="divider"></div>
