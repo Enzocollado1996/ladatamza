@@ -41,19 +41,21 @@ function socialModal(filter) {
     if (filter) {
         $(".buscar_modal").addClass("active");
         $(".lupa").css({
-            "z-index": "2000",
-            color: "white"
+            "z-index": "2000"
         });
-        $(".close")
+        $(".lupa")
+            .find("g path")
+            .css({ fill: "#fff" });
+            $(".close")
             .find("g path")
             .css({ fill: "#fff" });
     } else {
         $(".socialmedia_modal").addClass("active");
-
-        $(".heart").css({
-            "z-index": "2000",
-            "color:":"red"
-        });
+        $(".heart").css('z-index',"2000")
+        $(".heart")
+        .find("g path")
+        .css({ fill: "#feee00" });
+       
     }
    
 }
@@ -63,8 +65,12 @@ function cerrar(filter) {
         $(".buscar_modal").removeClass("active");
         $(".lupa").css({
             "z-index": "",
-            color: "#feee00"
+            
         });
+        $(".lupa")
+        .find("g path")
+        .css({ fill: "#000" });
+        $(".close")
         $(".close")
             .find("g path")
             .css({ fill: "#feee00" });
@@ -73,6 +79,9 @@ function cerrar(filter) {
         $(".heart").css({
             "z-index": ""
         });
+        $(".heart")
+        .find("g path")
+        .css({ fill: "#000" });
     }
  
 }
