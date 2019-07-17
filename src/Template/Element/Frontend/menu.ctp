@@ -1,17 +1,17 @@
 <div class="header-notices">
     <div class="region">
 
-        NORTE
+        norte
 
     </div>
     <div class="region">
 
-        CENTRO
+        centro
 
     </div>
     <div class="region">
 
-        SUR
+        sur
 
     </div>
 </div>
