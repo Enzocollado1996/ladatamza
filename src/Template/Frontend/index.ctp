@@ -99,6 +99,7 @@
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $general) {?>
             <div class="item">
+            <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_url']) ?></div>
             <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
