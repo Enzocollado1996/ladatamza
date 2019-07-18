@@ -6,6 +6,13 @@
 /*
  * 	Default theme - Owl Carousel CSS File
  */
+ .owl-carousel .owl-wrapper {
+  display: flex !important;
+}
+.owl-carousel .owl-item img{
+  max-height: 200px;
+  object-fit: cover
+}
 .owl-theme .owl-nav {
   margin-top: 10px;
   text-align: center;
@@ -31,19 +38,27 @@
   position: relative;
   top: -20px;
 }
+.owl-carousel{
+  position: relative;
+  max-height:200px;
+}
+
 
 .owl-theme .owl-dots {
+  top: 0;
   text-align: center;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent; 
+}
   .owl-theme .owl-dots .owl-dot {
     display: inline-block;
     zoom: 1;
     *display: inline; }
     .owl-theme .owl-dots .owl-dot span {
-      width: 10px;
-      height: 10px;
+      width: 5px;
+      height: 5px;
       margin: 5px 7px;
-      background: #D6D6D6;
+      background: rgba(255, 255, 255, 0);
+      border: 1px grey solid;
       display: block;
       -webkit-backface-visibility: visible;
       transition: opacity 200ms ease;

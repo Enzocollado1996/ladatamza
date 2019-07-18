@@ -9,7 +9,7 @@
             </a></div>
         <div class="social">
            
-            <svg class="lupa"  version="1.2" onclick="socialModal(true);"  width="30" height="30" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            <svg class="lupa"  version="1.2" onclick="socialModal(true);"  width="26" height="26" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" xml:space="preserve">
             <g id="Capa_1_1_">
             </g>
@@ -22,7 +22,7 @@
                     s-43.2-64.8-43.2-108c0-79.2,64.8-144,147.6-144l0,0c39.6,0,75.6,14.4,104.4,43.2C399.6,266.4,414,306,414,345.6z"/>
             </g>
             </svg>
-            <svg class="heart" onclick="socialModal();"  width="30" height="30" version="1.2" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            <svg class="heart" onclick="socialModal();"  width="26" height="26" version="1.2" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" xml:space="preserve">
                 <g id="Capa_1_1_">
                 </g>
