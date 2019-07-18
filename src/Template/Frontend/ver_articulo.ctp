@@ -15,13 +15,12 @@
 <body>
 
     <?=$this->element('Frontend/menu-detalle')?>
+    <div class="fijo">
     <?php if (count($articulos) > 0): ?>
-    <?php foreach ($articulos as $articulo): ?>
-    
-    <section>
-        <div class="imagen">
-        <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
-        <?php
+    <?php $index = 0;foreach ($articulos as $articulo): ?>
+    <div class="imagen" id="img_<?php echo $index ?>">
+            <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
+    <?php
 if (count($articulo->imagenes) > 0) {
     foreach ($articulo->imagenes as $imagen) {
         if ($imagen->tipo == 'NOTICIA') {
@@ -32,14 +31,23 @@ if (count($articulo->imagenes) > 0) {
     echo '<div class="banner-empty"></div>';
 }
 ?>
-        </div>
-        <div class="info <?php echo $articulo->id == $articulos[0]->id ?  'primero' :  'medio' ?>" >
-            <div class="titulo"><?=$articulo->titulo;?></div>
-            <div class="share">
+<div class="share">
                 <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
                 <?php echo $this->Html->image("../assets/images/back.png", ['class' => 'back']) ?>
 
                 </div>
+            
+        </div>
+        <?php $index++;endforeach?>
+
+    <div class="fijo_noticia">
+    <div class="white"></div>
+    <?php foreach ($articulos as $articulo): ?>
+
+    <section>
+
+        <div class="info <?php echo $articulo->id == $articulos[0]->id ? 'primero' : 'medio' ?>" >
+            <div class="titulo"><?=$articulo->titulo;?></div>
                 <div class="cuerpo">
 
                 <?php echo $articulo->texto; ?>
@@ -53,7 +61,8 @@ if (count($articulo->imagenes) > 0) {
         }
     }
 }
-?>  <?php if ($articulo !== end($articulos)) {
+?>
+<?php if ($articulo !== end($articulos)) {
     echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bot.png") . '</div>';
 } else {
     echo '<div class="scroller_back back">' . $this->Html->image("../assets/images/back.png") . '</div>';
@@ -62,6 +71,9 @@ if (count($articulo->imagenes) > 0) {
 ?>
     </section>
     <?php endforeach;?>
+    <?php echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bot.png") . '</div>' ?>
+    </div>
+    </div>
     <?php else: ?>
     <div class="notFound">
     <svg   width="100" height="100" viewBox="0 0 24 24" fill="none"
@@ -100,7 +112,45 @@ $(document).ready(function() {
 $('.back').on('click',()=>{
     location.href = '/'
 })
+let height = []
+height.push(0)
+let cantidad_sections = 0
+let index = 0
+let sections = $(".fijo_noticia").find('section').get()
+$("#img_0").addClass('active')
+   sections.forEach(
+       section => {
+        height.push($(section).height())
+           cantidad_sections++;
+        }
+   )
+   let suma_sections = height[0]
+   var subo = 0;
+$(".fijo_noticia").on('touchmove',function(){
 
+    let scroll = $(this).scrollTop();
+
+        if(subo > scroll){
+            console.log("estoy subiendo " + scroll + "subo" + subo)
+            if(scroll < suma_sections){
+                $(".imagen").removeClass("active")
+                suma_sections = suma_sections - height[index]
+                index--;
+                $("#img_"+index).addClass("active")
+                
+            }
+        }
+        else{
+            if(scroll > suma_sections){
+            $(".imagen").removeClass("active")
+             console.log("height entra " + index ,scroll)
+             $("#img_"+index).addClass("active")
+             index++;
+             suma_sections = suma_sections + height[index]
+            }
+        }
+    subo = scroll
+})
 var watchID = navigator.geolocation.getCurrentPosition(function(position) {
   positions(position.coords.latitude, position.coords.longitude);
 });

@@ -12,10 +12,29 @@
 }
 html,
 body {
-    margin: 5px;
+   
     overflow: hidden;
     height: calc(100vh - 75px);
     touch-action: pan-x;
+}
+.body{
+    margin: 5px;
+}
+.fijo{
+    position: sticky;
+    height: calc(100vh - 180px);
+    overflow: hidden
+}
+.fijo_noticia{
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    position: absolute;
+    top: 100px;
+}
+.fijo_noticia .white{
+    height:100px;
+    width:100%;
+    display: block
 }
 .divider {
     margin: 4px;
