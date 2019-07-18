@@ -6,12 +6,9 @@
 /*
  * 	Default theme - Owl Carousel CSS File
  */
- .owl-carousel .owl-wrapper {
-  display: flex !important;
-}
+
 .owl-carousel .owl-item img{
-  max-height: 200px;
-  object-fit: cover
+  height: 200px;
 }
 .owl-theme .owl-nav {
   margin-top: 10px;
@@ -35,12 +32,13 @@
     cursor: default; }
 
 .owl-theme .owl-nav.disabled + .owl-dots {
-  position: relative;
-  top: -20px;
+    top: 0px;
+    position: absolute;
+    transform: translate(150%, 0);
 }
 .owl-carousel{
   position: relative;
-  max-height:200px;
+  height:100%;
 }
 
 
