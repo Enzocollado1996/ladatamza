@@ -146,6 +146,13 @@ class FrontendController extends AppController
        
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
                 'articulos_general', 'publicidad_inicial'));
+        
+        if($this->RequestHandler->isMobile()){
+            $this->render('index');
+        }
+        else{
+            $this->render('desktop');
+        }
     }
     
     /**
