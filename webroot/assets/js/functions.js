@@ -5,7 +5,7 @@ function positions(latitude, longitude) {
         var iconname = translateWeather(data.weather[0].main);
         $(".weather")
             .find("img")
-            .attr("src", "assets/images/" + iconname + ".png");
+            .attr("src", "/assets/images/" + iconname + ".png");
         $(".temp").text(grados + "º");
     });
 }
@@ -29,8 +29,8 @@ function translateWeather(weatherName) {
 }
 function validateTime() {
     let time = new Date();
-    let from = new Date().setHours(19, 55);
-    let to = new Date().setHours(22, 05);
+    let from = new Date().setHours(19, 50);
+    let to = new Date().setHours(20, 10);
 
     if (time > from && time < to) {
         $(".container_clock").css("background", "#feee00");
