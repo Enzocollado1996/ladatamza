@@ -30,7 +30,7 @@ function translateWeather(weatherName) {
 function validateTime() {
     let time = new Date();
     let from = new Date().setHours(19, 55);
-    let to = new Date().setHours(20, 05);
+    let to = new Date().setHours(22, 05);
 
     if (time > from && time < to) {
         $(".container_clock").css("background", "#feee00");

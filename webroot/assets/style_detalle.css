@@ -83,11 +83,12 @@ section .info .cuerpo {
     justify-content: space-around;
     background: #feee00;
     height: 100px;
-    width: 35px;
+    width: 40px;
     right: -5px;
     align-items: center;
     z-index:10;
     visibility:hidden
+    
 }
 .imagen.active .share{
     visibility:visible;

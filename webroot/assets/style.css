@@ -481,6 +481,9 @@ advertising .bar {
         height: 10px;
     }
     .menu .logo img {
-        width: 75px;
+        width: 70px;
+    }
+    .slot_container{
+        height:150px;
     }
 }
