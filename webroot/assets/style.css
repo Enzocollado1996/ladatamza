@@ -470,6 +470,9 @@ advertising .bar {
     top: 10px;
 }
 @media (max-width: 320px) {
+    .shadownews .title{
+        font-size: 13px;
+    }
     .container_clock .hrs {
         font-size: 12px;
     }
@@ -477,8 +480,12 @@ advertising .bar {
         font-size: 8px;
         margin-right: 5px;
     }
+    .container_clock .twoDots{
+        left: calc(50% + 11px);
+    }
+
     .hrs span{
-        width: 14px;
+        width: 10px;
         background: red;
         height: 10px;
     }
