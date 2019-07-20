@@ -59,6 +59,8 @@ section .info .titulo {
 }
 .fijo .imagen{
     height: 175px;
+    background: white;
+    z-index:10;
     position: absolute;
     overflow: hidden;
     opacity: 0;
