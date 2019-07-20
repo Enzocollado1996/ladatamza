@@ -460,6 +460,13 @@ advertising .bar {
     background-color: #feee00;
     color: white;
 }
+.share_url{
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
 @media (max-width: 320px) {
     .container_clock .hrs {
         font-size: 12px;
