@@ -12,7 +12,7 @@
 }
 html,
 body {
-    margin:2px;
+    margin:3px;
     overflow: hidden;
     height: calc(100vh - 75px);
     touch-action: pan-x;
