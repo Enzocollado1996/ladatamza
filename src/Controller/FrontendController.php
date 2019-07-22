@@ -62,7 +62,7 @@ class FrontendController extends AppController
     public function index()
     {
         $articulos_centro = $this->Articulos->find('all', [
-                            'order' => ['publicado' => 'asc'],
+                            'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -85,7 +85,7 @@ class FrontendController extends AppController
         }
         
         $articulos_norte = $this->Articulos->find('all', [
-                            'order' => ['publicado' => 'asc'],
+                            'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -108,7 +108,7 @@ class FrontendController extends AppController
         }
         
         $articulos_sur = $this->Articulos->find('all', [
-                            'order' => ['publicado' => 'asc'],
+                            'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -131,7 +131,7 @@ class FrontendController extends AppController
         }        
         
         $articulos_general = $this->Articulos->find('all', [
-                            'order' => ['publicado' => 'asc'],
+                            'order' => ['publicado' => 'desc'],
                             'limit' => 10
                         ])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado','Articulos.slug'])
