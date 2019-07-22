@@ -12,14 +12,15 @@
 }
 html,
 body {
-   
+    margin:2px;
     overflow: hidden;
     height: calc(100vh - 75px);
     touch-action: pan-x;
 }
-.body{
-    margin: 5px;
-}
+/* .body{
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+} */
 .fijo{
     position: sticky;
     height: calc(100vh - 180px);
