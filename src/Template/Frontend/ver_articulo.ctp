@@ -20,6 +20,7 @@
     <?php $index = 0;foreach ($articulos as $articulo): ?>
     <div class="imagen" id="img_<?php echo $index ?>">
             <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
+            <div class="bloque"></div>
     <?php
 if (count($articulo->imagenes) > 0) {
     foreach ($articulo->imagenes as $imagen) {
@@ -41,7 +42,7 @@ if (count($articulo->imagenes) > 0) {
         <?php $index++;endforeach?>
 
     <div class="fijo_noticia">
-    <div class="white"></div>
+    <!-- <div class="white"></div> -->
     <?php foreach ($articulos as $articulo): ?>
 
     <section>
