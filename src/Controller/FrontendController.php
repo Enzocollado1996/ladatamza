@@ -151,6 +151,7 @@ class FrontendController extends AppController
             $this->render('index');
         }
         else{
+            $this->viewBuilder()->setLayout('desktop_frontend');
             $this->render('desktop');
         }
     }
