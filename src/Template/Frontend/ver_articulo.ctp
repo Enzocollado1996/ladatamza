@@ -63,15 +63,19 @@ if (count($articulo->imagenes) > 0) {
     }
 }
 ?>
-<?php if ($articulo !== end($articulos)) {
-    echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bot.png") . '</div>';
-} else {
+<?php if ($articulo === end($articulos)) {
     echo '<div class="scroller_back back">' . $this->Html->image("../assets/images/back.png") . '</div>';
+    
+} else {
+    echo '<br>';
+    
 }
 
 ?>
     </section>
+    <br><br>
     <?php endforeach;?>
+    
     <?php echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bot.png") . '</div>' ?>
     </div>
     </div>
@@ -117,12 +121,14 @@ let height = []
 height.push(0)
 let cantidad_sections = 0
 let index = 0
+let total = 0
 let sections = $(".fijo_noticia").find('section').get()
 $("#img_0").addClass('active')
    sections.forEach(
        section => {
         height.push($(section).height())
            cantidad_sections++;
+           total += $(section).height()
         }
    )
    let suma_sections = height[0]
@@ -131,6 +137,13 @@ $(".fijo_noticia").on('touchmove',function(){
 
     let scroll = $(this).scrollTop();
 
+        if(scroll >= (total - (height[height.length - 1]))){
+            
+            $(".scroller").hide();
+        }
+        else{
+            $(".scroller").show();
+        }
         if(subo > scroll){
             console.log("estoy subiendo " + scroll + "subo" + subo)
             if(scroll < suma_sections){
@@ -162,27 +175,6 @@ $("#target").submit(function(event) {
     });
 });
 
-$('.primero').paroller({
-factorXs: 0,
-factorSm: 0,
-factorMd: -0.4,
-factorLg: -0.5,
-factorXl: -0.6,
-factor: 0,
-type: 'foreground',
-transition: 'transform 0.2s ease-in',
-direction: 'vertical'
-});
-$('.medio').paroller({
-factorXs: 0.1,
-factorSm: 0.1,
-factorMd: -0.4,
-factorLg: -0.5,
-factorXl: -0.6,
-factor: 0,
-type: 'foreground',
-transition: 'transform 0.2s ease-in',
-direction: 'vertical'
-});
+
 
 </script>

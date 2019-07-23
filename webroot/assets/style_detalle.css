@@ -23,11 +23,11 @@ section {
     height: auto;
 }
 .fijo_noticia{
-    height: calc(100vh - 200px);
+    height: calc(100vh - 300px);
     overflow: scroll;
     position: absolute;
     top: 160px;
-    z-index: 2000;
+    /* z-index: 2000; */
 }
 section .banner-empty {
     width: 100%;
@@ -115,11 +115,14 @@ section .info .cuerpo {
 }
 
 .scroller {
-    position: relative;
-    bottom: 0;
+ position: fixed;
+    bottom: 30px;
+    margin-left: 0;
     display: flex;
+    width: 100%;
     justify-content: center;
-    padding: 20px;
+    /* padding: 20px; */
+    z-index: 10000;
 }
 .scroller img {
     animation: 1s fadeOutDown infinite;
