@@ -60,7 +60,7 @@ section .info .titulo {
 .fijo .imagen{
     height: 175px;
     background: white;
-    /* z-index:10; */
+    transform: translate3d(0,0,1px);
     position: absolute;
     overflow: hidden;
     opacity: 0;
