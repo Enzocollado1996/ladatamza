@@ -273,7 +273,7 @@ body {
     left: 0;
     line-height: 25px;
     padding: 5px 0;
-    padding-left: -8px;
+    padding-left: 5px;
     width: 100%;
     height: 30%;
 }
@@ -290,7 +290,7 @@ body {
     width: 100vw;
     height: 100%;
     z-index: 1000;
-    margin-left: -8px;
+    margin-left: -5px;
     top: -100%;
     transition: 0.5s all;
 }
