@@ -21,13 +21,14 @@ section {
 .fijo .banner {
     width: 100%;
     height: auto;
+    transform: translate3d(0,0,1px);
 }
 .fijo_noticia{
     height: calc(100vh - 300px);
     overflow: scroll;
     position: absolute;
     top: 160px;
-    /* z-index: 2000; */
+    z-index: 11;
 }
 section .banner-empty {
     width: 100%;
@@ -60,7 +61,7 @@ section .info .titulo {
 .fijo .imagen{
     height: 175px;
     background: white;
-    transform: translate3d(0,0,1px);
+    /* z-index:10; */
     position: absolute;
     overflow: hidden;
     opacity: 0;
@@ -70,6 +71,7 @@ section .info .titulo {
     position: absolute;
     width: 90%;
     height:25px;
+    z-index: 10;
     right:0;
     bottom:0;
     background: white
