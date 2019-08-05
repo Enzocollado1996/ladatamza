@@ -179,6 +179,7 @@
 .logo{
     position:absolute;
     z-index: 100;
+    margin: 20px;
 }
 .share {
     position:absolute;
@@ -193,8 +194,9 @@
 }
 .heart{
     position: absolute;
-    right: 10px;
-    z-index: 16
+    right: 20px;
+    z-index: 16;
+    top: 20px;
 }
 .header-notices{
   
