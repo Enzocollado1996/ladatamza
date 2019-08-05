@@ -176,7 +176,34 @@
 </html>
 <style>
 
-
+.logo{
+    position:absolute;
+    z-index: 100;
+}
+.share {
+    position:absolute;
+    bottom:300px;
+    right:10px;
+}
+.logo a img{
+    width:150px;
+}
+.heart{
+    position: absolute;
+    right: 10px;
+    z-index: 16
+}
+.header-notices{
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align:center
+}
+.noticias{
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align:center;
+    gap:10px;
+}
 
 </style>
 
