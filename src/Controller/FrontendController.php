@@ -198,6 +198,13 @@ class FrontendController extends AppController
                 ->toArray();
         array_unshift($articulos,$articulo);
         $this->set('articulos', $articulos);
+        if($this->RequestHandler->isMobile()){
+            $this->render('ver_articulo');
+        }
+        else{
+            $this->viewBuilder()->setLayout('desktop_frontend_detalle');
+            $this->render('desktop_ver_articulo');
+        }
     }
     
     /**
