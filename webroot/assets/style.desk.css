@@ -16,3 +16,179 @@ body{
     src: url(./fonts/PatuaOne-Regular.ttf);
     font-family: PatuaOne;
 }
+.logo {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    z-index: 10;
+    margin: 10px 50px;
+}
+.header-notices{
+    display: grid;
+    width: 80%;
+    grid-template-columns: 33% 33% 33%;
+    gap: 30px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px 0;
+    font-size: 1.5em;
+    font-family: PatuaOne;
+    
+}
+.share{
+    position: absolute;
+    right: 5px;
+    bottom: 300px;
+}
+
+.heart{
+    position: absolute;
+    right: 10px;
+    z-index: 10;
+    top: 40px;
+}
+.noticias .contenido{
+    position:relative
+}
+.noticias .contenido h2{
+    position:relative;
+}
+.noticias .contenido h2 span{
+    
+    background: #feee007a;
+    position: absolute;
+    width: 0px;
+    height: 100%;
+    mix-blend-mode: soft-light;
+
+}
+
+.noticias{
+    font-family: "ptsans";
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 30px;
+    justify-items: ;
+    width: 80%;
+    margin: 0 auto;
+
+}
+.noticias .sector img{
+    width:100%;
+    height:auto
+}
+
+.noticias .sector .footer {
+    
+    background-color: black;
+    display: inline;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #feee00;
+    font-family: PatuaOne;
+    line-height: 4;
+}
+.noticias .sector .banner-empty {
+    width: 100%;
+    height: 200px;
+    background: #8080804f;
+}
+.noticias .sector .container-noticia{
+    margin:10px 0 ;
+}
+
+.socialmedia_modal,
+.buscar_modal {
+    visibility: hidden;
+    background: #000000d6;
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    z-index: 1000;
+    margin-left: -6px;
+    top: -100%;
+    transition: 0.5s all;
+}
+.socialmedia_modal.active,
+.buscar_modal.active {
+    visibility: visible;
+    top: 0px;
+}
+.socialmedia_modal .close,
+.buscar_modal .close {
+    cursor: pointer;
+    width: 24px;
+    right: 40px;
+    margin-left: -5px;
+    position: absolute;
+    bottom: 10px;
+}
+
+/* modales */
+.socialmedia_modal .content-sm,
+.buscar_modal .content-sm {
+    position: relative;
+    display: block;
+    justify-content: center;
+    top: 30%;
+    text-align: center;
+    margin: auto;
+    width: 55%;
+    font-family: ptsans;
+}
+.content-sm.src {
+    width: 75%;
+    top: 40%;
+}
+.src input {
+    text-align: center;
+    font-family: ptsans;
+    font-size: 15px;
+    color: #fff;
+    width: 80%;
+    padding: 0 10px;
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+.src input:focus {
+    outline: none;
+}
+.src button {
+    margin: 20px;
+    font-size: 15px;
+    background: #feee00;
+    border: none;
+    font-size: 1em;
+    width: 150px;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+.src button:hover {
+    color: #feee00;
+    background-color: #fff;
+}
+.src button:focus {
+    outline: none;
+}
+.socialmedia_modal .linea {
+    height: 1px;
+    position: relative;
+    background-color: #feee00;
+}
+
+.content-sm .social-name {
+    margin: 20px;
+    display: grid;
+    gap: 20px;
+}
+
+.social-name span {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #feee00;
+}

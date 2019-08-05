@@ -99,7 +99,10 @@
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $general) {?>
             <div class="item">
-            <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_url']) ?></div>
+            <?php if(!isset($general->titulo)):?>
+            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
+            <?php else : ?> 
+            <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_url']) ?></div>
             <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
@@ -115,6 +118,7 @@
                     <?=$general->titulo?>
                     </div>
                 </div>
+                <?php endif?>
             </div>
         <?php }?>
     </div>

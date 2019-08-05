@@ -203,6 +203,7 @@ class FrontendController extends AppController
         }
         else{
             $this->viewBuilder()->setLayout('desktop_frontend_detalle');
+            
             $this->render('desktop_ver_articulo');
         }
     }
