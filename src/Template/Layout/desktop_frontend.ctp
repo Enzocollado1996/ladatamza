@@ -188,23 +188,61 @@
 .logo a img{
     width:150px;
 }
+.container-noticia{
+    margin-bottom: 30px;
+}
 .heart{
     position: absolute;
     right: 10px;
     z-index: 16
 }
 .header-notices{
-    display:grid;
+  
+    font-family:PatuaOne;
+    font-size:1.5em;
+    display: grid;
     grid-template-columns: 33% 33% 33%;
-    text-align:center
+    gap: 30px;
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
 }
 .noticias{
-    display:grid;
+    display: grid;
     grid-template-columns: 33% 33% 33%;
-    text-align:center;
-    gap:10px;
+    
+    margin: 0 auto;
+    gap: 30px;
+    width: 80%;
+    font-family:ptsans;
 }
-
+.noticias img{
+    width: 100%;
+    object-fit: contain;
+}
+.contenido h2{
+    position:relative;
+}
+.contenido h2 span{
+    display: block;
+    position: absolute;
+    width: 0%;
+    background-color: #feee0094;
+    height: 100%;
+   mix-blend-mode: saturation;
+}
+.sector .fecha {
+    margin: 10px 0;
+}
+.footer {
+    background-color: black;
+    display:inline;
+    font-size:1.2em;
+    padding: 10px 5px;
+    margin-bottom: 5px;
+    color: #feee00;
+    font-family: PatuaOne;
+}
 </style>
 
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
