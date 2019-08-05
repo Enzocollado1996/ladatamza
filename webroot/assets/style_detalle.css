@@ -97,7 +97,7 @@ section .info .cuerpo {
     width: 40px;
     right: -5px;
     align-items: center;
-    z-index:50;
+    z-index:150;
     visibility:hidden
     
 }
