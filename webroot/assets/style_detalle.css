@@ -21,13 +21,14 @@ section {
 .fijo .banner {
     width: 100%;
     height: auto;
+    transform: translate3d(0,0,1px);
 }
 .fijo_noticia{
-    height: calc(100vh - 200px);
+    height: calc(100vh - 300px);
     overflow: scroll;
     position: absolute;
     top: 160px;
-    z-index: 2000;
+    z-index: 11;
 }
 section .banner-empty {
     width: 100%;
@@ -70,6 +71,7 @@ section .info .titulo {
     position: absolute;
     width: 90%;
     height:25px;
+    z-index: 10;
     right:0;
     bottom:0;
     background: white
@@ -115,11 +117,14 @@ section .info .cuerpo {
 }
 
 .scroller {
-    position: relative;
-    bottom: 0;
+ position: fixed;
+    bottom: 30px;
+    margin-left: 0;
     display: flex;
+    width: 100%;
     justify-content: center;
-    padding: 20px;
+    /* padding: 20px; */
+    z-index: 10000;
 }
 .scroller img {
     animation: 1s fadeOutDown infinite;

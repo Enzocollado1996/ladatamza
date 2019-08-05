@@ -14,7 +14,7 @@ html,
 body {
     margin:3px;
     overflow: hidden;
-    height: calc(100vh - 75px);
+    height: calc(100vh - 65px);
     touch-action: pan-x;
 }
 /* .body{
@@ -23,7 +23,7 @@ body {
 } */
 .fijo{
     position: sticky;
-    height: calc(100vh - 180px);
+    height: calc(100vh - 220px);
     overflow: hidden
 }
 .fijo_noticia{
@@ -73,12 +73,12 @@ body {
     margin-left: 5px;
 }
 .menu .logo {
-    padding: 3px;
+    padding: 2px;
     display: flex;
     justify-content: center;
 }
 .menu .logo img {
-    width: 100px;
+    width: 90px;
 }
 .menu .social {
     color: #feee00;
@@ -99,7 +99,7 @@ body {
     position: relative;
     color: white;
     padding: 5px;
-    font-weight: 600;
+    font-weight: 400;
 }
 /* //linear-gradient(45deg, #6b6666, #000000f5); */
 .container_clock {
@@ -147,7 +147,8 @@ body {
 }
 .container_clock .resumen {
     font-family: ptsans;
-    font-size: 10px;
+    letter-spacing: 2px;
+    font-size: 8px;
     color: white;
 }
 /* tombola */
@@ -155,7 +156,7 @@ body {
     font-family: "ptsans";
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    height: 200px;
+    height: 180px;
     position: relative;
 }
 .container {
@@ -271,10 +272,13 @@ body {
     bottom: 0;
     background-color: #feee00;
     left: 0;
+    display: flex;
+    justify-content: center;
     line-height: 25px;
-    padding: 5px 0;
-    padding-left: -8px;
-    width: 100%;
+    padding: 10px;
+    align-items: center;
+    /* padding-left: 5px; */
+    width: calc(100% - 20px);
     height: 30%;
 }
 
@@ -290,7 +294,7 @@ body {
     width: 100vw;
     height: 100%;
     z-index: 1000;
-    margin-left: -8px;
+    margin-left: -5px;
     top: -100%;
     transition: 0.5s all;
 }
@@ -481,6 +485,7 @@ advertising .bar {
     .container_clock .resumen {
         font-size: 8px;
         margin-right: 5px;
+        
     }
     .container_clock .twoDots{
         left: calc(50% + 11px);
