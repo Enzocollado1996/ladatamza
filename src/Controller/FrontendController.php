@@ -65,6 +65,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
+                ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'CENTRO', 'habilitado' => true])
                 ->toArray();
@@ -88,6 +89,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
+                ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'NORTE', 'habilitado' => true])
                 ->toArray();
@@ -111,6 +113,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
+                ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'SUR', 'habilitado' => true])
                 ->toArray();
@@ -142,7 +145,7 @@ class FrontendController extends AppController
         $publicidad_inicial = $this->Publicidades->find('all')
                 ->contain(['Imagenes', 'Videos'])
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
-                ->first();        
+                ->first();
        
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
                 'articulos_general', 'publicidad_inicial'));
