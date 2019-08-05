@@ -66,7 +66,7 @@ class FrontendController extends AppController
                             'limit' => 100
                         ])
                 ->contain(['Imagenes'])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'CENTRO', 'habilitado' => true])
                 ->toArray();
         
@@ -90,7 +90,7 @@ class FrontendController extends AppController
                             'limit' => 100
                         ])
                 ->contain(['Imagenes'])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'NORTE', 'habilitado' => true])
                 ->toArray();
         
@@ -114,7 +114,7 @@ class FrontendController extends AppController
                             'limit' => 100
                         ])
                 ->contain(['Imagenes'])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
                 ->where(['zona' => 'SUR', 'habilitado' => true])
                 ->toArray();
         
@@ -142,6 +142,21 @@ class FrontendController extends AppController
                 ->where(['zona' => 'GENERAL', 'habilitado' => true])
                 ->toArray();
         
+        $publicidades_general = $this->Publicidades->find('all',[
+                'order' => ['orden' => 'asc'],
+                'limit' => 100
+                ])
+                ->contain(['Imagenes'])
+                ->where(['Publicidades.zona' => 'GENERAL', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
+                ->toArray();
+        
+        //Completo los articulos con publicidades
+        if(count($articulos_general) > 0){
+           foreach($publicidades_general as $publicidad_general){
+                $articulos_general = $this->insert($articulos_general, $publicidad_general->orden - 1, $publicidad_general);            
+            } 
+        } 
+        
         $publicidad_inicial = $this->Publicidades->find('all')
                 ->contain(['Imagenes', 'Videos'])
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
@@ -156,6 +171,9 @@ class FrontendController extends AppController
         else{
             $this->viewBuilder()->setLayout('desktop_frontend');
             $this->render('desktop');
+            //echo '<pre>';
+            //var_dump($articulos_general);
+            //exit;
         }
     }
     

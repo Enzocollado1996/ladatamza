@@ -53,9 +53,9 @@
                 Multimedia&nbsp;&nbsp;<input type="checkbox" id="seleccion-multimedia">
             </div>
             <div class="panel-body mm-imagen" style="display:none;">
-                <div class="form-group">
+<!--                <div class="form-group">
                     <?=$this->Form->control('url_img_externa',['label' => 'Url imágen externa','type'=> 'text','class'=>'form-control']);?>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <?php echo $this->Form->input('filename', ['type' => 'file', 'label'=>'Imágen'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
                     <div class="form-group" id ="imagen-publicidad">
@@ -69,9 +69,9 @@
                 </div>                
             </div>
             <div class="panel-body mm-video" style="display:none;">
-                <div class="form-group">
+<!--                <div class="form-group">
                     <?=$this->Form->control('url_video_externo',['label' => 'Url video externo','type'=> 'text','class'=>'form-control']);?>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <?php echo $this->Form->input('file', ['type' => 'file', 'label'=>'Video'/*, 'multiple'*/, 'accept'=>'.mp4, .flv']); ?>
                     <div class="form-group" id="video-publicidad"></div>

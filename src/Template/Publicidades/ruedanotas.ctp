@@ -6,7 +6,7 @@
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h2 class="page-header">Publicidades secundarias
+        <h2 class="page-header">Publicidades tómbola
             <a href="<?=$this->Url->build(['action' => 'add'], true)?>" class="btn btn-success pull-right" style="margin-right:5px;"><span class="fa fa-plus"></span>&nbsp;Nueva publicidad</a>
         </h2>
     </div>

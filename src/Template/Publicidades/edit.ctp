@@ -6,7 +6,7 @@
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h2 class="page-header">Editar publicidad secundaria
+        <h2 class="page-header">Editar publicidad tómbola
             <?= $this->Html->link('<span class="fa fa-trash"></span>&nbsp;Eliminar', 
                         ['action' => '#'], 
                         ['data-toggle' => 'modal', 'data-target' => '#basicModal' . $publicidad->id, 'escape' => false, 'title' => 'Eliminar', 'class' => 'btn btn-danger pull-right']) ?>
@@ -59,9 +59,9 @@
                 Imágen
             </div>
             <div class="panel-body">
-                <div class="form-group">
+<!--                <div class="form-group">
                     <?=$this->Form->control('url_img_externa',['label' => 'Url imágen externa','type'=> 'text','class'=>'form-control']);?>
-                </div>
+                </div>-->
                 <div class="form-group">
                     <?php echo $this->Form->input('filename', ['type' => 'file', 'label'=>'Imágen'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
                     <div class="form-group" id ="imagen-publicidad">

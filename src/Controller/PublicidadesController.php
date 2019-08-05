@@ -25,7 +25,8 @@ class PublicidadesController extends AppController
         $options = [
             'SUR' => 'SUR',
             'CENTRO' => 'CENTRO',
-            'NORTE' => 'NORTE'
+            'NORTE' => 'NORTE',
+            'GENERAL' => 'GENERAL'
         ];
         return $options;
     }
