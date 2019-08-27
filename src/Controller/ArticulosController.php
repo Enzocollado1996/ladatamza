@@ -38,7 +38,8 @@ class ArticulosController extends AppController
             'SUR' => 'SUR',
             'CENTRO' => 'CENTRO',
             'NORTE' => 'NORTE',
-            'GENERAL' => 'GENERAL'
+            'GENERAL' => 'GENERAL',
+            'SOCIALES' => 'SOCIALES'
         ];
         return $options;
     }
