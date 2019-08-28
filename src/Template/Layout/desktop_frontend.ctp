@@ -35,8 +35,11 @@
                 </g>
                 </svg>
     <div id="owl-demo" class="owl-carousel owl-theme">
-        <?php foreach ($articulos_general as $general) {?>
-
+        <?php foreach ($articulos_general as $key => $general) {?>
+            <?php if($key == 5) {
+                break;
+            }
+            ?>
             <div class="item">
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
@@ -62,6 +65,37 @@
             </div>
         <?php }?>
     </div><!--END owl-demo-->
+    <div class="container noticias">
+        <?php foreach ($articulos_general as $key => $general) :?>
+            <?php if($key >= 5 && $key <= 7){?>
+                <div class="sector col-md-4">
+                    <div class="container-noticia"> 
+                        <?php if(!isset($general->titulo)):?>
+                            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
+                        <?php else : ?> 
+                        <div class="fecha"><?=$general->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                            <?php if (count($general->imagenes) > 0) {
+                                foreach ($general->imagenes as $imagen) {
+                                    if ($imagen->tipo == 'NOTICIA') {
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                    }
+                                }
+                            } else {
+                                echo '<div class="banner-empty"></div>';
+                            }
+                        ?>
+                        <div class="contenido" >
+                            <div class="keyword"><?php echo $general->palabras_claves?></div>
+                            <h2 id="<?= $general->id?>" onmouseover="barrido(<?=$general->id ?>)" onmouseleave="barridoout(<?=$general->id ?>)">
+                                <span></span><?php echo $general->titulo?>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <?php endif ?> 
+            <?php } ?> 
+        <?php endforeach ;?>
+    </div>
     <div class="container noticias">
         <div class="row">
             <div class="sector col-md-4">
@@ -157,43 +191,8 @@
             </div>
         </div> <!--END ROW-->
     </div> <!--END CONTAINER NOTICIAS-->
-    <keyword class="text-center keyword-style">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 keyword-col">
-                    <h3>Dirección</h3>
-                    <p>
-                        aaaaa <br />
-                        vdfsfs
-                    </p>
-                </div>
-                <div class="col-md-4 keyword-col">
-                    <h3>Mis redes</h3>
-                    <ul class="list-inline">
-                        <li>
-                            <a  target="_blank" href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a  target="_blank" href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                        </li>
-                        <li>
-                            <a  target="_blank" href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a  target="_blank" href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a  target="_blank" href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 keyword-col">
-                    <h3>titulo</h3>
-                    <p>ass sds fsfs ew rw rwr</p>
-                </div>
-            </div>
-        </div>
-    </keyword>
+    <?php include('footer.ctp'); ?>
+
 </body>
 </html>
 

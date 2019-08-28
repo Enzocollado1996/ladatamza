@@ -135,7 +135,7 @@ class FrontendController extends AppController
         
         $articulos_general = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
-                            'limit' => 10
+                            'limit' => 8
                         ])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado','Articulos.slug'])
                 ->contain(['Imagenes'])
