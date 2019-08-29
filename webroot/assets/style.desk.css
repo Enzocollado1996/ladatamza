@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+
 body{
     margin:0
 }
@@ -8,14 +11,7 @@ body{
     right: 10px;
     top: 10px;
 }
-@font-face {
-    src: url(./fonts/PTSans-Regular.ttf);
-    font-family: "ptsans";
-}
-@font-face {
-    src: url(./fonts/PatuaOne-Regular.ttf);
-    font-family: PatuaOne;
-}
+
 .socialmedia_modal,
 .buscar_modal {
     visibility: hidden;
@@ -53,7 +49,7 @@ body{
     text-align: center;
     margin: auto;
     width: 55%;
-    font-family: ptsans;
+    font-family: PT Sans;
 }
 .content-sm.src {
     width: 75%;
@@ -61,7 +57,7 @@ body{
 }
 .src input {
     text-align: center;
-    font-family: ptsans;
+    font-family: PT Sans;
     font-size: 15px;
     color: #fff;
     width: 80%;
@@ -109,4 +105,76 @@ body{
     align-items: center;
     justify-content: space-evenly;
     color: #feee00;
+}
+
+/*estaba en desktop_frontend.ctp*/
+
+.logo{
+    position:absolute;
+    z-index: 100;
+    margin: 20px;
+}
+.share {
+    position:absolute;
+    bottom:300px;
+    right:10px;
+}
+.logo a img{
+    width:150px;
+}
+.container-noticia{
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+}
+.heart{
+    position: absolute;
+    right: 20px;
+    z-index: 16;
+    top: 20px;
+}
+.header-notices{
+    font-family:Patua One;
+    font-size:1.5em;
+    margin: 30px auto;
+    text-align: center;
+    text-transform:capitalize;
+}
+.noticias{
+    font-family:PT Sans;
+}
+.noticias img{
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 14px;
+}
+.container-noticia .contenido {
+    padding: 0px 18px 15px 18px;
+}
+
+.contenido h2{
+    position:relative;
+}
+.contenido h2 span{
+    display: block;
+    position: absolute;
+    width: 0%;
+    background-color: #feee0094;
+    height: 100%;
+   mix-blend-mode: saturation;
+}
+.sector .fecha {
+    margin: 10px 0;
+}
+.keyword{
+    background-color: black;
+    display:inline;
+    font-size:1.2em;
+    padding: 4px 5px;
+    margin-bottom: 5px;
+    color: #feee00;
+    font-family: Patua One;
+}
+
+.footer-style{
+    background: #000;
 }

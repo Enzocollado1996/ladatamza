@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <?= $this->Html->css('../assets/owl.carousel.min') ?>
     <?= $this->Html->css('../assets/owl.theme.desk') ?>
     <?= $this->Html->css('../assets/style.desk') ?>
+    <?= $this->Html->css('../assets/fontawesome.css') ?>
+    <?= $this->Html->css('../assets/fontawesome.min.css') ?>
     <?= $this->element('modals/socials') ?>
 </head>
 <body>
@@ -32,12 +34,13 @@
                         C241.2,226.8,270,244.8,288,273.6z"/>
                 </g>
                 </svg>
-<div id="owl-demo" class="owl-carousel owl-theme">
-        <?php foreach ($articulos_general as $general) {?>
-
+    <div id="owl-demo" class="owl-carousel owl-theme">
+        <?php foreach ($articulos_general as $key => $general) {?>
+            <?php if($key == 5) {
+                break;
+            }
+            ?>
             <div class="item">
-        
-                 
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
             <?php else : ?> 
@@ -61,191 +64,154 @@
                 <?php endif?>
             </div>
         <?php }?>
-    </div>
-                    <div class="header-notices">
-                        <div>norte</div>
-                        <div>centro</div>
-                        <div>sur</div>
+    </div><!--END owl-demo-->
+    <div class="container noticias">
+        <?php foreach ($articulos_general as $key => $general) :?>
+            <?php if($key >= 5 && $key <= 7){?>
+                <div class="sector col-md-4">
+                    <div class="container-noticia"> 
+                        <?php if(!isset($general->titulo)):?>
+                            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
+                        <?php else : ?> 
+                        <div class="fecha"><?=$general->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                            <?php if (count($general->imagenes) > 0) {
+                                foreach ($general->imagenes as $imagen) {
+                                    if ($imagen->tipo == 'NOTICIA') {
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                    }
+                                }
+                            } else {
+                                echo '<div class="banner-empty"></div>';
+                            }
+                        ?>
+                        <div class="contenido" >
+                            <div class="keyword"><?php echo $general->palabras_claves?></div>
+                            <h2 id="<?= $general->id?>" onmouseover="barrido(<?=$general->id ?>)" onmouseleave="barridoout(<?=$general->id ?>)">
+                                <span></span><?php echo $general->titulo?>
+                            </h2>
+                        </div>
                     </div>
-    <div class="noticias">
-    
-        <div class="sector">
-            <?php foreach ($articulos_norte as $norte) :?>        
-            <div class="container-noticia">
-                  
-            <?php if(!isset($norte->titulo)):?>
-            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
-            <?php else : ?> 
-            <div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>
-            <?php if (count($norte->imagenes) > 0) {
-                foreach ($norte->imagenes as $imagen) {
-                    if ($imagen->tipo == 'NOTICIA') {
-                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                    }
+                </div>
+                <?php endif ?> 
+            <?php } ?> 
+        <?php endforeach ;?>
+    </div>
+    <div class="container noticias">
+        <div class="row">
+            <div class="sector col-md-4">
+                <div class="header-notices">norte</div>
+                <?php foreach ($articulos_norte as $key => $norte) :?>  
+                <?php if($key == 3) {
+                    break;
                 }
-            } else {
-                echo '<div class="banner-empty"></div>';
-            }
-            ?>
-                
+                ?>
+      
+                <div class="container-noticia"> 
+                    <?php if(!isset($norte->titulo)):?>
+                    <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
+                    <?php else : ?> 
+                    <div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                    <?php if (count($norte->imagenes) > 0) {
+                        foreach ($norte->imagenes as $imagen) {
+                            if ($imagen->tipo == 'NOTICIA') {
+                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                            }
+                        }
+                    } else {
+                        echo '<div class="banner-empty"></div>';
+                    }
+                    ?>
+                        
                     <div class="contenido" >
-                    <h2 id="<?= $norte->id?>" onmouseover="barrido(<?=$norte->id ?>)" onmouseleave="barridoout(<?=$norte->id ?>)"><span></span><?php echo $norte->titulo?></h2>
-                    <div class="texto">
-                   
-                     <?php echo $norte->texto; ?>
+                        <div class="keyword"><?php echo $norte->palabras_claves?></div>
+                        <h2 id="<?= $norte->id?>" onmouseover="barrido(<?=$norte->id ?>)" onmouseleave="barridoout(<?=$norte->id ?>)">
+                            <span></span><?php echo $norte->titulo?>
+                        </h2>
+                        
                     </div>
-                    <div class="footer">
-                    <?php echo $norte->palabras_claves?>
-                    </div>
-                </div>
-                <?php endif ?> 
+                    <?php endif ?> 
+                </div> <!--END CONTAINER NOTICIAS-->
+                <?php endforeach ;?>
             </div>
-            <?php endforeach ;?>
-        </div>
-        <div class="sector">
-            <?php foreach ($articulos_centro as $centro) :?>   
-            <div class="container-noticia">
-            <?php if(!isset($centro->titulo)):?>
-            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $centro->imagen->file_url . '/' . $centro->imagen->filename, ['style'=> 'width:100%']);?>
-            <?php else : ?>   
-            <div class="fecha"><?=$centro->publicado?></div>
-             
-            <?php if (count($centro->imagenes) > 0) {
-                foreach ($centro->imagenes as $imagen) {
-                    if ($imagen->tipo == 'NOTICIA') {
-                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                    }
+            <div class="sector col-md-4">
+                <div class="header-notices">centro</div>
+                <?php foreach ($articulos_centro as $key => $centro) :?>   
+                <?php if($key == 3) {
+                    break;
                 }
-            } else {
-                echo '<div class="banner-empty"></div>';
-            }
-            ?>
-                    <div class="contenido">
-                    <h2 id="<?= $centro->id?>" onmouseover="barrido(<?=$centro->id ?>)" onmouseleave="barridoout(<?=$centro->id ?>)"><span></span><?php echo $centro->titulo?></h2>
-                    <div class="texto">
-                    <?php echo $centro->texto?>
-                    </div>
-                    <div class="footer">
-                    <?php echo $centro->palabras_claves?>
-                    </div>
-                </div>
-                     <?php endif; ?>
-                </div>
-       
-            
-            <?php endforeach ;?>
-        </div>
-        <div class="sector">
- 
-            <?php foreach ($articulos_sur as $sur) :?>        
-            <div class="container-noticia">
-            
-            <?php if(!isset($sur->titulo)):?>
-            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $sur->imagen->file_url . '/' . $sur->imagen->filename, ['style'=> 'width:100%']);?>
-            <?php else : ?>      
-            <div class="fecha"><?=$sur->publicado?></div>
-            <?php if (count($sur->imagenes) > 0) {
-                foreach ($sur->imagenes as $imagen) {
-                    if ($imagen->tipo == 'NOTICIA') {
-                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                    }
-                }
-            } else {
-                echo '<div class="banner-empty"></div>';
-            }
-            ?>
-                    <div class="contenido">
-                    <h2 id="<?=$sur->id?>" onmouseover="barrido(<?=$sur->id?>)" onmouseleave="barridoout(<?=$sur->id ?>)"><span></span><?php echo $sur->titulo?></h2>
-                    <div class="texto">
-                    <?php echo $sur->texto?>
-                    </div>
-                    <div class="footer">
-                    <?php echo $sur->palabras_claves?>
-                    </div>
-                </div>
-                <?php endif ?> 
-                </div>
-              
-            <?php endforeach ;?>
-          
-        </div>
-     
+                ?>
 
-    </div>
+                <div class="container-noticia">
+                <?php if(!isset($centro->titulo)):?>
+                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $centro->imagen->file_url . '/' . $centro->imagen->filename, ['style'=> 'width:100%']);?>
+                <?php else : ?>   
+                <div class="fecha"><?=$centro->publicado?></div>
+                 
+                <?php if (count($centro->imagenes) > 0) {
+                    foreach ($centro->imagenes as $imagen) {
+                        if ($imagen->tipo == 'NOTICIA') {
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                        }
+                    }
+                } else {
+                    echo '<div class="banner-empty"></div>';
+                }
+                ?>
+                        <div class="contenido">
+                        <div class="keyword"><?php echo $centro->palabras_claves?></div>
+                        <h2 id="<?= $centro->id?>" onmouseover="barrido(<?=$centro->id ?>)" onmouseleave="barridoout(<?=$centro->id ?>)"><span></span><?php echo $centro->titulo?></h2>
+                        
+                        
+                    </div>
+                         <?php endif; ?>
+                    </div>
+           
+                
+                <?php endforeach ;?>
+            </div>
+            <div class="sector col-md-4">
+                <div class="header-notices">sur</div>
+                <?php foreach ($articulos_sur as $key => $sur) :?>        
+                <?php if($key == 3) {
+                    break;
+                }
+                ?>
+
+
+                <div class="container-noticia">
+                
+                <?php if(!isset($sur->titulo)):?>
+                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $sur->imagen->file_url . '/' . $sur->imagen->filename, ['style'=> 'width:100%']);?>
+                <?php else : ?>      
+                <div class="fecha"><?=$sur->publicado?></div>
+                <?php if (count($sur->imagenes) > 0) {
+                    foreach ($sur->imagenes as $imagen) {
+                        if ($imagen->tipo == 'NOTICIA') {
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                        }
+                    }
+                } else {
+                    echo '<div class="banner-empty"></div>';
+                }
+                ?>
+                        <div class="contenido">
+                        <div class="keyword"><?php echo $sur->palabras_claves?></div>
+                        <h2 id="<?=$sur->id?>" onmouseover="barrido(<?=$sur->id?>)" onmouseleave="barridoout(<?=$sur->id ?>)"><span></span><?php echo $sur->titulo?></h2>
+
+                    </div>
+                    <?php endif ?> 
+                    </div>
+                  
+                <?php endforeach ;?>
+              
+            </div>
+        </div> <!--END ROW-->
+    </div> <!--END CONTAINER NOTICIAS-->
+    <?php include('footer.ctp'); ?>
+
 </body>
 </html>
-<style>
 
-.logo{
-    position:absolute;
-    z-index: 100;
-    margin: 20px;
-}
-.share {
-    position:absolute;
-    bottom:300px;
-    right:10px;
-}
-.logo a img{
-    width:150px;
-}
-.container-noticia{
-    margin-bottom: 30px;
-}
-.heart{
-    position: absolute;
-    right: 20px;
-    z-index: 16;
-    top: 20px;
-}
-.header-notices{
-  
-    font-family:PatuaOne;
-    font-size:1.5em;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    gap: 30px;
-    width: 80%;
-    margin: 30px auto;
-    text-align: center;
-}
-.noticias{
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    
-    margin: 0 auto;
-    gap: 30px;
-    width: 80%;
-    font-family:ptsans;
-}
-.noticias img{
-    width: 100%;
-    object-fit: contain;
-}
-.contenido h2{
-    position:relative;
-}
-.contenido h2 span{
-    display: block;
-    position: absolute;
-    width: 0%;
-    background-color: #feee0094;
-    height: 100%;
-   mix-blend-mode: saturation;
-}
-.sector .fecha {
-    margin: 10px 0;
-}
-.footer {
-    background-color: black;
-    display:inline;
-    font-size:1.2em;
-    padding: 10px 5px;
-    margin-bottom: 5px;
-    color: #feee00;
-    font-family: PatuaOne;
-}
-</style>
 
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
 <?= $this->Html->script('../assets/js/slick.min'); ?>
