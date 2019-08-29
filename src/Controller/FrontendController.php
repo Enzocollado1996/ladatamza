@@ -63,7 +63,7 @@ class FrontendController extends AppController
     {
         $articulos_centro = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
-                            'limit' => 100
+                            'limit' => 10
                         ])
                 ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -72,7 +72,7 @@ class FrontendController extends AppController
         
         $publicidades_centro = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 100
+                'limit' => 0
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'CENTRO', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -87,7 +87,7 @@ class FrontendController extends AppController
         
         $articulos_norte = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
-                            'limit' => 100
+                            'limit' => 10
                         ])
                 ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -96,7 +96,7 @@ class FrontendController extends AppController
         
         $publicidades_norte = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 100
+                'limit' => 0
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'NORTE', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -111,7 +111,7 @@ class FrontendController extends AppController
         
         $articulos_sur = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
-                            'limit' => 100
+                            'limit' => 10
                         ])
                 ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -120,7 +120,7 @@ class FrontendController extends AppController
         
         $publicidades_sur = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 100
+                'limit' => 0
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'SUR', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])

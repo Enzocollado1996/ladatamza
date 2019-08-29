@@ -100,7 +100,12 @@
         <div class="row">
             <div class="sector col-md-4">
                 <div class="header-notices">norte</div>
-                <?php foreach ($articulos_norte as $norte) :?>        
+                <?php foreach ($articulos_norte as $key => $norte) :?>  
+                <?php if($key == 3) {
+                    break;
+                }
+                ?>
+      
                 <div class="container-noticia"> 
                     <?php if(!isset($norte->titulo)):?>
                     <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
@@ -130,7 +135,12 @@
             </div>
             <div class="sector col-md-4">
                 <div class="header-notices">centro</div>
-                <?php foreach ($articulos_centro as $centro) :?>   
+                <?php foreach ($articulos_centro as $key => $centro) :?>   
+                <?php if($key == 3) {
+                    break;
+                }
+                ?>
+
                 <div class="container-noticia">
                 <?php if(!isset($centro->titulo)):?>
                 <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $centro->imagen->file_url . '/' . $centro->imagen->filename, ['style'=> 'width:100%']);?>
@@ -161,7 +171,13 @@
             </div>
             <div class="sector col-md-4">
                 <div class="header-notices">sur</div>
-                <?php foreach ($articulos_sur as $sur) :?>        
+                <?php foreach ($articulos_sur as $key => $sur) :?>        
+                <?php if($key == 3) {
+                    break;
+                }
+                ?>
+
+
                 <div class="container-noticia">
                 
                 <?php if(!isset($sur->titulo)):?>
