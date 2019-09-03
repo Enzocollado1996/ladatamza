@@ -11,6 +11,15 @@ body{
     right: 10px;
     top: 10px;
 }
+.share_url_banner{
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute;
+    right: 10px;
+    display: flex;
+    top: 10px;
+    z-index: 2;
+}
 
 .socialmedia_modal,
 .buscar_modal {

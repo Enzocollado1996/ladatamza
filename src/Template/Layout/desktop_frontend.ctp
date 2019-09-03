@@ -13,6 +13,9 @@
     <?= $this->element('modals/socials') ?>
 </head>
 <body>
+
+<div class="share-show">
+</div>
 <div class="logo">   <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>">
                 <?php echo $this->Html->image("../assets/images/logo.svg"); ?>
             </a></div>
@@ -30,7 +33,7 @@
                         l0,0l10.8,10.8l14.4-25.2c18-25.2,43.2-43.2,75.6-50.4c36-7.2,68.4,0,97.2,21.6c18,10.8,28.8,28.8,32.4,54
                         c3.6,18,3.6,39.6-3.601,57.6c-3.6,14.4-10.8,28.8-18,39.6c-14.399,25.2-36,50.4-64.8,79.2c-21.6,21.6-43.2,43.2-64.8,61.2l-36,36
                         c-3.6,10.8-10.8,18-18,25.199L309.6,612l-3.6,3.6l-3.6-3.6l-36-36c-32.4-32.4-64.8-64.8-100.8-97.2c-25.2-25.2-46.8-54-64.8-79.2
-                        C79.2,367.2,72,331.2,82.8,291.6c7.2-25.2,18-43.2,39.6-54c21.6-10.8,43.2-18,64.8-18c7.2,0,10.8,0,18,0
+                        C79.2,367.2,72,331.2,82.8,4291.6c7.2-25.2,18-43.2,39.6-54c21.6-10.8,43.2-18,64.8-18c7.2,0,10.8,0,18,0
                         C241.2,226.8,270,244.8,288,273.6z"/>
                 </g>
                 </svg>
@@ -44,7 +47,7 @@
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
             <?php else : ?> 
-            <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_url']) ?></div>
+            <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_url_banner']) ?></div>
             <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
@@ -246,5 +249,22 @@
 
         //     })
     //  })
+    //Función que detecta cuando se mueve el banner
 
+$(document).ready(function(){
+    $( "div.owl-item.active div.share").clone().appendTo(".share-show");
+    $( ".share-show div" ).removeClass( "hidden" )
+    var owl = $('#owl-demo');
+    owl.owlCarousel();
+    owl.on('changed.owl.carousel', function(event) {
+        console.log("ADSASD");
+        $(".share-show").empty();
+        setTimeout ('shared_banner()', 100); 
+
+    })
+})
+function shared_banner(){
+    $( "div.owl-item.active div.share").clone().appendTo(".share-show")
+    $( ".share-show div" ).removeClass( "hidden" )
+}
 </script> 
