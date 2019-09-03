@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <?= $this->Html->css('../assets/owl.carousel.min') ?>
-    <?= $this->Html->css('../assets/owl.theme.desk') ?>
-    <?= $this->Html->css('../assets/style.desk') ?>
-    <?= $this->Html->css('../assets/fontawesome.css') ?>
-    <?= $this->Html->css('../assets/fontawesome.min.css') ?>
-    <?= $this->element('modals/socials') ?>
-</head>
 <body>
+<<<<<<< HEAD
 
 <div class="share-show">
 </div>
@@ -37,6 +24,9 @@
                         C241.2,226.8,270,244.8,288,273.6z"/>
                 </g>
                 </svg>
+=======
+    <?php include('header.ctp'); ?>
+>>>>>>> 421cd22096e26c3d224a326523bec775e6d2617a
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $key => $general) {?>
             <?php if($key == 5) {
@@ -76,7 +66,7 @@
                         <?php if(!isset($general->titulo)):?>
                             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
                         <?php else : ?> 
-                        <div class="fecha"><?=$general->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                        <!--<div class="fecha"><?=$general->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
                             <?php if (count($general->imagenes) > 0) {
                                 foreach ($general->imagenes as $imagen) {
                                     if ($imagen->tipo == 'NOTICIA') {
@@ -89,17 +79,18 @@
                         ?>
                         <div class="contenido" >
                             <div class="keyword"><?php echo $general->palabras_claves?></div>
-                            <h2 id="<?= $general->id?>" onmouseover="barrido(<?=$general->id ?>)" onmouseleave="barridoout(<?=$general->id ?>)">
+                            <div id="<?= $general->id?>" class="titulo-nota-home">
                                 <span></span><?php echo $general->titulo?>
-                            </h2>
+                            </div>
                         </div>
                     </div>
+                    <button>+ noticias</button>
                 </div>
                 <?php endif ?> 
             <?php } ?> 
         <?php endforeach ;?>
     </div>
-    <div class="container noticias">
+    <div class="container noticias generales">
         <div class="row">
             <div class="sector col-md-4">
                 <div class="header-notices">norte</div>
@@ -113,7 +104,7 @@
                     <?php if(!isset($norte->titulo)):?>
                     <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
                     <?php else : ?> 
-                    <div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>
+                    <!--<div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
                     <?php if (count($norte->imagenes) > 0) {
                         foreach ($norte->imagenes as $imagen) {
                             if ($imagen->tipo == 'NOTICIA') {
@@ -127,14 +118,16 @@
                         
                     <div class="contenido" >
                         <div class="keyword"><?php echo $norte->palabras_claves?></div>
-                        <h2 id="<?= $norte->id?>" onmouseover="barrido(<?=$norte->id ?>)" onmouseleave="barridoout(<?=$norte->id ?>)">
+                        <div id="<?= $norte->id?>" class="titulo-nota-home">
                             <span></span><?php echo $norte->titulo?>
-                        </h2>
-                        
+                        </div>   
                     </div>
                     <?php endif ?> 
                 </div> <!--END CONTAINER NOTICIAS-->
                 <?php endforeach ;?>
+                <div class="text-center">
+                    <a class="btn-amarillo btn-mas-noticias margen-b-40" href="#">+ noticias</a>
+                </div>
             </div>
             <div class="sector col-md-4">
                 <div class="header-notices">centro</div>
@@ -148,7 +141,7 @@
                 <?php if(!isset($centro->titulo)):?>
                 <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $centro->imagen->file_url . '/' . $centro->imagen->filename, ['style'=> 'width:100%']);?>
                 <?php else : ?>   
-                <div class="fecha"><?=$centro->publicado?></div>
+                <!--<div class="fecha"><?=$centro->publicado?></div>-->
                  
                 <?php if (count($centro->imagenes) > 0) {
                     foreach ($centro->imagenes as $imagen) {
@@ -162,7 +155,7 @@
                 ?>
                         <div class="contenido">
                         <div class="keyword"><?php echo $centro->palabras_claves?></div>
-                        <h2 id="<?= $centro->id?>" onmouseover="barrido(<?=$centro->id ?>)" onmouseleave="barridoout(<?=$centro->id ?>)"><span></span><?php echo $centro->titulo?></h2>
+                        <div id="<?= $centro->id?>" class="titulo-nota-home"><span></span><?php echo $centro->titulo?></div>
                         
                         
                     </div>
@@ -171,6 +164,9 @@
            
                 
                 <?php endforeach ;?>
+                <div class="text-center">
+                    <a class="btn-amarillo btn-mas-noticias margen-b-40" href="#">+ noticias</a>
+                </div>
             </div>
             <div class="sector col-md-4">
                 <div class="header-notices">sur</div>
@@ -186,7 +182,7 @@
                 <?php if(!isset($sur->titulo)):?>
                 <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $sur->imagen->file_url . '/' . $sur->imagen->filename, ['style'=> 'width:100%']);?>
                 <?php else : ?>      
-                <div class="fecha"><?=$sur->publicado?></div>
+                <!--<div class="fecha"><?=$sur->publicado?></div>-->
                 <?php if (count($sur->imagenes) > 0) {
                     foreach ($sur->imagenes as $imagen) {
                         if ($imagen->tipo == 'NOTICIA') {
@@ -199,21 +195,29 @@
                 ?>
                         <div class="contenido">
                         <div class="keyword"><?php echo $sur->palabras_claves?></div>
-                        <h2 id="<?=$sur->id?>" onmouseover="barrido(<?=$sur->id?>)" onmouseleave="barridoout(<?=$sur->id ?>)"><span></span><?php echo $sur->titulo?></h2>
+                        <div id="<?=$sur->id?>" class="titulo-nota-home"><span></span><?php echo $sur->titulo?></div>
 
                     </div>
                     <?php endif ?> 
                     </div>
                   
                 <?php endforeach ;?>
-              
+                <div class="text-center">
+                    <a class="btn-amarillo btn-mas-noticias margen-b-40" href="#">+ noticias</a>
+                </div>
+            </div>
+            <div class="social-sticky">
+                <?php
+                echo '<a href="https://www.facebook.com/" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
+                echo '<a href="https://www.instagram.com/?hl=es-la" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
+                echo '<a href="https://twitter.com/" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
+                ?>
             </div>
         </div> <!--END ROW-->
     </div> <!--END CONTAINER NOTICIAS-->
     <?php include('footer.ctp'); ?>
 
-</body>
-</html>
+
 
 
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
@@ -221,6 +225,7 @@
 <?= $this->Html->script('../assets/js/flipclock.min'); ?>
 <?= $this->Html->script('../assets/js/functions'); ?>
 <?= $this->Html->script('../assets/js/index'); ?>
+<<<<<<< HEAD
 <?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
  <script>
     function barrido(uid){
@@ -268,3 +273,6 @@ function shared_banner(){
     $( ".share-show div" ).removeClass( "hidden" )
 }
 </script> 
+=======
+<?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
+>>>>>>> 421cd22096e26c3d224a326523bec775e6d2617a
