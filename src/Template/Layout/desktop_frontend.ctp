@@ -250,6 +250,4 @@ function shared_banner(){
     $( ".share-show div" ).removeClass( "hidden" )
 }
 </script> 
-=======
 <?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
->>>>>>> 421cd22096e26c3d224a326523bec775e6d2617a
