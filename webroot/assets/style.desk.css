@@ -144,7 +144,15 @@ body{
     transition: background-color 300ms ease-out;
 }
 
-
+.container-sociales{
+    background-color: #4C4C4C;
+}
+.header-notices-sociales{
+    font-family:Patua One;
+    color: #FFFFFF;
+    font-size: 3rem;
+    margin-top: 3rem;
+}
 .header-notices{
     font-family:Patua One;
     font-size:1.5em;
@@ -163,7 +171,7 @@ body{
     border: 1px solid #ccc;
 }
 
-.contenido .titulo-nota-home{
+.contenido .titulo-nota-home{   
     position: relative;
     font-weight: 700;
     line-height: 1.3;

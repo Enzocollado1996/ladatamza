@@ -61,6 +61,28 @@ class FrontendController extends AppController
      */
     public function index()
     {
+        $articulos_sociales = $this->Articulos->find('all', [
+            'order' => ['publicado' => 'desc'],
+            'limit' => 10
+        ])
+            ->contain(['Imagenes'])
+            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+            ->where(['zona' => 'SOCIALES', 'habilitado' => true])
+            ->toArray();
+
+            $publicidades_sociales = $this->Publicidades->find('all',[
+            'order' => ['orden' => 'asc'],
+            'limit' => 0
+            ])
+            ->contain(['Imagenes'])
+            ->where(['Publicidades.zona' => 'SOCIALES', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
+            ->toArray();
+            if(count($publicidades_sociales) > 0){
+                foreach($publicidades_sociales as $publicidad_sociales){
+                    $publicidades_sociales = $this->insert($articulos_centro, $publicidad_sociales->orden - 1, $publicidad_sociales);            
+                }
+            }
+
         $articulos_centro = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
                             'limit' => 10
@@ -163,7 +185,7 @@ class FrontendController extends AppController
                 ->first();
        
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
-                'articulos_general', 'publicidad_inicial'));
+                'articulos_general','articulos_sociales', 'publicidad_inicial'));
         
         if($this->RequestHandler->isMobile()){
             $this->render('index');
