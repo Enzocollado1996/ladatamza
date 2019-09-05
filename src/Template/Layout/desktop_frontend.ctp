@@ -1,9 +1,7 @@
+<?php include('header.ctp'); ?>
 <body>
-
 <div class="share-show">
 </div>
-
-    <?php include('header.ctp'); ?>
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $key => $general) {?>
             <?php if($key == 5) {
@@ -202,7 +200,6 @@
 <?= $this->Html->script('../assets/js/flipclock.min'); ?>
 <?= $this->Html->script('../assets/js/functions'); ?>
 <?= $this->Html->script('../assets/js/index'); ?>
-<<<<<<< HEAD
 <?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
  <script>
     function barrido(uid){
@@ -250,6 +247,4 @@ function shared_banner(){
     $( ".share-show div" ).removeClass( "hidden" )
 }
 </script> 
-=======
 <?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
->>>>>>> 421cd22096e26c3d224a326523bec775e6d2617a
