@@ -1,31 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta name="viewport" content="width=device-width, height=device-height">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Document</title>
-
-    <?=$this->Html->css('../assets/style.css')?>
-    <?=$this->element('modals/socials')?>
-    <?=$this->element('modals/search')?>
-    <?=$this->element('Frontend/header')?>
-    <style>
-        .menu .logo img{
-            width: 150px;
-
-        }
-        html,body{
-            font-family:ptsans;
-            height:100% !important
-        }
-        body{
-            overflow:auto;}
-        </style>
-</head>
 <body>
-
+    <img src="template/Layout/vineta.png">
 <div class="sector">
             <?php foreach ($articulos as $norte) :?>        
             <div class="container-noticia">

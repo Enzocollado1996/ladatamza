@@ -1,9 +1,7 @@
+<?php include('header.ctp'); ?>
 <body>
-
 <div class="share-show">
 </div>
-
-    <?php include('header.ctp'); ?>
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $key => $general) {?>
             <?php if($key == 5) {
@@ -286,3 +284,4 @@ function shared_banner(){
     $( ".share-show div" ).removeClass( "hidden" )
 }
 </script> 
+<?= $this->Html->script('../assets/js/owl.carousel.min'); ?>

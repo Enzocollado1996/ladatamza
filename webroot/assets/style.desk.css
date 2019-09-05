@@ -466,3 +466,13 @@ body{
     z-index: 9999;
 }
 
+.item .titulo{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 171px;
+  font-size: 57px;
+  padding: 10px;
+  color: #fff;
+}
+
