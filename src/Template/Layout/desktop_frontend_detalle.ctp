@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
 
-</head>
-<body>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/ladatamza/src/template/Layout/header.ctp'); ?>
 <?= $this->fetch('content') ?>
-</body>
-</html>
+<?php include($_SERVER['DOCUMENT_ROOT'].'/ladatamza/src/template/Layout/footer.ctp'); ?>
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
 <?= $this->Html->script('../assets/js/functions'); ?>
 

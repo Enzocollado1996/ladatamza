@@ -1,4 +1,4 @@
-<?php include('header.ctp'); ?>
+<?php include('header_transparente.ctp'); ?>
 <body>
 <div class="share-show">
 </div>
@@ -56,7 +56,7 @@
                         <div class="contenido" >
                             <div class="keyword"><?php echo $general->palabras_claves?></div>
                             <div id="<?= $general->id?>" class="titulo-nota-home">
-                                <span></span><?php echo $general->titulo?>
+                                <?php echo $general->titulo?>
                             </div>
                         </div>
                     </div>
@@ -74,31 +74,29 @@
                     break;
                 }
                 ?>
-      
                 <div class="container-noticia"> 
-                    <?php if(!isset($norte->titulo)):?>
-                    <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
-                    <?php else : ?> 
-                    <!--<div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
-                    <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $norte->slug], true)?>', '', '<?=$norte->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home_ncs']) ?></div>
-                    <?php if (count($norte->imagenes) > 0) {
-                        foreach ($norte->imagenes as $imagen) {
-                            if ($imagen->tipo == 'NOTICIA') {
-                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                        <?php if(!isset($norte->titulo)):?>
+                        <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
+                        <?php else : ?> 
+                        <!--<div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
+                                            <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $norte->slug], true)?>', '', '<?=$norte->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home_ncs']) ?></div>
+                        <?php if (count($norte->imagenes) > 0) {
+                            foreach ($norte->imagenes as $imagen) {
+                                if ($imagen->tipo == 'NOTICIA') {
+                                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                }
                             }
+                        } else {
+                            echo '<div class="banner-empty"></div>';
                         }
-                    } else {
-                        echo '<div class="banner-empty"></div>';
-                    }
-                    ?>
-                        
-                    <div class="contenido" >
-                        <div class="keyword"><?php echo $norte->palabras_claves?></div>
-                        <div id="<?= $norte->id?>" class="titulo-nota-home">
-                            <span></span><?php echo $norte->titulo?>
-                        </div>   
-                    </div>
-                    <?php endif ?> 
+                        ?>
+                        <div class="contenido" >
+                            <div class="keyword"><?php echo $norte->palabras_claves?></div>
+                            <div id="<?= $norte->id?>" class="titulo-nota-home">
+                                <?php echo $norte->titulo?>
+                            </div>   
+                        </div>
+                        <?php endif ?> 
                 </div> <!--END CONTAINER NOTICIAS-->
                 <?php endforeach ;?>
                 <div class="text-center">
@@ -108,37 +106,35 @@
             <div class="sector col-md-4">
                 <div class="header-notices">centro</div>
                 <?php foreach ($articulos_centro as $key => $centro) :?>   
-                <?php if($key == 3) {
-                    break;
-                }
-                ?>
-
-                <div class="container-noticia">
-                <?php if(!isset($centro->titulo)):?>
-                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $centro->imagen->file_url . '/' . $centro->imagen->filename, ['style'=> 'width:100%']);?>
-                <?php else : ?>   
-                <!--<div class="fecha"><?=$centro->publicado?></div>-->
-                <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $centro->slug], true)?>', '', '<?=$centro->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home']) ?></div>
-                <?php if (count($centro->imagenes) > 0) {
-                    foreach ($centro->imagenes as $imagen) {
-                        if ($imagen->tipo == 'NOTICIA') {
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                        }
+                    <?php if($key == 3) {
+                        break;
                     }
-                } else {
-                    echo '<div class="banner-empty"></div>';
-                }
-                ?>
-                        <div class="contenido">
-                        <div class="keyword"><?php echo $centro->palabras_claves?></div>
-                        <div id="<?= $centro->id?>" class="titulo-nota-home"><span></span><?php echo $centro->titulo?></div>
-                        
-                        
+                    ?>
+                    <div class="container-noticia">
+                        <?php if(!isset($centro->titulo)):?>
+                        <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $centro->imagen->file_url . '/' . $centro->imagen->filename, ['style'=> 'width:100%']);?>
+                        <?php else : ?>   
+                        <!--<div class="fecha"><?=$centro->publicado?></div>-->
+                        <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $centro->slug], true)?>', '', '<?=$centro->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home']) ?></div>
+
+                        <?php if (count($centro->imagenes) > 0) {
+                            foreach ($centro->imagenes as $imagen) {
+                                if ($imagen->tipo == 'NOTICIA') {
+                                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                }
+                            }
+                        } else {
+                            echo '<div class="banner-empty"></div>';
+                        }
+                        ?>
+                                <div class="contenido">
+                                <div class="keyword"><?php echo $centro->palabras_claves?></div>
+                                <div id="<?= $centro->id?>" class="titulo-nota-home"><span></span><?php echo $centro->titulo?></div>
+                                
+                                
+                            </div>
+                        <?php endif; ?>
                     </div>
-                         <?php endif; ?>
-                    </div>
-           
-                
                 <?php endforeach ;?>
                 <div class="text-center">
                     <a class="btn-amarillo btn-mas-noticias margen-b-40" href="#">+ noticias</a>
@@ -146,39 +142,35 @@
             </div>
             <div class="sector col-md-4">
                 <div class="header-notices">sur</div>
-                <?php foreach ($articulos_sur as $key => $sur) :?>        
-                <?php if($key == 3) {
-                    break;
-                }
-                ?>
-
-
-                <div class="container-noticia">
-                
-                <?php if(!isset($sur->titulo)):?>
-                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $sur->imagen->file_url . '/' . $sur->imagen->filename, ['style'=> 'width:100%']);?>
-                <?php else : ?>      
-                <!--<div class="fecha"><?=$sur->publicado?></div>-->
-                <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $sur->slug], true)?>', '', '<?=$sur->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home']) ?></div>
-                <?php if (count($sur->imagenes) > 0) {
-                    foreach ($sur->imagenes as $imagen) {
-                        if ($imagen->tipo == 'NOTICIA') {
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                    <?php foreach ($articulos_sur as $key => $sur) :?>        
+                        <?php if($key == 3) {
+                            break;
                         }
-                    }
-                } else {
-                    echo '<div class="banner-empty"></div>';
-                }
-                ?>
-                        <div class="contenido">
-                        <div class="keyword"><?php echo $sur->palabras_claves?></div>
-                        <div id="<?=$sur->id?>" class="titulo-nota-home"><span></span><?php echo $sur->titulo?></div>
+                        ?>
+                        <div class="container-noticia">
+                            <?php if(!isset($sur->titulo)):?>
+                            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $sur->imagen->file_url . '/' . $sur->imagen->filename, ['style'=> 'width:100%']);?>
+                            <?php else : ?>      
+                            <!--<div class="fecha"><?=$sur->publicado?></div>-->
+                            <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $sur->slug], true)?>', '', '<?=$sur->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home']) ?></div>
+                            <?php if (count($sur->imagenes) > 0) {
+                                foreach ($sur->imagenes as $imagen) {
+                                    if ($imagen->tipo == 'NOTICIA') {
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                    }
+                                }
+                            } else {
+                                echo '<div class="banner-empty"></div>';
+                            }
+                            ?>
+                                    <div class="contenido">
+                                    <div class="keyword"><?php echo $sur->palabras_claves?></div>
+                                    <div id="<?=$sur->id?>" class="titulo-nota-home"><span></span><?php echo $sur->titulo?></div>
 
-                    </div>
-                    <?php endif ?> 
-                    </div>
-                  
-                <?php endforeach ;?>
+                                </div>
+                                <?php endif ?> 
+                        </div>
+                    <?php endforeach ;?>
                 <div class="text-center">
                     <a class="btn-amarillo btn-mas-noticias margen-b-40" href="#">+ noticias</a>
                 </div>
