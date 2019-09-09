@@ -79,7 +79,7 @@
                         <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
                         <?php else : ?> 
                         <!--<div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
-                                            <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $norte->slug], true)?>', '', '<?=$norte->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home_ncs']) ?></div>
+                        <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $norte->slug], true)?>', '', '<?=$norte->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home_ncs']) ?></div>
                         <?php if (count($norte->imagenes) > 0) {
                             foreach ($norte->imagenes as $imagen) {
                                 if ($imagen->tipo == 'NOTICIA') {
@@ -116,7 +116,6 @@
                         <?php else : ?>   
                         <!--<div class="fecha"><?=$centro->publicado?></div>-->
                         <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $centro->slug], true)?>', '', '<?=$centro->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_home']) ?></div>
-
                         <?php if (count($centro->imagenes) > 0) {
                             foreach ($centro->imagenes as $imagen) {
                                 if ($imagen->tipo == 'NOTICIA') {
