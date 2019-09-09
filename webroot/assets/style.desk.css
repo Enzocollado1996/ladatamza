@@ -20,6 +20,25 @@ body{
     top: 10px;
     z-index: 2;
 }
+.share_home{
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute;
+    right: 10px;
+    display: flex;
+    top: -13rem;
+    z-index: 2;
+}
+.share_home_ncs{
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute;
+    right: 10px;
+    display: flex;
+    top: -13rem;
+    z-index: 2;
+}
+
 
 .socialmedia_modal,
 .buscar_modal {
@@ -185,6 +204,16 @@ body{
     background-color: #feee0094;
     height: 100%;
    mix-blend-mode: saturation;
+}
+.contenido-sociales{
+    background-color: #5B5B5F;
+}
+.contenido-sociales .titulo-nota-home {
+    position: relative;
+    font-weight: 700;
+    line-height: 1.3;
+    font-size: 17pt;
+    padding: 15px 0;
 }
 .sector .fecha {
     margin: 10px 0;

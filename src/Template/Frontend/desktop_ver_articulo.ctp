@@ -1,3 +1,4 @@
+<?php include($_SERVER['DOCUMENT_ROOT'].'mendata/src/template/Layout/header.ctp'); ?>
 <body>
     <img src="template/Layout/vineta.png">
 <div class="sector">
