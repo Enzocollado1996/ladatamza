@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" integrity="sha256-piqEf7Ap7CMps8krDQsSOTZgF+MU/0MPyPW2enj5I40=" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
 
 
     <?= $this->Html->css('../assets/owl.carousel.min') ?>
@@ -17,15 +16,28 @@
     <?= $this->element('modals/socials') ?>
     <?=$this->element('modals/search')?>
     <script type="text/javascript">
-        $(document).ready(function(){
-          $('header').css("position","relative");
+        jQuery(document).ready(function(){
+          alignContenido('.container-noticia');
         });
+
+        function alignContenido(element){
+            var altura_arr = [];
+              jQuery(element).each(function(){
+                var altura = jQuery(this).height(); 
+                altura_arr.push(altura);
+              });
+              altura_arr.sort(function(a, b){return b-a}); 
+              jQuery(element).each(function(){
+                jQuery(this).css('height',altura_arr[0]);
+              });
+        }
+
         $(window).scroll(function() {
         if ($(this).scrollTop() > 1){  
-          $('header').css("position","fixed");
+          $('header').addClass("sticky");
         }
         else {
-          $('header').css("position","relative");
+          $('header').removeClass("sticky");
         }
       });
 
@@ -40,7 +52,7 @@
     </script>
 
 </head>
-<header class="navbar navbar-custom navbar-fixed-top sticky">
+<header class="navbar navbar-custom navbar-fixed-top">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 row-menu">
