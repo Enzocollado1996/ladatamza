@@ -16,10 +16,6 @@
     <?= $this->element('modals/socials') ?>
     <?=$this->element('modals/search')?>
     <script type="text/javascript">
-        jQuery(document).ready(function(){
-          alignContenido('.container-noticia');
-        });
-
         function alignContenido(element){
             var altura_arr = [];
               jQuery(element).each(function(){
