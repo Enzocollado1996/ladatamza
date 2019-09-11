@@ -59,7 +59,7 @@
                                 echo '<div class="banner-empty"></div>';
                             } //END if (count($general->imagenes) > 0)
                             ?>
-                            <div class="contenido" >
+                            <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')" >
                                 <div id="<?= $general->id?>" class="titulo-nota-home"><?php echo $general->titulo?></div>
                             </div>
                         <?php endif;//END if(!isset($general->titulo)):?>
@@ -93,7 +93,7 @@
                                     echo '<div class="banner-empty"></div>';
                                 }
                                 ?>
-                                <div class="contenido" >
+                                <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>')" >
                                     <div class="keyword"><?php echo $norte->palabras_claves?></div>
                                     <div id="<?= $norte->id?>" class="titulo-nota-home">
                                         <?php echo $norte->titulo?>
@@ -132,7 +132,7 @@
                                 echo '<div class="banner-empty"></div>';
                             }
                             ?>
-                            <div class="contenido">
+                            <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>')" >
                                 <div class="keyword"><?php echo $centro->palabras_claves?></div>
                                 <div id="<?= $centro->id?>" class="titulo-nota-home"><span></span><?php echo $centro->titulo?></div>
                             </div>
@@ -169,7 +169,7 @@
                                         echo '<div class="banner-empty"></div>';
                                     }
                                     ?>
-                                     <div class="contenido">
+                                     <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>')">
                                         <div class="keyword"><?php echo $sur->palabras_claves?></div>
                                         <div id="<?=$sur->id?>" class="titulo-nota-home"><span></span><?php echo $sur->titulo?></div>
                                     </div>
