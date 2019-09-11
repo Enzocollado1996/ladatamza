@@ -219,7 +219,16 @@ class FrontendController extends AppController
                 ->where(['Articulos.zona' => $articulo->zona, 'Articulos.habilitado' => true, 'Articulos.id !=' =>$articulo->id])
                 ->toArray();
         array_unshift($articulos,$articulo);
-        $this->set('articulos', $articulos);
+        $articulos_sociales = $this->Articulos->find('all', [
+            'order' => ['publicado' => 'desc'],
+            'limit' => 10
+        ])
+            ->contain(['Imagenes'])
+            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+            ->where(['zona' => 'SOCIALES', 'habilitado' => true])
+            ->toArray();
+        $this->set(compact('articulos', $articulos, 'articulos_sociales'));
+
         if($this->RequestHandler->isMobile()){
             $this->render('ver_articulo');
         }
