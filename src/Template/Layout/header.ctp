@@ -64,10 +64,10 @@
               </g>
             </svg>
           </a>
-          <a href="#">Norte</a>
-          <a href="#">Centro</a>
-          <a href="#">Sur</a>
-          <a href="#">Sociales</a>
+          <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'norte'], true)?>">Norte</a>
+          <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'centro'], true)?>">Centro</a>
+          <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'sur'], true)?>">Sur</a>
+          <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'sociales'], true)?>">Sociales</a>
           <a href="#contacto">Contacto</a>
         </div>
         <span class="icono-menu" onclick="openNav()"><i class="fas fa-bars"></i></span>

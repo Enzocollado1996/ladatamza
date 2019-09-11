@@ -28,7 +28,7 @@ class FrontendController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
-        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota', 'buscarVideo']);
+        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota', 'buscarVideo','categoria']);
         $this->set('title_for_layout', "Diario digital");
         $this->viewBuilder()->setLayout('frontend');
     }
@@ -262,8 +262,16 @@ class FrontendController extends AppController
         $this->set('articulos', $articulos);
         $this->render('ver-articulo');
     }
-    public function categoria($categoria){
 
+    /**
+     * View method
+     *
+     * @param string|null $id categorias id.
+     * @return \Cake\Http\Response|void
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+
+    public function categoria($categoria){
         $articulo_categoria = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
             'limit' => 10
