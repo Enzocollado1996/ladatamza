@@ -111,3 +111,7 @@ Router::scope('/', function (RouteBuilder $routes) {
  * });
  * ```
  */
+$routes->connect(
+    '/categoria/*',
+    ['controller' => 'Frontend', 'action' => 'categoria']
+);
