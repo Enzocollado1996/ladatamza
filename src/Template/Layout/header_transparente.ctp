@@ -24,7 +24,7 @@
               });
               altura_arr.sort(function(a, b){return b-a}); 
               jQuery(element).each(function(){
-                jQuery(this).css('height',altura_arr[0]);
+                jQuery(this).css('height',altura_arr[0]+8);
               });
         }
 

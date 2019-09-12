@@ -21,13 +21,25 @@
           $('header').css("position","relative");
         });
         $(window).scroll(function() {
-        if ($(this).scrollTop() > 1){  
-          $('header').css("position","fixed");
-        }
-        else {
-          $('header').css("position","relative");
-        }
-      });
+          if ($(this).scrollTop() > 1){  
+            $('header').css("position","fixed");
+          }
+          else {
+            $('header').css("position","relative");
+          }
+        });
+
+      function alignContenido(element){
+        var altura_arr = [];
+        jQuery(element).each(function(){
+          var altura = jQuery(this).height(); 
+          altura_arr.push(altura);
+        });
+        altura_arr.sort(function(a, b){return b-a}); 
+        jQuery(element).each(function(){
+          jQuery(this).css('height',altura_arr[0]+8);
+        });
+      }
 
       function openNav() {
         document.getElementById("mySidenav").style.width = "250px";

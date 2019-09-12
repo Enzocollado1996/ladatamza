@@ -71,7 +71,7 @@
     <div class="container noticias noticias-sector">
         <div class="row">
             <div class="sector col-md-4">
-                <div class="header-notices">norte</div>
+                <div class="header-notices text-center">norte</div>
                 <?php 
                 foreach ($articulos_norte as $key => $norte) :
                     if($key == 3) {break;}?>
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="sector col-md-4">
-                <div class="header-notices">centro</div>
+                <div class="header-notices text-center">centro</div>
                 <?php foreach ($articulos_centro as $key => $centro) :?>   
                     <?php if($key == 3) {
                         break;
@@ -145,7 +145,7 @@
                 </div>
             </div>
             <div class="sector col-md-4">
-                <div class="header-notices">sur</div>
+                <div class="header-notices text-center">sur</div>
                     <?php foreach ($articulos_sur as $key => $sur) :?>        
                         <?php if($key == 3) {
                             break;
