@@ -67,6 +67,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     
     $routes->connect('/', ['controller' => 'Frontend', 'action' => 'index']);
     $routes->connect('/nota/*', ['controller' => 'Frontend', 'action' => 'ver_articulo']);
+    $routes->connect('/categoria/*',['controller' => 'Frontend', 'action' => 'categoria']);
+    
     $routes->connect('/seccion/*', ['controller' => 'Frontend', 'action' => 'ver_seccion']);
     $routes->connect('/buscar/*', ['controller' => 'Frontend', 'action' => 'buscar_nota']);
     $routes->connect('/video/', ['controller' => 'Frontend', 'action' => 'buscar_video']);
@@ -111,7 +113,3 @@ Router::scope('/', function (RouteBuilder $routes) {
  * });
  * ```
  */
-$routes->connect(
-    '/categoria/*',
-    ['controller' => 'Frontend', 'action' => 'categoria']
-);

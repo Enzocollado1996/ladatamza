@@ -28,7 +28,7 @@ class FrontendController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
-        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota', 'buscarVideo']);
+        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota', 'buscarVideo','categoria']);
         $this->set('title_for_layout', "Diario digital");
         $this->viewBuilder()->setLayout('frontend');
     }
@@ -219,7 +219,16 @@ class FrontendController extends AppController
                 ->where(['Articulos.zona' => $articulo->zona, 'Articulos.habilitado' => true, 'Articulos.id !=' =>$articulo->id])
                 ->toArray();
         array_unshift($articulos,$articulo);
-        $this->set('articulos', $articulos);
+        $articulos_sociales = $this->Articulos->find('all', [
+            'order' => ['publicado' => 'desc'],
+            'limit' => 10
+        ])
+            ->contain(['Imagenes'])
+            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+            ->where(['zona' => 'SOCIALES', 'habilitado' => true])
+            ->toArray();
+        $this->set(compact('articulos', $articulos, 'articulos_sociales'));
+
         if($this->RequestHandler->isMobile()){
             $this->render('ver_articulo');
         }
@@ -253,11 +262,25 @@ class FrontendController extends AppController
         $this->set('articulos', $articulos);
         $this->render('ver-articulo');
     }
-    public function categoria($categoria){
 
+    /**
+     * View method
+     *
+     * @param string|null $id categorias id.
+     * @return \Cake\Http\Response|void
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+
+    public function categoria($categoria){
+        if($this->request->query('page')){
+            $page = $this->request->query('page') + 1;
+        }else{
+            $page = 1;
+        }
         $articulo_categoria = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
-            'limit' => 10
+            'page' => $page,
+            'limit' => 6
         ])
             ->contain(['Imagenes'])
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -298,7 +321,7 @@ class FrontendController extends AppController
                     }
                 }
     
-            $this->set(compact('articulo_categoria','categoria','articulos_sociales'));
+            $this->set(compact('articulo_categoria','categoria','articulos_sociales','page'));
             $this->viewBuilder()->setLayout('categoria');
             $this->render('desktop');
 

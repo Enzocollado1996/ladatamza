@@ -190,3 +190,8 @@ function saltarAnuncio() {
 function generales(url) {
     location.href = url;
 }
+function categorias_page(page) {
+    var pathname = window.location.pathname;
+    var pathname = pathname + '?page=' + page;
+    location.href = pathname;
+}
