@@ -22,16 +22,20 @@
                     echo '<div class="banner-empty"></div>';
                         }
                     ?>
-            </div><!--END col-md-5-->
-            <div class="contenido-categoria col-md-7" >
-                <div class="keyword"><?php echo $categoria->palabras_claves?></div>
-                <div id="<?= $categoria->id?>" class="titulo-nota-categoria">
-                    <span></span><?php echo $categoria->titulo?>
-                </div>   
+                    <div class="contenido-categoria col-md-7" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categorias->slug]) ?>')">
+                    <div class="keyword"><?php echo $categorias->palabras_claves?></div>
+                    <div id="<?= $categorias->id?>" class="titulo-nota-home">
+                        <span></span><?php echo $categorias->titulo?>
+                    </div>   
+                </div>
+                <?php endif ?> 
+            </div> <!--END CONTAINER NOTICIAS-->
+            <?php endforeach ;?>
             </div>
-            <?php endif ?> 
-        </div> <!--END CONTAINER CATEGORIA-->
-    <?php endforeach ;?>
+        </div>
+        <a class="btn-amarillo btn-mas-noticias margen-b-40" onclick="categorias_page('<?=$page ?>')">ver +</a>
+    </div>
 </div>
+<?= $this->Html->script('../assets/js/functions'); ?>
 <?php include('categoria_sociales.ctp'); ?>
 <?php include('footer.ctp'); ?>

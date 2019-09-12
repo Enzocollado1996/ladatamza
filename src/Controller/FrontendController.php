@@ -272,9 +272,15 @@ class FrontendController extends AppController
      */
 
     public function categoria($categoria){
+        if($this->request->query('page')){
+            $page = $this->request->query('page') + 1;
+        }else{
+            $page = 1;
+        }
         $articulo_categoria = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
-            'limit' => 10
+            'page' => $page,
+            'limit' => 6
         ])
             ->contain(['Imagenes'])
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -315,7 +321,7 @@ class FrontendController extends AppController
                     }
                 }
     
-            $this->set(compact('articulo_categoria','categoria','articulos_sociales'));
+            $this->set(compact('articulo_categoria','categoria','articulos_sociales','page'));
             $this->viewBuilder()->setLayout('categoria');
             $this->render('desktop');
 
