@@ -23,7 +23,7 @@
                         }
                     ?>
             </div><!--END col-md-5-->
-            <div class="contenido-categoria col-md-7" >
+            <div class="contenido-categoria col-md-7"onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categoria->slug]) ?>')" >
                 <div class="keyword"><?php echo $categoria->palabras_claves?></div>
                 <div id="<?= $categoria->id?>" class="titulo-nota-categoria">
                     <span></span><?php echo $categoria->titulo?>
