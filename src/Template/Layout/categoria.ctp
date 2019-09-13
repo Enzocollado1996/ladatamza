@@ -36,5 +36,4 @@
 </div>
 <?php include('categoria_sociales.ctp'); ?>
 <?= $this->Html->script('../assets/js/functions'); ?>
-<?php include('categoria_sociales.ctp'); ?>
 <?php include('footer.ctp'); ?>

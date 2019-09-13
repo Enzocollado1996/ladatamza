@@ -25,9 +25,8 @@
                                 echo '<div class="banner-empty"></div>';
                             }
                         ?>
-                        <div class="contenido">
+                        <div class="contenido-sociales" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>')">
                             <div class="keyword"><?php echo $sociales->palabras_claves?></div>
-                            <div class="contenido-sociales" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>')">
                             <div id="<?= $sociales->id?>" class="titulo-nota-home">
                                 <span></span><?php echo $sociales->titulo?>
                             </div>
