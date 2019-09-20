@@ -1,15 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One|PT+Sans:400,700&display=swap');
+/*
 @font-face {
-    src: url(./fonts/PTSans-Regular.ttf);
     font-family: "ptsans";
+    src: url(./fonts/PTSans-Regular.ttf) format('truetype');
+    src: url('./fonts/PTSans-Regular.woff2') format('woff2'),
+         url('./fonts/PTSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-    src: url(./fonts/PatuaOne-Regular.ttf);
-    font-family: PatuaOne;
+    font-family: 'ptsans-bold';
+    src: url(./fonts/PTSans-Bold.ttf) format('truetype');;
+    src: url('./fonts/PTSans-Bold.woff2') format('woff2'),
+         url('./fonts/PTSans-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
+
+
 @font-face {
-    src: url(./fonts/PTSans-Regular.ttf);
+    src: url(../assets/fonts/fonts/ARENAC.TTF);
     font-family: "arena";
 }
+*/
+
 html,
 body {
     margin:3px;
@@ -48,7 +64,7 @@ body {
     grid-template-areas: "A B C";
 }
 .menu .weather {
-    font-family: "ptsans";
+    font-family: "PT Sans";
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -94,7 +110,7 @@ body {
     background-color: #000000;
 }
 .header-notices .region {
-    font-family: "PatuaOne";
+    font-family: "Patua One";
     text-align: center;
     position: relative;
     color: white;
@@ -110,7 +126,7 @@ body {
     position: relative;
 }
 .container_clock .hrs {
-    font-family: "ptsans";
+    font-family: "PT Sans";
     display: flex;
     align-items: center;
     margin-right: 8px;
@@ -146,14 +162,14 @@ body {
     border-radius: 50%;
 }
 .container_clock .resumen {
-    font-family: ptsans;
+    font-family: PT Sans;
     letter-spacing: 2px;
     font-size: 8px;
     color: white;
 }
 /* tombola */
 .slot_container {
-    font-family: "ptsans";
+    font-family: "PT Sans";
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     height: 180px;
@@ -223,7 +239,7 @@ body {
 }
 .shadownews .title {
     font-size: 15px;
-    font-weight: 1000;
+    font-weight: 900;
 }
 .shadownews .date {
     color: #5b5b5f;
@@ -240,7 +256,7 @@ body {
     margin-bottom: 5px;
     font-size: 10px;
     color: #feee00;
-    font-family: PatuaOne;
+    font-family: Patua One;
 }
 .shadownews .clearfix {
     width: 40%;
@@ -265,16 +281,15 @@ body {
 }
 
 .owl-carousel .titulo {
-    font-family: "arena";
-    font-weight: 600;
+    font-family: "PT Sans";
+    font-weight: 900;
     font-size: 15px;
     position: absolute;
     bottom: 0;
     background-color: #feee00;
     left: 0;
-    display: flex;
     justify-content: center;
-    line-height: 25px;
+    line-height: 21px;
     padding: 10px;
     align-items: center;
     /* padding-left: 5px; */
@@ -323,7 +338,7 @@ body {
     text-align: center;
     margin: auto;
     width: 55%;
-    font-family: ptsans;
+    font-family: PT Sans;
 }
 .content-sm.src {
     width: 75%;
@@ -331,7 +346,7 @@ body {
 }
 .src input {
     text-align: center;
-    font-family: ptsans;
+    font-family: PT Sans;
     font-size: 15px;
     color: #fff;
     width: 80%;
@@ -356,7 +371,7 @@ body {
     border-radius: 15px;
 }
 .src button:hover {
-    color: #feee00;
+    color: #b3b3b3;
     background-color: #fff;
 }
 .src button:focus {
@@ -435,7 +450,7 @@ advertising {
     position: absolute;
     bottom: 0;
     display: flex;
-    font-family: ptsans;
+    font-family: PT Sans;
     flex-direction: column;
     width: 100%;
     align-items: center;
@@ -488,7 +503,7 @@ advertising .bar {
         
     }
     .container_clock .twoDots{
-        left: calc(50% + 11px);
+        left: calc(47% + 11px);
     }
 
     .hrs span{
@@ -510,5 +525,9 @@ advertising .bar {
         margin-left: 7px;
         height: 20px;
         width: 20px;
+    }
+
+    .owl-carousel .titulo{
+        height: 85px !important;
     }
 }
