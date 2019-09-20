@@ -159,7 +159,7 @@ class FrontendController extends AppController
                             'order' => ['publicado' => 'desc'],
                             'limit' => 8
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado','Articulos.slug'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado','Articulos.slug', 'Articulos.palabras_claves'])
                 ->contain(['Imagenes'])
                 ->where(['zona' => 'GENERAL', 'habilitado' => true])
                 ->toArray();

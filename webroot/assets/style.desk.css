@@ -49,6 +49,18 @@ body{
     z-index: 2;
 }
 */
+.palabra-clave{
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    color: #F8EC38;
+    height: 171px;
+    font-size: 23px;
+    background-color: black;
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 12px 15px 5px 15px;
+}
 
 .socialmedia_modal,
 .buscar_modal {
