@@ -32,7 +32,14 @@
             <?php endif ?> 
         </div> <!--END CONTAINER CATEGORIA-->
     <?php endforeach ;?>
-    <a class="btn-amarillo btn-mas-noticias margen-b-40" onclick="categorias_page('<?=$page ?>')">ver +</a>
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+            <a class="btn-amarillo btn-mas-noticias margen-b-40" onclick="categorias_page('<?=$page ?>')">ver +</a>
+        </div>
+        <div class="col-md-6 col-xs-6 text-right">
+            <a class="btn-amarillo btn-mas-noticias margen-b-40" href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>"><i class="fas fa-chevron-left volver-ico"></i> volver</a>
+        </div>
+    </div>
 </div>
 <?php include('categoria_sociales.ctp'); ?>
 <?= $this->Html->script('../assets/js/functions'); ?>

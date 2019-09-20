@@ -5,7 +5,7 @@ function positions(latitude, longitude) {
         var iconname = translateWeather(data.weather[0].main);
         $(".weather")
             .find("img")
-            .attr("src", "/assets/images/" + iconname + ".png");
+            .attr("src", "/ladatamza/assets/images/" + iconname + ".png");
         $(".temp").text(grados + "º");
     });
 }

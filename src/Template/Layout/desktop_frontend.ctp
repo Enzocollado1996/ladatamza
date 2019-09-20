@@ -8,22 +8,23 @@
                 break;
             }
             ?>
-            <div class="item">
-            <?php if(!isset($general->titulo)):?>
-            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
-            <?php else : ?> 
-            <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
-            </div>
-            <?php
-                if ($general->has('imagenes')) {
-                    $imagen = $general->imagenes[0];
-                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename);
-                    // echo '<div class="asd" style="background:url('.$this->Url->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename).')">';
-
-                    } else {
-                        echo '<img src="assets/images/test.jpg" alt="">';
+            <div class="item text-center">
+                <?php if(!isset($general->titulo)):?>
+                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
+                <?php else : ?> 
+                <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
+                </div>
+                <?php
+                if (count($general->imagenes) > 0) {
+                    foreach ($general->imagenes as $imagen) {
+                        if ($imagen->tipo == 'NOTICIA') {
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                        }
                     }
-                    ?>
+                }else{
+                    echo '<div class="banner-empty"></div>';
+                } //END if (count($general->imagenes) > 0)
+                ?>
                 <!--<div class="keyword"><?php echo 'Palabra Clave123';//$general->palabras_claves;?></div>-->
                 <div class="titulo">
                     <div onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')">
@@ -47,20 +48,21 @@
                             echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);
                         else : ?> 
                             <!--<div class="fecha"><?=$general->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
-                           
-                            <?php 
-                            if (count($general->imagenes) > 0) {
-                                foreach ($general->imagenes as $imagen) {
-                                    if ($imagen->tipo == 'NOTICIA') {
-                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                            <div class="contenedor-img-txt">
+                                <?php 
+                                if (count($general->imagenes) > 0) {
+                                    foreach ($general->imagenes as $imagen) {
+                                        if ($imagen->tipo == 'NOTICIA') {
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                        }
                                     }
-                                }
-                            }else{
-                                echo '<div class="banner-empty"></div>';
-                            } //END if (count($general->imagenes) > 0)
-                            ?>
-                            <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')" >
-                                <div id="<?= $general->id?>" class="titulo-nota-home"><?php echo $general->titulo?></div>
+                                }else{
+                                    echo '<div class="banner-empty"></div>';
+                                } //END if (count($general->imagenes) > 0)
+                                ?>
+                                <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')" >
+                                    <div id="<?= $general->id?>" class="titulo-nota-home"><?php echo $general->titulo?></div>
+                                </div>
                             </div>
                         <?php endif;//END if(!isset($general->titulo)):?>
                     </div>
@@ -193,12 +195,7 @@
     <?php include('categoria_sociales.ctp'); ?>
     <?php include('footer.ctp'); ?>
 
-<?= $this->Html->script('../assets/js/jquery.min'); ?>
-<?= $this->Html->script('../assets/js/slick.min'); ?>
-<?= $this->Html->script('../assets/js/flipclock.min'); ?>
-<?= $this->Html->script('../assets/js/functions'); ?>
-<?= $this->Html->script('../assets/js/index'); ?>
-<?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
+
  <script>
     function barrido(uid){
         
