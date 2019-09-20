@@ -9,19 +9,21 @@
             }
             ?>
             <div class="item text-center">
-                <?php if(!isset($general->titulo)):?>
-                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
-                <?php else : ?> 
-                <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
-                </div>
-                <?php
-                if (count($general->imagenes) > 0) {
-                    foreach ($general->imagenes as $imagen) {
-                        if ($imagen->tipo == 'NOTICIA') {
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                        }
-                    }
-                }else{
+            <?php if(!isset($general->titulo)):?>
+            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
+            <?php else : ?> 
+            <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
+            </div>
+            <div class="text-center palabra-clave">
+                <?=$general->palabras_claves?>
+            </div>
+            <?php
+                if ($general->has('imagenes')) {
+                    $imagen = $general->imagenes[0];
+                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                    // echo '<div class="asd" style="background:url('.$this->Url->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename).')">';
+
+                    } else {
                     echo '<div class="banner-empty"></div>';
                 } //END if (count($general->imagenes) > 0)
                 ?>
