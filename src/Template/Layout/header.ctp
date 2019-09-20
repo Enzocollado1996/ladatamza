@@ -14,6 +14,7 @@
     <?= $this->Html->css('../assets/owl.carousel.min') ?>
     <?= $this->Html->css('../assets/owl.theme.desk') ?>
     <?= $this->Html->css('../assets/style.desk') ?>
+    <?= $this->Html->script('../assets/js/functions'); ?>
     <?= $this->element('modals/socials') ?>
     <?=$this->element('modals/search')?>
     <script type="text/javascript">
@@ -55,7 +56,7 @@
 <header class="navbar navbar-custom navbar-fixed-top sticky">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3 row-menu">
+      <div class="col-md-3 row-menu">        
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
             <svg class="close" width="18" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
@@ -82,7 +83,11 @@
         </div>
       </div> <!--END COL-MD-6-->
       <div class="col-md-3 text-right row-menu right-menu">
-        <svg class="lupa" version="1.2" onclick="socialModal(true);" width="36" height="36" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 792" xml:space="preserve">
+        <span class="weather">
+            <div class="temp"></div>
+            <img src="" alt="" width="25">
+        </span>
+        <svg class="lupa" version="1.2" onclick="socialModal(true);" width="30" height="30" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 792" xml:space="preserve">
         <g id="">
           <path id="XMLID_751_" fill="#fff" stroke="#211915" stroke-miterlimit="10" d="M417.6,475.2L414,471.6c0-3.6,3.6-3.6,3.6-7.199
               c39.601-50.4,54-115.2,36-176.4S388.8,180,331.2,162c-14.4-3.6-25.2-7.2-32.4-7.2c-3.6,0-7.2,0-14.4-3.6H252h-3.6h-3.6
@@ -92,7 +97,7 @@
               s-43.2-64.8-43.2-108c0-79.2,64.8-144,147.6-144l0,0c39.6,0,75.6,14.4,104.4,43.2C399.6,266.4,414,306,414,345.6z"></path>
         </g>
         </svg>
-        <svg class="heart" onclick="socialModal();"  width="36" height="36" version="1.2" baseProfile="tiny" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        <svg class="heart" onclick="socialModal();"  width="30" height="30" version="1.2" baseProfile="tiny" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" xml:space="preserve">
         <g id="Capa_1_1_"></g>
         <g id="Object">
@@ -113,3 +118,10 @@
     </div><!--END ROW-->
   </div><!--END CONTAINER FLUID-->
 </header>
+
+<style>
+.weather{
+  padding-right: 30px;
+}
+
+</style>

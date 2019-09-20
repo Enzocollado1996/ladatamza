@@ -1,11 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Patua+One|PT+Sans:400,700&display=swap');
+
+/*
 @font-face {
-    src: url(./fonts/PTSans-Regular.ttf);
-    font-family: "ptsans";
+    font-family: "PT Sans";
+    src: url(./fonts/PT Sans-Regular.ttf);
+    src: url('./fonts/PT Sans-Regular.woff2') format('woff2'),
+         url('./fonts/PT Sans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
+@font-face {
+    font-family: 'PT Sans-bold';
+    src: url(./fonts/PT Sans-Bold.ttf);
+    src: url('./fonts/PT Sans-Bold.woff2') format('woff2'),
+         url('./fonts/PT Sans-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 @font-face {
     src: url(../assets/fonts/fonts/ARENAC.TTF);
     font-family: "arena";
 }
+*/
+
+@media(max-width: 320px){
+    .fijo_noticia{top: 220px !important;}
+
+}
+
+@media(min-width:368px) and (max-width: 411px){
+    .fijo_noticia{top: 220px !important;}
+}
+
 body {
     overflow: auto;
     margin: 4px;
@@ -15,7 +44,7 @@ body {
 }
 section {
     display: block;
-    font-family: "ptsans";
+    font-family: "PT Sans";
     position: relative;
 }
 .fijo .banner {
@@ -39,12 +68,15 @@ section .info {
     text-align: left;
     width: 90%;
     position: relative;
-    font-family: "ptsans";
+    font-family: "PT Sans";
     left: 10%;
     padding-bottom: 50px;
+    /*padding-top:15px;*/
+    background: #fff;
+    z-index: 500;
 }
 .fijo .imagen .time {
-    font-family: ptsans;
+    font-family: PT Sans;
     margin: 5px 0;
     font-size: 14px;
     opacity: 0;
@@ -56,7 +88,7 @@ section .info {
 section .info .titulo {
     font-size: 1.5em;
     font-weight: 600;
-    padding: 5px 10px;
+    padding: 10px 10px 5px 10px;
 }
 .fijo .imagen{
     height: 175px;
@@ -82,7 +114,7 @@ section .info .titulo {
 section .info .cuerpo {
     color: #444242;
     font-size: 13px;
-    padding-left: 5px;
+    padding-left: 10px;
     padding-right: 40px;
 }
 
@@ -110,7 +142,7 @@ section .info .cuerpo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: ptsans;
+    font-family: PT Sans;
     color: #feee00;
     height: calc(100vh - 230px);
     justify-content: center;

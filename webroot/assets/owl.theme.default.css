@@ -35,8 +35,7 @@
 .owl-theme .owl-nav.disabled + .owl-dots {
     top: 0px;
     position: absolute;
-    /* transform: translate(150%, 0); */
-    left:40%;
+    text-align: center !important;
 }
 .owl-carousel{
   position: relative;

@@ -123,7 +123,11 @@ $('html, body').animate({
         scrollTop: $("#footer").offset().top
     }, 500);
 }
-
-
-
 </script>
+
+<?= $this->Html->script('../assets/js/jquery.min'); ?>
+<?= $this->Html->script('../assets/js/slick.min'); ?>
+<?= $this->Html->script('../assets/js/flipclock.min'); ?>
+<?= $this->Html->script('../assets/js/functions'); ?>
+<?= $this->Html->script('../assets/js/index'); ?>
+<?= $this->Html->script('../assets/js/owl.carousel.min'); ?>

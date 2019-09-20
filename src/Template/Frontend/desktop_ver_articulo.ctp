@@ -1,14 +1,14 @@
-<?php include($_SERVER['DOCUMENT_ROOT'].'ladatamza/src/template/Layout/header_transparente.ctp'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].'ladatamza/src/template/Layout/header.ctp'); ?>
 <?php
     $articulo = $articulos[0];
     $zona = $articulo->zona;
 ?>
 
-<div class="container-fluid text-center margen-40">   
+<div class="container-fluid text-center interior-nota">   
     <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-            <div class="keyword margen-40"><?php echo $articulo->palabras_claves;?> </div>
-            <div class="titulo-interior-nota text-uppercase margen-40"><?php echo $articulo->titulo;?> </div>
+        <div class="col-md-offset-2 col-md-8">
+            <div class="keyword"><?php echo $articulo->palabras_claves;?> </div>
+            <div class="titulo-interior-nota text-uppercase"><?php echo $articulo->titulo;?> </div>
         </div>
     </div>
     <div class="container">
@@ -25,8 +25,14 @@
                     echo '<div class="banner-empty"></div>';
                 }
                 ?>
-            <div class="extracto-interior-nota text-left"><?php echo $articulo->descripcion;?></div>
-            <div class="cuerpo-interior-nota margen-40 text-left"><?php echo $articulo->texto;?></div>
+            <div class="row">
+                <div class="col-md-offset-2">
+                    <div class="cuerpo-interior-nota margen-40 text-left">
+                        <div class="extracto-interior-nota"><?php echo $articulo->descripcion; ?></div>
+                        <?php echo $articulo->texto;?>
+                    </div>
+                </div>
+            </div>
              <?php 
                 echo $articulo->tipo;
                 if (count($articulo->imagenes) > 0) {
@@ -41,6 +47,9 @@
                 ?>
          </div>
         </div>
+        <div class="row text-right">
+        <a class="btn-amarillo btn-mas-noticias margen-b-40" href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', strtolower($zona)], true)?>"><i class="fas fa-chevron-left volver-ico"></i> volver</a>
+        </div>
     </div>
     <div class="social-sticky">
         <?php
@@ -49,49 +58,8 @@
         echo '<a href="https://twitter.com/" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
         ?>
     </div>
-    <?php include($_SERVER['DOCUMENT_ROOT'].'ladatamza/src/template/Layout/categoria_sociales.ctp'); ?>
 </div> <!-- END CONTAINER-->
 <style>
-/*
-.container-noticia-interior{
-
-}
-.container-noticia-interior img{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    }
-    .container-noticia-interior .fecha{
-        padding: 11px;
-    }
-
-   .sector .container-noticia-interior .contenido{
-        width: 60%;
-    margin: 0 auto;
-    text-align: justify;
-    }
-    .contenido .texto{
-        font-size: 1.5em;
-       font-weight: 100;
-       font-family: ptsans;
-    }
-    .contenido h2{
-        font-size: 2em;
-        font-family: ptsans;
-    }
-    .scroller_back {
-        position: relative;
-    bottom: 40px;
-    display: flex;
-    justify-content: center;
-    margin: 100px 0;
-}
-    .scroller_back img {
-        height: 35px;
-    animation: .7s fadeInRight infinite;
-}
-
-*/
 @keyframes fadeOutDown {
     from {
         opacity: 1;
