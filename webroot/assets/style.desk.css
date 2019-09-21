@@ -49,6 +49,18 @@ body{
     z-index: 2;
 }
 */
+.contenedor-keyword-slider{
+    position: absolute;
+    bottom: 200px;
+    left: 0;
+    right: 0;
+}
+.descripcion-articulo{
+    position: relative;
+    font-weight: 500;
+    line-height: 1.3;
+    padding: 7px 20px 15px 20px;
+}
 .palabra-clave{
     position: absolute;
     bottom: 40px;

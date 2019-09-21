@@ -29,6 +29,11 @@
                     <span></span><?php echo $categoria->titulo?>
                 </div>   
             </div>
+            <div class="contenido-categoria col-md-7">
+                <div class="descripcion-articulo">
+                    <?php echo $categoria->descripcion?>
+                </div>
+            </div>
             <?php endif ?> 
         </div> <!--END CONTAINER CATEGORIA-->
     <?php endforeach ;?>
