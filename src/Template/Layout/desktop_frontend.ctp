@@ -14,10 +14,10 @@
             <?php else : ?> 
             <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
             </div>
-            <div class="text-center palabra-clave">
-                <?=$general->palabras_claves?>
+            <div class="text-center contenedor-keyword-slider">
+                <div class="keyword"><?=$general->palabras_claves?></div>
             </div>
-            <?php
+                <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
                     echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
