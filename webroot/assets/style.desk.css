@@ -22,56 +22,12 @@
 body{
     margin:0; color:#000;font-family: PT Sans;
 }
-/*.share_url{
-    width: 24px !important;
-    height: 24px !important;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
 
-.share_home{
-    width: 24px !important;
-    height: 24px !important;
-    position: absolute;
-    right: 10px;
-    display: flex;
-    top: -13rem;
-    z-index: 2;
-}
-.share_home_ncs{
-    width: 24px !important;
-    height: 24px !important;
-    position: absolute;
-    right: 10px;
-    display: flex;
-    top: -13rem;
-    z-index: 2;
-}
-*/
 .contenedor-keyword-slider{
     position: absolute;
     bottom: 200px;
     left: 0;
     right: 0;
-}
-.descripcion-articulo{
-    position: relative;
-    font-weight: 500;
-    line-height: 1.3;
-    padding: 7px 20px 15px 20px;
-}
-.palabra-clave{
-    position: absolute;
-    bottom: 40px;
-    width: 100%;
-    color: #F8EC38;
-    height: 171px;
-    font-size: 23px;
-    background-color: black;
-    display: inline-block;
-    padding: 4px 10px;
-    margin: 12px 15px 5px 15px;
 }
 
 .socialmedia_modal,
@@ -616,6 +572,10 @@ img.banner:hover {
 
 .sticky .right-menu path{
     fill: #000 !important;
+}
+
+.right-menu path{
+    fill:#fff !important;
 }
 
 .buscar_modal,.socialmedia_modal {
