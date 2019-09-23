@@ -17,7 +17,7 @@
             <div class="text-center contenedor-keyword-slider">
                 <div class="keyword"><?=$general->palabras_claves?></div>
             </div>
-            <?php
+                <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
                     echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);

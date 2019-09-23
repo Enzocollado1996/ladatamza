@@ -60,6 +60,10 @@ $(document).ready(function() {
         navigation: true, // Show next and prev buttons
         slideSpeed: 300,
         paginationSpeed: 400,
+        loop:true,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,    
         singleItem: true,
         items: 1,
         itemsDesktop: false,

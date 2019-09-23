@@ -24,7 +24,8 @@
         </div>        
         <div class="form-group">
             <label>Descripción</label>
-            <?=$this->Form->textarea('descripcion',['class'=>'form-control', 'required' => 'required']);?>
+            <?=$this->Form->textarea('descripcion',['class'=>'form-control', 'required' => 'required', 'id' => 'descripcion_textarea']);?>
+            <h6 class="pull-right" id="count_message_descripcion"></h6>
         </div>
         <div class="form-group">
             <label>Texto</label>
@@ -105,10 +106,24 @@
 
         $('input[name=titulo]').keyup(function() {
           var text_length = $(this).val().length;
+          console.log(text_length);        
           var text_remaining = text_max - text_length;
 
           $('#count_message_titulo').html(text_remaining + ' caracteres restantes');
         });
+        //Limite de descripciones
+        var text_max_descripcion = 200;
+        $('#descripcion_textarea').attr('maxlength',text_max_descripcion);
+        $('#count_message_descripcion').html(text_max_descripcion-text_actual + ' caracteres restantes');
+
+        $('#descripcion_textarea').keyup(function() {
+        var text_length = $(this).val().length;
+        console.log("ASDasd");
+        var text_remaining = text_max_descripcion - text_length;
+
+        $('#count_message_descripcion').html(text_remaining + ' caracteres restantes');
+        });
+
     }
     
     function archivo(evt) {

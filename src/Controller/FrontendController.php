@@ -283,7 +283,7 @@ class FrontendController extends AppController
             'limit' => 6
         ])
             ->contain(['Imagenes'])
-            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug','Articulos.descripcion'])
             ->where(['zona' => $categoria, 'habilitado' => true])
             ->toArray();
 
