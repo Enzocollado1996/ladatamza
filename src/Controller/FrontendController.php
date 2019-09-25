@@ -186,7 +186,12 @@ class FrontendController extends AppController
        
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
                 'articulos_general','articulos_sociales', 'publicidad_inicial'));
-        
+
+        $detector = new \Detection\MobileDetect();
+        if($detector->isTablet()){
+            $this->viewBuilder()->setLayout('desktop_frontend');
+            $this->render('desktop');
+        }
         if($this->RequestHandler->isMobile()){
             $this->render('index');
         }
