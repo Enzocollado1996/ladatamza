@@ -290,4 +290,33 @@ class ArticulosController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    /**
+     * Delete method
+     *
+     * @param string|null $id Articulo id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+
+    public function deletefoto($id = null, $imagenTipo = null)
+    {
+        $articulo = $this->Articulos->get($id, [
+            'contain' => ['Imagenes']
+        ]);
+        //dd($imagen);
+        foreach ($articulo->imagenes as $valor){
+            if($valor->tipo == $imagenTipo){
+                $imagenModel = $this->Imagenes->get($valor->id);
+                if ($this->Imagenes->delete($imagenModel)) {
+                    $this->Flash->success(__('La imágen fue eliminada.'));
+                } else {
+                    $this->Flash->error(__('La imagen no pudo ser eliminada. Intente nuevamente.'));
+                }
+        
+            }
+        }
+        $this->Flash->success(__('La foto ha sido borrada con éxito.'));
+        return $this->redirect(['action' => 'index']);
+    }
+
 }
