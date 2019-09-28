@@ -52,7 +52,7 @@
 <header class="navbar navbar-custom navbar-fixed-top transparent">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3 row-menu">
+      <div class="col-md-3 col-sm-4 row-menu">
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
             <svg class="close" width="18" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">
@@ -71,14 +71,14 @@
         <span class="logo-texto"> <?php echo $this->Html->image("../assets/images/logo-txt.svg"); ?> </span>
         <div class="logo-texto-vertical"> <?php echo $this->Html->image("../assets/images/logo-texto-vertical.svg"); ?> </div>
       </div>
-      <div class="col-md-6 text-center">
+      <div class="col-md-6 col-sm-4 text-center">
         <div class="logo">
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>">
             <?php echo $this->Html->image("../assets/images/logo.svg"); ?>
           </a>
         </div>
       </div> <!--END COL-MD-6-->
-      <div class="col-md-3 text-right row-menu right-menu">
+      <div class="col-md-3 col-sm-4 text-right row-menu right-menu">
         <span class="weather">
             <div class="temp"></div>
             <img src="" alt="" width="25">

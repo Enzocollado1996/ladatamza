@@ -6,6 +6,8 @@ use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Core\Configure;
 use Cake\Http\Response;
+
+
 /**
  * Backend Controller
  *
@@ -186,17 +188,27 @@ class FrontendController extends AppController
        
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
                 'articulos_general','articulos_sociales', 'publicidad_inicial'));
-        
-        if($this->RequestHandler->isMobile()){
+    
+        $detector = new \Detection\MobileDetect();
+        if($detector->isTablet()){
+            $this->viewBuilder()->setLayout('desktop_frontend');
+            $this->render('desktop');
+        }elseif($this->RequestHandler->isMobile() && !$detector->isTablet()){
             $this->render('index');
         }
         else{
             $this->viewBuilder()->setLayout('desktop_frontend');
             $this->render('desktop');
-            //echo '<pre>';
-            //var_dump($articulos_general);
-            //exit;
         }
+
+        /*if($this->RequestHandler->isMobile()){
+            $this->render('index');
+        }
+        else{
+            $this->viewBuilder()->setLayout('desktop_frontend');
+            $this->render('desktop');
+        }*/
+        
     }
     
     /**
@@ -229,12 +241,15 @@ class FrontendController extends AppController
             ->toArray();
         $this->set(compact('articulos', $articulos, 'articulos_sociales'));
 
-        if($this->RequestHandler->isMobile()){
+        $detector = new \Detection\MobileDetect();
+        if($detector->isTablet()){
+            $this->viewBuilder()->setLayout('desktop_frontend_detalle');
+            $this->render('desktop_ver_articulo');
+        }elseif($this->RequestHandler->isMobile() && !$detector->isTablet()){
             $this->render('ver_articulo');
         }
         else{
             $this->viewBuilder()->setLayout('desktop_frontend_detalle');
-            
             $this->render('desktop_ver_articulo');
         }
     }

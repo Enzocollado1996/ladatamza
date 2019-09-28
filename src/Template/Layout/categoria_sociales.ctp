@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <?php foreach ($articulos_sociales as $key => $sociales) :?>
-            <div class="col-md-4 margen-40">
+            <div class="col-md-4 col-sm-4 margen-40">
                 <div class="container-nota-sociales"> 
                     <div class="contenedor-img-txt">
                         <?php if(!isset($sociales->titulo)):?>
