@@ -67,13 +67,51 @@ class ImagenesController extends AppController
 
         $this->set('imagen', $imagen);
     }
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     */
+
+    public function sociales()
+    {
+        $imagen = $this->Imagenes->newEntity();
+        if ($this->request->is('post')) {
+            if(!empty($this->request->data['filename']) && !empty($this->request->data['filename'][0]["tmp_name"])){
+                foreach($this->request->data['filename'] as $imagen_a_guardar){
+                    $imagen = TableRegistry::get('Imagenes')->newEntity();
+                    //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                    $filename = [
+                        'error' => $imagen_a_guardar['error'],
+                        'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                        'size' => $imagen_a_guardar['size'],
+                        'tmp_name' => $imagen_a_guardar['tmp_name'],
+                        'type' => $imagen_a_guardar['type']
+                    ];
+                    $imagen->descripcion = '';
+                    $imagen->filename = $filename;
+                    $imagen->creado = date("Y-m-d H:i:s");
+                    $imagen->tipo = 'GIF SOCIALES';
+                    if (!$this->Imagenes->save($imagen)) {
+                        $this->Flash->error(__('La imágen no pudo ser guardada.')); 
+                    }
+                }
+                $this->Flash->success(__('El artículo ha sido guardado.'));
+                return $this->redirect(['action' => 'index']);
+            }
+        }else{
+            $tipos = $this->getTipos();
+            $this->set(compact('imagen', 'tipos'));
+    
+        }
+    }
 
     /**
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    /*public function add()
+    public function add()
     {
         $imagen = $this->Imagenes->newEntity();
         if ($this->request->is('post')) {
@@ -102,7 +140,7 @@ class ImagenesController extends AppController
         }
         $tipos = $this->getTipos();
         $this->set(compact('imagen', 'tipos'));
-    }*/
+    }
 
     /**
      * Edit method
