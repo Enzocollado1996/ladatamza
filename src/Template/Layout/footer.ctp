@@ -12,7 +12,7 @@
                 </div>
             </div><!--END ROW-->
             <div class="row">
-                <div class="col-md-offset-3 col-md-6 contact-form" id="contacto">
+                <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 contact-form" id="contacto">
                     <form id="formulario" class="form" role="form" method="POST" action="send_form_email.php">
                       <div class="form-group">
                         <input id="nombre" class="form-control input-lg" type="text" name="nombre" placeholder="Nombre*">
@@ -50,6 +50,10 @@
 </html>
 
 <script type="text/javascript">
+function generales(url){
+location.href = url
+}
+
   function enviar()
 {
   if (validacion()){

@@ -7,7 +7,7 @@
     <?php foreach ($articulo_categoria as $key => $categoria) : 
         if($key == 6) {break;}?>
         <div class="container-categoria row margen-40"> 
-            <div class="col-md-5" style="padding:0;">
+            <div class="col-md-5 img-nota-categoria">
                 <?php if(!isset($categoria->titulo)):?>
                 <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $categoria->imagen->file_url . '/' . $categoria->imagen->filename, ['style'=> 'width:100%']);?>
                 <?php else : ?> 
@@ -30,9 +30,7 @@
                 <div class="keyword"><?php echo $categoria->palabras_claves?></div>
                 <div id="<?= $categoria->id?>" class="titulo-nota-categoria">
                     <span></span><?php echo $categoria->titulo?>
-                </div>   
-            </div>
-            <div class="contenido-categoria col-md-7">
+                </div>
                 <div class="descripcion-articulo">
                     <?php echo $categoria->descripcion?>
                 </div>

@@ -189,22 +189,27 @@ class FrontendController extends AppController
                 ->first();
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
                 'articulos_general','articulos_sociales', 'publicidad_inicial', 'gifsociales'));
-        
+    
         $detector = new \Detection\MobileDetect();
         if($detector->isTablet()){
             $this->viewBuilder()->setLayout('desktop_frontend');
             $this->render('desktop');
-        }
-        if($this->RequestHandler->isMobile()){
+        }elseif($this->RequestHandler->isMobile() && !$detector->isTablet()){
             $this->render('index');
         }
         else{
             $this->viewBuilder()->setLayout('desktop_frontend');
             $this->render('desktop');
-            //echo '<pre>';
-            //var_dump($articulos_general);
-            //exit;
         }
+
+        /*if($this->RequestHandler->isMobile()){
+            $this->render('index');
+        }
+        else{
+            $this->viewBuilder()->setLayout('desktop_frontend');
+            $this->render('desktop');
+        }*/
+        
     }
     
     /**
@@ -239,12 +244,15 @@ class FrontendController extends AppController
             ->toArray();
         $this->set(compact('articulos', $articulos, 'articulos_sociales','gifsociales'));
 
-        if($this->RequestHandler->isMobile()){
+        $detector = new \Detection\MobileDetect();
+        if($detector->isTablet()){
+            $this->viewBuilder()->setLayout('desktop_frontend_detalle');
+            $this->render('desktop_ver_articulo');
+        }elseif($this->RequestHandler->isMobile() && !$detector->isTablet()){
             $this->render('ver_articulo');
         }
         else{
             $this->viewBuilder()->setLayout('desktop_frontend_detalle');
-            
             $this->render('desktop_ver_articulo');
         }
     }

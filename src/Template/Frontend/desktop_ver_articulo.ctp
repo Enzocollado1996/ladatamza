@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row row-tablet">
             <div class="col-md-offset-2 col-md-8">
                 <?php 
                 if (count($articulo->imagenes) > 0) {
@@ -29,7 +29,7 @@
                 }
                 ?>
             <div class="row">
-                <div class="col-md-offset-2">
+                <div class="col-md-offset-2 col-sm-offset-1">
                     <div class="cuerpo-interior-nota margen-40 text-left">
                         <div class="extracto-interior-nota"><?php echo $articulo->descripcion; ?></div>
                         <?php echo $articulo->texto;?>
@@ -50,7 +50,7 @@
                 ?>
          </div>
         </div>
-        <div class="row text-right">
+        <div class="row row-tablet text-right">
         <a class="btn-amarillo btn-mas-noticias margen-b-40" href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', strtolower($zona)], true)?>"><i class="fas fa-chevron-left volver-ico"></i> volver</a>
         </div>
     </div>
