@@ -6,6 +6,7 @@ use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Core\Configure;
 use Cake\Http\Response;
+use Cake\Datasource\ConnectionManager;
 /**
  * Backend Controller
  *
@@ -61,6 +62,9 @@ class FrontendController extends AppController
      */
     public function index()
     {
+        $connection = ConnectionManager::get('default');
+        $gifsociales = $connection->execute('SELECT * FROM Imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
+
         $articulos_sociales = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
             'limit' => 10
@@ -183,10 +187,9 @@ class FrontendController extends AppController
                 ->contain(['Imagenes', 'Videos'])
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
                 ->first();
-       
         $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
-                'articulos_general','articulos_sociales', 'publicidad_inicial'));
-
+                'articulos_general','articulos_sociales', 'publicidad_inicial', 'gifsociales'));
+        
         $detector = new \Detection\MobileDetect();
         if($detector->isTablet()){
             $this->viewBuilder()->setLayout('desktop_frontend');
@@ -213,6 +216,8 @@ class FrontendController extends AppController
      */
     public function verArticulo($slug = null)
     {        
+        $connection = ConnectionManager::get('default');
+        $gifsociales = $connection->execute('SELECT * FROM Imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
         $articulo = $this->Articulos->findBySlug($slug)->contain(['Imagenes'])->first();
 
         $articulos = $this->Articulos->find('all', [
@@ -232,7 +237,7 @@ class FrontendController extends AppController
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
             ->where(['zona' => 'SOCIALES', 'habilitado' => true])
             ->toArray();
-        $this->set(compact('articulos', $articulos, 'articulos_sociales'));
+        $this->set(compact('articulos', $articulos, 'articulos_sociales','gifsociales'));
 
         if($this->RequestHandler->isMobile()){
             $this->render('ver_articulo');
@@ -277,6 +282,8 @@ class FrontendController extends AppController
      */
 
     public function categoria($categoria){
+        $connection = ConnectionManager::get('default');
+        $gifsociales = $connection->execute('SELECT * FROM Imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
         if($this->request->query('page')){
             $page = $this->request->query('page') + 1;
         }else{
@@ -326,7 +333,7 @@ class FrontendController extends AppController
                     }
                 }
     
-            $this->set(compact('articulo_categoria','categoria','articulos_sociales','page'));
+            $this->set(compact('articulo_categoria','categoria','articulos_sociales','page','gifsociales'));
             $this->viewBuilder()->setLayout('categoria');
             $this->render('desktop');
 

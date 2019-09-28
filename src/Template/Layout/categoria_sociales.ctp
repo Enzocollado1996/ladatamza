@@ -1,4 +1,7 @@
 <div class="container-sociales">
+        <?php 
+            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $gifsociales[0]['file_url'] . '/' . $gifsociales[0]['filename'], ['class' => 'banner_sociales']);
+        ?>
         <div class="container noticias">
         <div class="row">
             <div class="col-md-4">
@@ -19,6 +22,9 @@
                                 foreach ($sociales->imagenes as $imagen) {
                                     if ($imagen->tipo == 'NOTICIA') {
                                         echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                    }
+                                    if ($imagen->tipo == 'GIF') {
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
                                     }
                                 }
                             } else {

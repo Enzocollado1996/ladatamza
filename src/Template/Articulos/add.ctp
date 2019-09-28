@@ -66,6 +66,10 @@
             <?php echo $this->Form->input('filename2[]', ['type' => 'file', 'label'=>'Imágen publicidad'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
             <div class="form-group" id="imagen-articulo2"></div>
         </div>
+        <div class="form-group">            
+            <?php echo $this->Form->input('filename3[]', ['type' => 'file', 'label'=>'Imágen gif'/*, 'multiple'*/, 'accept'=>'.gif, .jpg, .jpeg, .png']); ?>
+            <div class="form-group" id="imagen-articulo3"></div>
+        </div>
     </div>
     <?= $this->Form->end() ?>
 </div>
@@ -169,7 +173,32 @@
           })(f);
           reader.readAsDataURL(f);
         }        
+    }
+    function archivo3(evt) {
+        $('#imagen-articulo3').empty();
+        var files = evt.target.files; // FileList object
+
+        // Obtenemos la imagen del campo "file".
+        for (var i = 0, f; f = files[i]; i++) {           
+            //Solo admitimos imágenes.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    // Insertamos la/s imagen/es
+                    $("#imagen-articulo3").append('<img src="'+e.target.result+'" class="form-group" style="width: 100%;"/>');                    
+                };
+          })(f);
+          reader.readAsDataURL(f);
+        }        
     } 
+
     document.getElementById('filename').addEventListener('change', archivo, false);
     document.getElementById('filename2').addEventListener('change', archivo2, false);
+    document.getElementById('filename3').addEventListener('change', archivo3, false);
+
 <?php $this->Html->scriptEnd(); ?>

@@ -130,6 +130,25 @@ class ArticulosController extends AppController
                         array_push($array_imagenes, $imagen);
                     }
                 }
+                // Proceso imagen de publicidad si la cargaron
+                if(!empty($this->request->data['filename3']) && !empty($this->request->data['filename3'][0]["tmp_name"])){
+                    foreach($this->request->data['filename3'] as $imagen_a_guardar){
+                        $imagen = TableRegistry::get('Imagenes')->newEntity();
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        $filename = [
+                            'error' => $imagen_a_guardar['error'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                            'size' => $imagen_a_guardar['size'],
+                            'tmp_name' => $imagen_a_guardar['tmp_name'],
+                            'type' => $imagen_a_guardar['type']
+                        ];
+                        $imagen->descripcion = '';
+                        $imagen->filename = $filename;
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'GIF';
+                        array_push($array_imagenes, $imagen);
+                    }
+                }
                 
                 if(count($array_imagenes) > 0){
                     $articulo->imagenes = $array_imagenes;
@@ -146,6 +165,7 @@ class ArticulosController extends AppController
         }
         $zonas = $this->getZonas();
         $this->set(compact('articulo','zonas'));
+
     }
 
     /**
@@ -220,6 +240,31 @@ class ArticulosController extends AppController
                     // Borro la imagen del tipo NOTICIA
                     foreach($articulo->imagenes as $imagen){
                         if($imagen->tipo == 'PUBLICIDAD'){
+                            $this->Imagenes->delete($imagen);
+                        }
+                    } 
+                }
+                // Proceso imagen de publicidad si la cargaron
+                if(!empty($this->request->data['filename3']) && !empty($this->request->data['filename3'][0]["tmp_name"])){
+                    foreach($this->request->data['filename3'] as $imagen_a_guardar){
+                        $imagen = TableRegistry::get('Imagenes')->newEntity();
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        $filename = [
+                            'error' => $imagen_a_guardar['error'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                            'size' => $imagen_a_guardar['size'],
+                            'tmp_name' => $imagen_a_guardar['tmp_name'],
+                            'type' => $imagen_a_guardar['type']
+                        ];
+                        $imagen->descripcion = '';
+                        $imagen->filename = $filename;
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'GIF';
+                        array_push($array_imagenes, $imagen);
+                    }
+                    // Borro la imagen del tipo NOTICIA
+                    foreach($articulo->imagenes as $imagen){
+                        if($imagen->tipo == 'GIF'){
                             $this->Imagenes->delete($imagen);
                         }
                     } 
