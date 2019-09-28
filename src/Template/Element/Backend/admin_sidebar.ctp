@@ -28,6 +28,10 @@
             <li>
                 <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'index'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Imágenes</a>
             </li>
+            <li>
+                <a href="<?=$this->Url->build(['controller' => 'Imagenes', 'action' => 'sociales'], true)?>"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;GIF Sociales</a>
+            </li>
+
             <?php
             if($Auth->user('role') == 'admin'):
             ?>

@@ -57,6 +57,9 @@
                                         if ($imagen->tipo == 'NOTICIA') {
                                             echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
                                         }
+                                        if ($imagen->tipo == 'GIF') {
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
+                                        }
                                     }
                                 }else{
                                     echo '<div class="banner-empty"></div>';
@@ -91,6 +94,9 @@
                                     foreach ($norte->imagenes as $imagen) {
                                         if ($imagen->tipo == 'NOTICIA') {
                                             echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                        }
+                                        if ($imagen->tipo == 'GIF') {
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
                                         }
                                     }
                                 } else {
@@ -132,6 +138,9 @@
                                             if ($imagen->tipo == 'NOTICIA') {
                                                 echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
                                             }
+                                            if ($imagen->tipo == 'GIF') {
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
+                                            }    
                                         }
                                     } else {
                                         echo '<div class="banner-empty"></div>';
@@ -176,6 +185,9 @@
                                             if ($imagen->tipo == 'NOTICIA') {
                                                 echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
                                             }
+                                            if ($imagen->tipo == 'GIF') {
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
+                                            }    
                                         }
                                     } else {
                                         echo '<div class="banner-empty"></div>';

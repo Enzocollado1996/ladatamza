@@ -130,6 +130,25 @@ class ArticulosController extends AppController
                         array_push($array_imagenes, $imagen);
                     }
                 }
+                // Proceso imagen de publicidad si la cargaron
+                if(!empty($this->request->data['filename3']) && !empty($this->request->data['filename3'][0]["tmp_name"])){
+                    foreach($this->request->data['filename3'] as $imagen_a_guardar){
+                        $imagen = TableRegistry::get('Imagenes')->newEntity();
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        $filename = [
+                            'error' => $imagen_a_guardar['error'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                            'size' => $imagen_a_guardar['size'],
+                            'tmp_name' => $imagen_a_guardar['tmp_name'],
+                            'type' => $imagen_a_guardar['type']
+                        ];
+                        $imagen->descripcion = '';
+                        $imagen->filename = $filename;
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'GIF';
+                        array_push($array_imagenes, $imagen);
+                    }
+                }
                 
                 if(count($array_imagenes) > 0){
                     $articulo->imagenes = $array_imagenes;
@@ -146,6 +165,7 @@ class ArticulosController extends AppController
         }
         $zonas = $this->getZonas();
         $this->set(compact('articulo','zonas'));
+
     }
 
     /**
@@ -224,6 +244,31 @@ class ArticulosController extends AppController
                         }
                     } 
                 }
+                // Proceso imagen de publicidad si la cargaron
+                if(!empty($this->request->data['filename3']) && !empty($this->request->data['filename3'][0]["tmp_name"])){
+                    foreach($this->request->data['filename3'] as $imagen_a_guardar){
+                        $imagen = TableRegistry::get('Imagenes')->newEntity();
+                        //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
+                        $filename = [
+                            'error' => $imagen_a_guardar['error'],
+                            'name' => $this->String->cleanStringToImage($imagen_a_guardar['name']),
+                            'size' => $imagen_a_guardar['size'],
+                            'tmp_name' => $imagen_a_guardar['tmp_name'],
+                            'type' => $imagen_a_guardar['type']
+                        ];
+                        $imagen->descripcion = '';
+                        $imagen->filename = $filename;
+                        $imagen->creado = date("Y-m-d H:i:s");
+                        $imagen->tipo = 'GIF';
+                        array_push($array_imagenes, $imagen);
+                    }
+                    // Borro la imagen del tipo NOTICIA
+                    foreach($articulo->imagenes as $imagen){
+                        if($imagen->tipo == 'GIF'){
+                            $this->Imagenes->delete($imagen);
+                        }
+                    } 
+                }
                 
                 if(count($array_imagenes) > 0){
                     $articulo = $this->Articulos->get($id, [
@@ -290,4 +335,33 @@ class ArticulosController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    /**
+     * Delete method
+     *
+     * @param string|null $id Articulo id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+
+    public function deletefoto($id = null, $imagenTipo = null)
+    {
+        $articulo = $this->Articulos->get($id, [
+            'contain' => ['Imagenes']
+        ]);
+        //dd($imagen);
+        foreach ($articulo->imagenes as $valor){
+            if($valor->tipo == $imagenTipo){
+                $imagenModel = $this->Imagenes->get($valor->id);
+                if ($this->Imagenes->delete($imagenModel)) {
+                    $this->Flash->success(__('La imágen fue eliminada.'));
+                } else {
+                    $this->Flash->error(__('La imagen no pudo ser eliminada. Intente nuevamente.'));
+                }
+        
+            }
+        }
+        $this->Flash->success(__('La foto ha sido borrada con éxito.'));
+        return $this->redirect(['action' => 'index']);
+    }
+
 }

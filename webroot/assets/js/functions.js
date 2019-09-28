@@ -108,13 +108,12 @@ function goNews(url) {
 function shareNew(url, text, title) {
     navigator
         .share({
-            title: title,
-            text: "Ladatamendoza",
-            url: url
-        })
-        .then(() => {
-            console.log("ok");
-        });
+        title,
+        text,
+        url
+      })
+    .then(() => console.log("Shared!"))
+    .catch(err => console.error(err));      
 }
 
 function openVideo() {
