@@ -50,17 +50,20 @@
 </html>
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+  $(window).resize(function(){ location.reload(); });
+})
+
 function generales(url){
-location.href = url
+  location.href = url
 }
 
-  function enviar()
-{
+function enviar(){
   if (validacion()){
        $("#formulario").submit();
   }
 }
-
 
 function validacion()
 {
