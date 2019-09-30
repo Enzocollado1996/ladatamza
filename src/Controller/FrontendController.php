@@ -29,7 +29,7 @@ class FrontendController extends AppController
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
         //$this->Auth->allow(['add', 'logout']);
-        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota', 'buscarVideo','categoria']);
+        $this->Auth->allow(['index', 'verArticulo', 'verSeccion', 'buscarNota', 'buscarVideo','categoria','sendmail']);
         $this->set('title_for_layout', "Diario digital");
         $this->viewBuilder()->setLayout('frontend');
     }

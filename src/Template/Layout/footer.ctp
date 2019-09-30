@@ -13,7 +13,7 @@
             </div><!--END ROW-->
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 contact-form" id="contacto">
-                    <form id="formulario" class="form" role="form" method="POST" action="send_form_email.php">
+                    <form id="formulario" class="form" role="form" method="POST" action="#">
                       <div class="form-group">
                         <input id="nombre" class="form-control input-lg" type="text" name="nombre" placeholder="Nombre*">
                         <div id="nombreerror" class="text-danger"></div>
@@ -31,7 +31,7 @@
                         <div id="mensajeerror" class="text-danger"></div>
                       </div>
                       <div class="form-group last text-right" id="enviar">
-                        <a class="btn-black btn-gral" onclick="javascript:enviar();" href="#">Enviar</a>
+                        <a class="btn-black btn-gral" onclick="enviar()" href="#">Enviar</a>
                       </div>
                     </form>  
                 </div>
@@ -52,9 +52,29 @@
 <script type="text/javascript">
   function enviar()
 {
-  if (validacion()){
-       $("#formulario").submit();
-  }
+    var nombre = $("#nombre").val();
+    var telefono = $("#telefono").val();
+    var email = $("#email").val();
+    var mensaje = jQuery("textarea#mensaje").val();
+    var url_base = window.location.href;
+    console.log(url_base + "mail/send")
+    var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;
+
+    $.ajax({
+      type: 'POST',
+      url: url_base + "mail/send",
+      data: nombre,
+      dataType: 'json',
+      headers: {
+        'X-CSRF-Token': csrfToken
+      },
+      success: function(data){
+        console.log(data)
+      },
+      error: function(xhr, textStatus, errorThrown) {
+          console.log(xhr);
+      }
+  });
 }
 
 
