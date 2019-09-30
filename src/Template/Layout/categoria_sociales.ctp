@@ -12,25 +12,32 @@
             <?php foreach ($articulos_sociales as $key => $sociales) :?>
             <div class="col-md-4 col-sm-4 margen-40">
                 <div class="container-nota-sociales"> 
-                    <div class="contenedor-img-txt">
+                    <div class="contenedor-img-txt" id=<?= 'contenedor-img-txt-' . $sociales->id?>>
                         <?php if(!isset($sociales->titulo)):?>
                             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $sociales->imagen->file_url . '/' . $sociales->imagen->filename, ['style'=> 'width:100%']);?>
                         <?php else : ?> 
                         <!--<div class="fecha"><?=$sociales->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
-                        <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $sociales->slug], true)?>', '', '<?=$sociales->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_home_ncs']) ?></div>
+                        <div class="share-sector btn-share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $sociales->slug], true)?>', '', '<?=$sociales->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_home_ncs']) ?></div>
+                        <div class="img-nota">
                             <?php if (count($sociales->imagenes) > 0) {
                                 foreach ($sociales->imagenes as $imagen) {
                                     if ($imagen->tipo == 'NOTICIA') {
-                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
                                     }
                                     if ($imagen->tipo == 'GIF') {
-                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
                                     }
                                 }
                             } else {
                                 echo '<div class="banner-empty"></div>';
-                            }
-                        ?>
+                            }?>
+                        </div>
+                        <div class="icons-share">
+                            <a href="#fa"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#wh"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#tw"><i class="fab fa-twitter"></i></a>
+                            <a href="#m"><i class="fas fa-envelope"></i></a>
+                        </div>
                         <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>')">
                             <div class="keyword"><?php echo $sociales->palabras_claves?></div>
                             <div id="<?= $sociales->id?>" class="titulo-nota-home">
