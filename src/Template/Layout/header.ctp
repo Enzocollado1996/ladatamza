@@ -74,7 +74,7 @@
         <span class="logo-texto"> <?php echo $this->Html->image("../assets/images/logo-txt.svg"); ?> </span>
         <div class="logo-texto-vertical"> <?php echo $this->Html->image("../assets/images/logo-texto-vertical.svg"); ?> </div>
       </div>
-      <div class="col-md-6 text-center">
+      <div class="col-md-6 col-sm-4 text-center">
         <div class="logo">
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>">
             <?php echo $this->Html->image("../assets/images/logo.svg"); ?>

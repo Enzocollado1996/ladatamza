@@ -222,11 +222,11 @@ body {
 
 .shadownews:active .date,
 .shadownews:active .title {
-    color: white;
+    color:#000;
 }
 .shadownews:active .district,
 .shadownews:active .clearfix {
-    background-color: white;
+    background-color: #000;
 }
 .shadownews.empty {
     min-height: calc(30% - 30px) !important;
@@ -280,13 +280,17 @@ body {
     justify-content: center; */
 }
 
+.borde-amarillo{
+    border-bottom:9px solid #feee00;
+}
+
 .owl-carousel .titulo {
     font-family: "PT Sans";
     font-weight: 900;
     font-size: 15px;
     position: absolute;
     bottom: 0;
-    background-color: #feee00;
+    background:linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
     left: 0;
     justify-content: center;
     line-height: 21px;
@@ -295,6 +299,10 @@ body {
     /* padding-left: 5px; */
     width: calc(100% - 20px);
     height: 30%;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
 }
 
 

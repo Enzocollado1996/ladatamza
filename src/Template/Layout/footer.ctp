@@ -5,8 +5,8 @@
                 <div class="ladata-vertical margen-40"><?php echo $this->Html->image("../assets/images/logo-ladata-vertical.svg"); ?></div>
                 <div class="social-link margen-40">
                    <?php 
-                    echo '<a href="#" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
-                    echo '<a href="#" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
+                    echo '<a href="https://www.facebook.com/Ladata-Mendoza-2451654124872948/" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
+                    echo '<a href="https://instagram.com/ladatamza" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
                     echo '<a href="#" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
                    ?>
                 </div>
@@ -50,8 +50,16 @@
 </html>
 
 <script type="text/javascript">
-  function enviar()
-{
+
+$(document).ready(function(){
+  $(window).resize(function(){ location.reload(); });
+})
+
+function generales(url){
+  location.href = url
+}
+
+function enviar(){
     var nombre = $("#nombre").val();
     var telefono = $("#telefono").val();
     var email = $("#email").val();
@@ -79,7 +87,6 @@
       }
   });
 }
-
 
 function validacion()
 {

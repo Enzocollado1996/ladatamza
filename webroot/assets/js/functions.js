@@ -194,3 +194,40 @@ function categorias_page(page) {
     var pathname = pathname + '?page=' + page;
     location.href = pathname;
 }
+
+function gifOnHover(){
+    $( ".contenedor-img-txt .contenido" ).mouseover(function() {
+    var $notaId = $(this).parent().attr('id');
+    var $notaActual = '#' + $notaId; 
+    if ( $($notaActual + ' .gif').length > 0 ) {
+        $($notaActual + ' .gif').removeClass('hidden');
+        $($notaActual + ' .banner.imagen').addClass('hidden');
+
+        $($notaActual + " .contenido" ).mouseleave(function(e){
+            $($notaActual + ' .gif').addClass('hidden');
+            $($notaActual + ' .banner.imagen').removeClass('hidden');
+        });
+    }
+})
+}
+
+function shareEffect(container){
+    $(container +' .btn-share').click(function(){
+        var $notaId = $(this).parent().attr('id');
+        var $notaActual = '#' + $notaId;
+        console.log($notaActual);
+    
+        if ($($notaActual +  ' .btn-share').hasClass("close-share") == false){
+                $($notaActual + ' .img-nota').addClass('hover-yellow');
+                $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/close_negro.svg');
+                $($notaActual + '  .btn-share').addClass('close-share');
+                $($notaActual + '  .icons-share').fadeIn(500);
+    
+        }else{
+            $($notaActual + ' .img-nota').removeClass('hover-yellow');
+            $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/share.svg');
+            $($notaActual + '  .btn-share').removeClass('close-share');
+            $($notaActual + '  .icons-share').hide();
+        }
+    })
+}
