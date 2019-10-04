@@ -1,6 +1,8 @@
 <div class="container-sociales">
         <?php 
+        if($gifsociales){
             echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $gifsociales[0]['file_url'] . '/' . $gifsociales[0]['filename'], ['class' => 'banner_sociales']);
+        }
         ?>
         <div class="container noticias">
         <div class="row">
