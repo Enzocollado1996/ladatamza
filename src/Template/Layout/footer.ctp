@@ -13,7 +13,7 @@
             </div><!--END ROW-->
             <div class="row">
                 <div class="col-md-offset-3 col-md-6 contact-form" id="contacto">
-                    <form id="formulario" class="form" role="form" method="POST" action="#">
+                    <form id="formulario" class="form" role="form" >
                       <div class="form-group">
                         <input id="nombre" class="form-control input-lg" type="text" name="nombre" placeholder="Nombre*">
                         <div id="nombreerror" class="text-danger"></div>
@@ -57,13 +57,16 @@
     var email = $("#email").val();
     var mensaje = jQuery("textarea#mensaje").val();
     var url_base = window.location.href;
-    console.log(url_base + "mail/send")
     var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;
-
     $.ajax({
       type: 'POST',
       url: url_base + "mail/send",
-      data: nombre,
+      data: {
+        'nombre': nombre,
+        'telefono': telefono,
+        'email': email,
+        'mensaje': mensaje
+      },
       dataType: 'json',
       headers: {
         'X-CSRF-Token': csrfToken

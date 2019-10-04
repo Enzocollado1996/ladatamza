@@ -40,13 +40,13 @@ class MailController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function send(){
-        $Email = new Email();
-        $Email->config('default');
-        $Email->from(['enzocollado1996@gmail.com' => 'My Site'])
-            ->to('enzocollado1996@gmail.com.com')
-            ->subject('About')
-            ->send('My message');
-        echo 'SUCCES';
-        die;
+        if ($this->request->is('post')) {
+            $Email = new Email('default');
+            $Email->from([$this->request->data['email'] => $this->request->data['nombre']])
+                ->emailFormat('html')
+                ->to('enzocollado1996@gmail.com')
+                ->subject('La data')
+                ->send($this->request->data['mensaje'] . " <br/> <br/> Número de teléfono: ". $this->request->data['telefono']);
+        }
     }
 }
