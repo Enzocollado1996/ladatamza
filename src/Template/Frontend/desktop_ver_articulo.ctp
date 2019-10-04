@@ -1,4 +1,3 @@
-<?php include($_SERVER['DOCUMENT_ROOT'].'ladatamza/src/template/Layout/header.ctp'); ?>
 <?php
     $articulo = $articulos[0];
     $zona = $articulo->zona;

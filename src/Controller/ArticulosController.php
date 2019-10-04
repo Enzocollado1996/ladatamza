@@ -89,7 +89,6 @@ class ArticulosController extends AppController
             $articulo->creado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
-            dd("aaaaa");
             
             if ($this->Articulos->save($articulo)) {
                 $array_imagenes = [];
@@ -133,7 +132,6 @@ class ArticulosController extends AppController
                 }
                 // Proceso imagen de publicidad si la cargaron
                 if(!empty($this->request->data['filename3']) && !empty($this->request->data['filename3'][0]["tmp_name"])){
-                    dd("ASD");
                     foreach($this->request->data['filename3'] as $imagen_a_guardar){
                         $imagen = TableRegistry::get('Imagenes')->newEntity();
                         //$imagen = TableRegistry::get('Imagenes')->patchEntity($imagen, $this->request->data);
