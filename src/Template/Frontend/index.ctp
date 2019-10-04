@@ -122,6 +122,8 @@
             </div>
         <?php }?>
     </div>
+    <div class="borde-amarillo">
+    </div>
     <!-- <button id="asd" onclick="shareNew('laurl.com','laurl','test');">Compartir</button> -->
 </body>
 

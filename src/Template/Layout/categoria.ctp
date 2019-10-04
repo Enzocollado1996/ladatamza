@@ -7,25 +7,36 @@
     <?php foreach ($articulo_categoria as $key => $categoria) : 
         if($key == 6) {break;}?>
         <div class="container-categoria row margen-40"> 
-            <div class="col-md-5 img-nota-categoria">
+            <div class="col-md-5 img-nota-categoria" id=<?= 'nota-' . $categoria->id?>>
                 <?php if(!isset($categoria->titulo)):?>
-                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $categoria->imagen->file_url . '/' . $categoria->imagen->filename, ['style'=> 'width:100%']);?>
+                    <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $categoria->imagen->file_url . '/' . $categoria->imagen->filename, ['style'=> 'width:100%']);?>
                 <?php else : ?> 
-                <div class="share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $categoria->slug], true)?>', '', '<?=$categoria->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_home_ncs']) ?></div>
-                <?php if (count($categoria->imagenes) > 0) {
-                    foreach ($categoria->imagenes as $imagen) {
-                        if ($imagen->tipo == 'NOTICIA') {
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-                        }
-                        if ($imagen->tipo == 'GIF') {
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
-                        }
-                    }
-                        } else {
-                    echo '<div class="banner-empty"></div>';
-                        }
-                    ?>
+                    <div class="share btn-share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $categoria->slug], true)?>', '', '<?=$categoria->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_home_ncs']) ?></div>
+                    <div class="contenedor-img-txt" id=<?= 'contenedor-img-txt-' . $categoria->id?>>
+                        <div class="img-nota">
+                            <?php if (count($categoria->imagenes) > 0) {
+                                foreach ($categoria->imagenes as $imagen) {
+                                    if ($imagen->tipo == 'NOTICIA') {
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                                    }
+                                    if ($imagen->tipo == 'GIF') {
+                                        echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner hidden']);
+                                    }
+                                }
+                            } else {
+                                echo '<div class="banner-empty"></div>';
+                            }?>
+                        </div>
+                    </div>
+                <?php endif; ?> 
+                <div class="icons-share">
+                    <a href="#fa"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#wh"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#tw"><i class="fab fa-twitter"></i></a>
+                    <a href="#m"><i class="fas fa-envelope"></i></a>
+                </div>
             </div><!--END col-md-5-->
+
             <div class="contenido-categoria col-md-7"onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categoria->slug]) ?>')" >
                 <div class="keyword"><?php echo $categoria->palabras_claves?></div>
                 <div id="<?= $categoria->id?>" class="titulo-nota-categoria">
@@ -35,7 +46,6 @@
                     <?php echo $categoria->descripcion?>
                 </div>
             </div>
-            <?php endif ?> 
         </div> <!--END CONTAINER CATEGORIA-->
     <?php endforeach ;?>
     <div class="row">
@@ -47,6 +57,12 @@
         </div>
     </div>
 </div>
-<?php include('categoria_sociales.ctp'); ?>
-<?= $this->Html->script('../assets/js/functions'); ?>
-<?php include('footer.ctp'); ?>
+<script type="text/javascript">
+    shareEffect ('.container-categoria');
+</script>
+
+<?php 
+    include('categoria_sociales.ctp');
+    include('footer.ctp'); 
+?>
+

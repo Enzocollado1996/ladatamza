@@ -1,7 +1,6 @@
 <?php include('header_transparente.ctp'); ?>
 <body>
-<div class="share-show">
-</div>
+<div class="share-show"></div>
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $key => $general) {?>
             <?php if($key == 5) {
@@ -10,13 +9,13 @@
             ?>
             <div class="item text-center">
             <?php if(!isset($general->titulo)):?>
-            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
+                <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
             <?php else : ?> 
-            <div class="share hidden" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
-            </div>
-            <div class="text-center contenedor-keyword-slider">
-                <div class="keyword"><?=$general->palabras_claves?></div>
-            </div>
+                <div id=<?= 'item-' . $general->id?> class="share hidden btn-share-1" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url_banner']) ?>
+                </div>
+                <div class="text-center contenedor-keyword-slider">
+                    <div class="keyword"><?=$general->palabras_claves?></div>
+                </div>
                 <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
@@ -42,15 +41,16 @@
         foreach ($articulos_general as $key => $general) :
             if($key >= 5 && $key <= 7):?>
                 <div class="col-md-4 col-sm-4 padding-five">
-                    <div class="share btn-share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => '']) ?>
-                    </div>
-                    <div class="container-noticia"> 
+                    <div class="container-noticia" id=<?= 'nota-' . $general->id?>> 
                         <?php 
                         if(!isset($general->titulo)):
                             echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);
                         else : ?> 
+                            <div class="share btn-share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => '']) ?>
+                            </div>
                             <!--<div class="fecha"><?=$general->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
                             <div class="contenedor-img-txt" id=<?= 'contenedor-img-txt-' . $general->id?>>
+                                <div class="img-nota">
                                     <?php 
                                     if (count($general->imagenes) > 0) {
                                         foreach ($general->imagenes as $imagen) {
@@ -65,6 +65,13 @@
                                         echo '<div class="banner-empty"></div>';
                                     } //END if (count($general->imagenes) > 0)
                                     ?>
+                                </div>
+                                <div class="icons-share">
+                                    <a href="#fa"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#wh"><i class="fab fa-whatsapp"></i></a>
+                                    <a href="#tw"><i class="fab fa-twitter"></i></a>
+                                    <a href="#m"><i class="fas fa-envelope"></i></a>
+                                </div>
                                 <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')" >
                                     <div id="<?= $general->id?>" class="titulo-nota-home"><?php echo $general->titulo?></div>
                                 </div>
@@ -83,40 +90,40 @@
                 foreach ($articulos_norte as $key => $norte) :
                     if($key == 3) {break;}?>
                     <div class="container-noticia" id=<?= 'nota-' . $norte->id?>> 
-                            <?php if(!isset($norte->titulo)):?>
-                            <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
-                            <?php else : ?> 
-                            <!--<div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
-                            <div class="share-sector btn-share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $norte->slug], true)?>', '', '<?=$norte->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => '']) ?>
-                            </div>
-                            <div class="contenedor-img-txt" id=<?= 'contenedor-img-txt-' . $norte->id?>>
-                                <div class="img-nota">
-                                    <?php if (count($norte->imagenes) > 0) {
-                                        foreach ($norte->imagenes as $imagen) {
-                                            if ($imagen->tipo == 'NOTICIA') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
-                                            }
-                                            if ($imagen->tipo == 'GIF') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
-                                            }
+                        <?php if(!isset($norte->titulo)):?>
+                        <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $norte->imagen->file_url . '/' . $norte->imagen->filename, ['style'=> 'width:100%']);?>
+                        <?php else : ?> 
+                        <!--<div class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></div>-->
+                        <div class="share-sector btn-share" onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $norte->slug], true)?>', '', '<?=$norte->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => '']) ?>
+                        </div>
+                        <div class="contenedor-img-txt" id=<?= 'contenedor-img-txt-' . $norte->id?>>
+                            <div class="img-nota">
+                                <?php if (count($norte->imagenes) > 0) {
+                                    foreach ($norte->imagenes as $imagen) {
+                                        if ($imagen->tipo == 'NOTICIA') {
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
                                         }
-                                    } else {
-                                        echo '<div class="banner-empty"></div>';
+                                        if ($imagen->tipo == 'GIF') {
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
+                                        }
                                     }
-                                    ?>
-                                </div>
-                                <div class="icons-share">
-                                    <a href="#fa"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#wh"><i class="fab fa-whatsapp"></i></a>
-                                    <a href="#tw"><i class="fab fa-twitter"></i></a>
-                                    <a href="#m"><i class="fas fa-envelope"></i></a>
-                                </div>
-                                <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>')" >
-                                    <div class="keyword"><?php echo $norte->palabras_claves?></div>
-                                    <div id="<?= $norte->id?>" class="titulo-nota-home">
-                                        <?php echo $norte->titulo?>
-                                    </div>   
-                                </div>
+                                } else {
+                                    echo '<div class="banner-empty"></div>';
+                                }
+                                ?>
+                            </div>
+                            <div class="icons-share">
+                                <a href="#fa"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#wh"><i class="fab fa-whatsapp"></i></a>
+                                <a href="#tw"><i class="fab fa-twitter"></i></a>
+                                <a href="#m"><i class="fas fa-envelope"></i></a>
+                            </div>
+                            <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>')" >
+                                <div class="keyword"><?php echo $norte->palabras_claves?></div>
+                                <div id="<?= $norte->id?>" class="titulo-nota-home">
+                                    <?php echo $norte->titulo?>
+                                </div>   
+                            </div>
                             <?php endif ?> 
                         </div><!--END contenedor-img-txt-->
                     </div> <!--END CONTAINER NOTICIAS-->
@@ -222,8 +229,8 @@
             </div>
             <div class="social-sticky">
                 <?php
-                echo '<a href="https://www.facebook.com/" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
-                echo '<a href="https://www.instagram.com/?hl=es-la" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
+                echo '<a href="https://www.facebook.com/Ladata-Mendoza-2451654124872948" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
+                echo '<a href="https://instagram.com/ladatamza" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
                 echo '<a href="https://twitter.com/" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
                 ?>
             </div>
@@ -235,7 +242,7 @@
 
  <script>
 function generales(url){
-location.href = url
+    location.href = url
 }
 
     function barrido(uid){
@@ -278,7 +285,7 @@ $(document).ready(function(){
     alignContenido('.sector .contenido');
     alignContenido('.generales .contenido');
     gifOnHover();
-    shareEffect();
+    shareEffect('.container-noticia');
 })
 
 function shared_banner(){
