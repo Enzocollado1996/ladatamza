@@ -211,10 +211,11 @@ function gifOnHover(){
 })
 }
 
-function shareEffect(){
-    $('.container-noticia .btn-share').click(function(){
+function shareEffect(container){
+    $(container +' .btn-share').click(function(){
         var $notaId = $(this).parent().attr('id');
         var $notaActual = '#' + $notaId;
+        console.log($notaActual);
     
         if ($($notaActual +  ' .btn-share').hasClass("close-share") == false){
                 $($notaActual + ' .img-nota').addClass('hover-yellow');

@@ -35,7 +35,8 @@
 }
 
 @media(min-width:1200px){
-    .noticias img{max-height:200px;}
+    .noticias-sector img{max-height:200px;}
+    .generales img{max-height:223px;}
 }
 
 body{
@@ -51,7 +52,11 @@ body{
 .banner_sociales{
     position: absolute;
     height: 100%;
+    object-fit: cover;
+    width: 100%;
+    max-height: 513px;
 }
+
 .socialmedia_modal,
 .buscar_modal {
     visibility: hidden;
@@ -160,6 +165,11 @@ body{
     z-index: 999;
 }
 
+.container-categoria .share{
+    right: 33px;
+    top: 16px;
+}
+
 
 .share_url_banner {
     position: absolute;
@@ -201,21 +211,22 @@ body{
 }
 */
 
-.contenedor-img-txt:hover img{
+.contenedor-img-txt:hover .img-nota img{
   filter: grayscale(1);
 }
 
 img.banner:hover {
-    filter: none;
+    filter: none !important;
 }
+
 
 .contenido:hover, .share:hover, .share-sector:hover, .titulo-nota-categoria:hover, .item .titulo{
  cursor: pointer;
 }
 
-.img-nota-categoria{padding-left:0;}
+.img-nota-categoria{padding-left:0;background: transparent !important;}
 
-.sector .contenido:hover, .container-sociales .contenido:hover{
+.sector .contenido:hover, .container-sociales .contenido:hover, .container-nota-sociales .contenido:hover{
     background: #feee00;
     -webkit-transition: background-color 300ms ease-out;
     -ms-transition: background-color 300ms ease-out;
@@ -275,6 +286,11 @@ img.banner:hover {
     border: none;
 }
 
+.generales .titulo-nota-home{
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .titulo-nota-categoria:hover{
   color: #feee00;
 }
@@ -295,6 +311,11 @@ img.banner:hover {
 .titulo-nota-home{   
     font-size: 20pt;
     padding: 7px 20px 15px 20px;
+}
+
+.generales .titulo-nota-home{   
+    font-size: 20pt;
+    padding: 7px 7px;
 }
 
 .titulo-nota-home, .titulo-nota-categoria{   
@@ -349,6 +370,10 @@ img.banner:hover {
     margin: 12px 15px 5px 15px;
 }
 
+.container-nota-sociales .img-nota img{
+    max-height: 200px;
+}
+
 .footer-style{
     background: #000;
 }
@@ -359,6 +384,8 @@ img.banner:hover {
 
 .social-link a{margin-right: 20px;}
 .social-link a:hover, .social-sticky img:hover{opacity: 0.7;}
+
+
 
 .margen-40 {margin: 40px 0;}
 .margen-b-40 {margin-bottom: 40px;}
@@ -697,6 +724,10 @@ img.img-interior-nota{
   transform: scaleX(1); 
 }
 
+.container-categoria .img-nota img {
+    height: 262px;
+}
+
 .temp{
   color: #fff;
   font-size: 15px;
@@ -764,6 +795,15 @@ img.img-interior-nota{
     display:none;
     transition: all .4s .1s;
     -webkit-transition: all .4s .1s;
+}
+
+.container-categoria .icons-share{
+    margin-top: -31%;
+    width: 100%;
+}
+
+.generales .icons-share {
+    margin-top: -25%;
 }
 
 
