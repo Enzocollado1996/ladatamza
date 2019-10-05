@@ -44,6 +44,10 @@
             <?=$this->Form->textarea('descripcion',['class'=>'form-control', 'required' => 'required']);?>
         </div>
         <div class="form-group">
+            <?=$this->Form->control('linkpublicidad',['label' => 'Link de la Publicidad', 'class'=>'form-control', 'required' => 'required']);?>
+            <h6 class="pull-right" id="count_message_linkpublicidad"></h6>
+        </div>        
+        <div class="form-group">
             <label>Texto</label>
             <?=$this->Form->textarea('texto',['class'=>'form-control', 'required' => 'required']);?>
         </div>

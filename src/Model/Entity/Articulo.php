@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property string $descripcion
  * @property string $texto
  * @property string $palabras_claves
+ * @property string $palabras_clavesyy
  * @property \Cake\I18n\FrozenTime|null $publicado
  * @property bool $habilitado
  * @property \Cake\I18n\FrozenTime|null $creado
