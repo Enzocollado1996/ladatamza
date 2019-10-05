@@ -57,5 +57,4 @@
 
 <script type="text/javascript">
     alignContenido('.container-sociales .contenido');
-    shareEffect ('.container-nota-sociales');
 </script>

@@ -58,7 +58,10 @@
     </div>
 </div>
 <script type="text/javascript">
-    shareEffect ('.container-categoria');
+    $(document).ready(function(){
+        shareEffect ('.container-categoria');
+        shareEffect ('.container-nota-sociales');
+    })
 </script>
 
 <?php 

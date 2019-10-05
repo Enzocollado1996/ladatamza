@@ -30,11 +30,12 @@
     .contenido-categoria {padding-left:0 !important;}
     .interior-categoria .flecha, .interior-categoria .header-notices {margin-left: 20px !important;}
     .icons-share i {font-size: 21px !important;}
+    .banner_sociales{max-height: 394px !important;}
     /*.owl-stage {width:auto !important;}
     .owl-item{width:100% !important;}*/
 }
 
-@media(min-width:1200px){
+@media(min-width:1200px) and (max-width:2000px){
     .noticias-sector img{max-height:200px;}
     .generales img{max-height:223px;}
 }
@@ -171,7 +172,7 @@ body{
 }
 
 
-.share_url_banner {
+.share_url_banner img{
     position: absolute;
     right: 0;
     top: 44px;
@@ -289,6 +290,9 @@ img.banner:hover {
 .generales .titulo-nota-home{
     text-align: center;
     text-transform: uppercase;
+    font-size: 20pt;
+    padding: 7px 7px;
+    width:100%;
 }
 
 .titulo-nota-categoria:hover{
@@ -313,10 +317,6 @@ img.banner:hover {
     padding: 7px 20px 15px 20px;
 }
 
-.generales .titulo-nota-home{   
-    font-size: 20pt;
-    padding: 7px 7px;
-}
 
 .titulo-nota-home, .titulo-nota-categoria{   
     position: relative;
@@ -527,6 +527,7 @@ img.banner:hover {
     top: 50%;
     background: #feee00;
     padding: 2px 5px 18px 6px;
+    z-index:1;
 }
 
 .social-sticky img{
@@ -803,7 +804,7 @@ img.img-interior-nota{
 }
 
 .generales .icons-share {
-    margin-top: -25%;
+    margin-top: -19%;
 }
 
 
@@ -820,4 +821,18 @@ img.img-interior-nota{
 .close-share img {
     width: 17px;
     margin-left: 3px;
+}
+
+.contenedor-slider .hover-yellow{
+    z-index:9;
+}
+
+.contenedor-slider .icons-share{
+    z-index:10;
+    margin-top: -26%;
+    width:100%;
+}
+
+.contenedor-slider .icons-share i {
+    padding: 0 29px;
 }

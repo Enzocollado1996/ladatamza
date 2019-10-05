@@ -63,7 +63,7 @@ $(document).ready(function() {
         paginationSpeed: 400,
         loop:true,
         autoplay:true,
-        autoplayTimeout:3000,
+        autoplayTimeout:5000,
         autoplayHoverPause:true,    
         singleItem: true,
         items: 1,
