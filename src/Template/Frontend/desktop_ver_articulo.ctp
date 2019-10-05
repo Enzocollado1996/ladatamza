@@ -42,7 +42,7 @@
                         if ($imagen->tipo == 'PUBLICIDAD') {
                             echo '<div class="clone-image">';
                             echo '<a class="hidden foto-publicidad" href="'.$articulo->linkpublicidad.'" target="_blank">';
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['style'=>'width:100%']);
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename);
                             echo '</a>';
                             echo '</div>';
                         }

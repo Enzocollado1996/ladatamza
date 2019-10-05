@@ -670,7 +670,14 @@ img.img-interior-nota{
     position: absolute;
     left: 0;
 }
-
+.foto-publicidad img{
+    width: 100%;
+    margin-top: 25px;
+    padding: 22px;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #AAA9AF;
+    border-top: 3px solid #AAA9AF;
+}
 .interior-nota .keyword{
     margin:20px 0 28px 0;
 }
