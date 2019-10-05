@@ -36,6 +36,7 @@
 }
 
 @media(min-width:1200px) and (max-width:2000px){
+
     .noticias-sector img{max-height:200px;}
     .generales img{max-height:223px;}
 }
@@ -293,6 +294,7 @@ img.banner:hover {
     font-size: 20pt;
     padding: 7px 7px;
     width:100%;
+
 }
 
 .titulo-nota-categoria:hover{
@@ -317,6 +319,10 @@ img.banner:hover {
     padding: 7px 20px 15px 20px;
 }
 
+.generales .titulo-nota-home{   
+    font-size: 20pt;
+    padding: 7px 7px;
+}
 
 .titulo-nota-home, .titulo-nota-categoria{   
     position: relative;
@@ -805,6 +811,7 @@ img.img-interior-nota{
 
 .generales .icons-share {
     margin-top: -19%;
+
 }
 
 

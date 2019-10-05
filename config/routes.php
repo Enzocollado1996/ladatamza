@@ -44,6 +44,7 @@ use Cake\Routing\Route\DashedRoute;
  *
  */
 Router::defaultRouteClass(DashedRoute::class);
+Router::extensions('json', 'xml');
 
 Router::scope('/', function (RouteBuilder $routes) {
     // Register scoped middleware for in scopes.
@@ -68,7 +69,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Frontend', 'action' => 'index']);
     $routes->connect('/nota/*', ['controller' => 'Frontend', 'action' => 'ver_articulo']);
     $routes->connect('/categoria/*',['controller' => 'Frontend', 'action' => 'categoria']);
-    
+    $routes->connect('/sendmail',['controller' => 'Frontend', 'action' => 'sendmail']);
+
     $routes->connect('/seccion/*', ['controller' => 'Frontend', 'action' => 'ver_seccion']);
     $routes->connect('/buscar/*', ['controller' => 'Frontend', 'action' => 'buscar_nota']);
     $routes->connect('/video/', ['controller' => 'Frontend', 'action' => 'buscar_video']);
