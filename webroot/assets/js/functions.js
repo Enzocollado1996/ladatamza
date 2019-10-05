@@ -212,7 +212,7 @@ function gifOnHover(){
 }
 
 function shareEffect(container){
-    $(container +' .btn-share').click(function(){
+    $(container + ' .btn-share').click(function(){
         var $notaId = $(this).parent().attr('id');
         var $notaActual = '#' + $notaId;
         console.log($notaActual);
