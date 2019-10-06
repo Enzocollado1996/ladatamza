@@ -240,8 +240,7 @@ function gifOnHover(){
 }
 
 function shareEffect(container){
-    console.log(container);
-    $(container +' .btn-share').click(function(){
+    $(container + ' .btn-share').click(function(){
         var $notaId = $(this).parent().attr('id');
         var $notaActual = '#' + $notaId;
         if ($($notaActual +  ' .btn-share').hasClass("close-share") == false){
