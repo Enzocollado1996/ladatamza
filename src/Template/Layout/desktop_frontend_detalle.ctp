@@ -6,3 +6,8 @@
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
 <?= $this->Html->script('../assets/js/functions'); ?>
 
+<script type="text/javascript">
+    shareEffect ('.container-nota-sociales');
+</script>
+
+

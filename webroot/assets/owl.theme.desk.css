@@ -10,7 +10,7 @@
 .owl-carousel .owl-item img{
  display: inline-block;
  width: 100%;
- height: 93vh;
+ /*height: 93vh;*/
 }
 
 .owl-theme .owl-nav {
