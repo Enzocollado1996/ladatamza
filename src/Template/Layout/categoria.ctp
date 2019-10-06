@@ -48,7 +48,7 @@
             </div>
         </div> <!--END CONTAINER CATEGORIA-->
     <?php endforeach ;?>
-    <div class="row">
+    <div class="row" id="footer-categoria">
         <div class="col-md-6 col-xs-6">
             <a class="btn-amarillo btn-mas-noticias margen-b-40" onclick="categorias_page('<?=$page ?>')">ver +</a>
         </div>
@@ -57,6 +57,12 @@
         </div>
     </div>
 </div>
+<div class="hidden">
+<?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_home_ncs','id'=> 'image-shared-clone']) ?></div>
+<?php echo '<div id="path_imagen_subida">' . $this->Html->image(Cake\Core\Configure::read('path_imagen_subida')) . '</div>'?>
+<?php echo '<div class="hidden" id="url-nota">' . $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo']). '</div>' ?>
+</div>
+
 <script type="text/javascript">
     shareEffect ('.container-categoria');
 </script>

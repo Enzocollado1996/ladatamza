@@ -306,7 +306,16 @@ class FrontendController extends AppController
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug','Articulos.descripcion'])
             ->where(['zona' => $categoria, 'habilitado' => true])
             ->toArray();
+            if($this->request->query('request')){
 
+                $this->set([
+                    'my_response' => $articulo_categoria,
+                    '_serialize' => 'my_response',
+                ]);
+                $this->RequestHandler->renderAs($this, 'json');
+    
+            }
+    
             $publicidades_sociales = $this->Publicidades->find('all',[
             'order' => ['orden' => 'asc'],
             'limit' => 0
