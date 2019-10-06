@@ -210,9 +210,9 @@
                                         ?>
                                     </div>
                                     <div class="icons-share">
-                                        <a href="#fa"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#fa" data-js="facebook-share" data-url="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>"><i class="fab fa-facebook-f"></i></a>
                                         <a href="#wh"><i class="fab fa-whatsapp"></i></a>
-                                        <a href="#tw"><i class="fab fa-twitter"></i></a>
+                                        <a href="#tw" data-js="twitter-share" data-url="<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>" ><i class="fab fa-twitter"></i></a>
                                         <a href="#m"><i class="fas fa-envelope"></i></a>
                                     </div>
                                      <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>')">
