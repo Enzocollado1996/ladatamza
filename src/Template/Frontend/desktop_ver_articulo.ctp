@@ -40,7 +40,11 @@
                 if (count($articulo->imagenes) > 0) {
                     foreach ($articulo->imagenes as $imagen) {
                         if ($imagen->tipo == 'PUBLICIDAD') {
-                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'img-interior-nota']);
+                            echo '<div class="clone-image">';
+                            echo '<a class="hidden foto-publicidad" href="'.$articulo->linkpublicidad.'" target="_blank">';
+                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename);
+                            echo '</a>';
+                            echo '</div>';
                         }
                     }
                 } else {
@@ -85,3 +89,18 @@
     }
 }
 </style>
+<script>
+$( document ).ready(function() {
+    var count = $(".cuerpo-interior-nota").find('p').length;
+    console.log(count);
+    var count = parseInt(count, 10) / 2;
+    var count = Math.round(count);
+    var count = count + 1;
+    console.log(count);
+    $(".cuerpo-interior-nota p:nth-child("+count+")").addClass("fotocuerpo");
+    $(".clone-image").clone(true, true).contents().appendTo('.fotocuerpo');
+    $(".fotocuerpo .foto-publicidad").removeClass("hidden");
+
+    console.log( count );
+});
+</script>

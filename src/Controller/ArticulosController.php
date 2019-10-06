@@ -89,7 +89,6 @@ class ArticulosController extends AppController
             $articulo->creado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
-            
             if ($this->Articulos->save($articulo)) {
                 $array_imagenes = [];
                 // Proceso imagen de nota si fue cagada

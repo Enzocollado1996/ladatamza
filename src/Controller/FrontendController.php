@@ -63,7 +63,7 @@ class FrontendController extends AppController
     public function index()
     {
         $connection = ConnectionManager::get('default');
-        $gifsociales = $connection->execute('SELECT * FROM Imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
+        $gifsociales = $connection->execute('SELECT * FROM imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
 
         $articulos_sociales = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
@@ -222,14 +222,14 @@ class FrontendController extends AppController
     public function verArticulo($slug = null)
     {        
         $connection = ConnectionManager::get('default');
-        $gifsociales = $connection->execute('SELECT * FROM Imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
+        $gifsociales = $connection->execute('SELECT * FROM imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
         $articulo = $this->Articulos->findBySlug($slug)->contain(['Imagenes'])->first();
 
         $articulos = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'asc'],
                             'limit' => 100
                         ])
-                //->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug','Articulos.linkpublicidad'])
                 ->contain(['Imagenes'])
                 ->where(['Articulos.zona' => $articulo->zona, 'Articulos.habilitado' => true, 'Articulos.id !=' =>$articulo->id])
                 ->toArray();
@@ -291,7 +291,7 @@ class FrontendController extends AppController
 
     public function categoria($categoria){
         $connection = ConnectionManager::get('default');
-        $gifsociales = $connection->execute('SELECT * FROM Imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
+        $gifsociales = $connection->execute('SELECT * FROM imagenes where tipo = :tipo order by id DESC LIMIT 1', ['tipo' => 'GIF SOCIALES'])->fetchAll('assoc');
         if($this->request->query('page')){
             $page = $this->request->query('page') + 1;
         }else{
@@ -306,7 +306,16 @@ class FrontendController extends AppController
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug','Articulos.descripcion'])
             ->where(['zona' => $categoria, 'habilitado' => true])
             ->toArray();
+            if($this->request->query('request')){
 
+                $this->set([
+                    'my_response' => $articulo_categoria,
+                    '_serialize' => 'my_response',
+                ]);
+                $this->RequestHandler->renderAs($this, 'json');
+    
+            }
+    
             $publicidades_sociales = $this->Publicidades->find('all',[
             'order' => ['orden' => 'asc'],
             'limit' => 0
