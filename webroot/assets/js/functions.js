@@ -257,13 +257,13 @@ function shareEffect(container){
         }
     })
 }
-var twitterShare = document.querySelector('[data-js="twitter-share"]');
+/* var twitterShare = document.querySelector('[data-js="twitter-share"]');
 
 twitterShare.onclick = function(e) {
   e.preventDefault();
   var url = twitterShare.dataset.url;
   var url = url.substring(1);
-
+  console.log(document.URL + url)
   var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL + url, 'twitter-popup', 'height=350,width=600');
   if(twitterWindow.focus) { twitterWindow.focus(); }
     return false;
@@ -275,8 +275,30 @@ facebookShare.onclick = function(e) {
   e.preventDefault();
   var url = facebookShare.dataset.url;
   var url = url.substring(1);
+  console.log(document.URL + url)
 
   var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + document.URL + url, 'facebook-popup', 'height=350,width=600');
   if(facebookWindow.focus) { facebookWindow.focus(); }
     return false;
+}
+ */function compartirnota(link, social){
+    var baseUrl = document.location.origin;
+
+    if(social == 'facebook'){
+        var url = link.substring(1);
+        console.log(document.URL + url)
+        var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + baseUrl + url, 'facebook-popup', 'height=350,width=600');
+        if(facebookWindow.focus) { facebookWindow.focus(); }
+        return false;
+    }
+
+    if(social == 'twitter'){
+        var url = link.substring(1);
+        console.log(document.URL + url)
+        var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL + url, 'twitter-popup', 'height=350,width=600');
+        if(twitterWindow.focus) { twitterWindow.focus(); }
+        return false;
+    }
+
+
 }
