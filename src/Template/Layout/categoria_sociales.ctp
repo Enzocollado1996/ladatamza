@@ -36,10 +36,10 @@
                                 }?>
                             </div>
                             <div class="icons-share">
-                                <a href="#fa"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#wh"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#tw"><i class="fab fa-twitter"></i></a>
-                                <a href="#m"><i class="fas fa-envelope"></i></a>
+                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                             </div>
                             <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>')">
                                 <div class="keyword"><?php echo $sociales->palabras_claves?></div>
@@ -59,5 +59,4 @@
 
 <script type="text/javascript">
     alignContenido('.container-sociales .contenido');
-    shareEffect ('.container-nota-sociales');
 </script>
