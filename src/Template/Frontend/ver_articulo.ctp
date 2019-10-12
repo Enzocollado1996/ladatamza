@@ -20,7 +20,7 @@
     <?php $index = 0;foreach ($articulos as $articulo): ?>
     <div class="imagen" id="img_<?php echo $index ?>">
             <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
-            <div class="bloque"></div>
+            <!--<div class="bloque"></div>-->
     <?php
 if (count($articulo->imagenes) > 0) {
     foreach ($articulo->imagenes as $imagen) {
@@ -33,8 +33,8 @@ if (count($articulo->imagenes) > 0) {
 }
 ?>
 <div class="share">
-                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share.png", ['class' => 'share_url']) ?></div>
-                <?php echo $this->Html->image("../assets/images/back.png", ['class' => 'back']) ?>
+                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share-negro.svg", ['class' => 'share_url']) ?></div>
+                <?php echo $this->Html->image("../assets/images/back.svg", ['class' => 'back']) ?>
 
                 </div>
             
@@ -73,10 +73,9 @@ if (count($articulo->imagenes) > 0) {
 
 ?>
     </section>
-    <br><br>
     <?php endforeach;?>
     
-    <?php echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bot.png") . '</div>' ?>
+    <?php echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bottom.svg") . '</div>' ?>
     </div>
     </div>
     <?php else: ?>
