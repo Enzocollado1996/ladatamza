@@ -43,6 +43,7 @@
     .noticias img {max-height:170px;}
 }
 
+
 @media(min-width:1300px) and (max-width:2000px){
     .noticias-sector img, .noticias img{max-height:200px;}
 }
