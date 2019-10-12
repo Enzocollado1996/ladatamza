@@ -50,10 +50,9 @@
 </html>
 
 <script type="text/javascript">
-
-$(document).ready(function(){
-  $(window).resize(function(){ location.reload(); });
-})
+$( window ).on( "orientationchange", function( event ) {
+  location.reload();
+});
 
 function generales(url){
   location.href = url

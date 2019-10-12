@@ -62,10 +62,10 @@
                                     if (count($general->imagenes) > 0) {
                                         foreach ($general->imagenes as $imagen) {
                                             if ($imagen->tipo == 'NOTICIA') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota banner imagen']);
                                             }
                                             if ($imagen->tipo == 'GIF') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota banner gif hidden']);
                                             }
                                         }
                                     }else{
@@ -107,10 +107,10 @@
                                     <?php if (count($norte->imagenes) > 0) {
                                         foreach ($norte->imagenes as $imagen) {
                                             if ($imagen->tipo == 'NOTICIA') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sector banner imagen']);
                                             }
                                             if ($imagen->tipo == 'GIF') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sector banner gif hidden']);
                                             }
                                         }
                                     }
@@ -155,10 +155,10 @@
                                     <?php if (count($centro->imagenes) > 0) {
                                         foreach ($centro->imagenes as $imagen) {
                                             if ($imagen->tipo == 'NOTICIA') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sector banner imagen']);
                                             }
                                             if ($imagen->tipo == 'GIF') {
-                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
+                                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sector banner gif hidden']);
                                             }    
                                         }
                                     } else {
@@ -202,10 +202,10 @@
                                         <?php if (count($sur->imagenes) > 0) {
                                             foreach ($sur->imagenes as $imagen) {
                                                 if ($imagen->tipo == 'NOTICIA') {
-                                                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
+                                                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sector banner imagen']);
                                                 }
                                                 if ($imagen->tipo == 'GIF') {
-                                                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
+                                                    echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sector banner gif hidden']);
                                                 }    
                                             }
                                         } else {
@@ -316,6 +316,8 @@ $(document).ready(function(){
     })
     alignContenido('.sector .contenido');
     alignContenido('.generales .contenido');
+    alignContenido('.imagen-nota');
+    alignContenido('.imagen-nota-sector');
     gifOnHover();
     shareEffect('.container-noticia');
     sliderShareEffect();

@@ -7,11 +7,16 @@
  * 	Default theme - Owl Carousel CSS File
  */
 
-.owl-carousel .owl-item img{
- display: inline-block;
- width: 100%;
- /*height: 93vh;*/
-}
+ .owl-carousel .owl-item img{
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  min-height: 93vh;
+  max-height: 93vh;
+  object-fit: cover;
+  object-position: center;
+ }
+ 
 
 .owl-theme .owl-nav {
   margin-top: 10px;

@@ -25,10 +25,10 @@
                                 <?php if (count($sociales->imagenes) > 0) {
                                     foreach ($sociales->imagenes as $imagen) {
                                         if ($imagen->tipo == 'NOTICIA') {
-                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner imagen']);
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sociales banner imagen']);
                                         }
                                         if ($imagen->tipo == 'GIF') {
-                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner gif hidden']);
+                                            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'imagen-nota-sociales banner gif hidden']);
                                         }
                                     }
                                 } else {
@@ -59,5 +59,6 @@
 
 <script type="text/javascript">
     alignContenido('.container-sociales .contenido');
+    alignContenido('.imagen-nota-sociales');
     shareEffect ('.container-nota-sociales');
 </script>
