@@ -102,7 +102,7 @@
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
             <?php else : ?> 
-            <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share2.png", ['class' => 'share_url']) ?></div>
+            <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $general->slug], true)?>', '', '<?=$general->titulo?>')"><?php echo $this->Html->image("../assets/images/share.svg", ['class' => 'share_url']) ?></div>
             <?php
                 if ($general->has('imagenes')) {
                     $imagen = $general->imagenes[0];
