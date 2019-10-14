@@ -63,6 +63,7 @@ body{
     bottom: 200px;
     left: 0;
     right: 0;
+    z-index: 1;
 }
 .banner_sociales{
     position: absolute;
