@@ -257,31 +257,7 @@ function shareEffect(container){
         }
     })
 }
-/* var twitterShare = document.querySelector('[data-js="twitter-share"]');
-
-twitterShare.onclick = function(e) {
-  e.preventDefault();
-  var url = twitterShare.dataset.url;
-  var url = url.substring(1);
-  console.log(document.URL + url)
-  var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL + url, 'twitter-popup', 'height=350,width=600');
-  if(twitterWindow.focus) { twitterWindow.focus(); }
-    return false;
-  }
-
-var facebookShare = document.querySelector('[data-js="facebook-share"]');
-
-facebookShare.onclick = function(e) {
-  e.preventDefault();
-  var url = facebookShare.dataset.url;
-  var url = url.substring(1);
-  console.log(document.URL + url)
-
-  var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + document.URL + url, 'facebook-popup', 'height=350,width=600');
-  if(facebookWindow.focus) { facebookWindow.focus(); }
-    return false;
-}
- */function compartirnota(link, social){
+function compartirnota(link, social){
     var baseUrl = document.location.origin;
 
     if(social == 'facebook'){
@@ -299,6 +275,21 @@ facebookShare.onclick = function(e) {
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
+    if(social == 'wsp'){
+        var url = link.substring(1);
+        console.log(document.URL + url)
+        var twitterWindow = window.open('https://web.whatsapp.com/send?text=Lea esta noticia '+document.URL + url);
+        if(twitterWindow.focus) { twitterWindow.focus(); }
+        return false;
+    }
+    if(social == 'mailito'){
+        var url = link.substring(1);
+        console.log(document.URL + url)
+        var twitterWindow = window.open('mailto:?body=Lea esta noticia  '+document.URL + url);
+        if(twitterWindow.focus) { twitterWindow.focus(); }
+        return false;
+    }
+
 
 
 }
