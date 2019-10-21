@@ -140,3 +140,14 @@ location.href = url
 <?= $this->Html->script('../assets/js/functions'); ?>
 <?= $this->Html->script('../assets/js/index'); ?>
 <?= $this->Html->script('../assets/js/owl.carousel.min'); ?>
+<script>
+$( document ).ready(function() {
+    var heightdisplay = window.innerHeight;
+    if(heightdisplay > 568){
+        var heighttombola = heightdisplay - 568;
+        var heighttombola = heighttombola + 175;
+        $(".slot_container").css('height',heighttombola);
+    }
+});
+
+</script>
