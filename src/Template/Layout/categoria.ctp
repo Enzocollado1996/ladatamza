@@ -51,6 +51,7 @@
     <div class="row" id="footer-categoria">
         <div class="col-md-6 col-xs-6">
             <a class="btn-amarillo btn-mas-noticias margen-b-40" onclick="categorias_page('<?=$page ?>')">ver +</a>
+            <input type="hidden"id="page" value="1">
         </div>
         <div class="col-md-6 col-xs-6 text-right">
             <a class="btn-amarillo btn-mas-noticias margen-b-40" href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>"><i class="fas fa-chevron-left volver-ico"></i> volver</a>
