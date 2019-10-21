@@ -208,7 +208,7 @@ function categorias_page(page) {
                 $( "#image-shared-clone" ).clone().appendTo('#nota-'+item.id +" .share");
                 $('<div class="contenedor-img-txt" id="contenedor-img-txt-'+item.id+'"></div>').appendTo('#nota-'+item.id);
                 $('<div class="img-nota"><img src="'+path_imagen_subida + item.imagenes[0].file_url + '/' + item.imagenes[0].filename +'" class="banner"></div>').appendTo('#contenedor-img-txt-'+item.id);
-                $('<div class="icons-share"><a href="#fa"><i class="fab fa-facebook-f"></i></a><a href="#wh"><i class="fab fa-whatsapp"></i></a><a href="#tw"><i class="fab fa-twitter"></i></a><a href="#m"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
+                $('<div class="icons-share"><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'twitter'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
                 $('<div class="keyword">' + item.palabras_claves + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div id="'+item.id+'"class="titulo-nota-categoria">' + item.titulo + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div class="descripcion-articulo">' + item.descripcion + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
