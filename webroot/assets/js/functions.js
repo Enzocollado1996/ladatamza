@@ -251,13 +251,13 @@ function shareEffect(container){
         var $notaActual = '#' + $notaId;
         if ($($notaActual +  ' .btn-share').hasClass("close-share") == false){
                 $($notaActual + ' .img-nota').addClass('hover-yellow');
-                $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/close_negro.svg');
+                $($notaActual + '  .btn-share img').attr('src','/img/../assets/images/close_negro.svg');
                 $($notaActual + '  .btn-share').addClass('close-share');
                 $($notaActual + '  .icons-share').fadeIn(500);
     
         }else{
             $($notaActual + ' .img-nota').removeClass('hover-yellow');
-            $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/share.svg');
+            $($notaActual + '  .btn-share img').attr('src','/img/../assets/images/share.svg');
             $($notaActual + '  .btn-share').removeClass('close-share');
             $($notaActual + '  .icons-share').hide();
         }
@@ -267,31 +267,23 @@ function compartirnota(link, social){
     var baseUrl = document.location.origin;
 
     if(social == 'facebook'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + baseUrl + url, 'facebook-popup', 'height=350,width=600');
+        var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + baseUrl + '/nota/' + link, 'facebook-popup', 'height=350,width=600');
         if(facebookWindow.focus) { facebookWindow.focus(); }
         return false;
     }
 
     if(social == 'twitter'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL + url, 'twitter-popup', 'height=350,width=600');
+        var twitterWindow = window.open('https://twitter.com/share?url=' + baseUrl + '/nota/' + link, 'twitter-popup', 'height=350,width=600');
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
     if(social == 'wsp'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var twitterWindow = window.open('https://web.whatsapp.com/send?text=Lea esta noticia '+document.URL + url);
+        var twitterWindow = window.open('https://web.whatsapp.com/send?text=Lea esta noticia '+ baseUrl + '/nota/' + link);
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
     if(social == 'mailito'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var twitterWindow = window.open('mailto:?body=Lea esta noticia  '+document.URL + url);
+        var twitterWindow = window.open('mailto:?body=Lea esta noticia  '+ baseUrl + '/nota/' + link);
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
