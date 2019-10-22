@@ -27,7 +27,7 @@
     .owl-carousel .owl-item img{height:100% !important;}
     .row-tablet{margin-right:15px !important;margin-left:7px;}
     .img-nota-categoria{padding: 0 15px !important;}
-    .contenido-categoria {padding-left:0 !important;}
+    .titulo-nota-categoria {padding-left:0 !important;} {padding-left:0 !important;}
     .interior-categoria .flecha, .interior-categoria .header-notices {margin-left: 20px !important;}
     .icons-share i {font-size: 21px !important;}
     .banner_sociales{max-height: 394px !important;}
@@ -453,8 +453,8 @@ img.banner:hover {
 }
 
 #mensaje{min-height:160px; }
-::-webkit-input-placeholder {color: #000;}
-:-ms-input-placeholder {color: #000;}
+::-webkit-input-placeholder {color: #000 !important;}
+:-ms-input-placeholder {color: #000 !important;}
 ::placeholder {color:#000 !important;}
 
 .btn-mas-noticias, .btn-gral{
@@ -825,13 +825,17 @@ img.img-interior-nota{
     -webkit-transition: all .4s .1s;
 }
 
+.icons-share i:hover {
+    cursor: pointer;
+}
+
 .container-categoria .icons-share{
     margin-top: -31%;
     width: 100%;
 }
 
 .generales .icons-share {
-    margin-top: -19%;
+    margin-top: -26%;
 
 }
 

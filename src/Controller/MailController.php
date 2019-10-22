@@ -44,7 +44,7 @@ class MailController extends AppController
             $Email = new Email('default');
             $Email->from([$this->request->data['email'] => $this->request->data['nombre']])
                 ->emailFormat('html')
-                ->to('enzocollado1996@gmail.com')
+                ->to('ladatamza@gmail.com')
                 ->subject('La data')
                 ->send($this->request->data['mensaje'] . " <br/> <br/> Número de teléfono: ". $this->request->data['telefono']);
         }

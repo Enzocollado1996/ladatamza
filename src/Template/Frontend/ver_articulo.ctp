@@ -44,36 +44,26 @@ if (count($articulo->imagenes) > 0) {
     <div class="fijo_noticia">
     <!-- <div class="white"></div> -->
     <?php foreach ($articulos as $articulo): ?>
-
-    <section>
-
-        <div class="info <?php echo $articulo->id == $articulos[0]->id ? 'primero' : 'medio' ?>" >
-            <div class="titulo"><?=$articulo->titulo;?></div>
+        <section>
+            <div class="info <?php echo $articulo->id == $articulos[0]->id ? 'primero' : 'medio' ?>" >
+                <div class="titulo"><?=$articulo->titulo;?></div>
                 <div class="cuerpo">
-
-                <?php echo $articulo->texto; ?>
+                    <?php echo $articulo->texto;
+                    if (count($articulo->imagenes) > 0) {
+                        foreach ($articulo->imagenes as $imagen) {
+                            if ($imagen->tipo == 'PUBLICIDAD') {
+                                echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
+                            }
+                        }
+                    }?>
+                </div>
             </div>
-        </div>
-        <?php
-if (count($articulo->imagenes) > 0) {
-    foreach ($articulo->imagenes as $imagen) {
-        if ($imagen->tipo == 'PUBLICIDAD') {
-            echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename, ['class' => 'banner']);
-        }
-    }
-}
-?>
-<?php if ($articulo === end($articulos)) {
-    echo '<div class="scroller_back back">' . $this->Html->image("../assets/images/back.png") . '</div>';
-    
-} else {
-    echo '<br>';
-    
-}
-
-?>
-    </section>
+            <?php if ($articulo === end($articulos)) {
+                echo '<div class="scroller_back back">' . $this->Html->image("../assets/images/back.png") . '</div>';
+            }?>
+        </section>
     <?php endforeach;?>
+
     
     <?php echo '<div class="scroller">' . $this->Html->image("../assets/images/arrow-bottom.svg") . '</div>' ?>
     </div>

@@ -317,12 +317,15 @@ $(document).ready(function(){
     })
     alignContenido('.sector .contenido');
     alignContenido('.generales .contenido');
-    //alignContenido('.imagen-nota');
-    //alignContenido('.imagen-nota-sector');
     gifOnHover();
     shareEffect('.container-noticia');
     sliderShareEffect();
     $('.ico-close').hide();
+})
+
+$(window).load(function(){
+ alignContenido('.imagen-nota');
+ alignContenido('.imagen-nota-sector');
 })
 
 function shared_banner(){

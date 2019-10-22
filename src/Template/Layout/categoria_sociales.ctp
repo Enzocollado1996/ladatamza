@@ -59,6 +59,10 @@
 
 <script type="text/javascript">
     alignContenido('.container-sociales .contenido');
-    alignContenido('.imagen-nota-sociales');
-    shareEffect ('.container-nota-sociales');
+
+$(window).load(function(){
+ alignContenido('.imagen-nota-sociales');
+ shareEffect ('.container-nota-sociales');
+})
+
 </script>

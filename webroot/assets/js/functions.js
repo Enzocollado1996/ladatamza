@@ -5,7 +5,7 @@ function positions(latitude, longitude) {
         var iconname = translateWeather(data.weather[0].main);
         $(".weather")
             .find("img")
-            .attr("src", "/ladatamza/assets/images/" + iconname + ".png");
+            .attr("src", "/assets/images/" + iconname + ".png");
         $(".temp").text(grados + "º");
     });
 }
@@ -244,14 +244,17 @@ function shareEffect(container){
         var $notaId = $(this).parent().attr('id');
         var $notaActual = '#' + $notaId;
         if ($($notaActual +  ' .btn-share').hasClass("close-share") == false){
+				console.log("if")
                 $($notaActual + ' .img-nota').addClass('hover-yellow');
-                $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/close_negro.svg');
+                $($notaActual + '  .btn-share img').attr('src','/img/../assets/images/close_negro.svg');
                 $($notaActual + '  .btn-share').addClass('close-share');
                 $($notaActual + '  .icons-share').fadeIn(500);
     
         }else{
+							console.log("else")
+
             $($notaActual + ' .img-nota').removeClass('hover-yellow');
-            $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/share.svg');
+            $($notaActual + '  .btn-share img').attr('src','/img/../assets/images/share.svg');
             $($notaActual + '  .btn-share').removeClass('close-share');
             $($notaActual + '  .icons-share').hide();
         }
