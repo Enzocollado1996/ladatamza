@@ -317,11 +317,6 @@ $(document).ready(function(){
     })
     alignContenido('.sector .contenido');
     alignContenido('.generales .contenido');
-<<<<<<< HEAD
-    //alignContenido('.imagen-nota');
-    //alignContenido('.imagen-nota-sector');
-=======
->>>>>>> 5ca2371beb71749cf2c2058491122f8608e77072
     gifOnHover();
     shareEffect('.container-noticia');
     sliderShareEffect();
