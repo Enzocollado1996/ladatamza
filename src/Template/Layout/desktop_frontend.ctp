@@ -27,10 +27,10 @@
                             ?>
                         </div>
                         <div class="icons-share">
-                            <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-                            <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                            <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-                            <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+							<a onclick="compartirnota('<?= $general->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+							<a onclick="compartirnota('<?= $general->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+							<a onclick="compartirnota('<?= $general->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+							<a onclick="compartirnota('<?= $general->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                     <!--<div class="keyword"><?php echo 'Palabra Clave123';//$general->palabras_claves;?></div>-->
@@ -74,10 +74,10 @@
                                     ?>
                                 </div>
                                 <div class="icons-share">
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+									<a onclick="compartirnota('<?= $general->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+									<a onclick="compartirnota('<?= $general->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+									<a onclick="compartirnota('<?= $general->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+									<a onclick="compartirnota('<?= $general->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                                 </div>
                                 <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')" >
                                     <div id="<?= $general->id?>" class="titulo-nota-home"><?php echo $general->titulo?></div>
@@ -119,10 +119,10 @@
                                 ?>
                             </div>
                             <div class="icons-share">
-                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-                                <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+									<a onclick="compartirnota('<?= $norte->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+									<a onclick="compartirnota('<?= $norte->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+									<a onclick="compartirnota('<?= $norte->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+									<a onclick="compartirnota('<?= $norte->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                             </div>
                             <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>')" >
                                 <div class="keyword"><?php echo $norte->palabras_claves?></div>
@@ -169,10 +169,10 @@
                                     ?>
                                 </div>
                                 <div class="icons-share">
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-                                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+									<a onclick="compartirnota('<?= $centro->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+									<a onclick="compartirnota('<?= $centro->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+									<a onclick="compartirnota('<?= $centro->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+									<a onclick="compartirnota('<?= $centro->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                                 </div>
                                 <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>')" >
                                     <div class="keyword"><?php echo $centro->palabras_claves?></div>
@@ -216,10 +216,10 @@
                                         ?>
                                     </div>
                                     <div class="icons-share">
-                                        <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-                                        <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                                        <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-                                        <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+										<a onclick="compartirnota('<?= $sur->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+										<a onclick="compartirnota('<?= $sur->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+										<a onclick="compartirnota('<?= $sur->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+										<a onclick="compartirnota('<?= $sur->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                                     </div>
                                      <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>')">
                                         <div class="keyword"><?php echo $sur->palabras_claves?></div>
@@ -317,11 +317,7 @@ $(document).ready(function(){
     })
     alignContenido('.sector .contenido');
     alignContenido('.generales .contenido');
-<<<<<<< HEAD
-    //alignContenido('.imagen-nota');
-    //alignContenido('.imagen-nota-sector');
-=======
->>>>>>> 5ca2371beb71749cf2c2058491122f8608e77072
+    alignContenido('.container-sociales .contenido');
     gifOnHover();
     shareEffect('.container-noticia');
     sliderShareEffect();
@@ -330,7 +326,7 @@ $(document).ready(function(){
 
 $(window).load(function(){
  alignContenido('.imagen-nota');
- alignContenido('.imagen-nota-sector');S
+ alignContenido('.imagen-nota-sector');
 })
 
 function shared_banner(){
