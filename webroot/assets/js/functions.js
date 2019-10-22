@@ -113,7 +113,7 @@ function shareNew(url, text, title) {
         url
       })
     .then(() => console.log("Shared!"))
-    .catch(err => console.error(err));      
+    .catch(err => console.error(err));   
 }
 
 function openVideo() {
@@ -201,20 +201,26 @@ function categorias_page(page) {
         type: 'GET',
         dataType: 'json', // added data type
         success: function(data) {
-            console.log(data);
             $.each(data,function(i,item){
                 $('<div class="container-categoria row margen-40" id="container-' + item.id + '"><div class="col-md-5 img-nota-categoria" id="nota-' + item.id+ '"></div><div class="contenido-categoria col-md-7" onclick="generales('+urlnota+'/'+ item.slug+')"></div></div>').appendTo('.interior-categoria');
                 $('<div class="share btn-share" onclick="shareNew('+"'" + baseUrl + "ladatamza/nota/"+ item.slug + "'"+ ')"></div>').appendTo('#nota-'+item.id);
                 $( "#image-shared-clone" ).clone().appendTo('#nota-'+item.id +" .share");
                 $('<div class="contenedor-img-txt" id="contenedor-img-txt-'+item.id+'"></div>').appendTo('#nota-'+item.id);
                 $('<div class="img-nota"><img src="'+path_imagen_subida + item.imagenes[0].file_url + '/' + item.imagenes[0].filename +'" class="banner"></div>').appendTo('#contenedor-img-txt-'+item.id);
-                $('<div class="icons-share"><a href="#fa"><i class="fab fa-facebook-f"></i></a><a href="#wh"><i class="fab fa-whatsapp"></i></a><a href="#tw"><i class="fab fa-twitter"></i></a><a href="#m"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
+                $('<div class="icons-share"><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'twitter'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
                 $('<div class="keyword">' + item.palabras_claves + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div id="'+item.id+'"class="titulo-nota-categoria">' + item.titulo + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div class="descripcion-articulo">' + item.descripcion + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $("#footer-categoria").appendTo(".interior-categoria");
                 shareEffect ('.container-categoria');
             })
+            var page = $("#footer-categoria input").val();
+            var page = parseInt(page, 10);
+            var page = page + 1;
+            $('#footer-categoria .btn-amarillo').attr("onClick", "categorias_page('"+page+"')" );
+            $("#footer-categoria input").val(page);
+
+            console.log(typeof(page));
         },
         error: function(xhr, textStatus, exceptionThrown) {
             alert(xhr);

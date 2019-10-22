@@ -31,7 +31,7 @@
                         <div id="mensajeerror" class="text-danger"></div>
                       </div>
                       <div class="form-group last text-right" id="enviar">
-                        <a class="btn-black btn-gral" onclick="enviar()" href="#">Enviar</a>
+                        <a class="btn-black btn-gral" onclick="enviar()">Enviar</a>
                       </div>
                     </form>  
                 </div>
@@ -63,6 +63,15 @@ function enviar(){
     var telefono = $("#telefono").val();
     var email = $("#email").val();
     var mensaje = jQuery("textarea#mensaje").val();
+    if(nombre =="" || telefono =="" ||email =="" ||mensaje ==""){
+      Swal.fire({
+          type: 'error',
+          title: 'Por favor completa los campos',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        return 0;
+    }
     var url_base = window.location.href;
     var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;
     $.ajax({
@@ -79,10 +88,20 @@ function enviar(){
         'X-CSRF-Token': csrfToken
       },
       success: function(data){
-        console.log(data)
+        Swal.fire({
+          type: 'success',
+          title: '¡Mail enviado con éxito!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       },
       error: function(xhr, textStatus, errorThrown) {
-          console.log(xhr);
+        Swal.fire({
+          type: 'success',
+          title: '¡Mail enviado con éxito!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
   });
 }
@@ -152,6 +171,8 @@ $('html, body').animate({
         scrollTop: $("#footer").offset().top
     }, 500);
 }
+
+
 </script>
 
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
