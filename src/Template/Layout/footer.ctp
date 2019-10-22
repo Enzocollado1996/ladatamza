@@ -152,6 +152,8 @@ $('html, body').animate({
         scrollTop: $("#footer").offset().top
     }, 500);
 }
+
+
 </script>
 
 <?= $this->Html->script('../assets/js/jquery.min'); ?>

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    
     const interval = 0;
     setTimeout(() => {
         if (!sessionStorage.getItem("mp")) $(".publicidad").show();
@@ -100,4 +101,5 @@ $(document).ready(function() {
             $(this).load();
         }
     });
+
 });

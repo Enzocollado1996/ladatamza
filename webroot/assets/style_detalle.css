@@ -28,7 +28,7 @@
 
 @media(max-width: 320px){
     .fijo_noticia{top: 220px !important;}
-
+    section .info {width:90% !important;}
 }
 
 @media(min-width:368px) and (max-width: 411px){
@@ -56,7 +56,7 @@ section {
     height: calc(100vh - 300px);
     overflow: scroll;
     position: absolute;
-    top: 184px;
+    top: 132px;
     z-index: 11;
 }
 section .banner-empty {
@@ -120,7 +120,7 @@ section .info .cuerpo {
 
 .fijo .imagen .share {
     position: fixed;
-    top: 60%;
+    top: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
