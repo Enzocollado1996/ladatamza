@@ -63,11 +63,11 @@ function enviar(){
     var telefono = $("#telefono").val();
     var email = $("#email").val();
     var mensaje = jQuery("textarea#mensaje").val();
-    var url_base = window.location.href;
+    var url_base = window.location.origin;
     var csrfToken = <?= json_encode($this->request->getParam('_csrfToken')) ?>;
     $.ajax({
       type: 'POST',
-      url: url_base + "mail/send",
+      url: url_base + "/mail/send",
       data: {
         'nombre': nombre,
         'telefono': telefono,
