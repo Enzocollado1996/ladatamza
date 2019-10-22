@@ -113,7 +113,7 @@ function shareNew(url, text, title) {
         url
       })
     .then(() => console.log("Shared!"))
-    .catch(err => console.error(err));      
+    .catch(err => console.error(err));   
 }
 
 function openVideo() {
