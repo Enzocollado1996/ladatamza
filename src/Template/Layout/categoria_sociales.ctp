@@ -36,10 +36,10 @@
                                 }?>
                             </div>
                             <div class="icons-share">
-										<a onclick="compartirnota('<?= $sociales->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-										<a onclick="compartirnota('<?= $sociales->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-										<a onclick="compartirnota('<?= $sociales->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-										<a onclick="compartirnota('<?= $sociales->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+                              <a onclick="compartirnota('<?= $sociales->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+                              <a onclick="compartirnota('<?= $sociales->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+                              <a onclick="compartirnota('<?= $sociales->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+                              <a onclick="compartirnota('<?= $sociales->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                             </div>
                             <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>')">
                                 <div class="keyword"><?php echo $sociales->palabras_claves?></div>
