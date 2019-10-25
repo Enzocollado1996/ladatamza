@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" integrity="sha256-piqEf7Ap7CMps8krDQsSOTZgF+MU/0MPyPW2enj5I40=" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
 
     <?= $this->Html->css('../assets/owl.carousel.min') ?>
@@ -63,6 +61,7 @@
               </g>
             </svg>
           </a>
+	  <a href="/">Inicio</a>
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'norte'], true)?>">Norte</a>
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'centro'], true)?>">Centro</a>
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'sur'], true)?>">Sur</a>
@@ -85,16 +84,6 @@
             <div class="temp"></div>
             <img src="" alt="" width="25">
         </span>
-        <svg class="lupa" version="1.2" onclick="socialModal(true);" width="30" height="30" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 612 792" xml:space="preserve">
-        <g id="">
-          <path id="XMLID_751_" fill="#fff" stroke="#211915" stroke-miterlimit="10" d="M417.6,475.2L414,471.6c0-3.6,3.6-3.6,3.6-7.199
-              c39.601-50.4,54-115.2,36-176.4S388.8,180,331.2,162c-14.4-3.6-25.2-7.2-32.4-7.2c-3.6,0-7.2,0-14.4-3.6H252h-3.6h-3.6
-              c-50.4,7.2-97.2,32.4-126,72c-32.4,43.2-46.8,93.6-39.6,144C86.4,432,129.6,489.6,190.8,514.8C252,543.6,320.4,536.4,374.4,500.4
-              l7.199-3.601l36,36c32.4,32.4,64.801,64.8,97.2,97.2c3.601,3.6,7.2,3.6,10.8,7.2l3.601,3.6l0,0H540l0,0c7.2-7.2,14.4-10.8,14.4-18
-              S550.8,608.4,543.6,601.2L417.6,475.2z M414,345.6c0,79.2-64.8,147.6-147.6,147.6l0,0c-39.6,0-75.6-14.4-104.4-43.2
-              s-43.2-64.8-43.2-108c0-79.2,64.8-144,147.6-144l0,0c39.6,0,75.6,14.4,104.4,43.2C399.6,266.4,414,306,414,345.6z"></path>
-        </g>
-        </svg>
         <svg class="heart" onclick="socialModal();"  width="30" height="30" version="1.2" baseProfile="tiny" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" xml:space="preserve">
         <g id="Capa_1_1_"></g>

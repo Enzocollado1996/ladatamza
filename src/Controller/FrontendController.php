@@ -191,10 +191,7 @@ class FrontendController extends AppController
                 'articulos_general','articulos_sociales', 'publicidad_inicial', 'gifsociales'));
     
         $detector = new \Detection\MobileDetect();
-        if($detector->isTablet()){
-            $this->viewBuilder()->setLayout('desktop_frontend');
-            $this->render('desktop');
-        }elseif($this->RequestHandler->isMobile() && !$detector->isTablet()){
+        if($this->RequestHandler->isMobile()){
             $this->render('index');
         }
         else{
