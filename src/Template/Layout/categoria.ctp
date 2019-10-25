@@ -30,10 +30,10 @@
                     </div>
                 <?php endif; ?> 
                 <div class="icons-share">
-                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categoria->slug]) ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
-                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categoria->slug]) ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categoria->slug]) ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
-                    <a onclick="compartirnota('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$categoria->slug]) ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
+                    <a onclick="compartirnota('<?= $categoria->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
+                    <a onclick="compartirnota('<?= $categoria->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
+                    <a onclick="compartirnota('<?= $categoria->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+                    <a onclick="compartirnota('<?= $categoria->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                 </div>
             </div><!--END col-md-5-->
 
@@ -46,12 +46,19 @@
                     <?php echo $categoria->descripcion?>
                 </div>
             </div>
+			<div class="social-sticky">
+                <?php
+                echo '<a href="https://www.facebook.com/Ladata-Mendoza-2451654124872948" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
+                echo '<a href="https://instagram.com/ladatamza" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
+                echo '<a href="https://twitter.com/LADATA5" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
+                ?>
+            </div>
+
         </div> <!--END CONTAINER CATEGORIA-->
     <?php endforeach ;?>
     <div class="row" id="footer-categoria">
         <div class="col-md-6 col-xs-6">
             <a class="btn-amarillo btn-mas-noticias margen-b-40" onclick="categorias_page('<?=$page ?>')">ver +</a>
-            <input type="hidden"id="page" value="1">
         </div>
         <div class="col-md-6 col-xs-6 text-right">
             <a class="btn-amarillo btn-mas-noticias margen-b-40" href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'index'])?>"><i class="fas fa-chevron-left volver-ico"></i> volver</a>

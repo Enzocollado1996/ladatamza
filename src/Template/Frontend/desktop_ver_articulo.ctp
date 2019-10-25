@@ -61,7 +61,7 @@
         <?php
         echo '<a href="https://www.facebook.com/" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
         echo '<a href="https://www.instagram.com/?hl=es-la" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
-        echo '<a href="https://twitter.com/" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
+        echo '<a href="https://twitter.com/LADATA5" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
         ?>
     </div>
 </div> <!-- END CONTAINER-->

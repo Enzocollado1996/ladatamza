@@ -5,8 +5,8 @@ function positions(latitude, longitude) {
         var iconname = translateWeather(data.weather[0].main);
         $(".weather")
             .find("img")
-            .attr("src", "/ladatamza/assets/images/" + iconname + ".png");
-        $(".temp").text(grados + "º");
+            .attr("src", "/assets/images/" + iconname + ".png");
+        $(".temp").html(grados + "&#176;");
     });
 }
 
@@ -113,7 +113,7 @@ function shareNew(url, text, title) {
         url
       })
     .then(() => console.log("Shared!"))
-    .catch(err => console.error(err));   
+    .catch(err => console.error(err));      
 }
 
 function openVideo() {
@@ -201,26 +201,20 @@ function categorias_page(page) {
         type: 'GET',
         dataType: 'json', // added data type
         success: function(data) {
+            console.log(data);
             $.each(data,function(i,item){
                 $('<div class="container-categoria row margen-40" id="container-' + item.id + '"><div class="col-md-5 img-nota-categoria" id="nota-' + item.id+ '"></div><div class="contenido-categoria col-md-7" onclick="generales('+urlnota+'/'+ item.slug+')"></div></div>').appendTo('.interior-categoria');
                 $('<div class="share btn-share" onclick="shareNew('+"'" + baseUrl + "ladatamza/nota/"+ item.slug + "'"+ ')"></div>').appendTo('#nota-'+item.id);
                 $( "#image-shared-clone" ).clone().appendTo('#nota-'+item.id +" .share");
                 $('<div class="contenedor-img-txt" id="contenedor-img-txt-'+item.id+'"></div>').appendTo('#nota-'+item.id);
                 $('<div class="img-nota"><img src="'+path_imagen_subida + item.imagenes[0].file_url + '/' + item.imagenes[0].filename +'" class="banner"></div>').appendTo('#contenedor-img-txt-'+item.id);
-                $('<div class="icons-share"><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'twitter'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'/nota/"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
+                $('<div class="icons-share"><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'twitter'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
                 $('<div class="keyword">' + item.palabras_claves + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div id="'+item.id+'"class="titulo-nota-categoria">' + item.titulo + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div class="descripcion-articulo">' + item.descripcion + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $("#footer-categoria").appendTo(".interior-categoria");
                 shareEffect ('.container-categoria');
             })
-            var page = $("#footer-categoria input").val();
-            var page = parseInt(page, 10);
-            var page = page + 1;
-            $('#footer-categoria .btn-amarillo').attr("onClick", "categorias_page('"+page+"')" );
-            $("#footer-categoria input").val(page);
-
-            console.log(typeof(page));
         },
         error: function(xhr, textStatus, exceptionThrown) {
             alert(xhr);
@@ -251,13 +245,13 @@ function shareEffect(container){
         var $notaActual = '#' + $notaId;
         if ($($notaActual +  ' .btn-share').hasClass("close-share") == false){
                 $($notaActual + ' .img-nota').addClass('hover-yellow');
-                $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/close_negro.svg');
+                $($notaActual + '  .btn-share img').attr('src','/img/../assets/images/close_negro.svg');
                 $($notaActual + '  .btn-share').addClass('close-share');
                 $($notaActual + '  .icons-share').fadeIn(500);
     
         }else{
             $($notaActual + ' .img-nota').removeClass('hover-yellow');
-            $($notaActual + '  .btn-share img').attr('src','/ladatamza/img/../assets/images/share.svg');
+            $($notaActual + '  .btn-share img').attr('src','/img/../assets/images/share.svg');
             $($notaActual + '  .btn-share').removeClass('close-share');
             $($notaActual + '  .icons-share').hide();
         }
@@ -267,31 +261,23 @@ function compartirnota(link, social){
     var baseUrl = document.location.origin;
 
     if(social == 'facebook'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + baseUrl + url, 'facebook-popup', 'height=350,width=600');
+        var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + baseUrl + '/nota/' + link, 'facebook-popup', 'height=350,width=600');
         if(facebookWindow.focus) { facebookWindow.focus(); }
         return false;
     }
 
     if(social == 'twitter'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL + url, 'twitter-popup', 'height=350,width=600');
+        var twitterWindow = window.open('https://twitter.com/share?url=' + baseUrl + '/nota/' + link, 'twitter-popup', 'height=350,width=600');
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
     if(social == 'wsp'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var twitterWindow = window.open('https://web.whatsapp.com/send?text=Lea esta noticia '+document.URL + url);
+        var twitterWindow = window.open('https://web.whatsapp.com/send?text=Lea esta noticia '+ baseUrl + '/nota/' + link);
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
     if(social == 'mailito'){
-        var url = link.substring(1);
-        console.log(document.URL + url)
-        var twitterWindow = window.open('mailto:?body=Lea esta noticia  '+document.URL + url);
+        var twitterWindow = window.open('mailto:?body=Lea esta noticia  '+ baseUrl + '/nota/' + link);
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
