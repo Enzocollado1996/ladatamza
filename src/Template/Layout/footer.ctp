@@ -7,7 +7,7 @@
                    <?php 
                     echo '<a href="https://www.facebook.com/Ladata-Mendoza-2451654124872948/" target="_blank">' . $this->Html->image("../assets/images/fb-negro.svg") . '</a>';
                     echo '<a href="https://instagram.com/ladatamza" target="_blank">' . $this->Html->image("../assets/images/instagram-negro.svg") . '</a>';
-                    echo '<a href="#" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
+                    echo '<a href="https://twitter.com/LADATA5" target="_blank">' . $this->Html->image("../assets/images/tw-negro.svg") . '</a>';
                    ?>
                 </div>
             </div><!--END ROW-->
@@ -53,6 +53,8 @@
 $( window ).on( "orientationchange", function( event ) {
   location.reload();
 });
+
+alignContenido('.container-sociales .contenido');
 
 function generales(url){
   location.href = url
@@ -174,6 +176,8 @@ $('html, body').animate({
 
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
 <?= $this->Html->script('../assets/js/slick.min'); ?>
