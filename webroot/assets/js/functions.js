@@ -6,7 +6,7 @@ function positions(latitude, longitude) {
         $(".weather")
             .find("img")
             .attr("src", "/ladatamza/assets/images/" + iconname + ".png");
-        $(".temp").text(grados + "º");
+            $(".temp").html(grados + "&#176;");	
     });
 }
 
