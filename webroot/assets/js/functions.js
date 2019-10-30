@@ -6,7 +6,7 @@ function positions(latitude, longitude) {
         $(".weather")
             .find("img")
             .attr("src", "/assets/images/" + iconname + ".png");
-        $(".temp").html(grados + "&#176;");
+            $(".temp").html(grados + "&#176;");
     });
 }
 
