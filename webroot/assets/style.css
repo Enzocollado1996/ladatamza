@@ -497,8 +497,9 @@ advertising .bar {
     right: 10px;
     top: 10px;
 }
-@media(min-width: 320px){
-    .owl-carousel .owl-item img{
-        height: 175px !important;
-    }
+@media(max-width: 320px){
+	.owl-carousel .owl-item img {
+		height: 150px;
+		object-fit: cover;
+	}
 }
