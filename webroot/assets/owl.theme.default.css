@@ -7,9 +7,11 @@
  * 	Default theme - Owl Carousel CSS File
  */
 
-.owl-carousel .owl-item img{
-  height: 200px;
-  object-fit: cover;
+@media(min-width: 321px){
+	.owl-carousel .owl-item img{
+	  height: 200px;
+	  object-fit: cover;
+	}
 }
 .owl-theme .owl-nav {
   margin-top: 10px;
