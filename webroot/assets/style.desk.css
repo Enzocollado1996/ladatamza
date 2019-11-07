@@ -725,7 +725,14 @@ img.img-interior-nota{
     margin-top: 53%;
     padding: 15px 3px 26px 25px;
 }
+.fecha{
+    font-size: 15px;
+    color: #000;
+}
 
+.contenido-categoria .fecha, .interior-nota .fecha{
+    padding-bottom: 10px;
+}
 .padding-five{
     padding: 5px;
 }

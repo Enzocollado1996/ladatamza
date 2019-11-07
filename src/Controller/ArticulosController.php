@@ -1,6 +1,5 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
@@ -54,7 +53,6 @@ class ArticulosController extends AppController
         $articulos = $this->paginate($this->Articulos);
         $this->set(compact('articulos'));
     }
-
     /**
      * View method
      *
@@ -71,7 +69,6 @@ class ArticulosController extends AppController
         $this->set('articulo', $articulo);
         $this->set('zonas', $zonas);
     }
-
     /**
      * Add method
      *
@@ -89,6 +86,8 @@ class ArticulosController extends AppController
             $articulo->creado = date("Y-m-d H:i:s");
             $parsed = date_parse_from_format('d/m/Y H:i', $this->request->getData('datetimepicker1'));
             $articulo->publicado = date("Y-m-d H:i:s", mktime($parsed['hour'],$parsed['minute'],$parsed['second'],$parsed['month'],$parsed['day'],$parsed['year']));
+			//debug($articulo->errors()); 
+
             if ($this->Articulos->save($articulo)) {
                 $array_imagenes = [];
                 // Proceso imagen de nota si fue cagada
@@ -164,9 +163,7 @@ class ArticulosController extends AppController
         }
         $zonas = $this->getZonas();
         $this->set(compact('articulo','zonas'));
-
     }
-
     /**
      * Edit method
      *
@@ -291,7 +288,6 @@ class ArticulosController extends AppController
                             $palabra_clave->texto = $tag;
                             $palabra_clave->creado = date("Y-m-d H:i:s");
                         }
-
                         array_push($array_palabras_claves,$palabra_clave);
                     }
                 }
@@ -312,8 +308,6 @@ class ArticulosController extends AppController
         $this->set(compact('articulo','zonas'));
         //$this->set('_serialize', ['articulo']);
     }
-
-
     /**
      * Delete method
      *
@@ -341,7 +335,6 @@ class ArticulosController extends AppController
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-
     public function deletefoto($id = null, $imagenTipo = null)
     {
         $articulo = $this->Articulos->get($id, [
@@ -362,5 +355,4 @@ class ArticulosController extends AppController
         $this->Flash->success(__('La foto ha sido borrada con éxito.'));
         return $this->redirect(['action' => 'index']);
     }
-
 }
