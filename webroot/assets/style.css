@@ -497,6 +497,47 @@ advertising .bar {
     right: 10px;
     top: 10px;
 }
+@media (max-width: 320px) {
+    .shadownews .title{
+        font-size: 13px;
+    }
+    .container_clock .hrs {
+        font-size: 12px;
+    }
+    .container_clock .resumen {
+        font-size: 8px;
+        margin-right: 5px;
+
+    }
+    .container_clock .twoDots{
+        left: calc(47% + 11px);
+    }
+
+    .hrs span{
+        width: 10px;
+        background: red;
+        height: 10px;
+    }
+    .menu .logo img {
+        width: 70px;
+    }
+    .slot_container{
+        height:150px;
+    }
+    .weather .temp{
+        font-size: 10px;
+        margin-left: 7px;
+    }
+    .weather img{
+        margin-left: 7px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .owl-carousel .titulo{
+        height: 85px !important;
+    }
+}
 @media(max-width: 320px){
 	.owl-carousel .owl-item img {
 		height: 150px;

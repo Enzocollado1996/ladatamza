@@ -89,9 +89,9 @@ class ArticulosTable extends Table
             ->allowEmptyString('texto', false);
             
         $validator
-            ->scalar('linkpbulicidad')
-            ->requirePresence('linkpbulicidad', 'create')
-            ->allowEmptyString('linkpbulicidad', false);
+            ->scalar('linkpublicidad')
+            ->requirePresence('linkpublicidad', 'create')
+            ->allowEmptyString('linkpublicidad', false);
 
         $validator
             ->scalar('palabras_claves')

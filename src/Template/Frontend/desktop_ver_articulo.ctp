@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
             <div class="keyword"><?php echo $articulo->palabras_claves;?> </div>
+		<div class="fecha"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?> </div>
             <div class="titulo-interior-nota text-uppercase"><?php echo $articulo->titulo;?> </div>
         </div>
     </div>
