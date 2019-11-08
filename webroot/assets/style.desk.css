@@ -738,6 +738,15 @@ img.img-interior-nota{
     padding-bottom: 10px;
 }
 
+.fecha{
+    font-size: 15px;
+    color: #000;
+}
+
+.contenido-categoria .fecha, .interior-nota .fecha{
+    padding-bottom: 10px;
+}
+
 .padding-five{
     padding: 5px;
 }
