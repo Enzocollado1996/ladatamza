@@ -48,7 +48,9 @@ if (count($articulo->imagenes) > 0) {
             <div class="info <?php echo $articulo->id == $articulos[0]->id ? 'primero' : 'medio' ?>" >
                 <div class="titulo"><?=$articulo->titulo;?></div>
                 <div class="cuerpo">
-                    <?php echo $articulo->texto;
+                    <?php
+                    echo $articulo->descripcion;
+                    echo $articulo->texto;
                     if (count($articulo->imagenes) > 0) {
                         foreach ($articulo->imagenes as $imagen) {
                             if ($imagen->tipo == 'PUBLICIDAD') {
