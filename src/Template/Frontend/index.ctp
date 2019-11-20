@@ -98,7 +98,7 @@
     <div class="divider"></div>
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general as $general) {?>
-            <div class="item">
+            <div class="item" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')">
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
             <?php else : ?> 
@@ -114,9 +114,7 @@
                     ?>
 
                 <div class="titulo">
-                    <div onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')">
                     <?=$general->titulo?>
-                    </div>
                 </div>
                 <?php endif?>
             </div>

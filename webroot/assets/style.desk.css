@@ -339,6 +339,23 @@ img.banner:hover {
     padding: 7px 7px;
 }
 
+.keyword-fecha{
+    padding-right: 20px;
+}
+
+.keyword-fecha .fecha{
+    margin-top :15px !important;
+    float: right;
+}
+
+.container-nota-sociales .keyword-fecha .fecha{
+    color: #fff;
+}
+
+.container-nota-sociales .contenido:hover .fecha {
+    color: #000;
+}
+
 .titulo-nota-home, .titulo-nota-categoria{   
     position: relative;
     font-weight: 700;
