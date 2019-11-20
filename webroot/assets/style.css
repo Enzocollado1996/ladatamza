@@ -402,6 +402,16 @@ body {
     justify-content: space-evenly;
     color: #feee00;
 }
+
+.social-name a {
+color: #feee00;
+text-decoration:none;
+}
+
+.social-name img{
+    padding-right: 5px;
+}
+
 /* publicidad */
 .publicidad,
 .video_publicitario {
