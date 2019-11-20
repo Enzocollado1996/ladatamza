@@ -236,7 +236,7 @@ class FrontendController extends AppController
             'limit' => 10
         ])
             ->contain(['Imagenes'])
-            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
+            ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto','Articulos.descripcion', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
             ->where(['zona' => 'SOCIALES', 'habilitado' => true])
             ->toArray();
         $this->set(compact('articulos', $articulos, 'articulos_sociales','gifsociales'));
@@ -267,7 +267,7 @@ class FrontendController extends AppController
             'contain' => ['Imagenes']
         ])->first();*/
         $articulos = $this->Articulos->find('all', [
-                            'order' => ['publicado' => 'asc'],
+                            'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
                 //->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
