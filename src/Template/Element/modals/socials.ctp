@@ -1,20 +1,20 @@
  <div class="socialmedia_modal">
  <div class="content-sm">
             <div class="social-name">
-              <span><?php echo $this->Html->image("../assets/images/fb.png"); ?>
-              ladatamendoza</span>
+              <span><a href="https://www.facebook.com/ladatamendoza/" target="_blank"><?php echo $this->Html->image("../assets/images/fb.png"); ?>
+              ladatamendoza</a></span>
               <div class="linea"></div>
             </div>
 
 
             <div class="social-name">
-              <span><?php echo $this->Html->image("../assets/images/insta.png"); ?>
-              ladatamendoza</span>
+              <span><a href="https://www.instagram.com/ladatamza/" target="_blank"><?php echo $this->Html->image("../assets/images/insta.png"); ?>
+              ladatamendoza</a></span>
               <div class="linea"></div>
             </div>
             <div class="social-name">
-              <span><?php echo $this->Html->image("../assets/images/tw.png"); ?>
-              ladatamendoza</span>
+              <span><a href="https://twitter.com/LADATA5" target="_blank"><?php echo $this->Html->image("../assets/images/tw.png"); ?>
+              ladatamendoza</a></span>
             </div>
         </div>
         <svg  onclick="cerrar();"class="close" width="64" version="1.1" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 64 64" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 64 64">

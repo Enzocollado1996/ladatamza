@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="No podemos vivir aislados pero estamos hartos del ruido!! Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado!!" />
+    <meta name="keywords" content="ladatamza,ladatajusta,diarioagil,ladata san rafael, la data san rafael, la data" />
+    <title>La Data Mza</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" integrity="sha256-piqEf7Ap7CMps8krDQsSOTZgF+MU/0MPyPW2enj5I40=" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-
 
     <?= $this->Html->css('../assets/owl.carousel.min') ?>
     <?= $this->Html->css('../assets/owl.theme.desk') ?>
