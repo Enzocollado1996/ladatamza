@@ -42,7 +42,10 @@
                               <a onclick="compartirnota('<?= $sociales->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                             </div>
                             <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sociales->slug]) ?>')">
-                                <div class="keyword"><?php echo $sociales->palabras_claves?></div>
+                                <div class="keyword-fecha">
+                                    <span class="keyword"><?php echo $sociales->palabras_claves?></span>
+                                    <span class="fecha"><?=$sociales->publicado->i18nFormat('dd/MM/YYYY')?></span>
+                                </div>
                                 <div id="<?= $sociales->id?>" class="titulo-nota-home">
                                     <span></span><?php echo $sociales->titulo?>
                                 </div>
@@ -52,6 +55,9 @@
                     </div><!--END container-nota-sociales-->
                 </div>
             <?php endforeach ;?>
+        </div>
+        <div class="row text-center">
+            <a class="btn-amarillo btn-mas-noticias margen-b-40" href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'sociales'], true)?>">+ noticias</a>
         </div>
     </div>
 

@@ -125,7 +125,10 @@
 									<a onclick="compartirnota('<?= $norte->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                             </div>
                             <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$norte->slug]) ?>')" >
-                                <div class="keyword"><?php echo $norte->palabras_claves?></div>
+                                <div class="keyword-fecha">
+                                    <span class="keyword"><?php echo $norte->palabras_claves?></span>
+                                    <span class="fecha"><?=$norte->publicado->i18nFormat('dd/MM/YYYY')?></span>
+                                </div>
                                 <div id="<?= $norte->id?>" class="titulo-nota-home">
                                     <?php echo $norte->titulo?>
                                 </div>   
@@ -175,7 +178,10 @@
 									<a onclick="compartirnota('<?= $centro->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                                 </div>
                                 <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$centro->slug]) ?>')" >
-                                    <div class="keyword"><?php echo $centro->palabras_claves?></div>
+                                    <div class="keyword-fecha">
+                                        <span class="keyword"><?php echo $centro->palabras_claves?></span>
+                                        <span class="fecha"><?=$centro->publicado->i18nFormat('dd/MM/YYYY')?></span>
+                                    </div>
                                     <div id="<?= $centro->id?>" class="titulo-nota-home"><span></span><?php echo $centro->titulo?></div>
                                 </div>
                             </div>
@@ -222,7 +228,10 @@
 										<a onclick="compartirnota('<?= $sur->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                                     </div>
                                      <div class="contenido" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$sur->slug]) ?>')">
-                                        <div class="keyword"><?php echo $sur->palabras_claves?></div>
+                                        <div class="keyword-fecha">
+                                            <span class="keyword"><?php echo $sur->palabras_claves?></span>
+                                            <span class="fecha"><?=$sur->publicado->i18nFormat('dd/MM/YYYY')?></span>
+                                        </div>
                                         <div id="<?=$sur->id?>" class="titulo-nota-home"><span></span><?php echo $sur->titulo?></div>
                                     </div>
                                 </div> <!--END contenedor-img-txt-->
@@ -277,7 +286,7 @@ function generales(url){
 
         //     })
     //  })
-    //Función que detecta cuando se mueve el banner
+    //FunciÃ³n que detecta cuando se mueve el banner
 
  function sliderShareEffect(){
     $('.share_url_banner').click(function(){
