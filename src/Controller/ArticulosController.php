@@ -50,7 +50,12 @@ class ArticulosController extends AppController
      */
     public function index()
     {
-        $articulos = $this->paginate($this->Articulos);
+        $settings = [
+            'Articulos' => [
+                'order'=>array('publicado'=> 'desc')
+            ],
+          ];
+        $articulos = $this->paginate($this->Articulos, $settings);
         $this->set(compact('articulos'));
     }
     /**

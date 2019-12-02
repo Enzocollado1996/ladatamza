@@ -33,7 +33,7 @@
         </div>        
         <div class="form-group">
             <label>Texto</label>
-            <?=$this->Form->textarea('texto',['class'=>'form-control', 'required' => 'required']);?>
+            <?=$this->Form->textarea('texto',['class'=>'form-control', 'required' => 'required', 'id'=> 9]);?>
         </div>
         <div class="form-group">
             <div class="input text required">
@@ -78,12 +78,20 @@
     <?= $this->Form->end() ?>
 </div>
 <?= $this->Html->script(['//cdn.ckeditor.com/4.11.4/standard/ckeditor.js']) ?>
+<script>
+        ClassicEditor
+            .create( document.querySelector( '#texto' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
 <?php $this->Html->scriptStart(['block' => true]); ?>
     $(document).ready(function() {
         $('#datetimepicker1').datetimepicker({
             "defaultDate":new Date()
         });
-        
+
         CKEDITOR.replace('texto');
         
         $('select[name=zona]').change();

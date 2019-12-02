@@ -67,7 +67,7 @@ class FrontendController extends AppController
 
         $articulos_sociales = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
-            'limit' => 10
+            'limit' => 3
         ])
             ->contain(['Imagenes'])
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -223,17 +223,17 @@ class FrontendController extends AppController
         $articulo = $this->Articulos->findBySlug($slug)->contain(['Imagenes'])->first();
 
         $articulos = $this->Articulos->find('all', [
-                            'order' => ['publicado' => 'asc'],
+                            'order' => ['publicado' => 'desc'],
                             'limit' => 100
                         ])
-                ->select(['Articulos.id', 'Articulos.titulo', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug','Articulos.linkpublicidad'])
+                ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.descripcion', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug','Articulos.linkpublicidad'])
                 ->contain(['Imagenes'])
                 ->where(['Articulos.zona' => $articulo->zona, 'Articulos.habilitado' => true, 'Articulos.id !=' =>$articulo->id])
                 ->toArray();
         array_unshift($articulos,$articulo);
         $articulos_sociales = $this->Articulos->find('all', [
             'order' => ['publicado' => 'desc'],
-            'limit' => 10
+            'limit' => 3
         ])
             ->contain(['Imagenes'])
             ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto','Articulos.descripcion', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
@@ -327,7 +327,7 @@ class FrontendController extends AppController
             }
             $articulos_sociales = $this->Articulos->find('all', [
                 'order' => ['publicado' => 'desc'],
-                'limit' => 10
+                'limit' => 3
             ])
                 ->contain(['Imagenes'])
                 ->select(['Articulos.id', 'Articulos.titulo','Articulos.texto', 'Articulos.publicado', 'Articulos.palabras_claves','Articulos.slug'])
