@@ -286,7 +286,7 @@ function generales(url){
 
         //     })
     //  })
-    //Función que detecta cuando se mueve el banner
+    //FunciÃ³n que detecta cuando se mueve el banner
 
  function sliderShareEffect(){
     $('.share_url_banner').click(function(){
