@@ -30,7 +30,7 @@
                 ?>
             <div class="row">
                 <div class="col-md-offset-2 col-sm-offset-1">
-                    <div class="cuerpo-interior-nota margen-40 text-left">
+                    <div class="cuerpo-interior-nota margen-40 text-justify">
                         <div class="extracto-interior-nota"><?php echo $articulo->descripcion; ?></div>
                         <?php echo $articulo->texto;?>
                     </div>

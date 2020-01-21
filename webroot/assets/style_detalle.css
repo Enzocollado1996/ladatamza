@@ -91,7 +91,8 @@ section .info .titulo {
     padding: 10px 10px 5px 10px;
 }
 .fijo .imagen{
-    height: 175px;
+    /*height: 175px;*/
+    height: auto;	
     background: white;
     /* z-index:10; */
     position: absolute;
@@ -113,9 +114,10 @@ section .info .titulo {
 }
 section .info .cuerpo {
     color: #444242;
-    font-size: 13px;
+    font-size: 17px;
     padding-left: 10px;
     padding-right: 40px;
+    padding-top: 18px;
 }
 
 .fijo .imagen .share {

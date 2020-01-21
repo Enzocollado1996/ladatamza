@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-site-verification" content="37hPb73JDnZXMRMYt7S7V5UyMh_R_pzregFx-BosqHo" />
 
     <meta name="description" content="No podemos vivir aislados pero estamos hartos del ruido‼ Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado!!" />
-    <meta name="keywords" content="ladatamza,ladatajusta,diarioagil,ladata san rafael, la data san rafael, la data" />
+    <meta name="keywords" content="la data mza, La Data Mza, ladatamza,ladatajusta,diarioagil,ladata san rafael, la data san rafael, la data" />
     <title>La Data Mza</title>
 
 
