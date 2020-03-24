@@ -1,4 +1,6 @@
 function positions(latitude, longitude) {
+    var latitude = -32.893217500000006;
+    var longitude = -68.8466427;
     var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`;
     $.get(url).then(data => {
         var grados = (Number(data.main.temp) - 273.15).toFixed(1);

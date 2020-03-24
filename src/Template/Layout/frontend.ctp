@@ -13,7 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'La data mza - Diario';
+$cakeDescription = 'La Data Mza';
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,6 +25,10 @@ $cakeDescription = 'La data mza - Diario';
             ['type' => 'png']
         );?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="37hPb73JDnZXMRMYt7S7V5UyMh_R_pzregFx-BosqHo" />
+    <meta name="description" content="No podemos vivir aislados pero estamos hartos del ruido? Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado!!" />
+    <meta name="keywords" content="la data mza, La Data Mza, ladatamza,ladatajusta,diarioagil,ladata san rafael, la data san rafael, la data" />
+    
     <title>
         <?= $cakeDescription ?>
  
