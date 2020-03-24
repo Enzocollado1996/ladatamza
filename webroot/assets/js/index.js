@@ -10,9 +10,7 @@ $(document).ready(function() {
         validateTime();
     }, 1000);
 
-    var watchID = navigator.geolocation.getCurrentPosition(function(position) {
-        positions(position.coords.latitude, position.coords.longitude);
-    });
+    positions(-32.893217500000006, -68.8466427);
 
     let clock = $(".clock").FlipClock({
         // clockFace: 'HourlyCounter'

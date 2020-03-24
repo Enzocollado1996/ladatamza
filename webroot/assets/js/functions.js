@@ -1,4 +1,6 @@
 function positions(latitude, longitude) {
+    var latitude = -32.893217500000006;
+    var longitude = -68.8466427;
     var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`;
     $.get(url).then(data => {
         var grados = (Number(data.main.temp) - 273.15).toFixed(1);
@@ -201,7 +203,9 @@ function categorias_page(page) {
         type: 'GET',
         dataType: 'json', // added data type
         success: function(data) {
+            var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
             $.each(data,function(i,item){
+                var date  = new Date(item.publicado);
                 $('<div class="container-categoria row margen-40" id="container-' + item.id + '"><div class="col-md-5 img-nota-categoria" id="nota-' + item.id+ '"></div><div class="contenido-categoria col-md-7" onclick="generales('+urlnota+'/'+ item.slug+')"></div></div>').appendTo('.interior-categoria');
                 $('<div class="share btn-share" onclick="shareNew('+"'" + baseUrl + "ladatamza/nota/"+ item.slug + "'"+ ')"></div>').appendTo('#nota-'+item.id);
                 $( "#image-shared-clone" ).clone().appendTo('#nota-'+item.id +" .share");
@@ -209,6 +213,7 @@ function categorias_page(page) {
                 $('<div class="img-nota"><img src="'+path_imagen_subida + item.imagenes[0].file_url + '/' + item.imagenes[0].filename +'" class="banner"></div>').appendTo('#contenedor-img-txt-'+item.id);
                 $('<div class="icons-share"><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'twitter'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
                 $('<div class="keyword">' + item.palabras_claves + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
+                $('<div class="fecha">' + date.toLocaleDateString("en-GB", options) + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div id="'+item.id+'"class="titulo-nota-categoria">' + item.titulo + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div class="descripcion-articulo">' + item.descripcion + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $("#footer-categoria").appendTo(".interior-categoria");

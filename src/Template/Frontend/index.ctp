@@ -16,7 +16,7 @@
     
 </head>
 <body>
-    <?= $this->element('modals/publicidadPrincipal') ?>
+	<?= $this->element('modals/publicidadPrincipal') ?>
     <?= $this->element('Frontend/menu') ?>
     <?= $this->element('modals/publicidadBoton') ?>
     <div class="containerScroller">
