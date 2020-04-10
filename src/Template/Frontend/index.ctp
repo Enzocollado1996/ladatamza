@@ -23,7 +23,7 @@
         <div class="slot_container">
             <!-- norte -->
             <div class="place norte">
-                <?php foreach ($articulos_norte as $noticia_norte): ?>
+                <?php foreach ($articulos_norte_mobile as $noticia_norte): ?>
                     <?php if(isset($noticia_norte->titulo)):?>
                     <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_norte->slug]) ?>')">
                             <div class="date"><?=$noticia_norte->publicado->i18nFormat('dd/MM/YYYY')?> </div>
@@ -43,7 +43,7 @@
             </div>
             <!-- centro -->
             <div class="place centro">
-                <?php foreach ($articulos_centro as $noticia_centro): ?>
+                <?php foreach ($articulos_centro_mobile as $noticia_centro): ?>
                     <?php if(isset($noticia_centro->titulo)):?>
                     <div class="shadownews center" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_centro->slug]) ?>')">
                             <div class="date"><?=$noticia_centro->publicado->i18nFormat('dd/MM/YYYY')?> </div>
@@ -64,7 +64,7 @@
             </div>
             <!-- sur -->
             <div class="place sur">
-                <?php foreach ($articulos_sur as $noticia_sur): ?>
+                <?php foreach ($articulos_sur_mobile as $noticia_sur): ?>
                 <?php if(isset($noticia_sur->titulo)):?>
                     <div class="shadownews" onclick="gotodetail('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$noticia_sur->slug]) ?>')">
 
@@ -97,7 +97,7 @@
     </div>
     <div class="divider"></div>
     <div id="owl-demo" class="owl-carousel owl-theme">
-        <?php foreach ($articulos_general as $general) {?>
+        <?php foreach ($articulos_general_movil as $general) {?>
             <div class="item" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')">
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
