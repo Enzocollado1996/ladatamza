@@ -21,7 +21,7 @@
                         <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'principal'], true)?>">Principales</a>
                     </li>
                     <li>
-                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'ruedanotas'], true)?>">Entre notas</a>
+                        <a href="<?=$this->Url->build(['controller' => 'Publicidades', 'action' => 'ruedanotas'], true)?>">Slider y Tómbola</a>
                     </li>
                 </ul>
             </li>
