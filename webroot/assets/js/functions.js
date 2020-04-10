@@ -1,7 +1,7 @@
 function positions(latitude, longitude) {
     var latitude = -32.893217500000006;
     var longitude = -68.8466427;
-    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`;
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=542ffd081e67f4512b705f89d2a611b2`;
     $.get(url).then(data => {
         var grados = (Number(data.main.temp) - 273.15).toFixed(1);
         var iconname = translateWeather(data.weather[0].main);
