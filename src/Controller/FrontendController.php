@@ -99,7 +99,7 @@ class FrontendController extends AppController
         
         $publicidades_centro = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 0
+                'limit' => 100
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'CENTRO', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -124,7 +124,7 @@ class FrontendController extends AppController
         
         $publicidades_norte = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 0
+                'limit' => 100
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'NORTE', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -149,7 +149,7 @@ class FrontendController extends AppController
         
         $publicidades_sur = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 0
+                'limit' => 100
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'SUR', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -162,7 +162,6 @@ class FrontendController extends AppController
                 $articulos_sur_mobile = $this->insert($articulos_sur, $publicidad_sur->orden - 1, $publicidad_sur);            
             } 
         }        
-        
         $articulos_general = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
                             'limit' => 8
@@ -193,6 +192,8 @@ class FrontendController extends AppController
                 ->contain(['Imagenes', 'Videos'])
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
                 ->first();
+        // var_dump($articulos_sur_mobile);
+        // exit;
         $this->set(compact( 'articulos_centro','articulos_sur','articulos_norte',
                             'articulos_centro_mobile','articulos_sur_mobile','articulos_norte_mobile',
                 'articulos_general','articulos_general_movil','articulos_sociales', 'publicidad_inicial', 'gifsociales'));
