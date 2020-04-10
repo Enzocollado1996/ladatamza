@@ -88,6 +88,10 @@ body {
     align-items: flex-end;
     padding-right: 5px;
 }
+.imagetombola{
+    width: 100%;
+    background-size: cover;
+}
 .header-notices {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

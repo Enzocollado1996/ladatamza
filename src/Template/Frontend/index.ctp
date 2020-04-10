@@ -34,8 +34,7 @@
                             </div>
                     </div>
                     <?php else: ?>
-                    <div class="shadownews empty">
-                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_norte->imagen->file_url . '/' . $noticia_norte->imagen->filename, ['style'=> 'width:100%']);?>
+                    <div class="shadownews imagetombola" onclick="gotodetail('<?=$noticia_norte->ir_a_url?>')" style='background-image: url(<?= Cake\Core\Configure::read('path_imagen_subida_tombola') . $noticia_norte->imagen->file_url . '/' . $noticia_norte->imagen->filename ?>)'>
                     </div>
                     <?php endif; ?>
                 <?php endforeach;?>
@@ -55,8 +54,7 @@
                             </div>
                     </div>
                     <?php else: ?>
-                    <div class="shadownews center empty">
-                        <?php echo$this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_centro->imagen->file_url . '/' . $noticia_centro->imagen->filename, ['style'=> 'width:100%']);?>
+                    <div class="shadownews imagetombola" onclick="gotodetail('<?=$noticia_centro->ir_a_url?>')" style='background-image: url(<?= Cake\Core\Configure::read('path_imagen_subida_tombola') . $noticia_centro->imagen->file_url . '/' . $noticia_centro->imagen->filename ?>)'>
                     </div>
                     <?php endif; ?>
                 <?php endforeach?>
@@ -76,8 +74,7 @@
                         </div>
                     </div>
                     <?php else: ?>
-                    <div class="shadownews empty">
-                        <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename, ['style'=> 'width:100%']);?>
+                    <div class="shadownews imagetombola" onclick="gotodetail('<?=$noticia_sur->ir_a_url?>')" style='background-image: url(<?= Cake\Core\Configure::read('path_imagen_subida_tombola') . $noticia_sur->imagen->file_url . '/' . $noticia_sur->imagen->filename ?>)'>
                     </div>
                     <?php endif; ?>
                 <?php endforeach?>
@@ -129,7 +126,9 @@
 <script>
 
 function gotodetail(url){
-location.href = url
+    if( url != ''){
+        location.href = url
+    }
 }
 </script>
 <?= $this->Html->script('../assets/js/jquery.min'); ?>
