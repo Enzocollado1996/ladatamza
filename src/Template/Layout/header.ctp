@@ -5,10 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="google-site-verification" content="37hPb73JDnZXMRMYt7S7V5UyMh_R_pzregFx-BosqHo" />
-
-  <meta name="description" content="No podemos vivir aislados pero estamos hartos del ruido‼ Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado!!" />
   <meta name="keywords" content="la data mza, La Data Mza, ladatamza,ladatajusta,diarioagil,ladata san rafael, la data san rafael, la data" />
   <title>La Data Mza</title>
+
+  <?php
+  $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
+      "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
+      $_SERVER['REQUEST_URI']; 
+  $domain = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
+        "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
+
+  $url = $_SERVER['REQUEST_URI'];
+  $nota   = 'nota';
+  $pos = strpos($url, $nota);
+
+  if ($pos != false) {
+    $articulo = $articulos[0];
+    foreach ($articulo->imagenes as $imagen) { 
+      $img = $domain . '/img/'. Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename;
+    }
+    echo '<meta property="og:title" content="' . $articulo->titulo . '"/>';
+    echo '<meta property="og:description" content="' . $articulo->descripcion . '"/>';
+    echo '<meta property="og:image" content="' . $img . '"/>';
+    echo '<meta property="og:url" content="https://ladatamza.com/nota/'. $articulo->slug .'" />';
+    echo '<meta property="og:image:width" content="600" />';
+    echo '<meta property="og:image:height" content="314" />';
+    echo '<meta property="og:site_name" content="La Data Mza" />';
+    echo '<meta name="twitter:card" content="summary_large_image">';
+    echo '<meta name="twitter:description" content="'. $articulo->descripcion . '">';
+    echo '<meta name="twitter:site" content="@LADATA5">';
+    echo '<meta name="twitter:creator" content="@LADATA5">';
+    echo '<meta name="twitter:image:src" content="' . $img .'">';
+  }else{
+    echo '<meta property="og:title" content="La Data Mza"';
+    echo '<meta property="og:description" content="No podemos vivir aislados pero estamos hartos del ruido. Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado"/>';
+    echo '<meta property="og:image" content="https://ladatamza.com/assets/images/img-ppal-ladata.jpg"/>';
+    echo '<meta property="og:image:width" content="600" />';
+    echo '<meta property="og:image:height" content="314" />';
+    echo '<meta property="og:site_name" content="La Data Mza" />';
+  }
+  ?>
+  
 
 
 
@@ -72,7 +109,7 @@
               </g>
             </svg>
           </a>
-	  <a href="/">Inicio</a>
+      <a href="/">Inicio</a>
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'norte'], true)?>">Norte</a>
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'centro'], true)?>">Centro</a>
           <a href="<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'categoria', 'sur'], true)?>">Sur</a>
