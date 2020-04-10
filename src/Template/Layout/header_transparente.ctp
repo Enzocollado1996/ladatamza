@@ -6,9 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-site-verification" content="37hPb73JDnZXMRMYt7S7V5UyMh_R_pzregFx-BosqHo" />
 
-    <meta name="description" content="No podemos vivir aislados pero estamos hartos del ruido‼ Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado!!" />
+    <meta name="description" content="No podemos vivir aislados pero estamos hartos del ruido&#33; Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado&#33;" />
     <meta name="keywords" content="la data mza, La Data Mza, ladatamza,ladatajusta,diarioagil,ladata san rafael, la data san rafael, la data" />
     <title>La Data Mza</title>
+ 
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="La Data Mza" />
+    <meta property="og:description" content="No podemos vivir aislados pero estamos hartos del ruido. Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado" />
+    <meta property="og:image" content="https://ladatamza.com/assets/images/img-ppal-ladata.jpg"/>
+    <meta property="og:image:width" content="828" />
+    <meta property="og:image:height" content="450" />
+    <meta property="og:url" content="https://ladatamza.com/" />
+    <meta property="og:site_name" content="La Data Mza" />
+    <!--<meta property="fb:app_id" content="1835956853302771" />-->
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -51,6 +61,51 @@
 
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
+      }
+
+ $(document).ready(function(){
+          window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '1835956853302771',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v2.10'
+          });
+          FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+
+      })
+
+
+      function shareOverrideOGMeta(overrideType,overrideLink, overrideTitle, overrideDescription,overrideImage)
+      {
+          FB.ui({
+              method: 'share_open_graph',
+              action_type: 'og.likes',
+              action_properties: JSON.stringify({
+                  object: {
+                      'og:type': overrideType,
+                      'og:url': overrideLink,
+                      'og:title': overrideTitle,
+                      'og:description': overrideDescription,
+                      'og:image': overrideImage,
+                      'og:site_name':'La Data Mza',
+                      'og:image:width': '828',
+                      'og:image:height':'450'
+                  }
+              })
+          },
+          function (response) {
+           console.log("holis");
+          });
       }
 
     </script>

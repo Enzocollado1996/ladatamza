@@ -2,7 +2,6 @@
     $articulo = $articulos[0];
     $zona = $articulo->zona;
 ?>
-<meta property="og:image" content="https://www.mdzol.com/files/og_thumbnail/files/fp/uploads/2019/10/06/5d9a39b61727a.r_d.1472-619.jpeg">
 <div class="container-fluid text-center interior-nota">   
     <div class="row">
         <div class="col-md-offset-2 col-md-8">

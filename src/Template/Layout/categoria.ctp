@@ -32,7 +32,7 @@
                 <div class="icons-share">
                     <a onclick="compartirnota('<?= $categoria->slug ?>', 'facebook')"><i class="fab fa-facebook-f"></i></a>
                     <a onclick="compartirnota('<?= $categoria->slug ?>', 'wsp')"><i class="fab fa-whatsapp"></i></a>
-                    <a onclick="compartirnota('<?= $categoria->slug ?>', 'twitter')"><i class="fab fa-twitter"></i></a>
+                    <a onclick="compartirnota('<?= $categoria->slug ?>', 'twitter', '<?=$categoria->titulo?>')"><i class="fab fa-twitter"></i></a>
                     <a onclick="compartirnota('<?= $categoria->slug ?>', 'mailito')"><i class="fas fa-envelope"></i></a>
                 </div>
             </div><!--END col-md-5-->

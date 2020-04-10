@@ -211,7 +211,7 @@ function categorias_page(page) {
                 $( "#image-shared-clone" ).clone().appendTo('#nota-'+item.id +" .share");
                 $('<div class="contenedor-img-txt" id="contenedor-img-txt-'+item.id+'"></div>').appendTo('#nota-'+item.id);
                 $('<div class="img-nota"><img src="'+path_imagen_subida + item.imagenes[0].file_url + '/' + item.imagenes[0].filename +'" class="banner"></div>').appendTo('#contenedor-img-txt-'+item.id);
-                $('<div class="icons-share"><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'twitter'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
+                $('<div class="icons-share"><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'facebook'"+')"><i class="fab fa-facebook-f"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'wsp'"+')"><i class="fab fa-whatsapp"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'twitter'"+', '+"'" + item.titulo + "'"+')"><i class="fab fa-twitter"></i></a><a onclick="compartirnota('+"'"+ item.slug+"'"+', '+"'mailito'"+')"><i class="fas fa-envelope"></i></a></div>').appendTo('#nota-'+item.id);
                 $('<div class="keyword">' + item.palabras_claves + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div class="fecha">' + date.toLocaleDateString("en-GB", options) + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
                 $('<div id="'+item.id+'"class="titulo-nota-categoria">' + item.titulo + '</div>').appendTo('#container-'+item.id +" .contenido-categoria");
@@ -266,7 +266,7 @@ function shareEffect(container){
         }
     })
 }
-function compartirnota(link, social){
+function compartirnota(link, social,titulonota){
     var baseUrl = document.location.origin;
 
     if(social == 'facebook'){
@@ -276,7 +276,7 @@ function compartirnota(link, social){
     }
 
     if(social == 'twitter'){
-        var twitterWindow = window.open('https://twitter.com/share?url=' + baseUrl + '/nota/' + link, 'twitter-popup', 'height=350,width=600');
+        var twitterWindow = window.open('https://twitter.com/share?url=' + baseUrl + '/nota/' + link + '&via=LADATA5&text='+ titulonota, 'twitter-popup', 'height=350,width=600');
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
@@ -290,7 +290,4 @@ function compartirnota(link, social){
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
-
-
-
 }
