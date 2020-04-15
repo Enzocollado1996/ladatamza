@@ -109,7 +109,7 @@ class FrontendController extends AppController
         if(count($articulos_centro) > 0){
             $articulos_centro_mobile = $articulos_centro;
             foreach($publicidades_centro as $publicidad_centro){
-                $articulos_centro_mobile = $this->insert($articulos_centro, $publicidad_centro->orden - 1, $publicidad_centro);            
+                $articulos_centro_mobile = $this->insert($articulos_centro_mobile, $publicidad_centro->orden - 1, $publicidad_centro);            
             }
         }
         
@@ -134,7 +134,7 @@ class FrontendController extends AppController
         if(count($articulos_norte) > 0){
             $articulos_norte_mobile = $articulos_norte;
             foreach($publicidades_norte as $publicidad_norte){
-                $articulos_norte_mobile = $this->insert($articulos_norte, $publicidad_norte->orden - 1, $publicidad_norte);            
+                $articulos_norte_mobile = $this->insert($articulos_norte_mobile, $publicidad_norte->orden - 1, $publicidad_norte);            
             }
         }
         
@@ -159,7 +159,7 @@ class FrontendController extends AppController
         if(count($articulos_sur) > 0){
             $articulos_sur_mobile = $articulos_sur;
            foreach($publicidades_sur as $publicidad_sur){
-                $articulos_sur_mobile = $this->insert($articulos_sur, $publicidad_sur->orden - 1, $publicidad_sur);            
+                $articulos_sur_mobile = $this->insert($articulos_sur_mobile, $publicidad_sur->orden - 1, $publicidad_sur);            
             } 
         }        
         $articulos_general = $this->Articulos->find('all', [
@@ -184,7 +184,7 @@ class FrontendController extends AppController
         if(count($articulos_general) > 0){
             $articulos_general_movil = $articulos_general;
            foreach($publicidades_general as $publicidad_general){
-                $articulos_general_movil = $this->insert($articulos_general, $publicidad_general->orden - 1, $publicidad_general);            
+                $articulos_general_movil = $this->insert($articulos_general_movil, $publicidad_general->orden - 1, $publicidad_general);            
             } 
         }
         
