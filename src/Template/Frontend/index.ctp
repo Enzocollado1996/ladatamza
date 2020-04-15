@@ -95,7 +95,13 @@
     <div class="divider"></div>
     <div id="owl-demo" class="owl-carousel owl-theme">
         <?php foreach ($articulos_general_movil as $general) {?>
+            <?php if (isset( $general->slug )){?>
             <div class="item" onclick="generales('<?= $this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo',$general->slug]) ?>')">
+            <?php }?>
+            <?php if (isset( $general->ir_a_url )){?>
+            <div class="item" onclick="gotodetail('<?=$general->ir_a_url?>')">
+            <?php }?>
+
             <?php if(!isset($general->titulo)):?>
             <?php echo $this->Html->image(Cake\Core\Configure::read('path_imagen_subida') . $general->imagen->file_url . '/' . $general->imagen->filename, ['style'=> 'width:100%']);?>
             <?php else : ?> 
