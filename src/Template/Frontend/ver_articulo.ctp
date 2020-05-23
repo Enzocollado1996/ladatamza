@@ -155,9 +155,7 @@ $(".fijo_noticia").on('touchmove',function(){
         }
     subo = scroll
 })
-var watchID = navigator.geolocation.getCurrentPosition(function(position) {
-  positions(position.coords.latitude, position.coords.longitude);
-});
+positions(-32.893217500000006, -68.8466427);
 $("#target").submit(function(event) {
         event.preventDefault();
         let data = $(this).find('input').val()

@@ -24,26 +24,27 @@
     foreach ($articulo->imagenes as $imagen) { 
       $img = $domain . '/img/'. Cake\Core\Configure::read('path_imagen_subida') . $imagen->file_url . '/' . $imagen->filename;
     }
-    echo '<meta property="og:title" content="' . $articulo->titulo . '"/>';
-    echo '<meta property="og:description" content="' . $articulo->descripcion . '"/>';
-    echo '<meta property="og:image" content="' . $img . '"/>';
-    echo '<meta property="og:url" content="https://ladatamza.com/nota/'. $articulo->slug .'" />';
-    echo '<meta property="og:image:width" content="600" />';
-    echo '<meta property="og:image:height" content="314" />';
-    echo '<meta property="og:site_name" content="La Data Mza" />';
-    echo '<meta name="twitter:card" content="summary_large_image">';
-    echo '<meta name="twitter:description" content="'. $articulo->descripcion . '">';
-    echo '<meta name="twitter:site" content="@LADATA5">';
-    echo '<meta name="twitter:creator" content="@LADATA5">';
-    echo '<meta name="twitter:image:src" content="' . $img .'">';
+    echo "<meta property='og:title' content='".$articulo->titulo . "'/>";
+    echo "<meta property='og:description' content='" . $articulo->descripcion . "'/>";
+    echo "<meta property='og:image' content='" . $img . "'/>";
+    echo "<meta property='og:url' content='https://ladatamza.com/nota/" . $articulo->slug . "'/>";
+    echo "<meta property='og:image:width' content='600'/>";
+    echo "<meta property='og:image:height' content='314' />";
+    echo "<meta property='og:site_name' content='La Data Mza' />";
+    echo "<meta name='twitter:card' content='summary_large_image'>";
+    echo "<meta name='twitter:description' content='" . $articulo->descripcion . "'/>";
+    echo "<meta name='twitter:site' content='@LADATA5'/>";
+    echo "<meta name='twitter:creator' content='@LADATA5'/>";
+    echo "<meta name='twitter:image:src' content='" . $img . "'/>";
   }else{
-    echo '<meta property="og:title" content="La Data Mza"';
-    echo '<meta property="og:description" content="No podemos vivir aislados pero estamos hartos del ruido. Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado"/>';
-    echo '<meta property="og:image" content="https://ladatamza.com/assets/images/img-ppal-ladata.jpg"/>';
-    echo '<meta property="og:image:width" content="600" />';
-    echo '<meta property="og:image:height" content="314" />';
-    echo '<meta property="og:site_name" content="La Data Mza" />';
+    echo "<meta property='og:title' content='La Data Mza'/>";
+    echo "<meta property='og:description' content='No podemos vivir aislados pero estamos hartos del ruido. Informar &aacute;gil y simple es el nuevo mantra con la data justa, lo contrario es pasado'/>";
+    echo "<meta property='og:image' content='https://ladatamza.com/assets/images/img-ppal-ladata.jpg'/>";
+    echo "<meta property='og:image:width' content='600' />";
+    echo "<meta property='og:image:height' content='314' />";
+    echo "<meta property='og:site_name' content='La Data Mza' />";
   }
+
   ?>
   
 
