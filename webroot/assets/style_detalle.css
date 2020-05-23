@@ -59,7 +59,7 @@ section {
     overflow: scroll;
     position: absolute;
     top: 132px;
-    z-index: 11;
+    z-index: 9;
 }
 section .banner-empty {
     width: 100%;
@@ -85,6 +85,7 @@ section .info {
     transition:.3s all
 }
 .imagen.active .time{
+    z-index: 10;
     opacity:1
 }
 section .info .titulo {
@@ -112,6 +113,7 @@ section .info .titulo {
     background: white
 }
 .imagen.active{
+    z-index: 1;
     opacity: 1
 }
 section .info .cuerpo {
@@ -122,7 +124,7 @@ section .info .cuerpo {
     padding-top: 18px;
 }
 
-.fijo .imagen .share {
+.share {
     position: fixed;
     top: 65%;
     display: flex;
@@ -134,8 +136,7 @@ section .info .cuerpo {
     right: -5px;
     align-items: center;
     z-index:150;
-    visibility:hidden
-    
+    visibility:visible;
 }
 .imagen.active .share{
     visibility:visible;

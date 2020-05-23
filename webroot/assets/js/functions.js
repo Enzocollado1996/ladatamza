@@ -206,7 +206,7 @@ function categorias_page(page) {
             var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
             $.each(data,function(i,item){
                 var date  = new Date(item.publicado);
-                $('<div class="container-categoria row margen-40" id="container-' + item.id + '"><div class="col-md-5 img-nota-categoria" id="nota-' + item.id+ '"></div><div class="contenido-categoria col-md-7" onclick="generales('+urlnota+'/'+ item.slug+')"></div></div>').appendTo('.interior-categoria');
+                $('<div class="container-categoria row margen-40" id="container-' + item.id + '"><div class="col-md-5 img-nota-categoria" id="nota-' + item.id+ '"></div><div class="contenido-categoria col-md-7" onclick="generales('+"'"+ urlnota+"/"+ item.slug+"'"+')"></div></div>').appendTo('.interior-categoria');
                 $('<div class="share btn-share" onclick="shareNew('+"'" + baseUrl + "ladatamza/nota/"+ item.slug + "'"+ ')"></div>').appendTo('#nota-'+item.id);
                 $( "#image-shared-clone" ).clone().appendTo('#nota-'+item.id +" .share");
                 $('<div class="contenedor-img-txt" id="contenedor-img-txt-'+item.id+'"></div>').appendTo('#nota-'+item.id);

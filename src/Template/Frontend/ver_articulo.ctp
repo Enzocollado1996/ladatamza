@@ -18,7 +18,7 @@
     <div class="fijo">
     <?php if (count($articulos) > 0): ?>
     <?php $index = 0;foreach ($articulos as $articulo): ?>
-    <div class="imagen" id="img_<?php echo $index ?>">
+    <div class="imagen" id="img_<?php echo $index ?>" data-url='<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>' data-titulo='<?=$articulo->titulo?>'>
             <div class="time"><?=$articulo->publicado->i18nFormat('dd/MM/YYYY')?></div>
             <!--<div class="bloque"></div>-->
     <?php
@@ -32,14 +32,13 @@ if (count($articulo->imagenes) > 0) {
     echo '<div class="banner-empty"></div>';
 }
 ?>
-<div class="share">
-                <div onclick="shareNew('<?=$this->Url->build(['controller' => 'Frontend', 'action' => 'ver_articulo', $articulo->slug], true)?>', '', '<?=$articulo->titulo?>')"><?php echo $this->Html->image("../assets/images/share-negro.svg", ['class' => 'share_url']) ?></div>
-                <?php echo $this->Html->image("../assets/images/back.svg", ['class' => 'back']) ?>
-
-                </div>
             
         </div>
         <?php $index++;endforeach?>
+        <div class="share">
+                <div class="shared" ><?php echo $this->Html->image("../assets/images/share-negro.svg", ['class' => 'share_url']) ?></div>
+                <?php echo $this->Html->image("../assets/images/back.svg", ['class' => 'back']) ?>
+                </div>
 
     <div class="fijo_noticia">
     <!-- <div class="white"></div> -->
@@ -162,7 +161,11 @@ $("#target").submit(function(event) {
         location.href = `${$(this).attr('action')}/${data}`
     });
 });
-
+$(".shared").on("click", function(){ 
+    var url = $('.active').data('url');
+    var titulo = $('.active').data('titulo');
+    shareNew( url, '', titulo );
+});
 
 
 </script>
