@@ -88,6 +88,10 @@ body {
     align-items: flex-end;
     padding-right: 5px;
 }
+.imagetombola{
+    width: 100%;
+    background-size: cover;
+}
 .header-notices {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -539,4 +543,10 @@ advertising .bar {
 		height: 150px;
 		object-fit: cover;
 	}
+}
+
+.shadownews.imagetombola {
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
 }

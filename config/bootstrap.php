@@ -194,6 +194,7 @@ Type::build('timestamp')
 
 Configure::write('nombre_portal', 'Ladatamza');
 Configure::write('path_imagen_subida', '../files/imagenes/filename/');
+Configure::write('path_imagen_subida_tombola', '/files/imagenes/filename/');
 Configure::write('path_video_subida', 'files/videos/');
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize

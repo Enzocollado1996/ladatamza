@@ -82,8 +82,9 @@ class FrontendController extends AppController
             ->where(['Publicidades.zona' => 'SOCIALES', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
             ->toArray();
             if(count($publicidades_sociales) > 0){
+                $publicidades_sociales_mobile = $publicidades_sociales;
                 foreach($publicidades_sociales as $publicidad_sociales){
-                    $publicidades_sociales = $this->insert($articulos_centro, $publicidad_sociales->orden - 1, $publicidad_sociales);            
+                    $publicidades_sociales_mobile = $this->insert($articulos_centro, $publicidad_sociales->orden - 1, $publicidad_sociales);            
                 }
             }
 
@@ -98,7 +99,7 @@ class FrontendController extends AppController
         
         $publicidades_centro = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 0
+                'limit' => 100
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'CENTRO', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -106,8 +107,9 @@ class FrontendController extends AppController
         
         //Completo los articulos con publicidades
         if(count($articulos_centro) > 0){
+            $articulos_centro_mobile = $articulos_centro;
             foreach($publicidades_centro as $publicidad_centro){
-                $articulos_centro = $this->insert($articulos_centro, $publicidad_centro->orden - 1, $publicidad_centro);            
+                $articulos_centro_mobile = $this->insert($articulos_centro_mobile, $publicidad_centro->orden - 1, $publicidad_centro);            
             }
         }
         
@@ -122,7 +124,7 @@ class FrontendController extends AppController
         
         $publicidades_norte = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 0
+                'limit' => 100
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'NORTE', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -130,8 +132,9 @@ class FrontendController extends AppController
         
         //Completo los articulos con publicidades
         if(count($articulos_norte) > 0){
+            $articulos_norte_mobile = $articulos_norte;
             foreach($publicidades_norte as $publicidad_norte){
-                $articulos_norte = $this->insert($articulos_norte, $publicidad_norte->orden - 1, $publicidad_norte);            
+                $articulos_norte_mobile = $this->insert($articulos_norte_mobile, $publicidad_norte->orden - 1, $publicidad_norte);            
             }
         }
         
@@ -146,7 +149,7 @@ class FrontendController extends AppController
         
         $publicidades_sur = $this->Publicidades->find('all',[
                 'order' => ['orden' => 'asc'],
-                'limit' => 0
+                'limit' => 100
                 ])
                 ->contain(['Imagenes'])
                 ->where(['Publicidades.zona' => 'SUR', 'Publicidades.habilitado' => true,'Publicidades.tipo'=>'RULETA'])
@@ -154,11 +157,11 @@ class FrontendController extends AppController
 
         //Completo los articulos con publicidades
         if(count($articulos_sur) > 0){
+            $articulos_sur_mobile = $articulos_sur;
            foreach($publicidades_sur as $publicidad_sur){
-                $articulos_sur = $this->insert($articulos_sur, $publicidad_sur->orden - 1, $publicidad_sur);            
+                $articulos_sur_mobile = $this->insert($articulos_sur_mobile, $publicidad_sur->orden - 1, $publicidad_sur);            
             } 
         }        
-        
         $articulos_general = $this->Articulos->find('all', [
                             'order' => ['publicado' => 'desc'],
                             'limit' => 8
@@ -177,18 +180,23 @@ class FrontendController extends AppController
                 ->toArray();
         
         //Completo los articulos con publicidades
+
         if(count($articulos_general) > 0){
+            $articulos_general_movil = $articulos_general;
            foreach($publicidades_general as $publicidad_general){
-                $articulos_general = $this->insert($articulos_general, $publicidad_general->orden - 1, $publicidad_general);            
+                $articulos_general_movil = $this->insert($articulos_general_movil, $publicidad_general->orden - 1, $publicidad_general);            
             } 
-        } 
+        }
         
         $publicidad_inicial = $this->Publicidades->find('all')
                 ->contain(['Imagenes', 'Videos'])
                 ->where(['Publicidades.tipo' => 'INICIAL', 'Publicidades.habilitado' => true])
                 ->first();
-        $this->set(compact('articulos_centro','articulos_sur','articulos_norte',
-                'articulos_general','articulos_sociales', 'publicidad_inicial', 'gifsociales'));
+        // var_dump($articulos_sur_mobile);
+        // exit;
+        $this->set(compact( 'articulos_centro','articulos_sur','articulos_norte',
+                            'articulos_centro_mobile','articulos_sur_mobile','articulos_norte_mobile',
+                'articulos_general','articulos_general_movil','articulos_sociales', 'publicidad_inicial', 'gifsociales'));
     
         $detector = new \Detection\MobileDetect();
         if($this->RequestHandler->isMobile()){

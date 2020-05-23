@@ -25,7 +25,7 @@
             <?=$this->Form->control('ir_a_url',['type'=> 'text','label' => 'Ir a url','class'=>'form-control']);?>
         </div>
         <div class="form-group">
-            <?=$this->Form->control('orden',['type'=> 'number','label' => 'Posición entre notas','class'=>'form-control', 'placeholder' => '5', 'required' => 'required']);?>
+            <?=$this->Form->control('orden',['type'=> 'number','max' => 9,'label' => 'Posición entre notas','class'=>'form-control', 'placeholder' => '5', 'required' => 'required']);?>
         </div>
         <div class="form-group">
             <div class="checkbox">

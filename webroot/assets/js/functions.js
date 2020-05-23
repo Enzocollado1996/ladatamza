@@ -1,7 +1,7 @@
 function positions(latitude, longitude) {
     var latitude = -32.893217500000006;
     var longitude = -68.8466427;
-    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=07b60e14df693eebed986c32ce31914b`;
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=542ffd081e67f4512b705f89d2a611b2`;
     $.get(url).then(data => {
         var grados = (Number(data.main.temp) - 273.15).toFixed(1);
         var iconname = translateWeather(data.weather[0].main);
@@ -269,24 +269,24 @@ function shareEffect(container){
 function compartirnota(link, social,titulonota){
     var baseUrl = document.location.origin;
 
-    if(social == 'facebook'){
-        var facebookWindow = window.open('https://www.facebook.com/sharer/sharer.php?u=' + baseUrl + '/nota/' + link, 'facebook-popup', 'height=350,width=600');
+    if(social == "facebook"){
+        var facebookWindow = window.open("https://www.facebook.com/sharer/sharer.php?u=" + baseUrl + "/nota/" + link, "facebook-popup", "height=350,width=600");
         if(facebookWindow.focus) { facebookWindow.focus(); }
         return false;
     }
 
-    if(social == 'twitter'){
-        var twitterWindow = window.open('https://twitter.com/share?url=' + baseUrl + '/nota/' + link + '&via=LADATA5&text='+ titulonota, 'twitter-popup', 'height=350,width=600');
+    if(social == "twitter"){
+        var twitterWindow = window.open("https://twitter.com/share?url=" + baseUrl + "/nota/" + link + "&via=LADATA5&text="+ titulonota, "twitter-popup", "height=350,width=600");
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
-    if(social == 'wsp'){
-        var twitterWindow = window.open('https://web.whatsapp.com/send?text=Lea esta noticia '+ baseUrl + '/nota/' + link);
+    if(social == "wsp"){
+        var twitterWindow = window.open("https://web.whatsapp.com/send?text="+ baseUrl + "/nota/" + link);
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
-    if(social == 'mailito'){
-        var twitterWindow = window.open('mailto:?body=Lea esta noticia  '+ baseUrl + '/nota/' + link);
+    if(social == "mailito"){
+        var twitterWindow = window.open("mailto:?body="+ baseUrl + "/nota/" + link);
         if(twitterWindow.focus) { twitterWindow.focus(); }
         return false;
     }
